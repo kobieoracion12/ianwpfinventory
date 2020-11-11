@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="NavigationDrawerPopUpMenu2.UserControlSales"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1080
+             ">
+
+    <Grid Background="BlanchedAlmond">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid x:Name="isHeader" Grid.Row="0" Grid.Column="0" Background="#edeff3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="200*" />
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+
+                <UniformGrid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" >
+                        <Button Content="Today" Margin="0 0 10 0" Click="Button_Click" />
+                        <Button Content="Yesterday" Margin="0 0 10 0"/>
+                        <Button Content="This Week" Margin="0 0 10 0"/>
+                        <Button Content="This Month" Margin="0 0 10 0"/>
+                        <Button Content="This Year" />
+                    </StackPanel>
+                </UniformGrid>
+                
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Today Sales" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Center" />
+                    <TextBlock Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Discount Sales" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Center" />
+                    <TextBlock Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Overall Total" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
+                    <TextBlock Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <!-- Listview Grid -->
+        <Grid Grid.Row="1" Grid.Column="0" Background="#ffffff">
+            <ListView x:Name="listViewSales" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="70,0,0,0">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridView.Columns>
+                            <GridViewColumn DisplayMemberBinding="{Binding refNo }" Header="#" Width="50"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesNo }" Header="Prod #" Width="200"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="300"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesBrand }" Header="Brand" Width="250"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesDate }" Header="Date of Purchase" Width="200"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesPrice }" Header="Price" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Quantity" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesTotal }" Header="Total" Width="100"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

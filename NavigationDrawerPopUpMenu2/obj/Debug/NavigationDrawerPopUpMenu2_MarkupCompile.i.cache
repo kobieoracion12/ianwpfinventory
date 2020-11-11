@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\GIT\NavigationDrawerPopUpMenu2\NavigationDrawerPopUpMenu2\obj\Debug\
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\obj\Debug\
 NavigationDrawerPopUpMenu2
 none
 false
 DEBUG;TRACE
-D:\GIT\NavigationDrawerPopUpMenu2\NavigationDrawerPopUpMenu2\App.xaml
-3763843133
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\App.xaml
+11667597964
 
-11-1032182907
-151125528092
-MainWindow.xaml;UserControlCreate.xaml;UserControlHome.xaml;
+18-2090600726
+17788842132
+main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_editItem.xaml;windows\window_userLogin.xaml;
 
-False
+True
 

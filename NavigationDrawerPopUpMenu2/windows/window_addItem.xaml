@@ -1,0 +1,98 @@
+﻿<Window x:Class="NavigationDrawerPopUpMenu2.usercontrols.window_addItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.usercontrols"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="window_addItem" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Vertical">
+                    <Viewbox Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock Text="PRODUCT #" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                    </Viewbox>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical">
+                    <TextBlock Text="PRODUCT NAME" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Vertical">
+                    <TextBlock Text="PRODUCT BRAND" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Vertical">
+                    <TextBlock Text="PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Vertical">
+                    <TextBlock Text="QUANTITY" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="5" Orientation="Vertical">
+                    <TextBlock Text="DATE OF ARRIVAL" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="6" Orientation="Vertical">
+                    <TextBlock Text="EXPIRATION DATE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+
+                <!-- TextBox -->
+                <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
+                    <TextBox x:Name="tbProdNo" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
+                    <TextBox x:Name="tbProdItem" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical">
+                    <TextBox x:Name="tbProdBrand" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical">
+                    <TextBox x:Name="tbProdPrice" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical">
+                    <TextBox  x:Name="tbProdQty" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
+                    <DatePicker x:Name="tbProdDOA" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Grid.Column="1" Grid.Row="5" Width="340" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Vertical">
+                    <DatePicker x:Name="tbProdEXPD" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Grid.Column="1" Grid.Row="5" Width="340" Margin="5"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Viewbox Margin="10 20 0 0 ">
+                    <Button x:Name="addItemSubmit" Content="Submit" Background="#54b971" VerticalAlignment="Center" HorizontalAlignment="Center" Click="addItemSubmit_Click"/>
+                </Viewbox>
+                <Viewbox Margin="10 20 0 0">
+                    <Button x:Name="addItemCancel"  Content="Cancel" Background="#e86845" VerticalAlignment="Center" HorizontalAlignment="Center" Click="addItemCancel_Click"/>
+                </Viewbox>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

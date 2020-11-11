@@ -15,11 +15,9 @@ using System.Windows.Shapes;
 
 namespace NavigationDrawerPopUpMenu2
 {
-    /// <summary>
-    /// Interação lógica para MainWindow.xam
-    /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -49,7 +47,11 @@ namespace NavigationDrawerPopUpMenu2
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemCreate":
-                    usc = new UserControlCreate();
+                    usc = new UserControlSales();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "inventoryStocks":
+                    usc = new UserControlInventory();
                     GridMain.Children.Add(usc);
                     break;
                 default:
