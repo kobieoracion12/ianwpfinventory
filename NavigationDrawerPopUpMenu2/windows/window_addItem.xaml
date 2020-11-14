@@ -49,10 +49,10 @@
                     <TextBlock Text="PRODUCT BRAND" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-                    <TextBlock Text="PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                    <TextBlock Text="SUGGESTED RETAIL PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Vertical">
-                    <TextBlock Text="QUANTITY" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                    <TextBlock Text="RETAIL PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="5" Orientation="Vertical">
                     <TextBlock Text="DATE OF ARRIVAL" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
@@ -72,10 +72,10 @@
                     <TextBox x:Name="tbProdBrand" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical">
-                    <TextBox x:Name="tbProdPrice" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox x:Name="tbProdSRP" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical">
-                    <TextBox  x:Name="tbProdQty" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox  x:Name="tbProdRP" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
                     <DatePicker x:Name="tbProdDOA" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Grid.Column="1" Grid.Row="5" Width="340" Margin="5"/>

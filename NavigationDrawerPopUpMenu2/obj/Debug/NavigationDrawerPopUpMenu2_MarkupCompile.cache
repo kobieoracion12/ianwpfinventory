@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\App.xaml
-11667597964
+12978228389
 
-14189450987
-70416903059
-main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_editItem.xaml;windows\window_userLogin.xaml;
+161906058788
+74655708220
+main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_editItem.xaml;windows\window_userLogin.xaml;
 
 False
 

@@ -53,30 +53,61 @@ namespace NavigationDrawerPopUpMenu2
             }
         }
 
+        private void listViewInventory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // Add Button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             window_addItem addItem = new window_addItem();
             addItem.Show();
         }
 
+        // Refresh Button
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             catchData();
         }
 
+        // Edit Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
 
         }
 
+
+
         private void listViewInventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
 
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
         }
     }
 }

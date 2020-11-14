@@ -30,6 +30,13 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+
+                <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Magnify" Width="25" Height="25" Foreground="#7B7873" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="80 5 0 5"/>
+                    <TextBox x:Name="tbSearch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="500" Margin="10 5 0 5" Background="#edeff3" TextChanged="tbSearch_TextChanged"/>
+
+                </StackPanel>
+                
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                     <Button Content="Refresh" HorizontalAlignment="Center" Background="#54b971" Margin="0 0 8 0" Click="Button_Click_1" />
                     <Button Content="Add Item" HorizontalAlignment="Center" Background="#54b971" Margin="0 0 8 0" Click="Button_Click"/>
@@ -65,8 +72,8 @@
                             <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="Product #" Width="200"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="300" />
                             <GridViewColumn DisplayMemberBinding="{Binding prodBrand }" Header="Brand" Width="250"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding prodPrice }" Header="Price" Width="100"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding prodQuantity }" Header="Qty" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding prodSRP }" Header="SRP" Width="100" />
+                            <GridViewColumn DisplayMemberBinding="{Binding prodRP }" Header="Retail Price" Width="120"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodDOA }" Header="Date of Arrival" Width="200"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodEXPD }" Header="Expiration Date" Width="200"/>
                         </GridView.Columns>

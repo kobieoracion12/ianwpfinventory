@@ -48,10 +48,10 @@
                     <TextBlock Text="PRODUCT BRAND" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-                    <TextBlock Text="PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                    <TextBlock Text="SUGGESTED RETAIL PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Vertical">
-                    <TextBlock Text="QUANTITY" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                    <TextBlock Text="RETAIL PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
@@ -64,10 +64,10 @@
                     <TextBox x:Name="editProdBrand" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical">
-                    <TextBox x:Name="editProdPrice" x:FieldModifier="public" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox x:Name="editProdSRP" x:FieldModifier="public" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical">
-                    <TextBox  x:Name="editProdQty" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox  x:Name="editProdRP" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
             </Grid>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">

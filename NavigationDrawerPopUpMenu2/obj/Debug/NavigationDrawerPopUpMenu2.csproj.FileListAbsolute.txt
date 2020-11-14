@@ -120,3 +120,11 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Nav
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\obj\Debug\windows\window_editItem.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\obj\Debug\windows\window_userLogin.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\obj\Debug\windows\window_userLogin.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\obj\Debug\usercontrols\UserControlDashboard.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\obj\Debug\usercontrols\UserControlDashboard.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\bin\Debug\LiveCharts.dll
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\bin\Debug\LiveCharts.pdb
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\bin\Debug\LiveCharts.xml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\NavigationDrawerPopUpMenu2\bin\Debug\LiveCharts.Wpf.xml

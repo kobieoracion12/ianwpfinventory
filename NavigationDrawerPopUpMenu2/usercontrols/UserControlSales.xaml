@@ -30,27 +30,37 @@
 
                 <UniformGrid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" >
-                        <Button Content="Today" Margin="0 0 10 0" Click="Button_Click" />
-                        <Button Content="Yesterday" Margin="0 0 10 0"/>
-                        <Button Content="This Week" Margin="0 0 10 0"/>
-                        <Button Content="This Month" Margin="0 0 10 0"/>
-                        <Button Content="This Year" />
+                        <ComboBox x:Name="cbSmartSort" Width="150" Margin="0 0 10 0" FontSize="12" FontFamily="Segoe UI Semibold">
+                            <ComboBoxItem Content="Today" IsSelected="True"/>
+                            <ComboBoxItem Content="Yesterday" />
+                            <ComboBoxItem Content="This Week" />
+                            <ComboBoxItem Content="This Month" />
+                            <ComboBoxItem Content="Last Month" />
+                            <ComboBoxItem Content="This Year" />
+                        </ComboBox>
+                        
+                        
+                        <Button x:Name="todayButton" Content="Today" Margin="0 0 10 0" Click="Button_Click" />
+                        <Button x:Name="thisWeekButton" Content="This Week" Margin="0 0 10 0" Click="Button_Click_1"/>
+                        <Button x:Name="thisMonthButton" Content="This Month" Margin="0 0 10 0" Click="Button_Click_2"/>
+                        <Button x:Name="lastMonthButton" Content="Last Month" Margin="0 0 10 0" Click="Button_Click_4"/>
+                        <Button x:Name="thisYearButton" Content="This Year" Click="Button_Click_3" />
                     </StackPanel>
                 </UniformGrid>
                 
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Today Sales" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Center" />
-                    <TextBlock Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
+                    <TextBlock x:Name="tb_todaySales" Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Discount Sales" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Center" />
-                    <TextBlock Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
+                    <TextBlock Text="Sales Profit" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Center" />
+                    <TextBlock x:Name="tb_discountSales" Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Overall Total" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
-                    <TextBlock Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
+                    <TextBlock x:Name="tb_overallSales" Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
                 </StackPanel>
             </Grid>
         </Grid>
@@ -66,7 +76,8 @@
                             <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="300"/>
                             <GridViewColumn DisplayMemberBinding="{Binding salesBrand }" Header="Brand" Width="250"/>
                             <GridViewColumn DisplayMemberBinding="{Binding salesDate }" Header="Date of Purchase" Width="200"/>
-                            <GridViewColumn DisplayMemberBinding="{Binding salesPrice }" Header="Price" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesSRP }" Header="SRP" Width="100"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="RP" Width="100"/>
                             <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Quantity" Width="100"/>
                             <GridViewColumn DisplayMemberBinding="{Binding salesTotal }" Header="Total" Width="100"/>
                         </GridView.Columns>

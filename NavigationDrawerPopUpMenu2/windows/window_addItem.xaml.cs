@@ -42,11 +42,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 {
                     MessageBox.Show("Please Complete the Form");
                 }
-                else if (tbProdPrice.Text == "")
+                else if (tbProdSRP.Text == "")
                 {
                     MessageBox.Show("Please Complete the Form");
                 }
-                else if (tbProdQty.Text == "")
+                else if (tbProdRP.Text == "")
                 {
                     MessageBox.Show("Please Complete the Form");
                 }
@@ -62,13 +62,13 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 {
                     con.Open();
                     MySqlCommand cmd = new MySqlCommand();
-                    cmd.CommandText = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodPrice, prodQuantity, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @pp, @pq, @pdoa, @pexpd);";
+                    cmd.CommandText = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodSRP, prodRP, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @pp, @pq, @pdoa, @pexpd);";
 
                     cmd.Parameters.AddWithValue("@pn", tbProdNo.Text);
                     cmd.Parameters.AddWithValue("@pi", tbProdItem.Text);
                     cmd.Parameters.AddWithValue("@pb", tbProdBrand.Text);
-                    cmd.Parameters.AddWithValue("pp", tbProdPrice.Text);
-                    cmd.Parameters.AddWithValue("pq", tbProdQty.Text);
+                    cmd.Parameters.AddWithValue("pp", tbProdSRP.Text);
+                    cmd.Parameters.AddWithValue("pq", tbProdRP.Text);
 
                     string str = tbProdEXPD.Text;
                     DateTime dt;
@@ -84,8 +84,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tbProdNo.Text = "";
                         tbProdItem.Text = "";
                         tbProdBrand.Text = "";
-                        tbProdPrice.Text = "";
-                        tbProdQty.Text = "";
+                        tbProdSRP.Text = "";
+                        tbProdRP.Text = "";
                         tbProdDOA.Text = "";
                         tbProdEXPD.Text = "";
                     }

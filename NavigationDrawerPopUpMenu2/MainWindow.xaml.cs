@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NavigationDrawerPopUpMenu2.usercontrols;
+using NavigationDrawerPopUpMenu2.windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,7 +45,7 @@ namespace NavigationDrawerPopUpMenu2
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemHome":
-                    usc = new UserControlHome();
+                    usc = new UserControlDashboard();
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemCreate":
@@ -53,6 +55,12 @@ namespace NavigationDrawerPopUpMenu2
                 case "inventoryStocks":
                     usc = new UserControlInventory();
                     GridMain.Children.Add(usc);
+                    break;
+                case "logoutButton":
+                    MessageBox.Show("Logout Success!");
+                    window_userLogin userLogin = new window_userLogin();
+                    userLogin.Show();
+                    this.Close();
                     break;
                 default:
                     break;
