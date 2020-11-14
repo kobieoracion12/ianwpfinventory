@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Grid x:Name="isHeader" Grid.Row="0" Grid.Column="0" Background="#edeff3">
+        <Grid x:Name="isHeader" Grid.Row="0" Grid.Column="0" Background="#edeff3" Height="100" VerticalAlignment="Top">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="80" />

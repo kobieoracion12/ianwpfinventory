@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        MinHeight="600" MinWidth="1080"
         mc:Ignorable="d" Height="600" Width="1080" Foreground="#000000" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
