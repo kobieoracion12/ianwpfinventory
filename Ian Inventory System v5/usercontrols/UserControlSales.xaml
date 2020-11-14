@@ -30,7 +30,7 @@
 
                 <UniformGrid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" >
-                        <ComboBox x:Name="cbSmartSort" Width="150" Margin="0 0 10 0" FontSize="12" FontFamily="Segoe UI Semibold">
+                        <ComboBox x:Name="cbSmartSort" BorderThickness="5" BorderBrush="Transparent" Width="150" Margin="0 0 10 0" FontSize="12" FontFamily="Segoe UI Semibold">
                             <ComboBoxItem Content="Today" IsSelected="True"/>
                             <ComboBoxItem Content="Yesterday" />
                             <ComboBoxItem Content="This Week" />

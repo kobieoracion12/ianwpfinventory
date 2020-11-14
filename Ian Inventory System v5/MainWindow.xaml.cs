@@ -56,6 +56,10 @@ namespace NavigationDrawerPopUpMenu2
                     usc = new UserControlInventory();
                     GridMain.Children.Add(usc);
                     break;
+                case "checkOut":
+                    usc = new UserControlCheckout();
+                    GridMain.Children.Add(usc);
+                    break;
                 case "logoutButton":
                     MessageBox.Show("Logout Success!");
                     window_userLogin userLogin = new window_userLogin();
