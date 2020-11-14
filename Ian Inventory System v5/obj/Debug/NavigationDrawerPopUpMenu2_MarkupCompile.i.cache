@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\App.xaml
 13-49043379
 
-21-490068540
+221146228580
 211027647293
 main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_editItem.xaml;windows\window_userLogin.xaml;
 
-False
+True
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,12 +15,14 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System;
+using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
     public partial class UserControlDashboard : UserControl
     {
-        MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;persistsecurityinfo=True;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
+        Database conn = new Database();
 
         public UserControlDashboard()
         {
@@ -35,14 +36,18 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Daily Sales
         private void dailySales()
         {
-            con.Close();
+            // Make sure Connection is Closed
+            conn.Close();
+            //  Command Database
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE DATE(salesDate) = CURDATE()";
+            conn.query(query);
             try
             {
-                string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE DATE(salesDate) = CURDATE()";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                // Open Connection
+                conn.Open();
+                // Execute 
+                MySqlDataReader dr = conn.read();
 
-                MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     tb_todaySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
@@ -51,25 +56,32 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tb_todaySales.Text = "₱ 0.00";
                     }
                 }
-                con.Close();
+
+                // Close the connection
+                conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         // Weekly Sales
         private void weeklySales()
         {
-            con.Close();
+            // Make sure Connection is Closed
+            conn.Close();
+            //  Command Database
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE salesDate >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND salesDate < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY";
+            conn.query(query);
             try
             {
-                string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE salesDate >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND salesDate < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                // Open Connection
+                conn.Open();
+                // Execute 
+                MySqlDataReader dr = conn.read();
 
-                MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     tb_weeklySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
@@ -78,25 +90,30 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tb_weeklySales.Text = "₱ 0.00";
                     }
                 }
-                con.Close();
+
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show(ex.Message);
             }
+            
         }
 
         // Montly Sales 
         private void monthlySales()
         {
-            con.Close();
+            // Make sure Connection is Closed
+            conn.Close();
+            //  Command Database
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE MONTH(salesDate) = MONTH(CURRENT_TIMESTAMP) AND YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
+            conn.query(query);
+
             try
             {
-                string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE MONTH(salesDate) = MONTH(CURRENT_TIMESTAMP) AND YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                // Open Connection
+                conn.Open();
 
-                MySqlDataReader dr = cmd.ExecuteReader();
+                MySqlDataReader dr = conn.read();
                 if (dr.Read())
                 {
                     tb_monthlySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
@@ -105,7 +122,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tb_monthlySales.Text = "₱ 0.00";
                     }
                 }
-                con.Close();
+                conn.Close();
             }
             catch (Exception x)
             {
@@ -116,14 +133,18 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Yearly Sales 
         private void yearlySales()
         {
-            con.Close();
+            // Make sure Connection is Closed
+            conn.Close();
+            //  Command Database
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
+            conn.query(query);
+
             try
             {
-                string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                // Open Connection
+                conn.Open();
 
-                MySqlDataReader dr = cmd.ExecuteReader();
+                MySqlDataReader dr = conn.read();
                 if (dr.Read())
                 {
                     tb_yearlySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
@@ -132,7 +153,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tb_yearlySales.Text = "₱ 0.00";
                     }
                 }
-                con.Close();
+                conn.Close();
             }
             catch (Exception x)
             {

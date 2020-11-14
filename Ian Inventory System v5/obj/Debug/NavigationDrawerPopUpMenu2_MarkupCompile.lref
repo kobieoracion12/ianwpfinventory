@@ -1,4 +1,5 @@
 ﻿
+<<<<<<< HEAD
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\App.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\main Menu.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\MainWindow.xaml;;
@@ -13,4 +14,19 @@ FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ia
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\windows\window_addItem.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\windows\window_editItem.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\windows\window_userLogin.xaml;;
+=======
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\App.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\main Menu.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\MainWindow.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\styleLibrary.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\usercontrols\customStyle.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlCreate.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlDashboard.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlHome.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlInventory.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlSales.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\windows\window_addItem.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\windows\window_editItem.xaml;;
+FE:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\windows\window_userLogin.xaml;;
+>>>>>>> 92bb328ed08cfc925b168947e76f5fc827b41eb5
 

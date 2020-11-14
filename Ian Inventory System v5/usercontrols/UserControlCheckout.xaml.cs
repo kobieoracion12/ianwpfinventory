@@ -14,11 +14,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
+using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
     public partial class UserControlCheckout : UserControl
     {
+        Database con = new Database();
+
         public UserControlCheckout()
         {
             InitializeComponent();
@@ -26,7 +29,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            
         }
     }
 }
