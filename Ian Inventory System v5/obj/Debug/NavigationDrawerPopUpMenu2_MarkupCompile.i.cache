@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\obj\Debug\
+E:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\obj\Debug\
 NavigationDrawerPopUpMenu2
 none
 false
 DEBUG;TRACE
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\App.xaml
+E:\Programming Tuts\Projects Tutorials\C# Projects\WPFInvetoryUpdated\ianwpfinventory\Ian Inventory System v5\App.xaml
 12978228389
 
-20-373992925
-211027647293
+21-147963282
+21599314495
 main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_editItem.xaml;windows\window_userLogin.xaml;
 
-True
+False
 

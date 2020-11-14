@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,12 +15,15 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System;
+using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
     public partial class UserControlDashboard : UserControl
     {
-        MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;persistsecurityinfo=True;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
+        Database conn = new Database();
+        MySqlConnection con = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=iantestinventory;");
 
         public UserControlDashboard()
         {
@@ -35,28 +37,32 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Daily Sales
         private void dailySales()
         {
-            con.Close();
+            //  Command Database
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE DATE(salesDate) = CURDATE()";
+            conn.query(query);
             try
             {
-                string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE DATE(salesDate) = CURDATE()";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                // Open Db Conn
+                conn.Open();
+                // Execute 
+                MySqlDataReader myReader = conn.read();
 
-                MySqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
+                if (myReader.Read())
                 {
-                    tb_todaySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
+                    tb_todaySales.Text = "₱ " + myReader.GetValue(0).ToString() + ".00";
                     if (tb_todaySales.Text == "₱ .00")
                     {
                         tb_todaySales.Text = "₱ 0.00";
                     }
                 }
-                con.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            // Close the connection
+            conn.Close();
         }
 
         // Weekly Sales
