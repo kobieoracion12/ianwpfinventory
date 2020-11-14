@@ -23,7 +23,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     public partial class UserControlDashboard : UserControl
     {
         Database conn = new Database();
-        MySqlConnection con = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=iantestinventory;");
 
         public UserControlDashboard()
         {
@@ -37,45 +36,52 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Daily Sales
         private void dailySales()
         {
+            // Make sure Connection is Closed
+            conn.Close();
             //  Command Database
             string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE DATE(salesDate) = CURDATE()";
             conn.query(query);
             try
             {
-                // Open Db Conn
+                // Open Connection
                 conn.Open();
                 // Execute 
-                MySqlDataReader myReader = conn.read();
+                MySqlDataReader dr = conn.read();
 
-                if (myReader.Read())
+                if (dr.Read())
                 {
-                    tb_todaySales.Text = "₱ " + myReader.GetValue(0).ToString() + ".00";
+                    tb_todaySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
                     if (tb_todaySales.Text == "₱ .00")
                     {
                         tb_todaySales.Text = "₱ 0.00";
                     }
                 }
+
+                // Close the connection
+                conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            // Close the connection
-            conn.Close();
         }
 
         // Weekly Sales
         private void weeklySales()
         {
-            con.Close();
+            // Make sure Connection is Closed
+            conn.Close();
+            //  Command Database
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE salesDate >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND salesDate < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY";
+            conn.query(query);
             try
             {
-                string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE salesDate >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND salesDate < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                // Open Connection
+                conn.Open();
+                // Execute 
+                MySqlDataReader dr = conn.read();
 
-                MySqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     tb_weeklySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
@@ -84,25 +90,30 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tb_weeklySales.Text = "₱ 0.00";
                     }
                 }
-                con.Close();
+
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show(ex.Message);
             }
+            
         }
 
         // Montly Sales 
         private void monthlySales()
         {
-            con.Close();
+            // Make sure Connection is Closed
+            conn.Close();
+            //  Command Database
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE MONTH(salesDate) = MONTH(CURRENT_TIMESTAMP) AND YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
+            conn.query(query);
+
             try
             {
-                string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE MONTH(salesDate) = MONTH(CURRENT_TIMESTAMP) AND YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                // Open Connection
+                conn.Open();
 
-                MySqlDataReader dr = cmd.ExecuteReader();
+                MySqlDataReader dr = conn.read();
                 if (dr.Read())
                 {
                     tb_monthlySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
@@ -111,7 +122,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tb_monthlySales.Text = "₱ 0.00";
                     }
                 }
-                con.Close();
+                conn.Close();
             }
             catch (Exception x)
             {
@@ -122,14 +133,18 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Yearly Sales 
         private void yearlySales()
         {
-            con.Close();
+            // Make sure Connection is Closed
+            conn.Close();
+            //  Command Database
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
+            conn.query(query);
+
             try
             {
-                string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                // Open Connection
+                conn.Open();
 
-                MySqlDataReader dr = cmd.ExecuteReader();
+                MySqlDataReader dr = conn.read();
                 if (dr.Read())
                 {
                     tb_yearlySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
@@ -138,7 +153,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tb_yearlySales.Text = "₱ 0.00";
                     }
                 }
-                con.Close();
+                conn.Close();
             }
             catch (Exception x)
             {

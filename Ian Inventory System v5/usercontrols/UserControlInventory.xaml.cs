@@ -29,7 +29,7 @@ namespace NavigationDrawerPopUpMenu2
             catchData();
 
         }
-        MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;persistsecurityinfo=True;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
+        MySqlConnection con = new MySqlConnection("datasource = 127.0.0.1; port=3306;username=root;password=;database=iantestinventory;");
 
         public void catchData()
         {
