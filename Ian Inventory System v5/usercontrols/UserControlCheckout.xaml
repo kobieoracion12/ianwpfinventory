@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.usercontrols"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1080">
@@ -27,7 +28,7 @@
                 <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
             </Grid.Effect>
         </Grid>
-        
+
         <!-- Void Section -->
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid>
@@ -41,14 +42,14 @@
                     <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
                         <TextBox x:Name="entrySearch" Text="{Binding MyText}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
                     </Viewbox>
-                    
+
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                        <Button Content="Void Entry" Background="#e86845" Margin="20 0 0 0" />
-                        <Button Content="Delete Selection" Background="#e86845" Margin="20 0 20 0" />
+                        <Button Content="Void Entry" Background="#e86845" Margin="20 0 0 0" BorderBrush="#FFF75555" />
+                        <Button Content="Delete Selection" Background="#e86845" Margin="20 0 20 0" BorderBrush="#FFF75555" />
                     </StackPanel>
-                    
+
                 </Grid>
-                
+
             </Grid>
         </Grid>
 
@@ -78,8 +79,132 @@
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>
                 </Rectangle>
+
+                <Grid Margin="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="420*" />
+                            <RowDefinition Height="50*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Left Side-->
+                        <Grid Grid.Column="0" >
+                            <Grid>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Subtotal" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10"/>
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+                                    <TextBlock Text="Discounts" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10"/>
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+                                    <TextBlock Text="Total" FontWeight="SemiBold" FontSize="13" Foreground="#E86845" Margin="10" />
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+                                    <TextBlock Text="Paid" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+                                    <TextBlock Text="$ 0.00" FontWeight="Bold" FontSize="13" Foreground="Black" TextAlignment="Center" Margin="0 0 0 10"/>
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+                                    <TextBlock Text="Add Payment" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+
+                                    <Grid>
+                                        <Grid Margin="10">
+                                            <Grid>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                            <materialDesign:PackIcon Kind="Cash" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="3"/>
+                                                            <TextBlock Text="Cash" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Button>
+
+                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                            <materialDesign:PackIcon Kind="CreditCard" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="0 0 3 0"/>
+                                                            <TextBlock Text="Credits" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Button>
+
+                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                            <materialDesign:PackIcon Kind="CreditCard" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="0 0 3 0"/>
+                                                            <TextBlock Text="Debit" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Button>
+
+                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                            <materialDesign:PackIcon Kind="Pencil" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="0 0 3 0"/>
+                                                            <TextBlock Text="Cheque" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Button>
+
+                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                            <materialDesign:PackIcon Kind="Ticket" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="0 0 3 0"/>
+                                                            <TextBlock Text="Voucher" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                        </StackPanel>
+                                                    </Button>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+
+
+                        <!-- Right Side -->
+                        <Grid Grid.Column="1">
+                            <Grid>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10"/>
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
+                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10"/>
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
+                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="Bold" FontSize="13" Foreground="Black" Margin="10" />
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
+                                    <TextBlock Text="Due" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+                                    <TextBlock Text="$ 0.00" FontWeight="Bold" FontSize="13" Foreground="#E86845" TextAlignment="Center" Margin="0 0 0 10"/>
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
+                                    <TextBlock Text="" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+
+                                    <Grid>
+                                        <Grid Margin="10">
+                                            <Grid>
+                                                <StackPanel Orientation="Vertical">
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
+
+
+
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid>
+                                <Button Content="END SALE" Background="#A0EFD0" BorderBrush="#5BAF8E" Margin="15 0 15 0" />
+                            </Grid>
+                        </Grid>
+
+
+
+
+
+
+                    </Grid>
+                </Grid>
+
+
             </Grid>
-            
         </Grid>
 
 
