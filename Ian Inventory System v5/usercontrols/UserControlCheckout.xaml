@@ -49,10 +49,11 @@
                     </StackPanel>
 
                 </Grid>
-
             </Grid>
         </Grid>
 
+        
+        
         <!-- Checkout List -->
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80 0 0 10" Background="#ffffff">
             <ListView x:Name="aa" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single">
@@ -71,6 +72,7 @@
             </ListView>
         </Grid>
 
+        
         <!-- Exchange List -->
         <Grid Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" >
             <Grid>
@@ -111,7 +113,7 @@
                                         <Grid Margin="10">
                                             <Grid>
                                                 <StackPanel Orientation="Vertical">
-                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                    <Button x:Name="cashButton" Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E" Click="cashButton_Click">
                                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                             <materialDesign:PackIcon Kind="Cash" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="3"/>
                                                             <TextBlock Text="Cash" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
@@ -173,7 +175,7 @@
                                         <Grid Margin="10">
                                             <Grid>
                                                 <StackPanel Orientation="Vertical">
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+                                                    <TextBlock x:Name="cashAmount" Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
                                                     <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
                                                     <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
                                                     <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
@@ -194,12 +196,6 @@
                                 <Button Content="END SALE" Background="#A0EFD0" BorderBrush="#5BAF8E" Margin="15 0 15 0" />
                             </Grid>
                         </Grid>
-
-
-
-
-
-
                     </Grid>
                 </Grid>
 

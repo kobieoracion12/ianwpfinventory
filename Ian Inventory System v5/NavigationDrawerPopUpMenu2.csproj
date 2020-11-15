@@ -73,6 +73,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="classes\Database.cs" />
+    <Compile Include="classes\invoiceClass.cs" />
     <Compile Include="iantestinventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,6 +102,9 @@
     </Compile>
     <Compile Include="windows\window_addItem.xaml.cs">
       <DependentUpon>window_addItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\window_cashButton.xaml.cs">
+      <DependentUpon>window_cashButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\window_editItem.xaml.cs">
       <DependentUpon>window_editItem.xaml</DependentUpon>
@@ -157,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\window_addItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\window_cashButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

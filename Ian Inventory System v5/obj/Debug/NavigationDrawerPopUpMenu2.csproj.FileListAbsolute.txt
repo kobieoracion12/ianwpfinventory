@@ -58,3 +58,5 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\obj\Debug\windows\window_cashButton.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v5\Ian Inventory System v5\obj\Debug\windows\window_cashButton.baml
