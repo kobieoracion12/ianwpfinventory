@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="window_editItem" Height="600" Width="1080" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -72,7 +73,7 @@
             </Grid>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Viewbox Margin="10 20 0 0 ">
-                    <Button x:Name="editButton" Content="Edit" Background="#54b971" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Button x:Name="editButton" Content="Edit" Background="#54b971" VerticalAlignment="Center" HorizontalAlignment="Center" Click="editButton_Click" />
                 </Viewbox>
                 <Viewbox Margin="10 20 0 0">
                     <Button x:Name="editCancel"  Content="Cancel" Background="#e86845" VerticalAlignment="Center" HorizontalAlignment="Center" />

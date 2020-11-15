@@ -20,6 +20,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         private MySqlConnection conn;
         private MySqlCommand commandDatabase;
         private MySqlDataReader reader;
+        private MySqlDataAdapter adp;
 
         public Database()
         {
@@ -34,10 +35,20 @@ namespace NavigationDrawerPopUpMenu2.classes
             commandDatabase.CommandTimeout = 60;
         }
 
+        // Return sql command
+        public int execute() {
+            return this.commandDatabase.ExecuteNonQuery();
+        }
+
         // Execute Reader
         public MySqlDataReader read()
         {
             return this.reader = this.commandDatabase.ExecuteReader();
+        }
+
+        // Sql Adapter
+        public MySqlDataAdapter adapter() {
+            return this.adp = new MySqlDataAdapter(this.commandDatabase);
         }
 
         // Open the Database Conn
