@@ -98,10 +98,18 @@ namespace NavigationDrawerPopUpMenu2
 
         // Edit Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
-        {   
-            long id = Convert.ToInt64(tbPrdId.Text); // Product Id No. to be pass to other form
-            window_editItem editItemWindow = new window_editItem(id); // pass the parameter to the next window
-            editItemWindow.Show(); // Open Edit Window
+        {
+            string prdId = tbPrdId.Text;
+            if (prdId == "")
+            { // Check input if empty
+                MessageBox.Show("Please select one on the table cell");
+            }
+            else
+            {   // If not empty then proceed to edit window
+                long id = Convert.ToInt64(prdId); // Product Id No. to be pass to other form
+                window_editItem editItemWindow = new window_editItem(id); // pass the parameter to the next window
+                editItemWindow.Show(); // Open Edit Window}
+            }
         }
 
         private void listViewInventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -112,12 +120,17 @@ namespace NavigationDrawerPopUpMenu2
         // Delete Button
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            // Delete the product
-            if (MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {   
-                deleteProductItem(); // If Yes then Delete the product
+            if (tbPrdId.Text == "")
+            { // Check if field is empty
+                MessageBox.Show("Please select one on the table cell");
+            }
+            else 
+            {   // Delete the product
+                if (MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    deleteProductItem(); // If Yes then Delete the product
+                }
             } 
-
         }
 
         // Delete Function
@@ -144,15 +157,39 @@ namespace NavigationDrawerPopUpMenu2
             }
         }
 
+        // RealTime Search
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        {   
+            searchProductItem();
+        }
+
+        // Search Function 
+        private void searchProductItem() {
             try
             {
-                
+                // Open Connection 
+                conn.Open();
+                // Query Statement
+                string query = "SELECT * FROM datainventory WHERE prodNo LIKE '%" + tbSearch.Text + "%' OR prodItem LIKE '%" + tbSearch.Text + "%' OR prodBrand LIKE '%" + tbSearch.Text + "%' OR prodSRP LIKE '%" + tbSearch.Text + "%' OR prodRP LIKE '%" + tbSearch.Text + "%'";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("datainventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewInventory.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+                // Close Connection
+                conn.Close();
+
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show(ex.Message);
             }
         }
     }

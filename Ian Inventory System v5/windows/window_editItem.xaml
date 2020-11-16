@@ -53,22 +53,21 @@
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Vertical">
                     <TextBlock Text="RETAIL PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
-                </StackPanel>
-
+                </StackPanel>          
                 <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
-                    <TextBox x:Name="editProdNo" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox Padding="2" IsEnabled="False" x:Name="editProdNo" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
-                    <TextBox x:Name="editProdItem" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox Padding="2" x:Name="editProdItem" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical">
-                    <TextBox x:Name="editProdBrand" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox Padding="2" x:Name="editProdBrand" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical">
-                    <TextBox x:Name="editProdSRP" x:FieldModifier="public" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox Padding="2" x:Name="editProdSRP" x:FieldModifier="public" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical">
-                    <TextBox  x:Name="editProdRP" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox Padding="2" x:Name="editProdRP" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
             </Grid>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -76,7 +75,7 @@
                     <Button x:Name="editButton" Content="Edit" Background="#54b971" VerticalAlignment="Center" HorizontalAlignment="Center" Click="editButton_Click" />
                 </Viewbox>
                 <Viewbox Margin="10 20 0 0">
-                    <Button x:Name="editCancel"  Content="Cancel" Background="#e86845" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    <Button x:Name="editCancel"  Content="Cancel" Background="#e86845" VerticalAlignment="Center" HorizontalAlignment="Center" Click="editCancel_Click"/>
                 </Viewbox>
             </StackPanel>
         </StackPanel>
