@@ -21,8 +21,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 {
     public partial class UserControlCheckout : UserControl
     {
-        Database con = new Database();
-
+        MySqlConnection con = new MySqlConnection("datasource = 127.0.0.1; port=3306;username=root;password=;database=iantestinventory;");
         public UserControlCheckout()
         {
             InitializeComponent();
@@ -34,14 +33,33 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             cashAmount.Text = window_cashButton.cashInput;
         }
 
-        public void Refresh()
-        {
-
-        }
-
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            /*
+            if (entrySearch.Text.Length > 0)
+            {
+                string search = entrySearch.Text;
+
+                DataTable dt = new DataTable();
+                con.Open();
+                MySqlDataReader myReader = null;
+                MySqlCommand myCommand = new MySqlCommand("SELECT * FROM datainventory WHERE prodNo= '" + search + "'", con);
+
+                myReader = myCommand.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    coItem.Text = (myReader["prodItem"].ToString());
+                    coPrice.Text = (myReader["prodPrice"].ToString());
+                }
+                con.Close();
+                entrySearch.Focus();
+
+                ListViewItem lvwItem = listViewinVoice.Items.Add("my first text");
+                lvwItem.SubItems.Add("my second text");
+                lvwItem.SubItems.Add("my third text");
+            }
+            */
         }
 
 

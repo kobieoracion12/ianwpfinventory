@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
-        Title="window_cashButton" Height="300" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+        Title="window_cashButton" Height="300" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100*"/>

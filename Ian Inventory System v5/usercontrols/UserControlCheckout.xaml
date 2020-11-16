@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.usercontrols"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1080">
 
@@ -27,6 +28,16 @@
             <Grid.Effect>
                 <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
             </Grid.Effect>
+
+            <Grid>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                    <TextBox x:Name="coItem" Visibility="Hidden" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="coPrice" Visibility="Hidden" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="coQty" Visibility="Hidden" Text="1" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="coSubtotal" Visibility="Hidden" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                    <DatePicker x:Name="coDOP" Visibility="Hidden" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White"/>
+                </StackPanel>
+            </Grid>
         </Grid>
 
         <!-- Void Section -->
@@ -56,7 +67,7 @@
         
         <!-- Checkout List -->
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80 0 0 10" Background="#ffffff">
-            <ListView x:Name="aa" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single">
+            <ListView x:Name="listViewinVoice" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single">
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
                         <GridView.Columns>
@@ -175,11 +186,11 @@
                                         <Grid Margin="10">
                                             <Grid>
                                                 <StackPanel Orientation="Vertical">
-                                                    <TextBlock x:Name="cashAmount" Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 27 10 0" />
+                                                    <TextBlock x:Name="cashAmount" Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 5 10 0" />
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 20 10 0" />
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 20 10 0" />
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 20 10 0" />
+                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 20 10 0" />
 
 
 

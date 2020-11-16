@@ -27,13 +27,12 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
-            UserControlCheckout uscc = new UserControlCheckout();
             cashInput = "₱ " + entrySearch.Text;
             if (e.Key == Key.Return)
             {
                 this.Close();
-                uscc.InitializeComponent();
             }
         }
+
     }
 }
