@@ -23,6 +23,8 @@ namespace NavigationDrawerPopUpMenu2
     
     public partial class UserControlInventory : UserControl
     {
+        // Init database
+        Database conn = new Database();
         public static int prdID;
         public WindowState WindowState { get; private set; }
 
@@ -32,9 +34,6 @@ namespace NavigationDrawerPopUpMenu2
             catchData();
         }
 
-        // Init database
-        Database conn = new Database();
-        
         // Show Data
         public void catchData()
         {
@@ -93,6 +92,7 @@ namespace NavigationDrawerPopUpMenu2
         // Refresh Button
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            conn.Close();
             catchData();
         }
 
@@ -160,11 +160,12 @@ namespace NavigationDrawerPopUpMenu2
         // RealTime Search
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {   
-            searchProductItem();
+            
         }
 
         // Search Function 
         private void searchProductItem() {
+            conn.Close(); // Close the connection first
             try
             {
                 // Open Connection 
@@ -185,6 +186,8 @@ namespace NavigationDrawerPopUpMenu2
                 adapter.Update(dt);
                 // Close Connection
                 conn.Close();
+                // Empty the search box
+                tbSearch.Text = "";
 
             }
             catch (Exception ex)
@@ -192,5 +195,19 @@ namespace NavigationDrawerPopUpMenu2
                 MessageBox.Show(ex.Message);
             }
         }
+
+        // Search Button
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            searchProductItem();
+        }
+
+        // When the window loads
+        private void UserControlInventory_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            conn.Close(); // Close all connections
+        }
+
+        
     }
 }

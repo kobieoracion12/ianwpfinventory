@@ -22,7 +22,7 @@ namespace NavigationDrawerPopUpMenu2
 {
     public partial class UserControlSales : UserControl
     {
-        MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;persistsecurityinfo=True;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
+        Database conn = new Database();
 
         public UserControlSales()
         {
@@ -34,21 +34,29 @@ namespace NavigationDrawerPopUpMenu2
         }
 
         // ListView Data
-        private void catchData()
+        public void catchData()
         {
             try
             {
-                con.Open();
+                // Open Connection
+                conn.Open();
+                // Query Statement
                 string query = "SELECT * FROM datasalesinventory";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.ExecuteNonQuery();
-
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
                 DataTable dt = new DataTable("datasalesinventory");
-                adp.Fill(dt);
+                // Fill the datatable
+                adapter.Fill(dt);
                 listViewSales.ItemsSource = dt.DefaultView;
-                adp.Update(dt);
-                con.Close();
+                adapter.Update(dt);
+                // Close Connection
+                conn.Close();
+
             }
             catch (Exception ex)
             {
@@ -59,19 +67,19 @@ namespace NavigationDrawerPopUpMenu2
         // Today Sales
         private void todayInfo()
         {
-            con.Close();
+            conn.Close();
             try
             {
                 string query = "SELECT COUNT(salesTotal) FROM datasalesinventory WHERE DATE(salesDate) = CURDATE()";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                conn.query(query); // Command Db
+                conn.Open();  // Open  Connection
 
-                MySqlDataReader dr = cmd.ExecuteReader();
+                MySqlDataReader dr = conn.read(); // Execute
                 if (dr.Read())
                 {
                     tb_todaySales.Text = "₱" + dr.GetValue(0).ToString();
                 }
-                con.Close();
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -82,19 +90,19 @@ namespace NavigationDrawerPopUpMenu2
         // Sales Profit 
         private void salesProfit()
         {
-            con.Close();
+            conn.Close();
             try
             {
                 string query = "SELECT SUM(salesRP-salesSRP) FROM datasalesinventory";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                conn.query(query); // Command Db
+                conn.Open();  // Open  Connection
 
-                MySqlDataReader dr = cmd.ExecuteReader();
+                MySqlDataReader dr = conn.read(); // Execute
                 if (dr.Read())
                 {
                     tb_discountSales.Text = "₱" + dr.GetValue(0).ToString();
                 }
-                con.Close();
+                conn.Close();
             }
             catch (Exception x)
             {
@@ -105,19 +113,19 @@ namespace NavigationDrawerPopUpMenu2
         // Total Sales
         private void totalInfo()
         {
-            con.Close();
+            conn.Close();
             try
             {
                 string query = "SELECT SUM(salesTotal) FROM datasalesinventory";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
+                conn.query(query); // Command Db
+                conn.Open();  // Open  Connection
 
-                MySqlDataReader dr = cmd.ExecuteReader();
+                MySqlDataReader dr = conn.read(); // Execute
                 if (dr.Read())
                 {
                     tb_overallSales.Text = "₱" + dr.GetValue(0).ToString();
                 }
-                con.Close();
+                conn.Close();
             }
             catch (Exception x)
             {
@@ -128,20 +136,20 @@ namespace NavigationDrawerPopUpMenu2
         //Today Button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            con.Close();
+            conn.Close();
             try
-            {
-                con.Open();
+            { 
+                conn.Open(); // Open Connection
                 string query = "SELECT * FROM datasalesinventory WHERE DATE(salesDate) = CURDATE()";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.ExecuteNonQuery();
+                conn.query(query); // Command Database
+                conn.execute(); // ExecuteNonQuery
 
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable("datasalesinventory");
-                adp.Fill(dt);
+                MySqlDataAdapter adp = conn.adapter(); // Adapter
+                DataTable dt = new DataTable("datasalesinventory"); //  Datatable
+                adp.Fill(dt); // Fill the datatable
                 listViewSales.ItemsSource = dt.DefaultView;
                 adp.Update(dt);
-                con.Close();
+                conn.Close(); // Close Connection
             }
             catch (Exception ex)
             {
@@ -152,20 +160,20 @@ namespace NavigationDrawerPopUpMenu2
        //This Week Button
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            con.Close();
+            conn.Close();
             try
             {
-                con.Open();
+                conn.Open(); // Open Connection
                 string query = "SELECT * FROM datasalesinventory WHERE salesDate >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND salesDate < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.ExecuteNonQuery();
+                conn.query(query); // Command Database
+                conn.execute(); // ExecuteNonQuery
 
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable("datasalesinventory");
-                adp.Fill(dt);
+                MySqlDataAdapter adp = conn.adapter(); // Adapter
+                DataTable dt = new DataTable("datasalesinventory");  // Datatable
+                adp.Fill(dt); // Fill the datatable
                 listViewSales.ItemsSource = dt.DefaultView;
                 adp.Update(dt);
-                con.Close();
+                conn.Close(); // Close Connection
             }
             catch (Exception ex)
             {
@@ -176,20 +184,20 @@ namespace NavigationDrawerPopUpMenu2
         //This Month
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            con.Close();
+            conn.Close();
             try
             {
-                con.Open();
+                conn.Open(); // Open Connection
                 string query = "SELECT * FROM datasalesinventory WHERE MONTH(salesDate) = MONTH(CURRENT_TIMESTAMP) AND YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.ExecuteNonQuery();
+                conn.query(query); // Command Database
+                conn.execute(); // ExecuteNonQuery
 
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                MySqlDataAdapter adp = conn.adapter(); // Adapter
                 DataTable dt = new DataTable("datasalesinventory");
                 adp.Fill(dt);
                 listViewSales.ItemsSource = dt.DefaultView;
                 adp.Update(dt);
-                con.Close();
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -200,20 +208,20 @@ namespace NavigationDrawerPopUpMenu2
         //Last Month Button
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            con.Close();
+            conn.Close();
             try
             {
-                con.Open();
+                conn.Open(); // Open Connection
                 string query = "SELECT * FROM datasalesinventory WHERE DATE(salesDate) >= DATE(NOW()) - INTERVAL 30 DAY";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.ExecuteNonQuery();
+                conn.query(query); // Command Database
+                conn.execute(); // ExecuteNonQuery
 
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                MySqlDataAdapter adp = conn.adapter(); // Adapter
                 DataTable dt = new DataTable("datasalesinventory");
                 adp.Fill(dt);
                 listViewSales.ItemsSource = dt.DefaultView;
                 adp.Update(dt);
-                con.Close();
+                conn.Close(); // Close Connection
             }
             catch (Exception ex)
             {
@@ -224,20 +232,20 @@ namespace NavigationDrawerPopUpMenu2
         //This Year
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            con.Close();
+            conn.Close();
             try
             {
-                con.Open();
+                conn.Open();  // Open Connection
                 string query = "SELECT * FROM datasalesinventory WHERE YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP);";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.ExecuteNonQuery();
+                conn.query(query); // Command Database
+                conn.execute(); // ExecuteNonQuery
 
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                MySqlDataAdapter adp = conn.adapter(); // Adapter
                 DataTable dt = new DataTable("datasalesinventory");
                 adp.Fill(dt);
                 listViewSales.ItemsSource = dt.DefaultView;
                 adp.Update(dt);
-                con.Close();
+                conn.Close(); // Close Connection
             }
             catch (Exception ex)
             {

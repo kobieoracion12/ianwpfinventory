@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             Loaded="UserControlInventory_Loaded_1"
              d:DesignHeight="600" d:DesignWidth="1080">
 
     <Grid Background="BlanchedAlmond">
@@ -32,10 +33,12 @@
                 </Grid.RowDefinitions>
 
 
-
+                <!--Search Button with ICON-->
                 <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Magnify" Width="25" Height="25" Foreground="#7B7873" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="80 5 0 5" />
-                    <TextBox x:Name="tbSearch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="500" Margin="10 5 0 5" Background="#edeff3" TextChanged="tbSearch_TextChanged"/>
+                    <Button BorderThickness="0" HorizontalAlignment="Center" Background="Transparent" Margin="80 5 0 5" Click="Button_Click_4">
+                        <materialDesign:PackIcon Kind="Magnify" Width="25" Height="25" Foreground="#7B7873" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0" />
+                    </Button>
+                    <TextBox x:Name="tbSearch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="500" Margin="5 5 0 5" Background="#edeff3" TextChanged="tbSearch_TextChanged"/>
                 </StackPanel>
 
                 <!-- INVISIBLE TEXTBOX -->
