@@ -103,10 +103,10 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="422,0" Grid.RowSpan="2">
                                     <Viewbox>
-                                        <Button x:Name="submitBrand" Content="Add Stocks" Background="#54b971" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                        <Button x:Name="submitBrand" Content="Add Stocks" Background="#54b971" VerticalAlignment="Center" HorizontalAlignment="Center" Click="submitBrand_Click" />
                                     </Viewbox>
                                     <Viewbox Margin="10 0 0 0">
-                                        <Button x:Name="submitCancel"  Content="Cancel" Background="#e86845" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                        <Button x:Name="submitCancel"  Content="Cancel" Background="#e86845" VerticalAlignment="Center" HorizontalAlignment="Center" Click="submitCancel_Click" />
                                     </Viewbox>
                                 </StackPanel>
                             </Grid>
