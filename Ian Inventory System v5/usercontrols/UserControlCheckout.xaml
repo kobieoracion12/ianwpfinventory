@@ -30,12 +30,12 @@
             </Grid.Effect>
 
             <Grid>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                    <TextBox x:Name="coItem" Visibility="Hidden" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
-                    <TextBox x:Name="coPrice" Visibility="Hidden" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
-                    <TextBox x:Name="coQty" Visibility="Hidden" Text="1" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
-                    <TextBox x:Name="coSubtotal" Visibility="Hidden" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
-                    <DatePicker x:Name="coDOP" Visibility="Hidden" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBox x:Name="coItem" Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.prodItem}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="coPrice" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="coQty" Text="1" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="coSubtotal" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                    <DatePicker x:Name="coDOP" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White"/>
                 </StackPanel>
             </Grid>
         </Grid>
@@ -116,7 +116,7 @@
                                     <TextBlock Text="Total" FontWeight="SemiBold" FontSize="13" Foreground="#E86845" Margin="10" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
                                     <TextBlock Text="Paid" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
-                                    <TextBlock Text="$ 0.00" FontWeight="Bold" FontSize="13" Foreground="Black" TextAlignment="Center" Margin="0 0 0 10"/>
+                                    <TextBox x:Name="pay_paid" Text="$ 0.00" TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="Black" BorderBrush="Transparent" Margin="0 0 0 10" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
                                     <TextBlock Text="Add Payment" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
 
@@ -171,14 +171,14 @@
                         <Grid Grid.Column="1">
                             <Grid>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10"/>
+                                    <TextBox x:Name="pay_subtotal" Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
-                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10"/>
+                                    <TextBox x:Name="pay_discount" Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
-                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="Bold" FontSize="13" Foreground="Black" Margin="10" />
+                                    <TextBox x:Name="pay_total" Text="$ 0.00" TextAlignment="Right" FontWeight="Bold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
                                     <TextBlock Text="Due" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
-                                    <TextBlock Text="$ 0.00" FontWeight="Bold" FontSize="13" Foreground="#E86845" TextAlignment="Center" Margin="0 0 0 10"/>
+                                    <TextBox x:Name="pay_due" Text="$ 0.00" TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="#E86845" BorderBrush="Transparent" Margin="0 0 0 10" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
                                     <TextBlock Text="" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
 
@@ -186,14 +186,11 @@
                                         <Grid Margin="10">
                                             <Grid>
                                                 <StackPanel Orientation="Vertical">
-                                                    <TextBlock x:Name="cashAmount" Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 5 10 0" />
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 20 10 0" />
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 20 10 0" />
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 20 10 0" />
-                                                    <TextBlock Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 20 10 0" />
-
-
-
+                                                    <TextBlock x:Name="cashAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
+                                                    <TextBlock x:Name="creditAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
+                                                    <TextBlock x:Name="debitAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
+                                                    <TextBlock x:Name="chequeAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
+                                                    <TextBlock x:Name="voucherAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
                                                 </StackPanel>
                                             </Grid>
                                         </Grid>

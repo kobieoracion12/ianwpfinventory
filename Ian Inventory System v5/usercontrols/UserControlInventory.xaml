@@ -31,12 +31,19 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
+
+
                 <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Magnify" Width="25" Height="25" Foreground="#7B7873" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="80 5 0 5"/>
                     <TextBox x:Name="tbSearch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="500" Margin="10 5 0 5" Background="#edeff3" TextChanged="tbSearch_TextChanged"/>
-
                 </StackPanel>
-                
+
+                <!-- INVISIBLE TEXTBOX -->
+                <StackPanel Grid.Column="1">
+                    <TextBox Text="{Binding ElementName=listViewInventory, Path=SelectedItem.prodNo}" x:Name="tbPrdId" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Margin="10 10 50 5" Background="#edeff3" TextChanged="tbSearch_TextChanged" IsEnabled="False" />
+                </StackPanel>
+
+                <!-- Crud Buttons -->
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                     <Button Content="Refresh" HorizontalAlignment="Center" Background="#54b971" Margin="0 0 8 0" Click="Button_Click_1" />
                     <Button Content="Add Item" HorizontalAlignment="Center" Background="#54b971" Margin="0 0 8 0" Click="Button_Click"/>
@@ -45,6 +52,8 @@
                 </StackPanel>
             </Grid>
 
+            
+ 
             <!-- Text -->
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>

@@ -16,36 +16,49 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using NavigationDrawerPopUpMenu2.windows;
 using NavigationDrawerPopUpMenu2.usercontrols;
+using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2
 {
+    
     public partial class UserControlInventory : UserControl
     {
+        public static int prdID;
         public WindowState WindowState { get; private set; }
 
         public UserControlInventory()
         {
             InitializeComponent();
             catchData();
-
         }
-        MySqlConnection con = new MySqlConnection("datasource = 127.0.0.1; port=3306;username=root;password=;database=iantestinventory;");
 
+        // Init database
+        Database conn = new Database();
+        
+        // Show Data
         public void catchData()
         {
             try
             {
-                con.Open();
+                // Open Connection
+                conn.Open();
+                // Query Statement
                 string query = "SELECT * FROM datainventory";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                cmd.ExecuteNonQuery();
-
-                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
                 DataTable dt = new DataTable("datainventory");
-                adp.Fill(dt);
+                // Fill the datatable
+                adapter.Fill(dt);
                 listViewInventory.ItemsSource = dt.DefaultView;
-                adp.Update(dt);
-                con.Close();
+                adapter.Update(dt);
+                // Close Connection
+                conn.Close();
+  
             }
             catch (Exception ex)
             {
@@ -53,9 +66,21 @@ namespace NavigationDrawerPopUpMenu2
             }
         }
 
+        // Copy the id of product when click in listViewInventory cell
         private void listViewInventory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                // Get the product id
+                string prodId = listViewInventory.SelectedItems[0].ToString();
+                // Append ID and Product name
+                tbPrdId.Text = prodId;
 
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return;
+            }
         }
 
         // Add Button
@@ -73,29 +98,50 @@ namespace NavigationDrawerPopUpMenu2
 
         // Edit Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-
+        {   
+            long id = Convert.ToInt64(tbPrdId.Text); // Product Id No. to be pass to other form
+            window_editItem editItemWindow = new window_editItem(id); // pass the parameter to the next window
+            editItemWindow.Show(); // Open Edit Window
         }
-
-
 
         private void listViewInventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
 
         }
 
+        // Delete Button
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            // Delete the product
+            if (MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {   
+                deleteProductItem(); // If Yes then Delete the product
+            } 
 
+        }
+
+        // Delete Function
+        private void deleteProductItem()
+        {
+            // Delete sql statement
+            int id = Convert.ToInt32(tbPrdId.Text);
+            string sql = "DELETE FROM datainventory WHERE prodNo = '" + id + "'";
+            conn.query(sql); // Command Database
+
+            try
+            {
+                conn.Open();   // Open Connection
+                conn.read(); // Execute 
+                MessageBox.Show("Successfully Removed"); // Show Dialog Succes
+
+                conn.Close(); // Close Connection
+
+            }
+            catch (Exception ex)
+            {
+                // Ops, maybe the id doesn't exists ?
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
