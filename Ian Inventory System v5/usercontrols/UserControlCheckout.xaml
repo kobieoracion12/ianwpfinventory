@@ -131,28 +131,28 @@
                                                         </StackPanel>
                                                     </Button>
 
-                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                    <Button x:Name="creditButton" Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E" IsEnabled="False">
                                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                             <materialDesign:PackIcon Kind="CreditCard" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="0 0 3 0"/>
                                                             <TextBlock Text="Credits" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
                                                         </StackPanel>
                                                     </Button>
 
-                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                    <Button x:Name="debitButton" Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E" IsEnabled="False">
                                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                             <materialDesign:PackIcon Kind="CreditCard" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="0 0 3 0"/>
                                                             <TextBlock Text="Debit" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
                                                         </StackPanel>
                                                     </Button>
 
-                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                    <Button x:Name="chequeButton" Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E" IsEnabled="False">
                                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                             <materialDesign:PackIcon Kind="Pencil" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="0 0 3 0"/>
                                                             <TextBlock Text="Cheque" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
                                                         </StackPanel>
                                                     </Button>
 
-                                                    <Button Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
+                                                    <Button x:Name="voucherButton" Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E">
                                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                             <materialDesign:PackIcon Kind="Ticket" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="0 0 3 0"/>
                                                             <TextBlock Text="Voucher" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
@@ -187,9 +187,9 @@
                                             <Grid>
                                                 <StackPanel Orientation="Vertical">
                                                     <TextBlock x:Name="cashAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
-                                                    <TextBlock x:Name="creditAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
-                                                    <TextBlock x:Name="debitAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
-                                                    <TextBlock x:Name="chequeAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
+                                                    <TextBlock x:Name="creditAmount"  Text="---" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
+                                                    <TextBlock x:Name="debitAmount"  Text="---" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
+                                                    <TextBlock x:Name="chequeAmount"  Text="---" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
                                                     <TextBlock x:Name="voucherAmount"  Text="$ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="10 10 0 10" />
                                                 </StackPanel>
                                             </Grid>

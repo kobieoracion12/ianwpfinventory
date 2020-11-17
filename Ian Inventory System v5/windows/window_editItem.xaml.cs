@@ -17,9 +17,6 @@ using System.Data;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
-    /// <summary>
-    /// Interaction logic for window_editItem.xaml
-    /// </summary>
     public partial class window_editItem : Window
     {
 
@@ -83,11 +80,24 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Edit Button
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-            // Delete the product
-            if (MessageBox.Show("Are you sure you want to edit this product?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            string prdNo = editProdNo.Text; // Product No
+            string prdItem = editProdItem.Text; // Product Item
+            string prdBrand = editProdBrand.Text; // Product Brand
+            string prdSRP = editProdSRP.Text; // Product SRP
+            string prdRP = editProdRP.Text; // Product RP
+
+            // Check if fields are empty
+            if (prdNo == "" || prdItem == "" || prdBrand == "" || prdSRP == "" || prdRP == "")
             {
-                editProductItem(); // If Yes then Update the product
+                MessageBox.Show("Fields cannot be empty");
             }
+            else
+            { // Delete the product
+                if (MessageBox.Show("Are you sure you want to edit this product?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    editProductItem(); // If Yes then Update the product
+                }
+            }     
         }
 
         // Edit Function
@@ -116,5 +126,10 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         }
 
+        // Close the window 
+        private void editCancel_Click(object sender, RoutedEventArgs e)
+        { 
+            this.Close();
+        }
     }
 }

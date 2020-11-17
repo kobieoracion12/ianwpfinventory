@@ -8,9 +8,9 @@
         Title="window_cashButton" Height="300" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100*"/>
-            <ColumnDefinition Width="255*"/>
-            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="118*"/>
+            <ColumnDefinition Width="299"/>
+            <ColumnDefinition Width="117*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>

@@ -26,12 +26,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public UserControlCheckout()
         {
             InitializeComponent();
-            startUp();
-        }
-
-        public void startUp()
-        {
-            cashAmount.Text = window_cashButton.cashInput;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -43,15 +37,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void cashButton_Click(object sender, RoutedEventArgs e)
         {
             window_cashButton wsb = new window_cashButton();
-            wsb.Show();
+            wsb.ShowDialog();
         }
 
         private void cashAmount_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (cashAmount.Text.Length > 0)
-            {
-                pay_paid.Text = window_cashButton.cashInput;
-            }
         }
+
     }
 }

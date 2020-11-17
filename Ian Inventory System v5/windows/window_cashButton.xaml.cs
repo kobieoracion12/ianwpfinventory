@@ -24,6 +24,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         }
 
         public static string cashInput = "₱ 0.00";
+        UserControl us = new UserControlCheckout();
 
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
