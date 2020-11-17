@@ -50,6 +50,7 @@
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                     <Button Content="Refresh" HorizontalAlignment="Center" Background="#54b971" Margin="0 0 8 0" Click="Button_Click_1" />
                     <Button Content="Add Item" HorizontalAlignment="Center" Background="#54b971" Margin="0 0 8 0" Click="Button_Click"/>
+                    <Button Content="Restock" HorizontalAlignment="Center" Background="#54b971" Margin="0 0 8 0" Click="Button_Click_5" />
                     <Button Content="Edit" HorizontalAlignment="Center" Background="#5c9ef4" Margin="0 0 8 0" Click="Button_Click_2"/>
                     <Button Content="Delete" HorizontalAlignment="Center" Background="#e86845" Margin="0 0 8 0" Click="Button_Click_3"/>
                 </StackPanel>
@@ -68,7 +69,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="1" Grid.Column="0">
+                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
                     <TextBlock TextAlignment="Left" FontSize="20" FontFamily="Segoe UI Semibold" Margin="90 0 0 0">In Stock</TextBlock>
                 </StackPanel>
             </Grid>
@@ -83,6 +84,7 @@
                             <GridViewColumn DisplayMemberBinding="{Binding refNo }" Header="#" Width="50"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="Product #" Width="200"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="300" />
+                            <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="100"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodBrand }" Header="Brand" Width="250"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodSRP }" Header="SRP" Width="100" />
                             <GridViewColumn DisplayMemberBinding="{Binding prodRP }" Header="Retail Price" Width="120"/>

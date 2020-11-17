@@ -50,9 +50,11 @@
                 </Rectangle>
 
                 <Grid Margin="80 10 0 10">
+                    <Label Content="Enter Entry:" Margin="23 10 0 0"/>
                     <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <TextBox x:Name="entrySearch" Text="{Binding MyText}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20" Background="White" TextChanged="TextBox_TextChanged"/>
+                            <TextBox x:Name="entrySearch" Text="{Binding MyText}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="40" Height="30" Width="250" Margin="20 25 20 20" Background="White" TextChanged="TextBox_TextChanged"/>
                     </Viewbox>
+                    
 
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                         <Button Content="Void Entry" Background="#e86845" Margin="20 0 0 0" BorderBrush="#FFF75555" />

@@ -42,6 +42,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 {
                     MessageBox.Show("Please Complete the Form");
                 }
+                else if (tbProdQty.Text == "")
+                {
+                    MessageBox.Show("Please Complete the Form");
+                }
                 else if (tbProdSRP.Text == "")
                 {
                     MessageBox.Show("Please Complete the Form");
@@ -62,11 +66,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 {
                     con.Open();
                     MySqlCommand cmd = new MySqlCommand();
-                    cmd.CommandText = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodSRP, prodRP, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @pp, @pq, @pdoa, @pexpd);";
+                    cmd.CommandText = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pdoa, @pexpd);";
 
                     cmd.Parameters.AddWithValue("@pn", tbProdNo.Text);
                     cmd.Parameters.AddWithValue("@pi", tbProdItem.Text);
                     cmd.Parameters.AddWithValue("@pb", tbProdBrand.Text);
+                    cmd.Parameters.AddWithValue("@py", tbProdQty.Text);
                     cmd.Parameters.AddWithValue("pp", tbProdSRP.Text);
                     cmd.Parameters.AddWithValue("pq", tbProdRP.Text);
 
@@ -84,6 +89,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tbProdNo.Text = "";
                         tbProdItem.Text = "";
                         tbProdBrand.Text = "";
+                        tbProdQty.Text = "";
                         tbProdSRP.Text = "";
                         tbProdRP.Text = "";
                         tbProdDOA.Text = "";

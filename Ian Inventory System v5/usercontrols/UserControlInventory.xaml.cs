@@ -208,6 +208,10 @@ namespace NavigationDrawerPopUpMenu2
             conn.Close(); // Close all connections
         }
 
-        
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            window_restockItem restockItem = new window_restockItem();
+            restockItem.ShowDialog();
+        }
     }
 }

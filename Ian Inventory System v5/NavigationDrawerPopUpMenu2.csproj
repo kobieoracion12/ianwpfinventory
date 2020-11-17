@@ -109,6 +109,9 @@
     <Compile Include="windows\window_editItem.xaml.cs">
       <DependentUpon>window_editItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\window_restockItem.xaml.cs">
+      <DependentUpon>window_restockItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\window_userLogin.xaml.cs">
       <DependentUpon>window_userLogin.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\window_editItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\window_restockItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
