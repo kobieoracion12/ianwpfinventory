@@ -16,5 +16,5 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\InventoryWPF\ianwpfinventory\
 21-797099835
 main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_editItem.xaml;windows\window_userLogin.xaml;
 
-True
+False
 
