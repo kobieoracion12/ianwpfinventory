@@ -16,5 +16,5 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v6\ian
 21-1064542333
 main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;
 
-True
+False
 
