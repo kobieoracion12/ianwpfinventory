@@ -35,7 +35,17 @@ namespace NavigationDrawerPopUpMenu2.classes
             commandDatabase.CommandTimeout = 60;
         }
 
-        // Return sql command
+        // Return SqlCommand
+        public MySqlCommand cmd() {
+            return this.commandDatabase;
+        }
+
+        // Bind paremeters
+        public void bind(string parameterName, string paramValue) {
+            this.commandDatabase.Parameters.AddWithValue(parameterName, paramValue);
+        }
+
+        // Execute sql command
         public int execute() {
             return this.commandDatabase.ExecuteNonQuery();
         }

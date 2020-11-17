@@ -27,7 +27,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         private void addItemSubmit_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
+            MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password=''");
             try
             {
                 if (tbProdNo.Text == "")
@@ -72,14 +72,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     cmd.Parameters.AddWithValue("@pi", tbProdItem.Text);
                     cmd.Parameters.AddWithValue("@pb", tbProdBrand.Text);
                     cmd.Parameters.AddWithValue("@py", tbProdQty.Text);
-                    cmd.Parameters.AddWithValue("pp", tbProdSRP.Text);
-                    cmd.Parameters.AddWithValue("pq", tbProdRP.Text);
+                    cmd.Parameters.AddWithValue("@pp", tbProdSRP.Text);
+                    cmd.Parameters.AddWithValue("@pq", tbProdRP.Text);
 
                     string str = tbProdEXPD.Text;
                     DateTime dt;
                     dt = DateTime.Parse(str);
 
-                    cmd.Parameters.AddWithValue("pdoa", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@pdoa", DateTime.Now);
                     cmd.Parameters.AddWithValue("@pexpd", dt);
                     cmd.Connection = con;
                     int a = cmd.ExecuteNonQuery();

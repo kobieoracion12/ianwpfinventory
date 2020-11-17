@@ -105,16 +105,27 @@ namespace NavigationDrawerPopUpMenu2.windows
             long prdNo = Convert.ToInt64(editProdNo.Text); // Product No
             string prdItem = editProdItem.Text; // Product Item
             string prdBrand = editProdBrand.Text; // Product Brand
-            int prdSRP = Convert.ToInt32(editProdSRP.Text); // Product SRP
-            int prdRP = Convert.ToInt32(editProdRP.Text); // Product RP
+            string prdSRP = editProdSRP.Text; // Product SRP
+            string prdRP = editProdRP.Text; // Product RP
 
             // Sql Statement
-            string sql = "UPDATE datainventory SET prodNo = '"+ prdNo +"', prodItem = '"+ prdItem +"', prodBrand = '"+ prdBrand +"', prodSRP = '"+ prdSRP +"', prodRP = '"+ prdRP +"' WHERE prodNo = '"+ prdNo + "' ";
-            conn.query(sql); // Command Database
+            string sql = "UPDATE datainventory SET prodItem = @prdItem, prodBrand = @prdBrand, prodSRP = @prdSRP, prodRP = @prdRP WHERE prodNo = @prdNo ";
+            
             try
             {
                 conn.Open();  // Open Connection
-                conn.read(); // Execute 
+
+                conn.query(sql); // Command Database
+
+                conn.bind("@prdItem", prdItem); // Bind parameters with values
+                conn.bind("@prdBrand", prdBrand);
+                conn.bind("@prdSRP", prdSRP);
+                conn.bind("@prdRP", prdRP);
+                conn.bind("@prdNo", editProdNo.Text);
+ 
+                conn.cmd().Prepare(); // Prepare
+                conn.execute(); // ExecuteNonQuery
+
                 MessageBox.Show("Successfully Updated"); // Show Dialog Succes
 
                 conn.Close(); // Close Connection
