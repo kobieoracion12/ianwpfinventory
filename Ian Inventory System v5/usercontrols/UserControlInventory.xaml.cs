@@ -137,14 +137,17 @@ namespace NavigationDrawerPopUpMenu2
         private void deleteProductItem()
         {
             // Delete sql statement
-            int id = Convert.ToInt32(tbPrdId.Text);
-            string sql = "DELETE FROM datainventory WHERE prodNo = '" + id + "'";
+            string sql = "DELETE FROM datainventory WHERE prodNo = @prdNo";
             conn.query(sql); // Command Database
 
             try
             {
                 conn.Open();   // Open Connection
-                conn.read(); // Execute 
+                conn.bind("@prdNo", tbPrdId.Text); // Bind parameter
+                conn.cmd().Prepare(); // Prepare
+                conn.execute(); // Execute
+                
+                 
                 MessageBox.Show("Successfully Removed"); // Show Dialog Succes
 
                 conn.Close(); // Close Connection
