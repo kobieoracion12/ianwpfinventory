@@ -250,5 +250,10 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\WPFInventoryClone\ianwpfinven
 E:\Programming Tuts\Projects Tutorials\C# Projects\WPFInventoryClone\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v6\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSalesInv.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v6\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSalesInv.baml
+<<<<<<< HEAD
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v6\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlStockInv.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v6\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlStockInv.baml
+=======
+E:\Programming Tuts\Projects Tutorials\C# Projects\WPFInventoryClone\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSalesInv.g.cs
+E:\Programming Tuts\Projects Tutorials\C# Projects\WPFInventoryClone\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSalesInv.baml
+>>>>>>> c101e01d63e8b880fee0c721c6b35e23bdfdeb74

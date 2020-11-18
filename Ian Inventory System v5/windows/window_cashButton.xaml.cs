@@ -16,22 +16,24 @@ using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
+    // Data Send Handler
+    public delegate void DataSendHandler(String msg);
     public partial class window_cashButton : Window
     {
+        public event DataSendHandler DataSent;
+        public static string myCash;
         public window_cashButton()
         {
             InitializeComponent();
         }
 
-        public static string cashInput = "₱ 0.00";
-        UserControl us = new UserControlCheckout();
-
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
-            cashInput = "₱ " + entrySearch.Text;
             if (e.Key == Key.Return)
             {
-                this.Close();
+                // Send the cash back to the parent usercontrol/form
+                this.DataSent(cashAmount.Text);
+                this.Close(); // Then Close the Window
             }
         }
 
