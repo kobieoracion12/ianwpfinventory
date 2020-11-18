@@ -60,12 +60,12 @@ namespace NavigationDrawerPopUpMenu2.windows
                 if (reader.Read())
                 {
                     //  0 = Product No, 1 = ProdItem, 2 = ProdBrand, 3 = ProdSRP, 4 = ProdRP, 5 =  prodDOA, 6 = ProdEXPD
-                    string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4) };
+                    string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5) };
                     editProdNo.Text = row[0]; // Product No
                     editProdItem.Text = row[1]; // Product Item
                     editProdBrand.Text = row[2]; // Product Brand
-                    editProdSRP.Text = row[3]; // Product SRP
-                    editProdRP.Text = row[4]; // Product RP
+                    editProdSRP.Text = row[4]; // Product SRP
+                    editProdRP.Text = row[5]; // Product RP
                 }
 
                 conn.Close(); // Close Connection

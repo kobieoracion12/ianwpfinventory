@@ -103,6 +103,9 @@
     <Compile Include="usercontrols\UserControlSalesInv.xaml.cs">
       <DependentUpon>UserControlSalesInv.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\UserControlStockInv.xaml.cs">
+      <DependentUpon>UserControlStockInv.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\window_addItem.xaml.cs">
       <DependentUpon>window_addItem.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\UserControlSalesInv.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\UserControlStockInv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
