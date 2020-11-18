@@ -18,9 +18,6 @@ using NavigationDrawerPopUpMenu2.usercontrols;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
-    /// <summary>
-    /// Interaction logic for window_restockItem.xaml
-    /// </summary>
     public partial class window_restockItem : Window
     {
         MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password='C73DPJxyXICd4Mjq'");

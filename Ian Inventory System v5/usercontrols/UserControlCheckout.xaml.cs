@@ -21,7 +21,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 {
     public partial class UserControlCheckout : UserControl
     {
-        Database con = new Database();
+        Database conn = new Database();
+        MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
 
         public UserControlCheckout()
         {
@@ -43,11 +44,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             window_cashButton.myCash = cashAmount.Text;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         // Add Cash
         private void cashButton_Click(object sender, RoutedEventArgs e)
         {
@@ -55,17 +51,50 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             cf.DataSent += Cf_DataSent; // Register the Event Handler - When this Event fired 'Cf_DataSent' will be called
             cf.ShowDialog();
         }
+
+
         // Event Handler to update the parent textbox
         private void Cf_DataSent(string msg)
         {
-            this.cashAmount.Text = msg;
+            string amountSent = msg;
+            cashAmount.Text = "₱ " + msg;
+            pay_paid.Text = "₱ " + msg;
         }
 
-        private void cashAmount_TextChanged(object sender, TextChangedEventArgs e)
+        private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (entrySearch.Text.Length > 0)
+            {
+                string search = entrySearch.Text;
 
+                DataTable dt = new DataTable();
+                con.Open();
+                MySqlDataReader myReader = null;
+                MySqlCommand myCommand = new MySqlCommand("SELECT * FROM datainventory WHERE prodNo= '" + search + "'", con);
+
+                myReader = myCommand.ExecuteReader();
+
+                if (myReader.HasRows)
+                {
+                    
+
+                    while (myReader.Read())
+                    {
+                        coItem.Text = (myReader["prodItem"].ToString());
+                        coPrice.Text = (myReader["prodRP"].ToString());
+
+                    }
+                    
+
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Entry!");
+                    entrySearch.Text = "";
+                }
+                
+                con.Close();
+            }
         }
-
-        
     }
 }
