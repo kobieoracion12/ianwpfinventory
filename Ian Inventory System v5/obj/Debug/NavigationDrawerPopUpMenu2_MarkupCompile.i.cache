@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v6\ianwpfinventory\Ian Inventory System v5\App.xaml
-152051030685
+16430985556
 
-241737435991
+25346731510
 21-1064542333
-main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;
+main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;
 
 True
 

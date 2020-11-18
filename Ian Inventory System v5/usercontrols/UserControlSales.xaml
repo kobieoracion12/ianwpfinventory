@@ -38,8 +38,8 @@
                             <ComboBoxItem Content="Last Month" />
                             <ComboBoxItem Content="This Year" />
                         </ComboBox>
-                        
-                        
+
+
                         <Button x:Name="todayButton" Content="Today" Margin="0 0 10 0" Click="Button_Click" />
                         <Button x:Name="thisWeekButton" Content="This Week" Margin="0 0 10 0" Click="Button_Click_1"/>
                         <Button x:Name="thisMonthButton" Content="This Month" Margin="0 0 10 0" Click="Button_Click_2"/>
@@ -47,7 +47,7 @@
                         <Button x:Name="thisYearButton" Content="This Year" Click="Button_Click_3" />
                     </StackPanel>
                 </UniformGrid>
-                
+
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Today Sales" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Center" />
                     <TextBlock x:Name="tb_todaySales" Text="$ 0.00" FontSize="20" FontFamily="Segoe UI Semibold" TextAlignment="Center"/>
@@ -67,7 +67,11 @@
 
         <!-- Listview Grid -->
         <Grid Grid.Row="1" Grid.Column="0" Background="#ffffff">
-            <ListView x:Name="listViewSales" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="70,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="185*"/>
+                <ColumnDefinition Width="31*"/>
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="listViewSales" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="70,0,0,0" Grid.ColumnSpan="2">
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
                         <GridView.Columns>

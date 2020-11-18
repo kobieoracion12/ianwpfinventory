@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Programming Tuts\Projects Tutorials\C# Projects\WPFInventoryClone\ianwpfinventory\Ian Inventory System v5\obj\Debug\
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v6\ianwpfinventory\Ian Inventory System v5\obj\Debug\
 NavigationDrawerPopUpMenu2
 none
 false
 DEBUG;TRACE
-E:\Programming Tuts\Projects Tutorials\C# Projects\WPFInventoryClone\ianwpfinventory\Ian Inventory System v5\App.xaml
-152051030685
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\Ian Inventory System v6\ianwpfinventory\Ian Inventory System v5\App.xaml
+16430985556
 
-20-277479592
-74-744293801
-main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;
+21-1668184073
+74-1436481406
+main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;
 
 False
 

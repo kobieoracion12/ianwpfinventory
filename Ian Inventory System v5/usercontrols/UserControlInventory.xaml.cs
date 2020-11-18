@@ -174,7 +174,7 @@ namespace NavigationDrawerPopUpMenu2
                 // Open Connection 
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM datainventory WHERE prodNo LIKE '%" + tbSearch.Text + "%' OR prodItem LIKE '%" + tbSearch.Text + "%' OR prodBrand LIKE '%" + tbSearch.Text + "%' OR prodSRP LIKE '%" + tbSearch.Text + "%' OR prodRP LIKE '%" + tbSearch.Text + "%'";
+                string query = "SELECT * FROM datainv!entory WHERE prodNo LIKE '%" + tbSearch.Text + "%' OR prodItem LIKE '%" + tbSearch.Text + "%' OR prodBrand LIKE '%" + tbSearch.Text + "%' OR prodSRP LIKE '%" + tbSearch.Text + "%' OR prodRP LIKE '%" + tbSearch.Text + "%'";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -185,7 +185,7 @@ namespace NavigationDrawerPopUpMenu2
                 DataTable dt = new DataTable("datainventory");
                 // Fill the datatable
                 adapter.Fill(dt);
-                listViewInventory.ItemsSource = dt.DefaultView;
+                listViewInventory.ItemsSource = dt.DefaultView; 
                 adapter.Update(dt);
                 // Close Connection
                 conn.Close();
