@@ -14,7 +14,7 @@ namespace NavigationDrawerPopUpMenu2.classes
 
         public string cash
         {
-            get { return wcb.entrySearch.Text; }
+            get { return wcb.cashAmount.Text; }
         }
     }
 }
