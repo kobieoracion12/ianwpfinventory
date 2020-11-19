@@ -86,54 +86,58 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             conn.Close();
         }
 
-        // Sort Button
-        public string calendarSort;
+        // Sort|Filter Button
         private void sortButton_Click(object sender, RoutedEventArgs e)
         {
-            string brandSort = sortBrand.Text;
-            if (brandSort == "Select")
+            sortByDate();
+        }
+
+        // Sort by Date FROM - Date TO 
+        // Sort by Date Between Date From and Date To and Brand
+        public void sortByDate()
+        {
+            string formattedFrom, formattedTo, brandSort;
+
+            // Init selected dates from calendar
+            DateTime? selectedDateFrom = sortCalendarFrom.SelectedDate;
+            DateTime? selectedDateTo = sortCalendarTo.SelectedDate;
+
+            if (selectedDateFrom.HasValue && selectedDateTo.HasValue)
             {
-                brandSort = null;
+                brandSort = sortBrand.Text;
+                if (brandSort == "Select")
+                {
+                    brandSort = null;
+                }
+                // Making a format and getting the value of datepicker to string
+                formattedFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                formattedTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+
+                try
+                {
+                    conn.Open(); // Open Connection
+                    string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
+                    conn.query(query);  // Command Database
+                    conn.execute(); // Execute Non Query
+                    MySqlDataAdapter adapter = conn.adapter(); // adapter
+                    DataTable dt = new DataTable("datasalesinventory"); // Make a datatable reference
+                    adapter.Fill(dt);  // Fill the datatable with data
+                    listViewSales.ItemsSource = dt.DefaultView;
+                    adapter.Update(dt);
+                    conn.Close(); // Clone Connection
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
             }
 
-            conn.Close();
-            try
-            {
-                conn.Open();
-                string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' OR salesDate LIKE '%" + calendarSort + "&'";
-                conn.query(query);
-                conn.execute();
-                MySqlDataAdapter adapter = conn.adapter();
-                DataTable dt = new DataTable("datasalesinventory");
-                adapter.Fill(dt);
-                listViewSales.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-                conn.Close();
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
         }
 
         // Clear Button
         private void sortClear_Click(object sender, RoutedEventArgs e)
         {
             catchData();
-        }
-
-        // Sales Shortcut ComboBox
-        private void sortShortcut_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string shortcutSort = sortShortcut.Text;
-
-            switch (shortcutSort)
-            {
-                case "Select":
-                    shortcutSort = null;
-                    break;
-                
-            }
         }
 
         private void coItem_KeyDown(object sender, KeyEventArgs e)

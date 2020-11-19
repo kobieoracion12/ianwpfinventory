@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\Cloned Inventory\ianwpfinventory\Ian Inventory System v5\obj\Debug\
 NavigationDrawerPopUpMenu2
 none
 false
 DEBUG;TRACE
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\App.xaml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\Cloned Inventory\ianwpfinventory\Ian Inventory System v5\App.xaml
 171011431084
 
 22327476806
-741764504186
+74-1286572166
 main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;usercontrols\UserControlStockInv.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;
 
 False
