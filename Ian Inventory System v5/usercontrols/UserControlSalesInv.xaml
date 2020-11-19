@@ -58,8 +58,8 @@
                 <!-- Date of Purchase -->
                 <Grid Grid.Column="0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <TextBlock Text="Date of Purchase" VerticalAlignment="Center" FontWeight="Bold" FontSize="10" Foreground="#b2b2b2" Margin="30 0 0 0"/>
-                        <DatePicker x:Name="sortCalendar" BorderThickness="1" Padding="5" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" VerticalAlignment="Center" Background="White"/>
+                        <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" FontSize="10" Foreground="#b2b2b2" Margin="30 0 0 0"/>
+                        <DatePicker x:Name="sortCalendarFrom" BorderThickness="1" Padding="5" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" VerticalAlignment="Center" Background="White"/>
                     </StackPanel>
                 </Grid>
 
@@ -70,8 +70,8 @@
                 <!-- Sales Shortcut -->
                 <Grid Grid.Column="1">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock Text="Sales Shortcut" VerticalAlignment="Center" FontWeight="Bold" FontSize="10" Foreground="#b2b2b2" Margin="30 0 0 0"/>
-                        <ComboBox x:Name="sortShortcut" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" Background="White" VerticalAlignment="Center" SelectionChanged="sortShortcut_SelectionChanged">
+                       <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" FontSize="10" Foreground="#b2b2b2" Margin="30 0 0 0"/>
+                  <!--  <ComboBox x:Name="sortShortcut" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" Background="White" VerticalAlignment="Center" SelectionChanged="sortShortcut_SelectionChanged">
                             <ComboBoxItem Content="Select" IsSelected="True" />
                             <ComboBoxItem Content="Today" />
                             <ComboBoxItem Content="Yesterday" />
@@ -79,7 +79,8 @@
                             <ComboBoxItem Content="This Month" />
                             <ComboBoxItem Content="Last Month" />
                             <ComboBoxItem Content="This Year" />
-                        </ComboBox>
+                        </ComboBox> -->
+                        <DatePicker x:Name="sortCalendarTo" BorderThickness="1" Padding="5" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" VerticalAlignment="Center" Background="White"/>
                     </StackPanel>
                 </Grid>
 
