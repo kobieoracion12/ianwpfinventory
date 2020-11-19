@@ -56,7 +56,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Event Handler to update the parent textbox
         private void Cf_DataSent(string msg)
         {
-            string amountSent = msg;
             cashAmount.Text = "₱ " + msg;
             pay_paid.Text = "₱ " + msg;
         }
@@ -76,16 +75,13 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                 if (myReader.HasRows)
                 {
-                    
-
                     while (myReader.Read())
                     {
                         coItem.Text = (myReader["prodItem"].ToString());
-                        coPrice.Text = (myReader["prodRP"].ToString());
-
+                        coBrand.Text = (myReader["prodBrand"].ToString());
+                        coSRP.Text = (myReader["prodSRP"].ToString());
+                        coRP.Text = (myReader["prodRP"].ToString());
                     }
-                    
-
                 }
                 else
                 {
@@ -94,6 +90,59 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 
                 con.Close();
+            }
+        }
+
+        private void coPrice_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int price = Convert.ToInt32(coRP.Text);
+            int qty = Convert.ToInt32(coQty.Text);
+
+            coSubtotal.Text = Convert.ToString(price * qty);
+        }
+
+        private void coSubtotal_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.CommandText = "INSERT INTO datasalesinventory (salesNo, salesItem, salesBrand, salesDate, salesSRP, salesRP, salesQty, salesTotal) VALUES (@sNo, @sItem, @sBrand, @sDate, @sSRP, @sRP, @sQty, @sTotal);";
+
+                cmd.Parameters.AddWithValue("@sNo", entrySearch.Text);
+                cmd.Parameters.AddWithValue("@sItem", coItem.Text);
+                cmd.Parameters.AddWithValue("@sBrand", coBrand.Text);
+                cmd.Parameters.AddWithValue("@sSRP", coSRP.Text);
+                cmd.Parameters.AddWithValue("@sRP", coRP.Text);
+                cmd.Parameters.AddWithValue("@sQty", coQty.Text);
+                cmd.Parameters.AddWithValue("@sTotal", coSubtotal.Text);
+
+                string str = coDOP.Text;
+                DateTime dt;
+                dt = DateTime.Parse(str);
+                cmd.Parameters.AddWithValue("@sDate", dt);
+
+                cmd.Connection = con;
+                int a = cmd.ExecuteNonQuery();
+                if (a == 1)
+                {
+                    MessageBox.Show("Data added Sucessfully");
+                    entrySearch.Text = "";
+                    coItem.Text = "";
+                    coBrand.Text = "";
+                    coSRP.Text = "";
+                    coRP.Text = "";
+                    coQty.Text = "";
+                    coSubtotal.Text = "";
+
+                    entrySearch.Focus();
+                }
+
+                con.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
             }
         }
     }

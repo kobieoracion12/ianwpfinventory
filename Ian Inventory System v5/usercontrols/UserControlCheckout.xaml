@@ -32,10 +32,12 @@
 
             <Grid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox x:Name="coItem" Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.prodItem}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White"/>
-                    <TextBox x:Name="coPrice" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White" />
-                    <TextBox x:Name="coQty" Text="1" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White" />
-                    <TextBox x:Name="coSubtotal" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White" />
+                    <TextBox x:Name="coItem" Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.prodItem}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="200" Margin="20" Background="White"/>
+                    <TextBox x:Name="coBrand" Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.prodItem}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="200" Margin="20" Background="White"/>
+                    <TextBox x:Name="coSRP" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" TextChanged="coPrice_TextChanged" />
+                    <TextBox x:Name="coRP" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" TextChanged="coPrice_TextChanged" />
+                    <TextBox x:Name="coQty" Text="1" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                    <TextBox x:Name="coSubtotal" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" TextChanged="coSubtotal_TextChanged" />
                     <DatePicker x:Name="coDOP" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White"/>
                 </StackPanel>
             </Grid>
@@ -53,7 +55,7 @@
                 <Grid Margin="80 10 0 10">
                     <Label Content="Enter Entry:" Margin="23 10 0 0"/>
                     <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <TextBox x:Name="entrySearch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="20" Height="30" Width="250" Margin="20 25 20 20" Background="White" TextChanged="entrySearch_TextChanged" />
+                        <TextBox x:Name="entrySearch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20 25 20 20" Background="White" TextChanged="entrySearch_TextChanged" />
                     </Viewbox>
                     
 

@@ -94,6 +94,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tbProdRP.Text = "";
                         tbProdDOA.Text = "";
                         tbProdEXPD.Text = "";
+                        this.Close();
                     }
 
                     con.Close();
