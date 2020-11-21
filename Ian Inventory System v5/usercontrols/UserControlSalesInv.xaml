@@ -121,7 +121,6 @@
                                 <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="300"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding salesBrand }" Header="Brand" Width="250"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding salesDate }" Header="Date of Purchase" Width="200"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding salesSRP }" Header="SRP" Width="100"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="RP" Width="100"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Quantity" Width="100"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding salesTotal }" Header="Total" Width="100"/>

@@ -60,8 +60,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             pay_paid.Text = "₱ " + msg;
         }
 
+
         private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
         {
+            con.Close();
             if (entrySearch.Text.Length > 0)
             {
                 string search = entrySearch.Text;
@@ -69,7 +71,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 DataTable dt = new DataTable();
                 con.Open();
                 MySqlDataReader myReader = null;
-                MySqlCommand myCommand = new MySqlCommand("SELECT * FROM datainventory WHERE prodNo= '" + search + "'", con);
+                MySqlCommand myCommand = new MySqlCommand("SELECT prodItem, prodBrand, prodRP FROM datainventory WHERE prodNo= '" + search + "'", con);
 
                 myReader = myCommand.ExecuteReader();
 
@@ -79,7 +81,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     {
                         coItem.Text = (myReader["prodItem"].ToString());
                         coBrand.Text = (myReader["prodBrand"].ToString());
-                        coSRP.Text = (myReader["prodSRP"].ToString());
                         coRP.Text = (myReader["prodRP"].ToString());
                     }
                 }
@@ -95,14 +96,24 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         private void coPrice_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int price = Convert.ToInt32(coRP.Text);
-            int qty = Convert.ToInt32(coQty.Text);
+            int price = 0;
+            if (int.TryParse(coSRP.Text, out price))
+            {
+
+            }
+
+            int qty = 1;
+            if (int.TryParse(coQty.Text, out qty))
+            {
+
+            }
 
             coSubtotal.Text = Convert.ToString(price * qty);
         }
 
         private void coSubtotal_TextChanged(object sender, TextChangedEventArgs e)
         {
+            con.Close();
             try
             {
                 con.Open();
@@ -128,12 +139,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 {
                     MessageBox.Show("Data added Sucessfully");
                     entrySearch.Text = "";
-                    coItem.Text = "";
-                    coBrand.Text = "";
-                    coSRP.Text = "";
-                    coRP.Text = "";
-                    coQty.Text = "";
-                    coSubtotal.Text = "";
+                    
 
                     entrySearch.Focus();
                 }
