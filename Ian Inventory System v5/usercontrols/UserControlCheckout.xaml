@@ -32,13 +32,16 @@
 
             <Grid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox x:Name="coItem" Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.prodItem}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="200" Margin="20" Background="White"/>
-                    <TextBox x:Name="coBrand" Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.prodItem}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="200" Margin="20" Background="White"/>
+                    <TextBox x:Name="coBarCode" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" TextChanged="coBarCode_TextChanged" />
+                    <TextBox x:Name="coPrice" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                    <TextBox x:Name="coItem" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                    <TextBox x:Name="coBrand" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White"/>
                     <TextBox x:Name="coSRP" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" TextChanged="coPrice_TextChanged" />
                     <TextBox x:Name="coRP" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" TextChanged="coPrice_TextChanged" />
                     <TextBox x:Name="coQty" Text="1" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
                     <TextBox x:Name="coSubtotal" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" TextChanged="coSubtotal_TextChanged" />
                     <DatePicker x:Name="coDOP" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White"/>
+                    <Button Content="Delete" Background="#e86845" Margin="20 0 0 0" BorderBrush="#FFF75555" Click="removeProduct_Click"/>
                 </StackPanel>
             </Grid>
         </Grid>
@@ -72,13 +75,14 @@
         
         <!-- Checkout List -->
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80 0 0 10" Background="#ffffff">
-            <ListView x:Name="listViewinVoice" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single">
+            <ListView x:Name="listViewinVoice" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" SelectionChanged="listViewinVoice_SelectionChanged">
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
                         <GridView.Columns>
                             <GridViewColumn DisplayMemberBinding="{Binding refNo }" Header="#" Width="50"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="150" />
-                            <GridViewColumn DisplayMemberBinding="{Binding prodPrice }" Header="Price" Width="100" />
+                            <!-- I CHANGE THE prodPrice to "prodSRP"   -->
+                            <GridViewColumn DisplayMemberBinding="{Binding prodSRP }" Header="Price" Width="100" />
                             <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="100"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodSubtotal }" Header="Subtotal" Width="120"/>
                             <GridViewColumn DisplayMemberBinding="{Binding prodDOP }" Header="Date of Purchase" Width="200"/>
@@ -180,7 +184,7 @@
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
                                     <TextBox x:Name="pay_discount" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
-                                    <TextBox x:Name="pay_total" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Right" FontWeight="Bold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
+                                    <TextBox x:Name="pay_total" IsReadOnly="True" Text="0" TextAlignment="Right" FontWeight="Bold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
                                     <TextBlock Text="Due" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
                                     <TextBox x:Name="pay_due" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="#E86845" BorderBrush="Transparent" Margin="0 0 0 10" />
