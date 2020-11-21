@@ -74,6 +74,7 @@
     </ApplicationDefinition>
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\invoiceClass.cs" />
+    <Compile Include="classes\Product.cs" />
     <Compile Include="iantestinventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

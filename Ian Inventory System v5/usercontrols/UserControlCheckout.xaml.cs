@@ -151,5 +151,112 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show(x.Message);
             }
         }
+
+        // GETTING VALUE OF TEXTBOX(Barcode) TO LISTVIEW
+        public void populateListView()
+        {
+            string sql = "SELECT * FROM datainventory WHERE prodNo = '" + coBarCode.Text + "'"; // Sql Statement 
+            conn.query(sql); // Command Database
+            try
+            {
+                conn.Open(); // Open Connection
+                MySqlDataReader reader = conn.read(); // Execute
+
+                // Append the data to be edited in the textbox
+                if (reader.Read())
+                {
+                    //  0 = Product No, 1 = ProdItem, 2 = ProdBrand, 3 = ProdQty, 4 = ProdSRP, 5 =  prodRP, 6 = ProdDOA, 7 = prodEXPD
+                    string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5) };
+
+                    // Produtct Qty 
+                    int qty = Convert.ToInt32(row[3]);
+
+                    // Product SRP
+                    int srp = Convert.ToInt32(row[4]);
+
+                    // Add Item/Row to ListView Columns
+                    this.listViewinVoice.Items.Add(new Product { prodItem = row[1], prodQty = qty, prodSRP = srp });
+
+                    // Add the price(prodSRP) to the textblock
+                    int total = Convert.ToInt32(pay_total.Text); // Convert it first so you can do Arithmetic with the values
+                    // if Text is 0 (Default)
+                    if (total == 0)
+                    {   // Just append the value to the UI (textblock)
+                        pay_total.Text = srp.ToString();
+                    }
+                    else
+                    {
+                        // If Text is not 0 (It means listview have a existing items)
+                        // then add the existing value to the new value
+                        int result = total + srp;
+                        // Append the result and Update the UI
+                        pay_total.Text = result.ToString();
+                    }
+                }
+                conn.Close(); // Close Connection
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // GETTING VALUE OF LISTVIEW TO TEXTBOX
+        private void listViewinVoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var selectedItem = (Product)listViewinVoice.SelectedItem; // Your Selected Product Class that Contains ListView Items
+                if (listViewinVoice.SelectedIndex >= 0 || listViewinVoice.SelectedItems.Count >= 0)
+                {
+                    // ADD TO THE LIST VIEW
+                    string prodItem = selectedItem.prodItem;
+                    int srp = selectedItem.prodSRP;
+                    int Qty = selectedItem.prodQty; // Product Qty
+
+                    // Update The UI with the new Value
+                    // I USED DATABASE prodSRP AS A PRICE
+                    coSRP.Text = srp.ToString();
+                    // Some Example data
+                    coItem.Text = prodItem;
+                    coQty.Text = Qty.ToString(); // Product Qty
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+
+        }
+
+        // Remove Product to the listView
+        private void removeProduct_Click(object sender, RoutedEventArgs e)
+        {
+                // Get the  value on  the textBox first to subtract
+                int inputPriceToSubtract = Convert.ToInt32(coSRP.Text);
+                // Get the value of the total
+                int TotalInfo = Convert.ToInt32(pay_total.Text);
+                // Subtract the two value
+                int subtractTheValue = (TotalInfo - inputPriceToSubtract);
+                // Force the result to a absolute value or positive number
+                int difference = Math.Abs(subtractTheValue);
+                // Then Update the UI
+                pay_total.Text = difference.ToString();
+                // Remove Items from ListView And UPDATE the UI
+                listViewinVoice.Items.RemoveAt(listViewinVoice.SelectedIndex);
+        }
+
+        // IN OUR CASE INPUT THE BARCODE ON THE TEXTBOX 
+        // CHANGE THE CODE IF REAL SCANNER
+        // SCAN BARCODE FROM DATABASE
+        private void coBarCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (coBarCode.Text != "")
+            {
+                populateListView(); // Call the method 
+                coBarCode.Text = ""; // After adding a barcode set the textbox to empty again
+            }
+        }
+     
     }
 }
