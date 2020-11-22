@@ -33,6 +33,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public UserControlCheckout()
         {
             InitializeComponent();
+            fetchinVoice();
         }
 
         public UserControlCheckout(string value)
@@ -69,6 +70,27 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             pay_due.Text = Convert.ToString(paid - total);
         }
 
+        public void fetchinVoice()
+        {
+            try
+            {
+                conn.Open();
+                string query = "SELECT refNo, salesItem, salesRP, salesQty, salesTotal, salesDate FROM datasalesinventory ORDER BY refNo DESC";
+                conn.query(query);
+                conn.execute();
+                MySqlDataAdapter adapter = conn.adapter();
+                DataTable dt = new DataTable("datasalesinventory");
+                adapter.Fill(dt);
+                listViewinVoice.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         // Barcode Search Function
         private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -95,6 +117,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Multiply the Price and Quantity
                 if (coRP.Text.Length > 0)
                 {
+                    cashButton.IsEnabled = true;
+
                     int rp = Convert.ToInt32(coRP.Text);
                     int qty = Convert.ToInt32(coQty.Text);
                     int sub = rp * qty;
@@ -134,6 +158,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             if (a == 1)
                             {
                                 MessageBox.Show("Data added Sucessfully");
+                                fetchinVoice();
                                 entrySearch.Text = "";
 
                             }
@@ -151,6 +176,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 con.Close();
             }
+            
         }
     }
 }
