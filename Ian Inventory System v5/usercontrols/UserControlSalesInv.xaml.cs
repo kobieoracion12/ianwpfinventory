@@ -40,7 +40,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM datasalesinventory";
+                string query = "SELECT * FROM datasalesinventory ORDER BY refNo DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute

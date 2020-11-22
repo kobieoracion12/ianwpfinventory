@@ -23,6 +23,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     {
         Database conn = new Database();
         MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
+        
+        public int subtotal = 0;
+        public int vat = 0;
+        public int total = 0;
+        public int due = 0;
+        public int paid = 0;
 
         public UserControlCheckout()
         {
@@ -56,207 +62,95 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Event Handler to update the parent textbox
         private void Cf_DataSent(string msg)
         {
-            cashAmount.Text = "₱ " + msg;
-            pay_paid.Text = "₱ " + msg;
+            paid = Convert.ToInt32(msg);
+            cashAmount.Text = Convert.ToString(paid);
+            pay_paid.Text = Convert.ToString(paid);
+
+            pay_due.Text = Convert.ToString(paid - total);
         }
 
 
+        // Barcode Search Function
         private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            con.Close();
+            // Barcode Text Changed
             if (entrySearch.Text.Length > 0)
             {
                 string search = entrySearch.Text;
-
-                DataTable dt = new DataTable();
+                string query = "SELECT prodItem, prodBrand, prodSRP, prodRP FROM datainventory WHERE prodNo= '" + search + "'";
+                MySqlCommand cmd = new MySqlCommand(query, con);
                 con.Open();
-                MySqlDataReader myReader = null;
-                MySqlCommand myCommand = new MySqlCommand("SELECT prodItem, prodBrand, prodRP FROM datainventory WHERE prodNo= '" + search + "'", con);
-
-                myReader = myCommand.ExecuteReader();
-
-                if (myReader.HasRows)
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
                 {
-                    while (myReader.Read())
+                    coItem.Text = dr.GetValue(0).ToString();
+                    coBrand.Text = dr.GetValue(1).ToString();
+                    coSRP.Text = dr.GetValue(2).ToString();
+                    coRP.Text = dr.GetValue(3).ToString();
+                }
+
+                // Closes the reader so the next query will work
+                dr.Close();
+
+                // Multiply the Price and Quantity
+                if (coRP.Text.Length > 0)
+                {
+                    int rp = Convert.ToInt32(coRP.Text);
+                    int qty = Convert.ToInt32(coQty.Text);
+                    int sub = rp * qty;
+
+                    total += vat + sub;
+
+                    coSubtotal.Text = Convert.ToString(sub);
+                    pay_subtotal.Text = Convert.ToString(subtotal + sub);
+                    pay_total.Text = Convert.ToString(total);
+
+
+
+                    // Adds the data to the datasalesinventory
+                    if (coSubtotal.Text.Length > 0)
                     {
-                        coItem.Text = (myReader["prodItem"].ToString());
-                        coBrand.Text = (myReader["prodBrand"].ToString());
-                        coRP.Text = (myReader["prodRP"].ToString());
+                        try
+                        {
+                            MySqlCommand insertQuery = new MySqlCommand();
+                            cmd.CommandText = "INSERT INTO datasalesinventory (salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate) VALUES (@coNo, @coIt, @coBr, @coSRPs, @coRPs, @coQtys, @coSub, @coDOPs);";
+
+                            cmd.Parameters.AddWithValue("@coNo", entrySearch.Text);
+                            cmd.Parameters.AddWithValue("@coIt", coItem.Text);
+                            cmd.Parameters.AddWithValue("@coBr", coBrand.Text);
+                            cmd.Parameters.AddWithValue("@coSRPs", coSRP.Text);
+                            cmd.Parameters.AddWithValue("@coRPs", coRP.Text);
+                            cmd.Parameters.AddWithValue("@coQtys", coQty.Text);
+                            cmd.Parameters.AddWithValue("@coSub", coSubtotal.Text);
+
+                            string str = coDOP.Text;
+                            DateTime dt;
+                            dt = DateTime.Parse(str);
+
+                            cmd.Parameters.AddWithValue("@coDOPs", dt);
+                            int a = cmd.ExecuteNonQuery();
+
+                            // Checks if the data in successfuly stored
+                            if (a == 1)
+                            {
+                                MessageBox.Show("Data added Sucessfully");
+                                entrySearch.Text = "";
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid Entry!");
+                                entrySearch.Text = "";
+                            }
+                        }
+                        catch (Exception x)
+                        {
+                            MessageBox.Show(x.Message);
+                        }
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Invalid Entry!");
-                    entrySearch.Text = "";
-                }
-                
                 con.Close();
             }
         }
-
-        private void coPrice_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            int price = 0;
-            if (int.TryParse(coSRP.Text, out price))
-            {
-
-            }
-
-            int qty = 1;
-            if (int.TryParse(coQty.Text, out qty))
-            {
-
-            }
-
-            coSubtotal.Text = Convert.ToString(price * qty);
-        }
-
-        private void coSubtotal_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            con.Close();
-            try
-            {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.CommandText = "INSERT INTO datasalesinventory (salesNo, salesItem, salesBrand, salesDate, salesSRP, salesRP, salesQty, salesTotal) VALUES (@sNo, @sItem, @sBrand, @sDate, @sSRP, @sRP, @sQty, @sTotal);";
-
-                cmd.Parameters.AddWithValue("@sNo", entrySearch.Text);
-                cmd.Parameters.AddWithValue("@sItem", coItem.Text);
-                cmd.Parameters.AddWithValue("@sBrand", coBrand.Text);
-                cmd.Parameters.AddWithValue("@sSRP", coSRP.Text);
-                cmd.Parameters.AddWithValue("@sRP", coRP.Text);
-                cmd.Parameters.AddWithValue("@sQty", coQty.Text);
-                cmd.Parameters.AddWithValue("@sTotal", coSubtotal.Text);
-
-                string str = coDOP.Text;
-                DateTime dt;
-                dt = DateTime.Parse(str);
-                cmd.Parameters.AddWithValue("@sDate", dt);
-
-                cmd.Connection = con;
-                int a = cmd.ExecuteNonQuery();
-                if (a == 1)
-                {
-                    MessageBox.Show("Data added Sucessfully");
-                    entrySearch.Text = "";
-                    
-
-                    entrySearch.Focus();
-                }
-
-                con.Close();
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-        }
-
-        // GETTING VALUE OF TEXTBOX(Barcode) TO LISTVIEW
-        public void populateListView()
-        {
-            string sql = "SELECT * FROM datainventory WHERE prodNo = '" + coBarCode.Text + "'"; // Sql Statement 
-            conn.query(sql); // Command Database
-            try
-            {
-                conn.Open(); // Open Connection
-                MySqlDataReader reader = conn.read(); // Execute
-
-                // Append the data to be edited in the textbox
-                if (reader.Read())
-                {
-                    //  0 = Product No, 1 = ProdItem, 2 = ProdBrand, 3 = ProdQty, 4 = ProdSRP, 5 =  prodRP, 6 = ProdDOA, 7 = prodEXPD
-                    string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5) };
-
-                    // Produtct Qty 
-                    int qty = Convert.ToInt32(row[3]);
-
-                    // Product SRP
-                    int srp = Convert.ToInt32(row[4]);
-
-                    // Add Item/Row to ListView Columns
-                    this.listViewinVoice.Items.Add(new Product { prodItem = row[1], prodQty = qty, prodSRP = srp });
-
-                    // Add the price(prodSRP) to the textblock
-                    int total = Convert.ToInt32(pay_total.Text); // Convert it first so you can do Arithmetic with the values
-                    // if Text is 0 (Default)
-                    if (total == 0)
-                    {   // Just append the value to the UI (textblock)
-                        pay_total.Text = srp.ToString();
-                    }
-                    else
-                    {
-                        // If Text is not 0 (It means listview have a existing items)
-                        // then add the existing value to the new value
-                        int result = total + srp;
-                        // Append the result and Update the UI
-                        pay_total.Text = result.ToString();
-                    }
-                }
-                conn.Close(); // Close Connection
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        // GETTING VALUE OF LISTVIEW TO TEXTBOX
-        private void listViewinVoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                var selectedItem = (Product)listViewinVoice.SelectedItem; // Your Selected Product Class that Contains ListView Items
-                if (listViewinVoice.SelectedIndex >= 0 || listViewinVoice.SelectedItems.Count >= 0)
-                {
-                    // ADD TO THE LIST VIEW
-                    string prodItem = selectedItem.prodItem;
-                    int srp = selectedItem.prodSRP;
-                    int Qty = selectedItem.prodQty; // Product Qty
-
-                    // Update The UI with the new Value
-                    // I USED DATABASE prodSRP AS A PRICE
-                    coSRP.Text = srp.ToString();
-                    // Some Example data
-                    coItem.Text = prodItem;
-                    coQty.Text = Qty.ToString(); // Product Qty
-                }
-            }
-            catch (Exception ex)
-            {
-                return;
-            }
-
-        }
-
-        // Remove Product to the listView
-        private void removeProduct_Click(object sender, RoutedEventArgs e)
-        {
-                // Get the  value on  the textBox first to subtract
-                int inputPriceToSubtract = Convert.ToInt32(coSRP.Text);
-                // Get the value of the total
-                int TotalInfo = Convert.ToInt32(pay_total.Text);
-                // Subtract the two value
-                int subtractTheValue = (TotalInfo - inputPriceToSubtract);
-                // Force the result to a absolute value or positive number
-                int difference = Math.Abs(subtractTheValue);
-                // Then Update the UI
-                pay_total.Text = difference.ToString();
-                // Remove Items from ListView And UPDATE the UI
-                listViewinVoice.Items.RemoveAt(listViewinVoice.SelectedIndex);
-        }
-
-        // IN OUR CASE INPUT THE BARCODE ON THE TEXTBOX 
-        // CHANGE THE CODE IF REAL SCANNER
-        // SCAN BARCODE FROM DATABASE
-        private void coBarCode_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (coBarCode.Text != "")
-            {
-                populateListView(); // Call the method 
-                coBarCode.Text = ""; // After adding a barcode set the textbox to empty again
-            }
-        }
-     
     }
 }

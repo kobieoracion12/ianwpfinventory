@@ -59,7 +59,7 @@
                 <Grid Grid.Column="0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" FontSize="10" Foreground="#b2b2b2" Margin="30 0 0 0"/>
-                        <DatePicker x:Name="sortCalendarFrom" BorderThickness="1" Padding="5" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" VerticalAlignment="Center" Background="White"/>
+                        <DatePicker x:Name="sortCalendarFrom" BorderThickness="1" Padding="5" Text="StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" VerticalAlignment="Center" Background="White"/>
                     </StackPanel>
                 </Grid>
 
