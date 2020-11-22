@@ -130,7 +130,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     pay_total.Text = Convert.ToString(total);
 
 
-
                     // Adds the data to the datasalesinventory
                     if (coSubtotal.Text.Length > 0)
                     {
