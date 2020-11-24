@@ -31,6 +31,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             overallSales();
             catchData();
             ordersCompleted();
+            topSelling();
         }
 
         public void catchData()
@@ -61,6 +62,21 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void topSelling()
+        {
+            conn.Close();
+            conn.Open();
+            string query = "SELECT prodItem, prodBought FROM datainventory ORDER BY prodBought DESC LIMIT 5";
+            conn.query(query);
+            conn.execute();
+            MySqlDataAdapter adapter = conn.adapter();
+            DataTable dt = new DataTable("datainventory");
+            adapter.Fill(dt);
+            listViewRanking.ItemsSource = dt.DefaultView;
+            adapter.Update(dt);
+            conn.Close();
         }
 
         // Generated Profit
@@ -104,7 +120,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             // Make sure Connection is Closed
             conn.Close();
             //  Command Database
-            string query = "SELECT SUM(salesTotal) FROM datasalesinventory";
+            string query = "SELECT SUM(payment_total) FROM sales_preview";
             conn.query(query);
 
             try

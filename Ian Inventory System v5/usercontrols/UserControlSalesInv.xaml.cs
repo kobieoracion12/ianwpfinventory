@@ -18,9 +18,6 @@ using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
-    /// <summary>
-    /// Interaction logic for UserControlSalesInv.xaml
-    /// </summary>
     public partial class UserControlSalesInv : UserControl
     {
         MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password='C73DPJxyXICd4Mjq'");

@@ -30,6 +30,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public int due = 0;
         public int paid = 0;
         public int tax = 0;
+        public int bought = 0;
         public string payMethod = "";
 
         public UserControlCheckout()
@@ -148,7 +149,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             if (entrySearch.Text.Length > 0)
             {
                 string search = entrySearch.Text;
-                string query = "SELECT prodItem, prodBrand, prodSRP, prodRP FROM datainventory WHERE prodNo= '" + search + "'";
+                string query = "SELECT prodItem, prodBrand, prodSRP, prodRP, prodBought FROM datainventory WHERE prodNo= '" + search + "'";
                 MySqlCommand cmd = new MySqlCommand(query, con);
                 con.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
@@ -158,6 +159,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     coBrand.Text = dr.GetValue(1).ToString();
                     coSRP.Text = dr.GetValue(2).ToString();
                     coRP.Text = dr.GetValue(3).ToString();
+                    coCurrent.Text = dr.GetValue(4).ToString();
                 }
                 else
                 {
@@ -176,13 +178,16 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                     int rp = Convert.ToInt32(coRP.Text);
                     int qty = Convert.ToInt32(coQty.Text);
+                    int cur = Convert.ToInt32(coCurrent.Text);
                     int sub = rp * qty;
 
                     total += vat + sub;
+                    bought = cur + qty;
 
                     coSubtotal.Text = Convert.ToString(sub);
                     pay_subtotal.Text = Convert.ToString(subtotal + sub);
                     pay_total.Text = Convert.ToString(total);
+                    coCurrentNew.Text = Convert.ToString(bought);
 
                     // Adds the data to the datasalesinventory
                     if (coSubtotal.Text.Length > 0)
@@ -203,10 +208,22 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             var cf = cmdd.ExecuteNonQuery();
                             if (cf == 1)
                             {
+                                try
+                                {
+                                    string ranking = "UPDATE datainventory SET prodBought = @bought  WHERE prodNo = @itemNo";
+                                    MySqlCommand cmddd = new MySqlCommand(ranking, con);
+
+                                    cmddd.Parameters.AddWithValue("@itemNo", entrySearch.Text);
+                                    cmddd.Parameters.AddWithValue("@bought", coCurrentNew.Text);
+                                    cmddd.ExecuteNonQuery();
+                                }
+                                catch (Exception x)
+                                {
+                                    MessageBox.Show(x.Message);
+                                }
                                 listViewinVoice.Items.Add(new invoiceClass.gg { salesNo = entrySearch.Text, salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString(), salesDate = DateTime.Now });
                                 clearPartial();
                             }
-
                         }
                         catch (Exception x)
                         {

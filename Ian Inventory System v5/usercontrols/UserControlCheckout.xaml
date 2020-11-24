@@ -38,6 +38,9 @@
                     <TextBox x:Name="coRP" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
                     <TextBox x:Name="coQty" IsReadOnly="True" Text="1" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
                     <TextBox x:Name="coSubtotal" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                    <TextBox x:Name="coCurrent" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                    <TextBox x:Name="coCurrentNew" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+
                 </StackPanel>
             </Grid>
         </Grid>
