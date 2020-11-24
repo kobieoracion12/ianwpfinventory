@@ -38,8 +38,6 @@
                     <TextBox x:Name="coRP" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
                     <TextBox x:Name="coQty" IsReadOnly="True" Text="1" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
                     <TextBox x:Name="coSubtotal" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
-                    <DatePicker x:Name="coDOP" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="100" Margin="20" Background="White"/>
-                    <Button Content="Delete" Background="#e86845" Margin="20 0 0 0" BorderBrush="#FFF75555" />
                 </StackPanel>
             </Grid>
         </Grid>
@@ -61,7 +59,7 @@
                     
 
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                        <Button Content="Void Entry" Background="#e86845" Margin="20 0 0 0" BorderBrush="#FFF75555" />
+                        <Button x:Name="voidEntry" Content="Void Entry" IsEnabled="False" Background="#e86845" Margin="20 0 0 0" BorderBrush="#FFF75555" Click="Button_Click" />
                         <Button Content="Delete Selection" Background="#e86845" Margin="20 0 20 0" BorderBrush="#FFF75555" />
                     </StackPanel>
 
@@ -77,7 +75,7 @@
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
                         <GridView.Columns>
-                            <GridViewColumn DisplayMemberBinding="{Binding refNo }" Header="#" Width="50"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding salesNo }" Header="#" Width="120"/>
                             <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="250" />
                             <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price" Width="70" />
                             <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Qty" Width="70"/>
@@ -107,8 +105,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="420*" />
-                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <!-- Left Side-->
@@ -179,7 +176,7 @@
                                 <StackPanel Orientation="Vertical">
                                     <TextBox x:Name="pay_subtotal" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
-                                    <TextBox x:Name="pay_discount" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
+                                    <TextBox x:Name="pay_discount" IsReadOnly="True" Text="0" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
                                     <TextBox x:Name="pay_total" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Right" FontWeight="Bold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
@@ -204,19 +201,9 @@
                                 </StackPanel>
                             </Grid>
                         </Grid>
-
-                        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                            <Grid>
-                                <Button Content="END SALE" Background="#A0EFD0" BorderBrush="#5BAF8E" Margin="15 0 15 0" IsEnabled="False" />
-                            </Grid>
-                        </Grid>
                     </Grid>
                 </Grid>
-
-
             </Grid>
         </Grid>
-
-
     </Grid>
 </UserControl>

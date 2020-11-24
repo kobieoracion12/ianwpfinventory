@@ -16,5 +16,21 @@ namespace NavigationDrawerPopUpMenu2.classes
         {
             get { return wcb.cashAmount.Text; }
         }
+
+
+        public class gg
+        {
+            public string salesNo { get; set; }
+
+            public string salesItem { get; set; }
+
+            public string salesRP { get; set; }
+
+            public string salesQty { get; set; }
+
+            public string salesTotal { get; set; }
+
+            public DateTime salesDate { get; set; }
+        }
     }
 }

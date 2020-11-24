@@ -17,15 +17,15 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/>
-            <RowDefinition Height="20*"/>
-            <RowDefinition Height="32*" />
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="50*" />
         </Grid.RowDefinitions>
 
         <!-- Daily Sales -->
-        <Grid Grid.Column="1" Grid.Row="0">
+        <Grid Grid.Column="3" Grid.Row="0">
             <Grid>
                 <!-- Rectangle Properties -->
                 <Rectangle Width="auto" Height="90" Margin="20" RadiusX="10" RadiusY="10" >
@@ -36,20 +36,20 @@
                             <GradientStop Color="#3BDABB" Offset="1.0" />
                         </LinearGradientBrush>
                     </Rectangle.Fill>
-                    
+
                     <!-- Rectangle Shadow -->
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                
+
                 <!-- Rectangle Content -->
                 <Grid Margin="25" Height="90">
                     <!-- Icon Handler -->
                     <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" >
                         <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#FDFEFF"/>
                     </Grid>
-                    
+
                     <!-- Text Handler -->
                     <TextBlock Text="Daily Sales" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="#FDFEFF"/>
                     <TextBlock x:Name="tb_todaySales" Text="$ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#FDFEFF"/>
@@ -60,7 +60,7 @@
         </Grid>
 
         <!-- Weekly Sales -->
-        <Grid Grid.Column="2" Grid.Row="0">
+        <Grid Grid.Column="4" Grid.Row="0">
             <Grid>
                 <!-- Rectangle Properties -->
                 <Rectangle Width="auto" Height="90" Margin="20" RadiusX="10" RadiusY="10" >
@@ -71,7 +71,7 @@
                             <GradientStop Color="#FFBB5B" Offset="1.0" />
                         </LinearGradientBrush>
                     </Rectangle.Fill>
-                    
+
                     <!-- Rectangle Shadow -->
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
@@ -95,7 +95,7 @@
         </Grid>
 
         <!-- Montly Sales -->
-        <Grid Grid.Column="3" Grid.Row="0">
+        <Grid Grid.Column="3" Grid.Row="1">
             <Grid>
                 <!-- Rectangle Properties -->
                 <Rectangle Width="auto" Height="90" Margin="20" RadiusX="10" RadiusY="10" >
@@ -119,7 +119,7 @@
                     <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center">
                         <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#FDFEFF"/>
                     </Grid>
-                    
+
                     <!-- Text Handler -->
                     <TextBlock Text="Monthly Sales" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="#FDFEFF"/>
                     <TextBlock x:Name="tb_monthlySales" Text="$ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#FDFEFF"/>
@@ -130,7 +130,7 @@
         </Grid>
 
         <!-- Annual Sales -->
-        <Grid Grid.Column="4" Grid.Row="0">
+        <Grid Grid.Column="4" Grid.Row="1">
             <Grid>
                 <!-- Rectangle Properties -->
                 <Rectangle Height="90" Margin="20" RadiusX="10" RadiusY="10" >
@@ -169,30 +169,47 @@
 
 
         <!-- Guage Statistics -->
-        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
-            <Rectangle Margin="20" RadiusX="10" RadiusY="10" Fill="White">
-                <Rectangle.Effect>
-                    <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-                </Rectangle.Effect>
-            </Rectangle>
+        <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="39*" />
+                <RowDefinition Height="425*" />
+            </Grid.RowDefinitions>
 
-            <Grid Margin="25">
-                <Grid>
-                    <Viewbox HorizontalAlignment="Left">
-                        <lvc:Gauge Margin="10 2 0 2" Uses360Mode="True" From="0" To="100" Value="50" />
-                    </Viewbox>
-                    <Viewbox HorizontalAlignment="Left">
-                        <TextBlock x:Name="tb_yearlySals" Text="$ 0.00" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" VerticalAlignment="Center" Margin="55 10 0 10" Foreground="Black"/>
-                    </Viewbox>
-                </Grid>
-
+            <Grid Grid.Row="0" Background="White">
+                <TextBlock  Margin="30 0 0 0" Text="Stocks Status" FontSize="18" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Center" Foreground="Black"/>
             </Grid>
+
+            <Grid Grid.Row="1">
+                <Rectangle  Margin="10" RadiusX="10" RadiusY="10" Fill="White" >
+                    <Rectangle.Effect>
+                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+
+                <Grid Margin="20">
+                    <Grid>
+                        <ListView x:Name="listViewStocks" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                            <ListView.View>
+                                <GridView AllowsColumnReorder="False">
+                                    <GridView.Columns>
+                                        <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="#" Width="120"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="260" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="65"/>
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Grid>
+                
+            </Grid>
+
         </Grid>
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
     </Grid>
 </UserControl>

@@ -23,6 +23,8 @@ namespace NavigationDrawerPopUpMenu2
         public MainWindow()
         {
             InitializeComponent();
+            UserControlDashboard usd = new UserControlDashboard();
+            GridMain.Children.Add(usd);
         }
         
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -67,6 +69,8 @@ namespace NavigationDrawerPopUpMenu2
                     this.Close();
                     break;
                 default:
+                    usc = new UserControlDashboard();
+                    GridMain.Children.Add(usc);
                     break;
             }
         }

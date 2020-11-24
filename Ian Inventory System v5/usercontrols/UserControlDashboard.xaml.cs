@@ -31,6 +31,37 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             weeklySales();
             monthlySales();
             yearlySales();
+            catchData();
+        }
+
+        public void catchData()
+        {
+            try
+            {
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT prodNo, prodItem, prodQty FROM datainventory ORDER BY prodQty DESC";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("datainventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewStocks.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+                // Close Connection
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // Daily Sales

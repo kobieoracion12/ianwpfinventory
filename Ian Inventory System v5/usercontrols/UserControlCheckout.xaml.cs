@@ -29,11 +29,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public int total = 0;
         public int due = 0;
         public int paid = 0;
+        public int tax = 0;
+        public string payMethod = "";
 
         public UserControlCheckout()
         {
             InitializeComponent();
-            fetchinVoice();
         }
 
         public UserControlCheckout(string value)
@@ -54,6 +55,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Add Cash
         private void cashButton_Click(object sender, RoutedEventArgs e)
         {
+            payMethod = "Cash";
             window_cashButton cf = new window_cashButton();
             cf.DataSent += Cf_DataSent; // Register the Event Handler - When this Event fired 'Cf_DataSent' will be called
             cf.ShowDialog();
@@ -67,34 +69,81 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             cashAmount.Text = Convert.ToString(paid);
             pay_paid.Text = Convert.ToString(paid);
 
-            pay_due.Text = Convert.ToString(paid - total);
-        }
+            due = paid - total;
+            pay_due.Text = Convert.ToString(due);
 
-        public void fetchinVoice()
-        {
             try
             {
-                conn.Open();
-                string query = "SELECT refNo, salesItem, salesRP, salesQty, salesTotal, salesDate FROM datasalesinventory ORDER BY refNo DESC";
-                conn.query(query);
-                conn.execute();
-                MySqlDataAdapter adapter = conn.adapter();
-                DataTable dt = new DataTable("datasalesinventory");
-                adapter.Fill(dt);
-                listViewinVoice.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-                conn.Close();
+                con.Open();
+                string query3 = "INSERT INTO sales_preview (payment_method, payment_vat, payment_total, payment_paid, payment_due, payment_date) VALUES (@method, @vat, @total, @paid, @due, @date)";
+                MySqlCommand cmddd = new MySqlCommand(query3, con);
+
+                cmddd.Parameters.AddWithValue("@method", payMethod);
+                cmddd.Parameters.AddWithValue("@vat", tax);
+                cmddd.Parameters.AddWithValue("@total", total);
+                cmddd.Parameters.AddWithValue("@paid", paid);
+                cmddd.Parameters.AddWithValue("@due", due);
+                cmddd.Parameters.AddWithValue("@date", DateTime.Now);
+                var cff = cmddd.ExecuteNonQuery();
+                if (cff == 1)
+                {
+                    MessageBox.Show("Success!");
+                    clearAll();
+                }
+                con.Close();
 
             }
-            catch (Exception ex)
+            catch (Exception x)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(x.Message);
+                clearPartial();
             }
         }
+
+        public void clearPartial()
+        {
+            entrySearch.Clear();
+            coItem.Clear();
+            coBrand.Clear();
+            coSRP.Clear();
+            coRP.Clear();
+        }
+
+        public void clearAll()
+        {
+
+            listViewinVoice.Items.Clear();
+            entrySearch.Clear();
+            coItem.Clear();
+            coBrand.Clear();
+            coSRP.Clear();
+            coRP.Clear();
+            coSubtotal.Clear();
+
+            pay_discount.Text = "0";
+            pay_subtotal.Text = "₱ 0.00";
+            pay_total.Text = "₱ 0.00";
+            pay_paid.Text = "₱ 0.00";
+            pay_due.Text = "₱ 0.00";
+
+            subtotal = 0;
+            vat = 0;
+            total = 0;
+            paid = 0;
+            due = 0;
+            cashAmount.Text = "₱ 0.00";
+
+            total = 0;
+
+            cashButton.IsEnabled = false;
+            voidEntry.IsEnabled = false;
+        }
+
 
         // Barcode Search Function
         private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
         {
+            con.Close();
             // Barcode Text Changed
             if (entrySearch.Text.Length > 0)
             {
@@ -103,21 +152,27 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MySqlCommand cmd = new MySqlCommand(query, con);
                 con.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
+                if (dr.Read())
                 {
                     coItem.Text = dr.GetValue(0).ToString();
                     coBrand.Text = dr.GetValue(1).ToString();
                     coSRP.Text = dr.GetValue(2).ToString();
                     coRP.Text = dr.GetValue(3).ToString();
                 }
+                else
+                {
+                    MessageBox.Show("Invalid Entry!");
+                    clearPartial();
+                }
 
                 // Closes the reader so the next query will work
                 dr.Close();
 
-                // Multiply the Price and Quantity
+                // Math Goes Here....
                 if (coRP.Text.Length > 0)
                 {
                     cashButton.IsEnabled = true;
+                    voidEntry.IsEnabled = true;
 
                     int rp = Convert.ToInt32(coRP.Text);
                     int qty = Convert.ToInt32(coQty.Text);
@@ -129,53 +184,49 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     pay_subtotal.Text = Convert.ToString(subtotal + sub);
                     pay_total.Text = Convert.ToString(total);
 
-
                     // Adds the data to the datasalesinventory
                     if (coSubtotal.Text.Length > 0)
                     {
                         try
                         {
-                            MySqlCommand insertQuery = new MySqlCommand();
-                            cmd.CommandText = "INSERT INTO datasalesinventory (salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate) VALUES (@coNo, @coIt, @coBr, @coSRPs, @coRPs, @coQtys, @coSub, @coDOPs);";
+                            string query2 = "INSERT INTO datasalesinventory (salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate) VALUES (@a, @b, @c, @d, @e, @f, @g, @h)";
+                            MySqlCommand cmdd = new MySqlCommand(query2, con);
 
-                            cmd.Parameters.AddWithValue("@coNo", entrySearch.Text);
-                            cmd.Parameters.AddWithValue("@coIt", coItem.Text);
-                            cmd.Parameters.AddWithValue("@coBr", coBrand.Text);
-                            cmd.Parameters.AddWithValue("@coSRPs", coSRP.Text);
-                            cmd.Parameters.AddWithValue("@coRPs", coRP.Text);
-                            cmd.Parameters.AddWithValue("@coQtys", coQty.Text);
-                            cmd.Parameters.AddWithValue("@coSub", coSubtotal.Text);
-
-                            string str = coDOP.Text;
-                            DateTime dt;
-                            dt = DateTime.Parse(str);
-
-                            cmd.Parameters.AddWithValue("@coDOPs", dt);
-                            int a = cmd.ExecuteNonQuery();
-
-                            // Checks if the data in successfuly stored
-                            if (a == 1)
+                            cmdd.Parameters.AddWithValue("@a", entrySearch.Text);
+                            cmdd.Parameters.AddWithValue("@b", coItem.Text);
+                            cmdd.Parameters.AddWithValue("@c", coBrand.Text);
+                            cmdd.Parameters.AddWithValue("@d", coSRP.Text);
+                            cmdd.Parameters.AddWithValue("@e", coRP.Text);
+                            cmdd.Parameters.AddWithValue("@f", coQty.Text);
+                            cmdd.Parameters.AddWithValue("@g", coSubtotal.Text);
+                            cmdd.Parameters.AddWithValue("@h", DateTime.Now);
+                            var cf = cmdd.ExecuteNonQuery();
+                            if (cf == 1)
                             {
-                                MessageBox.Show("Data added Sucessfully");
-                                fetchinVoice();
-                                entrySearch.Text = "";
+                                listViewinVoice.Items.Add(new invoiceClass.gg { salesNo = entrySearch.Text, salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString(), salesDate = DateTime.Now });
+                                clearPartial();
+                            }
 
-                            }
-                            else
-                            {
-                                MessageBox.Show("Invalid Entry!");
-                                entrySearch.Text = "";
-                            }
                         }
                         catch (Exception x)
                         {
                             MessageBox.Show(x.Message);
+                            clearPartial();
                         }
                     }
                 }
                 con.Close();
             }
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var ans = MessageBox.Show("Are you sure you want to void?", "Void", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (ans == MessageBoxResult.Yes)
+            {
+                clearAll();
+            }
         }
     }
 }
