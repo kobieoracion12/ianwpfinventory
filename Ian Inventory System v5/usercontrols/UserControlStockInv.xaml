@@ -53,7 +53,8 @@
                         <Button x:Name="addItem" Content="Add Item" Margin="5 0 5 0" Background="#54B971" BorderBrush="#FF2CAE26" Click="addItem_Click"/>
                         <Button x:Name="editItem" Content="Edit" Margin="5 0 5 0" Background="#5C9EF4" Click="editItem_Click" />
                         <Button x:Name="deleteItem" Content="Delete" Margin="5 0 5 0" Background="#E86845" BorderBrush="#FFFF6C6C" Click="deleteItem_Click"/>
-                        <Button x:Name="refreshItem" Content="Refresh" Margin="5 0 5 0" Background="#FFE8DB45" BorderBrush="#FFC9E424" Click="refreshItem_Click"/>
+                        <Button x:Name="sortRestock" Content="Restock" Margin="5 0 5 0" Background="#54B971" BorderBrush="#FF2CAE26" Click="sortRestock_Click" />
+
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -110,8 +111,8 @@
                 <!-- Buttons -->
                 <Grid Grid.Column="3">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <Button x:Name="sortButton" Content="Filter" Width="110" Margin="15 0 15 0" Click="sortButton_Click" />
-                        <Button x:Name="sortRestock" Content="Restock" Width="110" Background="#54B971" BorderBrush="#FF2CAE26" Margin="0 0 15 0" Click="sortRestock_Click" />
+                        <Button x:Name="sortButton" Content="Filter" Width="100" Margin="15 0 15 0" Click="sortButton_Click" />
+                        <Button x:Name="refreshItem" Content="Refresh" Width="100" Margin="0 0 15 0" Background="#FFE8DB45" BorderBrush="#FFC9E424" Click="refreshItem_Click"/>
                     </StackPanel>
                 </Grid>
             </Grid>
