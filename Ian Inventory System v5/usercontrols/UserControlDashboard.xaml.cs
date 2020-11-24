@@ -27,11 +27,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public UserControlDashboard()
         {
             InitializeComponent();
-            dailySales();
-            weeklySales();
-            monthlySales();
-            yearlySales();
+            genProfit();
+            overallSales();
             catchData();
+            ordersCompleted();
         }
 
         public void catchData()
@@ -64,13 +63,13 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Daily Sales
-        private void dailySales()
+        // Generated Profit
+        private void genProfit()
         {
             // Make sure Connection is Closed
             conn.Close();
             //  Command Database
-            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE DATE(salesDate) = CURDATE()";
+            string query = "SELECT SUM(salesRP) - SUM(salesSRP) FROM datasalesinventory";
             conn.query(query);
             try
             {
@@ -81,10 +80,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                 if (dr.Read())
                 {
-                    tb_todaySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
-                    if (tb_todaySales.Text == "₱ .00")
+                    tb_profitSales.Text = "₱ " + dr.GetValue(0).ToString();
+                    if (tb_profitSales.Text == "₱ .00")
                     {
-                        tb_todaySales.Text = "₱ 0.00";
+                        tb_profitSales.Text = "₱ 0.00";
                     }
                 }
 
@@ -98,45 +97,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         }
 
-        // Weekly Sales
-        private void weeklySales()
+        
+        // Overall Sales 
+        private void overallSales()
         {
             // Make sure Connection is Closed
             conn.Close();
             //  Command Database
-            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE salesDate >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY AND salesDate < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY";
-            conn.query(query);
-            try
-            {
-                // Open Connection
-                conn.Open();
-                // Execute 
-                MySqlDataReader dr = conn.read();
-
-                if (dr.Read())
-                {
-                    tb_weeklySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
-                    if (tb_weeklySales.Text == "₱ .00")
-                    {
-                        tb_weeklySales.Text = "₱ 0.00";
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            
-        }
-
-        // Montly Sales 
-        private void monthlySales()
-        {
-            // Make sure Connection is Closed
-            conn.Close();
-            //  Command Database
-            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE MONTH(salesDate) = MONTH(CURRENT_TIMESTAMP) AND YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
+            string query = "SELECT SUM(salesTotal) FROM datasalesinventory";
             conn.query(query);
 
             try
@@ -147,10 +115,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MySqlDataReader dr = conn.read();
                 if (dr.Read())
                 {
-                    tb_monthlySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
-                    if (tb_monthlySales.Text == "₱ .00")
+                    tb_overallSales.Text = "₱ " + dr.GetValue(0).ToString();
+                    if (tb_overallSales.Text == "₱ .00")
                     {
-                        tb_monthlySales.Text = "₱ 0.00";
+                        tb_overallSales.Text = "₱ 0.00";
                     }
                 }
                 conn.Close();
@@ -161,13 +129,13 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Yearly Sales 
-        private void yearlySales()
+        // Orders Completed
+        private void ordersCompleted()
         {
             // Make sure Connection is Closed
             conn.Close();
             //  Command Database
-            string query = "SELECT SUM(salesTotal) FROM datasalesinventory WHERE YEAR(salesDate) = YEAR(CURRENT_TIMESTAMP)";
+            string query = "SELECT SUM(salesQty) FROM datasalesinventory";
             conn.query(query);
 
             try
@@ -178,11 +146,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MySqlDataReader dr = conn.read();
                 if (dr.Read())
                 {
-                    tb_yearlySales.Text = "₱ " + dr.GetValue(0).ToString() + ".00";
-                    if (tb_yearlySales.Text == "₱ .00")
-                    {
-                        tb_yearlySales.Text = "₱ 0.00";
-                    }
+                    ordersCom1.Text = dr.GetValue(0).ToString();
+                    ordersCom2.Text = dr.GetValue(0).ToString();
                 }
                 conn.Close();
             }
@@ -191,5 +156,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show(x.Message);
             }
         }
+
     }
 }

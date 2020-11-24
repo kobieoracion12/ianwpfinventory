@@ -19,164 +19,75 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="50*" />
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="70*"/>
+
+            <RowDefinition Height="201*" />
         </Grid.RowDefinitions>
 
-        <!-- Daily Sales -->
-        <Grid Grid.Column="3" Grid.Row="0">
-            <Grid>
-                <!-- Rectangle Properties -->
-                <Rectangle Width="auto" Height="90" Margin="20" RadiusX="10" RadiusY="10" >
-                    <!-- Gradient Fill -->
-                    <Rectangle.Fill>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#51A2FF" Offset="0.0" />
-                            <GradientStop Color="#3BDABB" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Rectangle.Fill>
+        <!-- Sales Reports -->
+        <Grid Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240*" />
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="240*" />
+            </Grid.ColumnDefinitions>
 
-                    <!-- Rectangle Shadow -->
+            <Grid Grid.ColumnSpan="3">
+                <Rectangle Height="110" RadiusX="10" RadiusY="10" Margin="5" Fill="White" >
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>
                 </Rectangle>
+            </Grid>
 
+            <Grid Grid.Column="0">
                 <!-- Rectangle Content -->
-                <Grid Margin="25" Height="90">
+                <Grid Grid.Column="0" Margin="20" Height="100">
                     <!-- Icon Handler -->
                     <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" >
-                        <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#FDFEFF"/>
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#54B971"/>
                     </Grid>
 
                     <!-- Text Handler -->
-                    <TextBlock Text="Daily Sales" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="#FDFEFF"/>
-                    <TextBlock x:Name="tb_todaySales" Text="$ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#FDFEFF"/>
-                    <TextBlock Text="Orders Completed" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Margin="10" Foreground="#FDFEFF"/>
-                    <TextBlock Text="0" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="#FDFEFF"/>
+                    <TextBlock Text="Generated Profit" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="Black"/>
+                    <TextBlock x:Name="tb_profitSales" Text="₱ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#54B971"/>
+                    <TextBlock Text="Orders Completed" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Margin="10" Foreground="Black"/>
+                    <TextBlock x:Name="ordersCom1" Text="0" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="Black"/>
                 </Grid>
             </Grid>
-        </Grid>
 
-        <!-- Weekly Sales -->
-        <Grid Grid.Column="4" Grid.Row="0">
-            <Grid>
-                <!-- Rectangle Properties -->
-                <Rectangle Width="auto" Height="90" Margin="20" RadiusX="10" RadiusY="10" >
-                    <!-- Gradient Fill -->
-                    <Rectangle.Fill>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#3BDABB" Offset="0.0" />
-                            <GradientStop Color="#FFBB5B" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Rectangle.Fill>
+            <Grid Grid.Column="1">
+                <Rectangle HorizontalAlignment="Center" Stroke="#F0F0F3" Height="95"/>
+            </Grid>
 
-                    <!-- Rectangle Shadow -->
-                    <Rectangle.Effect>
-                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-                    </Rectangle.Effect>
-                </Rectangle>
-
+            <Grid Grid.Column="2">
                 <!-- Rectangle Content -->
-                <Grid Margin="25" Height="90">
+                <Grid Grid.Column="0" Margin="20" Height="100">
                     <!-- Icon Handler -->
-                    <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#FDFEFF"/>
+                    <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" >
+                        <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#FFBB5B"/>
                     </Grid>
 
                     <!-- Text Handler -->
-                    <TextBlock Text="Weekly Sales" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="#FDFEFF"/>
-                    <TextBlock x:Name="tb_weeklySales" Text="$ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#FDFEFF"/>
-                    <TextBlock Text="Orders Completed" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Margin="10" Foreground="#FDFEFF"/>
-                    <TextBlock Text="0" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="#FDFEFF"/>
+                    <TextBlock Text="Overall Sales" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="Black"/>
+                    <TextBlock x:Name="tb_overallSales" Text="₱ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#FFBB5B"/>
+                    <TextBlock Text="Orders Completed" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Margin="10" Foreground="Black"/>
+                    <TextBlock x:Name="ordersCom2" Text="0" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="Black"/>
                 </Grid>
             </Grid>
         </Grid>
 
-        <!-- Montly Sales -->
-        <Grid Grid.Column="3" Grid.Row="1">
-            <Grid>
-                <!-- Rectangle Properties -->
-                <Rectangle Width="auto" Height="90" Margin="20" RadiusX="10" RadiusY="10" >
-                    <!-- Gradient Fill -->
-                    <Rectangle.Fill>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#FF5A75" Offset="0.0" />
-                            <GradientStop Color="#FFC776" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Rectangle.Fill>
-
-                    <!-- Rectangle Shadow -->
-                    <Rectangle.Effect>
-                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-                    </Rectangle.Effect>
-                </Rectangle>
-
-                <!-- Rectangle Content -->
-                <Grid Margin="25" Height="90">
-                    <!-- Icon Handler -->
-                    <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#FDFEFF"/>
-                    </Grid>
-
-                    <!-- Text Handler -->
-                    <TextBlock Text="Monthly Sales" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="#FDFEFF"/>
-                    <TextBlock x:Name="tb_monthlySales" Text="$ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#FDFEFF"/>
-                    <TextBlock Text="Orders Completed" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Margin="10" Foreground="#FDFEFF"/>
-                    <TextBlock Text="0" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="#FDFEFF"/>
-                </Grid>
-            </Grid>
-        </Grid>
-
-        <!-- Annual Sales -->
-        <Grid Grid.Column="4" Grid.Row="1">
-            <Grid>
-                <!-- Rectangle Properties -->
-                <Rectangle Height="90" Margin="20" RadiusX="10" RadiusY="10" >
-                    <!-- Gradient Fill -->
-                    <Rectangle.Fill>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#FF5A75" Offset="0.0" />
-                            <GradientStop Color="#51A2FF" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Rectangle.Fill>
-
-                    <!-- Rectangle Shadow -->
-                    <Rectangle.Effect>
-                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-                    </Rectangle.Effect>
-                </Rectangle>
-
-                <!-- Rectangle Content -->
-                <Grid Margin="25" Height="90">
-                    <Grid>
-                        <!-- Icon Handler -->
-                        <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#FDFEFF"/>
-                        </Grid>
-
-                        <!-- Text Handler -->
-                        <TextBlock Text="Annual Sales" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="#FDFEFF"/>
-                        <TextBlock x:Name="tb_yearlySales" Text="$ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#FDFEFF"/>
-                        <TextBlock Text="Orders Completed" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Margin="10" Foreground="#FDFEFF"/>
-                        <TextBlock Text="0" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="#FDFEFF"/>
-
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Grid>
-
-
-        <!-- Guage Statistics -->
+        <!-- Stock Status -->
         <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="39*" />
                 <RowDefinition Height="425*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Background="White">
-                <TextBlock  Margin="30 0 0 0" Text="Stocks Status" FontSize="18" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Center" Foreground="Black"/>
+            <Grid Grid.Row="0">
+                <Rectangle Fill="White" />
+                <TextBlock  Margin="20 30 0 0" Text="Stocks Status" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Center" Foreground="Black"/>
             </Grid>
 
             <Grid Grid.Row="1">
@@ -201,7 +112,7 @@
                         </ListView>
                     </Grid>
                 </Grid>
-                
+
             </Grid>
 
         </Grid>
