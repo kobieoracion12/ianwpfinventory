@@ -203,6 +203,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             var cf = cmdd.ExecuteNonQuery();
                             if (cf == 1)
                             {
+                                string subtractStocks = "UPDATE datainventory SET (prodQty) VALUES (@a)";
+                                MySqlCommand subStock = new MySqlCommand(subtractStocks, con);
+
+                                subStock.Parameters.AddWithValue("@a", entrySearch.Text);
+                                subStock.ExecuteNonQuery();
+
                                 listViewinVoice.Items.Add(new invoiceClass.gg { salesNo = entrySearch.Text, salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString(), salesDate = DateTime.Now });
                                 clearPartial();
                             }

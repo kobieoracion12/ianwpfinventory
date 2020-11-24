@@ -54,13 +54,12 @@
                 <Grid Margin="80 10 0 10">
                     <Label Content="Enter Entry:" Margin="23 10 0 0"/>
                     <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <TextBox x:Name="entrySearch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="250" Margin="20 25 20 20" Background="White" TextChanged="entrySearch_TextChanged" />
+                        <TextBox x:Name="entrySearch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="350" Margin="20 25 20 20" Background="White" TextChanged="entrySearch_TextChanged" />
                     </Viewbox>
                     
 
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                        <Button x:Name="voidEntry" Content="Void Entry" IsEnabled="False" Background="#e86845" Margin="20 0 0 0" BorderBrush="#FFF75555" Click="Button_Click" />
-                        <Button Content="Delete Selection" Background="#e86845" Margin="20 0 20 0" BorderBrush="#FFF75555" />
+                        <Button x:Name="voidEntry" Content="Void Entry" IsEnabled="False" Background="#e86845" Margin="20 0 40 0" BorderBrush="#FFF75555" Click="Button_Click" />
                     </StackPanel>
 
                 </Grid>
