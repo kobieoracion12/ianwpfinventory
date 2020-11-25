@@ -57,14 +57,14 @@
                                 <TextBlock Text="Please login so we can continue our business." FontFamily="Microsoft Tai Le" FontWeight="Regular" FontSize="10" Foreground="#08234B"/>
                             </StackPanel>
 
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                                 <!-- Username -->
                                 <Label Content="Username"/>
                                 <TextBox x:Name="tbUsername" Height="30" BorderBrush="#EDEFF3" BorderThickness="1"/>
 
                                 <!-- Password -->
                                 <Label Content="Password" Margin="0 20 0 0"/>
-                                <PasswordBox x:Name="tbPassword" Height="30" Width="300" BorderBrush="#EDEFF3" BorderThickness="1"/>
+                                <PasswordBox x:Name="tbPassword" Height="30" BorderBrush="#EDEFF3" BorderThickness="1"/>
 
                                 <!-- Buttons -->
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

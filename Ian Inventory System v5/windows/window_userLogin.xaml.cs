@@ -30,30 +30,17 @@ namespace NavigationDrawerPopUpMenu2.windows
         Database conn = new Database();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string query = "SELECT COUNT(1) FROM userinventory WHERE userName=@username AND userPass=@password";
+            conn.query(query);
             try
             {
                 conn.Open();
-                string query = "SELECT COUNT(1) FROM userinventory WHERE userName=@username AND userPass=@password";
-                conn.query(query);
+                conn.bind("@username", tbUsername.Text);
+                conn.bind("@password", tbPassword.Password);
+                conn.cmd().Prepare();
+                
 
-                cmd.Parameters.AddWithValue("@username", tbUsername.Text);
-                cmd.Parameters.AddWithValue("@password", tbPassword.Password);
-                cmd.Connection = con;
-
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                if (count == 1)
-                {
-                    MessageBox.Show("Login Success!");
-                    MainWindow main = new MainWindow();
-                    main.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Username or Password is incorrect");
-                }
-
-                con.Close();
+                conn.Close();
             }
             catch (Exception x)
             {

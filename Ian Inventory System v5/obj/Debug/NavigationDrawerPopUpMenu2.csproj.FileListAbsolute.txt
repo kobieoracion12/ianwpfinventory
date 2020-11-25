@@ -133,3 +133,15 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\Cloned Inve
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\Cloned Inventory\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.g.resources
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\Cloned Inventory\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.Properties.Resources.resources
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\Cloned Inventory\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_dashboard.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_window.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_addUsers.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_addUsers.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_dashboard.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_window.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_businessInfo.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_personalInfo.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_businessInfo.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_personalInfo.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_create.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_create.baml

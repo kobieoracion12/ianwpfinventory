@@ -72,6 +72,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="admin\admin_create.xaml.cs">
+      <DependentUpon>admin_create.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin_usercontrols\admin_businessInfo.xaml.cs">
+      <DependentUpon>admin_businessInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin_usercontrols\admin_personalInfo.xaml.cs">
+      <DependentUpon>admin_personalInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin_usercontrols\admin_addUsers.xaml.cs">
+      <DependentUpon>admin_addUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin_usercontrols\admin_dashboard.xaml.cs">
+      <DependentUpon>admin_dashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin_window.xaml.cs">
+      <DependentUpon>admin_window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="classes\checkOutClass.cs" />
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\invoiceClass.cs" />
@@ -123,6 +141,30 @@
     <Compile Include="windows\window_userLogin.xaml.cs">
       <DependentUpon>window_userLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="admin\admin_create.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\admin_usercontrols\admin_businessInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\admin_usercontrols\admin_personalInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\admin_usercontrols\admin_addUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\admin_usercontrols\admin_dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admin\admin_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="main Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,8 +280,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="assets\" />
+    <None Include="assets\pos_image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
