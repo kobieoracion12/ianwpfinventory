@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
+using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
@@ -21,21 +22,19 @@ namespace NavigationDrawerPopUpMenu2.windows
     /// </summary>
     public partial class window_userLogin : Window
     {
-        MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
-
         public window_userLogin()
         {
             InitializeComponent();
         }
 
-
+        Database conn = new Database();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.CommandText = "SELECT COUNT(1) FROM userinventory WHERE userName=@username AND userPass=@password";
+                conn.Open();
+                string query = "SELECT COUNT(1) FROM userinventory WHERE userName=@username AND userPass=@password";
+                conn.query(query);
 
                 cmd.Parameters.AddWithValue("@username", tbUsername.Text);
                 cmd.Parameters.AddWithValue("@password", tbPassword.Password);

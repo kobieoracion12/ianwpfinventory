@@ -54,7 +54,7 @@ namespace NavigationDrawerPopUpMenu2 {
             _contentLoaded = true;
             
             #line 5 "..\..\App.xaml"
-            this.StartupUri = new System.Uri("MainWindow.xaml", System.UriKind.Relative);
+            this.StartupUri = new System.Uri("window_userLogin.xaml", System.UriKind.Relative);
             
             #line default
             #line hidden

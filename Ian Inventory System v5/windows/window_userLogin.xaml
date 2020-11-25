@@ -10,48 +10,76 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-
-        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+        <Grid Grid.Column="0">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/assets/pos_image.jpg" Stretch="UniformToFill"/>
+                </Grid.Background>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="195*"/>
+                    <RowDefinition Height="50*"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal">
-                    <Border Background="AliceBlue" CornerRadius="20" Margin="50" Opacity="10">
-                    <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Margin="30">
-                            <materialDesign:PackIcon Kind="AccountCircle" Foreground="#7B7873" HorizontalAlignment="Center" Width="50" Height="50"/>
-                            <TextBlock Text="LOGIN" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="25" Foreground="#7B7873" HorizontalAlignment="Center" Padding="0 20 0 20"/>
-                        <TextBlock Text="USERNAME" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="15" Foreground="#7B7873"/>
-                        <TextBox x:Name="tbUsername" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
-                        <TextBlock Text="PASSWORD" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="15" Foreground="#7B7873" Margin="0 10 0 0"/>
-                        <PasswordBox x:Name="tbPassword" BorderThickness="1" FontSize="20" Background="#FFFFFF" Width="340" Margin="5" />
-                        <Button x:Name="loginButton" Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}" Margin="10" Click="Button_Click" />
-                    </StackPanel>
-                    </Border>
-                </StackPanel>
+                <Grid Grid.Row="0">
+                    <Grid Margin="10">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <!-- Login Column -->
+                <Grid Grid.Row="1">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="276*"/>
+                            <ColumnDefinition Width="60*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Main -->
+                        <Grid Grid.Column="1">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <TextBlock Text="Welcome Back!" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#08234B"/>
+                                <TextBlock Text="Please login so we can continue our business." FontFamily="Microsoft Tai Le" FontWeight="Regular" FontSize="10" Foreground="#08234B"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <!-- Username -->
+                                <Label Content="Username"/>
+                                <TextBox x:Name="tbUsername" Height="30" BorderBrush="#EDEFF3" BorderThickness="1"/>
+
+                                <!-- Password -->
+                                <Label Content="Password" Margin="0 20 0 0"/>
+                                <PasswordBox x:Name="tbPassword" Height="30" Width="300" BorderBrush="#EDEFF3" BorderThickness="1"/>
+
+                                <!-- Buttons -->
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button x:Name="loginButton" Content="Login" Width="auto" Margin="0 30 10 20" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}" />
+                                    <Button x:Name="exitButton" Content="Exit" Width="auto" Margin="0 30 10 20" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                        
+                    </Grid>
+                </Grid>
+
+
             </Grid>
-        </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>
