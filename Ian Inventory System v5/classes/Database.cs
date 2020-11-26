@@ -25,7 +25,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         public Database()
         {
             // Init Connection
-            this.conn = new MySqlConnection($"datasource = {DB_SERVER}; port = {DB_PORT}; username = {DB_USER}; password = {DB_PASS}; database = {DB_NAME};");
+            this.conn = new MySqlConnection($"datasource = {DB_SERVER}; port = {DB_PORT}; username = {DB_USER}; password = {DB_PASS}; database = {DB_NAME};Convert Zero Datetime=True");
         }
 
         // Query a SQL Statement
@@ -54,6 +54,12 @@ namespace NavigationDrawerPopUpMenu2.classes
         public MySqlDataReader read()
         {
             return this.reader = this.commandDatabase.ExecuteReader();
+        }
+
+        // Execute Scalar
+        public object scalar()
+        {
+            return this.commandDatabase.ExecuteScalar();
         }
 
         // Sql Adapter

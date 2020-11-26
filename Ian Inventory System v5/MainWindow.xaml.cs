@@ -63,7 +63,7 @@ namespace NavigationDrawerPopUpMenu2
                     GridMain.Children.Add(usc);
                     break;
                 case "logoutButton":
-                    MessageBox.Show("Logout Success!");
+                    MessageBox.Show("Logout Success!", "Logout", MessageBoxButton.OK, MessageBoxImage.Information);
                     window_userLogin userLogin = new window_userLogin();
                     userLogin.Show();
                     this.Close();

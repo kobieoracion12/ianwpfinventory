@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
       <Private>True</Private>
@@ -90,6 +94,7 @@
     <Compile Include="admin\admin_window.xaml.cs">
       <DependentUpon>admin_window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="classes\Authentication.cs" />
     <Compile Include="classes\checkOutClass.cs" />
     <Compile Include="classes\clientInfo.cs" />
     <Compile Include="classes\Database.cs" />

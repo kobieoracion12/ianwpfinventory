@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
 using NavigationDrawerPopUpMenu2.classes;
+using NavigationDrawerPopUpMenu2.admin;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
@@ -28,25 +29,67 @@ namespace NavigationDrawerPopUpMenu2.windows
         }
 
         Database conn = new Database();
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string query = "SELECT COUNT(1) FROM userinventory WHERE userName=@username AND userPass=@password";
-            conn.query(query);
-            try
-            {
-                conn.Open();
-                conn.bind("@username", tbUsername.Text);
-                conn.bind("@password", tbPassword.Password);
-                conn.cmd().Prepare();
-                
 
-                conn.Close();
-            }
-            catch (Exception x)
+        // Login
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            string username = txtUsername.Text;
+            string pwd = txtPassword.Password;
+            // Call Auth Class
+            Authentication auth = new Authentication(username, pwd);
+
+            if (auth.isEmpty())
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show("Fields cannot be empty", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {   // Check if username in database
+                if (auth.checkUsername())
+                {
+                    // If Password is Correct
+                    if (auth.checkUserPassword())
+                    {
+                        string userPrev = auth.getUserPrevilages(); // Users Previleges
+                        if (userPrev.Equals("Admin"))
+                        { // Go to Admin Dashboard
+                            admin_window adminDashboard = new admin_window();
+                            adminDashboard.Show(); // Show Dashboard
+                            this.Close(); // Close Login
+                        }
+                        else if (userPrev.Equals("Users"))
+                        { // Go to Users Dashboard
+                            MainWindow usersDashbord = new MainWindow();
+                            usersDashbord.Show(); // Show Dashboard
+                            this.Close(); // Close Login
+                        }
+                        else
+                        {   // IF Something Went Wrong // Error
+                            MessageBox.Show("Something went wrong, Please try again later", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                    else
+                    {
+                        // Wrong Pass
+                        MessageBox.Show("Invalid Username or Password", "Notice", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {   // No user 
+                    MessageBox.Show("Invalid Username or Password", "Notice", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
+        
+
+        // Exit Program
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Environment.Exit(0); // Exit program
+            }
+        }
     }
 }

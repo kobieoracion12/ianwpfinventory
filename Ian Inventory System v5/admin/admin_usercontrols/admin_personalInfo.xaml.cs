@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,12 @@ using MySql.Data.MySqlClient;
 
 namespace NavigationDrawerPopUpMenu2.admin
 {
+
     public partial class admin_personalInfo : UserControl
     {
         Database conn = new Database();
         clientInfo clientInfo = new clientInfo();
+        
         public admin_personalInfo()
         {
             InitializeComponent();
@@ -81,15 +84,30 @@ namespace NavigationDrawerPopUpMenu2.admin
 
         private void piNextButton_Click(object sender, RoutedEventArgs e)
         {
+            // TextBoxes
+            string username = userName.Text;
+            string password = passWord.Password;
+            string privilege = accPrivilege.Text;
+
+            // Call Auth Class
+            Authentication auth = new Authentication(username, password);
+
             if (accNumber.Text == "" || lastName.Text == "" || firstName.Text == "" || userName.Text == "" || passWord.Password == "" || accPrivilege.Text == "")
             {
-                MessageBox.Show("Please Complete the Form");
+                MessageBox.Show("Please Complete the Form", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else if (auth.checkUsername()) // Check if username exist
+            {
+                MessageBox.Show("Username already exists", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
                 clientInfo.acc_number = Convert.ToInt64(accNumber.Text);
                 clientInfo.first_name = firstName.Text;
                 clientInfo.last_name = lastName.Text;
+
+                // Add User
+                auth.addUser(privilege);
 
                 tabControlMain.SelectedIndex++;
             }
@@ -112,12 +130,13 @@ namespace NavigationDrawerPopUpMenu2.admin
                 clientInfo.buss_zipcode = Convert.ToInt32(accZipcode.Text);
 
                 clientInfo.registerClient();
-                MessageBox.Show("Data Added!");
+                MessageBox.Show("Data Added", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 clientInfo.Clear();
                 ClearTextbox();
 
                 tabControlMain.SelectedIndex--;
             }
         }
+
     }
 }
