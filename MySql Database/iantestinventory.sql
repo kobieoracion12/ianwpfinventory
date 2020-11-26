@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2020 at 06:26 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Nov 26, 2020 at 10:03 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -47,7 +48,8 @@ CREATE TABLE `client_information` (
 
 INSERT INTO `client_information` (`accNo`, `firstName`, `lastName`, `bussName`, `bussBranch`, `bussType`, `bussTown`, `bussProvince`, `bussCountry`, `bussZipcode`, `accCreated`) VALUES
 (6560234550, 'Kobie', 'Oracion', 'Kobie Computer Shop', 'Luisiana Branch', 'Computer Cafe', 'Luisiana', 'Laguna', 'Philippines', 4032, '0000-00-00 00:00:00'),
-(6643053270, 'Kobie ', 'Oracion', 'Miras Music Studio INC.', 'Cavinti Branch', 'Music Studio', 'Cavinti', 'Laguna', 'Philippines', 4022, '0000-00-00 00:00:00');
+(6643053270, 'Kobie ', 'Oracion', 'Miras Music Studio INC.', 'Cavinti Branch', 'Music Studio', 'Cavinti', 'Laguna', 'Philippines', 4022, '0000-00-00 00:00:00'),
+(8417643240, 'Robert', 'Miras', 'Team Freelance', 'Cavinti Branch', 'Freelance', 'Cavinti', 'Laguna', 'PH', 3014, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -377,29 +379,6 @@ INSERT INTO `sales_preview` (`ref#`, `payment_method`, `payment_vat`, `payment_t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userinventory`
---
-
-CREATE TABLE `userinventory` (
-  `userNo.` int(11) NOT NULL,
-  `userName` varchar(12) NOT NULL,
-  `userPass` varchar(12) NOT NULL,
-  `userPrivilages` int(11) NOT NULL,
-  `userTimein` datetime NOT NULL,
-  `userTimeout` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `userinventory`
---
-
-INSERT INTO `userinventory` (`userNo.`, `userName`, `userPass`, `userPrivilages`, `userTimein`, `userTimeout`) VALUES
-(1, 'Nefarry1', 'aislife22', 1, '2020-10-29 00:00:00', '2020-10-29 00:00:00'),
-(2, 'adminkobs', 'dikoalam', 1, '2020-11-11 12:04:06', '2020-11-19 12:04:06');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `usersinventory`
 --
 
@@ -407,17 +386,18 @@ CREATE TABLE `usersinventory` (
   `usersId` int(11) NOT NULL,
   `usersName` varchar(30) NOT NULL,
   `usersPass` text NOT NULL,
-  `usersPrevilages` int(11) NOT NULL,
-  `usersTimein` datetime NOT NULL,
-  `usersTimeout` datetime NOT NULL
+  `usersPrevileges` varchar(5) NOT NULL,
+  `usersTimein` datetime DEFAULT NULL,
+  `usersTimeout` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `usersinventory`
 --
 
-INSERT INTO `usersinventory` (`usersId`, `usersName`, `usersPass`, `usersPrevilages`, `usersTimein`, `usersTimeout`) VALUES
-(1, 'adminkobs', 'kobieoracion', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `usersinventory` (`usersId`, `usersName`, `usersPass`, `usersPrevileges`, `usersTimein`, `usersTimeout`) VALUES
+(5, 'admin', '$2a$10$tihqjhR7FWrfOijOCCBDl.0uXzlOkT2WrnDKQSk0s6XJ1QxelvTHq', 'Admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'user', '$2a$10$xjyzdSJIt6cfi39A.1cDx..QNWJwl9oH5F8UjQLhG/Hh.uw6cR3p.', 'Users', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -473,7 +453,7 @@ ALTER TABLE `sales_preview`
 -- AUTO_INCREMENT for table `usersinventory`
 --
 ALTER TABLE `usersinventory`
-  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
