@@ -34,7 +34,7 @@
 
                     <ListViewItem x:Name="businessInfo" Height="60" IsEnabled="False">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Business Info" FontSize="15" VerticalAlignment="Center" Margin="10 10"/>
+                            <TextBlock x:Name="bisInfo" Text="Business Info" FontSize="15" VerticalAlignment="Center" Margin="10 10"/>
                         </StackPanel>
                     </ListViewItem>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2020 at 03:48 AM
+-- Generation Time: Nov 26, 2020 at 06:26 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `iantestinventory`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client_information`
+--
+
+CREATE TABLE `client_information` (
+  `accNo` bigint(10) NOT NULL,
+  `firstName` varchar(249) NOT NULL,
+  `lastName` varchar(249) NOT NULL,
+  `bussName` varchar(249) NOT NULL,
+  `bussBranch` varchar(249) NOT NULL,
+  `bussType` varchar(249) NOT NULL,
+  `bussTown` varchar(249) NOT NULL,
+  `bussProvince` varchar(249) NOT NULL,
+  `bussCountry` varchar(249) NOT NULL,
+  `bussZipcode` int(249) NOT NULL,
+  `accCreated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `client_information`
+--
+
+INSERT INTO `client_information` (`accNo`, `firstName`, `lastName`, `bussName`, `bussBranch`, `bussType`, `bussTown`, `bussProvince`, `bussCountry`, `bussZipcode`, `accCreated`) VALUES
+(6560234550, 'Kobie', 'Oracion', 'Kobie Computer Shop', 'Luisiana Branch', 'Computer Cafe', 'Luisiana', 'Laguna', 'Philippines', 4032, '0000-00-00 00:00:00'),
+(6643053270, 'Kobie ', 'Oracion', 'Miras Music Studio INC.', 'Cavinti Branch', 'Music Studio', 'Cavinti', 'Laguna', 'Philippines', 4022, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -369,9 +397,37 @@ INSERT INTO `userinventory` (`userNo.`, `userName`, `userPass`, `userPrivilages`
 (1, 'Nefarry1', 'aislife22', 1, '2020-10-29 00:00:00', '2020-10-29 00:00:00'),
 (2, 'adminkobs', 'dikoalam', 1, '2020-11-11 12:04:06', '2020-11-19 12:04:06');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usersinventory`
+--
+
+CREATE TABLE `usersinventory` (
+  `usersId` int(11) NOT NULL,
+  `usersName` varchar(30) NOT NULL,
+  `usersPass` text NOT NULL,
+  `usersPrevilages` int(11) NOT NULL,
+  `usersTimein` datetime NOT NULL,
+  `usersTimeout` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `usersinventory`
+--
+
+INSERT INTO `usersinventory` (`usersId`, `usersName`, `usersPass`, `usersPrevilages`, `usersTimein`, `usersTimeout`) VALUES
+(1, 'adminkobs', 'kobieoracion', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `client_information`
+--
+ALTER TABLE `client_information`
+  ADD UNIQUE KEY `AccNumber` (`accNo`);
 
 --
 -- Indexes for table `datainventory`
@@ -392,6 +448,12 @@ ALTER TABLE `sales_preview`
   ADD UNIQUE KEY `salesReference` (`ref#`);
 
 --
+-- Indexes for table `usersinventory`
+--
+ALTER TABLE `usersinventory`
+  ADD PRIMARY KEY (`usersId`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -406,6 +468,12 @@ ALTER TABLE `datasalesinventory`
 --
 ALTER TABLE `sales_preview`
   MODIFY `ref#` int(249) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `usersinventory`
+--
+ALTER TABLE `usersinventory`
+  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

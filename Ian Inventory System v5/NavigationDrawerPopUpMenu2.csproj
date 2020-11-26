@@ -91,6 +91,7 @@
       <DependentUpon>admin_window.xaml</DependentUpon>
     </Compile>
     <Compile Include="classes\checkOutClass.cs" />
+    <Compile Include="classes\clientInfo.cs" />
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\invoiceClass.cs" />
     <Compile Include="classes\Product.cs" />

@@ -35,6 +35,7 @@ namespace NavigationDrawerPopUpMenu2.admin
         {
             username = userName.Text;
             password = passWord.Password;
+            privilege = accPrivilege.Text;
 
             string query = "INSERT INTO usersinventory (usersName, usersPass, usersPrevilages) VALUES (@username, @password, @privilege)";
             conn.query(query);
