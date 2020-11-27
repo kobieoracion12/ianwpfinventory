@@ -75,7 +75,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
             try
             {
-                con.Open();
                 string payment = "INSERT INTO sales_preview (payment_method, payment_vat, payment_total, payment_paid, payment_due, payment_date) VALUES (@method, @vat, @total, @paid, @due, @date)";
                 MySqlCommand cmddd = new MySqlCommand(payment, con);
 
@@ -156,9 +155,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             entrySearch.IsReadOnly = false;
         }
 
-
         // Barcode Search Function
-        private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
             con.Close();
             // Barcode Text Changed
@@ -185,7 +183,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         // Closes the reader so the next query will work
                         dr.Close();
                         Compute();
-                    } 
+                    }
                     else
                     {
                         MessageBox.Show("Item Out of Stock!");
@@ -195,8 +193,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Entry!");
-                    clearPartial();
+                    MessageBox.Show("Invalid Entry");
                 }
             }
         }
@@ -204,7 +201,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Computes Recieved Data from Barcode
         public void Compute()
         {
-            
             // Math Goes Here....
             if (coRP.Text.Length > 0)
             {
@@ -248,6 +244,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         {
                             try
                             {
+                                conn.Open();
                                 string ranking = "UPDATE datainventory SET prodBought = @bought WHERE prodNo = @itemNo";
                                 MySqlCommand cmddd = new MySqlCommand(ranking, con);
 
@@ -261,7 +258,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                                     try
                                     {
-                                        conn.Open();
                                         conn.bind("@rm", coRemStocks.Text);
                                         conn.bind("@itemNo", entrySearch.Text);
                                         conn.cmd().Prepare();
@@ -308,5 +304,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 clearAll();
             }
         }
+
     }
 }

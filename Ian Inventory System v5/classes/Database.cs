@@ -41,7 +41,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         }
 
         // Bind paremeters
-        public void bind(string parameterName, string paramValue) {
+        public void bind(string parameterName, object paramValue) {
             this.commandDatabase.Parameters.AddWithValue(parameterName, paramValue);
         }
 

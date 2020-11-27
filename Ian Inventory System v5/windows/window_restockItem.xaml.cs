@@ -20,73 +20,81 @@ namespace NavigationDrawerPopUpMenu2.windows
 {
     public partial class window_restockItem : Window
     {
-        MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
         Database conn = new Database();
         public window_restockItem()
         {
             InitializeComponent();
         }
 
-        private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
+        // Barcode Scanner
+        private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (entrySearch.Text.Length > 0)
             {
                 string search = entrySearch.Text;
-
-                DataTable dt = new DataTable();
-                con.Open();
-                MySqlDataReader myReader = null;
-                MySqlCommand myCommand = new MySqlCommand("SELECT * FROM datainventory WHERE prodNo= '" + search + "'", con);
-
-                myReader = myCommand.ExecuteReader();
-
-                if (myReader.HasRows)
+                string scan = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodDOA, prodEXPD FROM datainventory WHERE prodNo= '" + search + "'";
+                conn.query(scan);
+                try
                 {
-                    while (myReader.Read())
+                    conn.Open();
+                    MySqlDataReader reader = conn.read();
+                    if (reader.Read())
                     {
-                        restockItem.Text = (myReader["prodItem"].ToString());
-                        restockBrand.Text = (myReader["prodBrand"].ToString());
-                        onrestockQty.Text = (myReader["prodQty"].ToString());
-                        restockSRP.Text = (myReader["prodSRP"].ToString());
-                        restockRP.Text = (myReader["prodRP"].ToString());
-                        restockEXPD.Text = (myReader["prodEXPD"].ToString());
+                        string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7) };
+                        restockItem.Text = row[0]; 
+                        restockBrand.Text = row[1]; 
+                        onrestockQty.Text = row[2]; 
+                        restockSRP.Text = row[4];
+                        restockRP.Text = row[5];
+                        restockDOA.Text = row[6]; 
+                        restockEXPD.Text = row[7]; 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error");
+                        entrySearch.Text = "";
                     }
                 }
-                else
+                catch (Exception x)
                 {
-                    MessageBox.Show("Invalid Entry!");
-                    entrySearch.Text = "";
+                    MessageBox.Show(x.Message);
                 }
-                
-                con.Close();
+
+                conn.Close();
+            }
+            else
+            {
+                return;
             }
         }
+
 
         private void submitBrand_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                con.Open();
-                using (MySqlCommand cmd = new MySqlCommand("UPDATE datainventory SET prodItem = @Itm, prodBrand = @Brnd, prodItem = @Itm, prodQty = @Qty, prodSRP = @SRP, prodRP = @RP, prodDOA = @DOA, prodEXPD = @EXPD WHERE prodNo = @No", con))
+                string restock = "UPDATE datainventory SET prodItem = @Itm, prodBrand = @Brnd, prodItem = @Itm, prodQty = @Qty, prodSRP = @SRP, prodRP = @RP, prodDOA = @DOA, prodEXPD = @EXPD WHERE prodNo = @No";
+                conn.query(restock);
+
+                try
                 {
-                    cmd.Parameters.AddWithValue("@No", entrySearch.Text);
-                    cmd.Parameters.AddWithValue("@Itm", restockItem.Text);
-                    cmd.Parameters.AddWithValue("@Brnd", restockBrand.Text);
-                    cmd.Parameters.AddWithValue("@Qty", restockQty.Text);
-                    cmd.Parameters.AddWithValue("@SRP", restockSRP.Text);
-                    cmd.Parameters.AddWithValue("@RP", restockRP.Text);
-                    cmd.Parameters.AddWithValue("@DOA", DateTime.Now);
+                    conn.Open();
+                    conn.bind("@No", entrySearch.Text);
+                    conn.bind("@Itm", restockItem.Text);
+                    conn.bind("@Brnd", restockBrand.Text);
+                    conn.bind("@Qty", restockQty.Text);
+                    conn.bind("@SRP", restockSRP.Text);
+                    conn.bind("@RP", restockRP.Text);
+                    conn.bind("@DOA", DateTime.Now);
 
-                    string str = restockEXPD.Text;
-                    DateTime dt;
-                    dt = DateTime.Parse(str);
-
-                    cmd.Parameters.AddWithValue("@EXPD", dt);
-                    cmd.Connection = con;
-                    int a = cmd.ExecuteNonQuery();
-                    if (a == 1)
+                    string date = restockEXPD.Text;
+                    DateTime dateTime;
+                    dateTime = DateTime.Parse(date);
+                    conn.bind("@EXPD", dateTime);
+                    var check = conn.execute();
+                    if (check == 1)
                     {
-                        MessageBox.Show("Stocks Updated!");
+                        MessageBox.Show("Data Updated!");
                         restockItem.Text = "";
                         restockBrand.Text = "";
                         restockQty.Text = "";
@@ -95,23 +103,23 @@ namespace NavigationDrawerPopUpMenu2.windows
                         restockDOA.Text = "";
                         restockEXPD.Text = "";
                     }
-                    con.Close();
-
-                    UserControlInventory uci = new UserControlInventory();
-                    uci.catchData();
-                    this.Close();
+                    conn.Close();
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
                 }
             }
-            catch (Exception ex)
+            catch (Exception x)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(x.Message);
             }
 
         }
-
         private void submitCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
     }
 }

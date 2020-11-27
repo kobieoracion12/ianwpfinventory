@@ -30,7 +30,7 @@
 
                 <Grid Margin="10">
                     <Label Content="Product Entry:" Margin="20 10 0 0"/>
-                    <TextBox x:Name="entrySearch" Text="{Binding MyText}" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="40"  Margin="25 20 25 0" Background="White" TextChanged="entrySearch_TextChanged"/>
+                    <TextBox x:Name="entrySearch" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="40"  Margin="25 20 25 0" Background="White" KeyDown="entrySearch_KeyDown"/>
                 </Grid>
             </Grid>
         </Grid>
