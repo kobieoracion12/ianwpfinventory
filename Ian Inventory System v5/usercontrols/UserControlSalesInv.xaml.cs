@@ -50,6 +50,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 adapter.Fill(dt);
                 listViewSales.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
+
+                adapter.Dispose(); // Dispose Adapter
                 // Close Connection
                 conn.Close();
 
@@ -75,12 +77,17 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 {
                     this.sortBrand.Items.Add(drd.GetString(0).ToString());
                 }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
+
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
             }
-            conn.Close();
+            
         }
 
         // Sort|Filter Button
@@ -121,7 +128,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     adapter.Fill(dt);  // Fill the datatable with data
                     listViewSales.ItemsSource = dt.DefaultView;
                     adapter.Update(dt);
-                    conn.Close(); // Clone Connection
+
+                    adapter.Dispose(); // Dispose Adapter
+                    conn.Close(); // Close Connection
                 }
                 catch (Exception x)
                 {
@@ -164,6 +173,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 adapter.Fill(dt);
                 listViewSales.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
+
+                adapter.Dispose(); // Dispose Adapter
                 // Close Connection
                 conn.Close();
 

@@ -54,6 +54,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 adapter.Fill(dt);
                 listViewStocks.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
+
+                adapter.Dispose();  // Dispose Adapter
                 // Close Connection
                 conn.Close();
 
@@ -76,6 +78,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             adapter.Fill(dt);
             listViewRanking.ItemsSource = dt.DefaultView;
             adapter.Update(dt);
+
+            adapter.Dispose(); // Dispose Adapter
             conn.Close();
         }
 
@@ -103,6 +107,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     }
                 }
 
+                dr.Close();// ReaderClose
+                dr.Dispose(); // Reader Dispose
                 // Close the connection
                 conn.Close();
             }
@@ -136,6 +142,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tb_overallSales.Text = "₱ 0.00";
                     }
                 }
+
+                dr.Close();// ReaderClose
+                dr.Dispose(); // Reader Dispose
                 conn.Close();
             }
             catch (Exception x)
@@ -164,6 +173,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     ordersCom1.Text = dr.GetValue(0).ToString();
                     ordersCom2.Text = dr.GetValue(0).ToString();
                 }
+
+                dr.Close();// ReaderClose
+                dr.Dispose(); // Reader Dispose
                 conn.Close();
             }
             catch (Exception x)

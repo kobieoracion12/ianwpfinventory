@@ -68,6 +68,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                     editProdRP.Text = row[5]; // Product RP
                 }
 
+                reader.Close();
+                reader.Dispose();
                 conn.Close(); // Close Connection
 
             }

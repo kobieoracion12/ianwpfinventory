@@ -54,13 +54,15 @@ namespace NavigationDrawerPopUpMenu2.windows
                         MessageBox.Show("Error");
                         entrySearch.Text = "";
                     }
+
+                    reader.Close();
+                    reader.Dispose();
+                    conn.Close();
                 }
                 catch (Exception x)
                 {
                     MessageBox.Show(x.Message);
                 }
-
-                conn.Close();
             }
             else
             {

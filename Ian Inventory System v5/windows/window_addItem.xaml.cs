@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
 using NavigationDrawerPopUpMenu2;
+using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
@@ -27,7 +28,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         private void addItemSubmit_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password=''");
+            Database con = new Database();
             try
             {
                 if (tbProdNo.Text == "")
@@ -65,24 +66,24 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 else
                 {
                     con.Open();
-                    MySqlCommand cmd = new MySqlCommand();
-                    cmd.CommandText = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pdoa, @pexpd);";
+                    string query = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pdoa, @pexpd);";
 
-                    cmd.Parameters.AddWithValue("@pn", tbProdNo.Text);
-                    cmd.Parameters.AddWithValue("@pi", tbProdItem.Text);
-                    cmd.Parameters.AddWithValue("@pb", tbProdBrand.Text);
-                    cmd.Parameters.AddWithValue("@py", tbProdQty.Text);
-                    cmd.Parameters.AddWithValue("@pp", tbProdSRP.Text);
-                    cmd.Parameters.AddWithValue("@pq", tbProdRP.Text);
+                    con.query(query);
+
+                    con.bind("@pn", tbProdNo.Text);
+                    con.bind("@pi", tbProdItem.Text);
+                    con.bind("@pb", tbProdBrand.Text);
+                    con.bind("@py", tbProdQty.Text);
+                    con.bind("@pp", tbProdSRP.Text);
+                    con.bind("@pq", tbProdRP.Text);
 
                     string str = tbProdEXPD.Text;
-                    DateTime dt;
-                    dt = DateTime.Parse(str);
+                    DateTime dt = DateTime.Parse(str);
 
-                    cmd.Parameters.AddWithValue("@pdoa", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@pexpd", dt);
-                    cmd.Connection = con;
-                    int a = cmd.ExecuteNonQuery();
+                    con.bind("@pdoa", DateTime.Now);
+                    con.bind("@pexpd", dt);
+                    int a = con.execute();
+
                     if (a == 1)
                     {
                         MessageBox.Show("Data added Sucessfully");

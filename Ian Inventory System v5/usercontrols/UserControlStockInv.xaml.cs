@@ -54,6 +54,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 adapter.Fill(dt);
                 listViewInventory.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
+
+                adapter.Dispose(); // Dispose Adapter
                 // Close Connection
                 conn.Close();
 
@@ -104,12 +106,16 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 {
                     this.sortBrand.Items.Add(drd.GetString(0).ToString());
                 }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
             }
-            conn.Close();
+            
         }
 
         private void refreshItem_Click(object sender, RoutedEventArgs e)
@@ -205,6 +211,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 adapter.Fill(dt);
                 listViewInventory.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
+
+                adapter.Dispose(); //  Dispose Adapter
                 // Close Connection
                 conn.Close();
                 // Empty the search box
@@ -243,7 +251,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 adapter.Fill(dt);
                 listViewInventory.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
-                conn.Close();
+                adapter.Dispose(); // Dispose Adapter
+                conn.Close();   // Close Connection
             }
             catch (Exception x)
             {
