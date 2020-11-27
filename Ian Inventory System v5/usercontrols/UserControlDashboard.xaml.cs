@@ -68,7 +68,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             conn.Close();
             conn.Open();
-            string query = "SELECT prodItem, prodBought FROM datainventory ORDER BY prodBought DESC LIMIT 5";
+            string query = "SELECT prodItem, prodBought FROM datainventory ORDER BY prodBought DESC LIMIT 6";
             conn.query(query);
             conn.execute();
             MySqlDataAdapter adapter = conn.adapter();

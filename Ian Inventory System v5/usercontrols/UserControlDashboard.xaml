@@ -19,21 +19,13 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="70*"/>
-
-            <RowDefinition Height="201*" />
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="190*"/>
+            <RowDefinition Height="169*" />
+            <RowDefinition Height="169*" />
+            <RowDefinition Height="240*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="1" Grid.ColumnSpan="4">
-            <Grid>
-                <Grid Grid.Row="0">
-                    <Rectangle Fill="White" />
-                    <TextBlock  Margin="20 0 0 10" Text="Stocks Status" FontSize="15" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Foreground="Black"/>
-                </Grid>
-            </Grid>
-        </Grid>
-        
         <!-- Sales Reports -->
         <Grid Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -88,13 +80,8 @@
         </Grid>
 
         <!-- Stock Status -->
-        <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="39*" />
-                <RowDefinition Height="425*" />
-            </Grid.RowDefinitions>
-
-            <Grid Grid.Row="1" Margin="10">
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3">
+            <Grid Grid.Row="1">
                 <Rectangle  Margin="10" RadiusX="10" RadiusY="10" Fill="White" >
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
@@ -102,45 +89,49 @@
                 </Rectangle>
 
                 <Grid Margin="20">
-                    <Grid>
-                        <ListView x:Name="listViewStocks" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <StackPanel>
+                        <TextBlock Text="Top Selling Items" FontSize="15" FontFamily="Segoe UI Bold" TextAlignment="Center" VerticalAlignment="Top" Margin="10" Foreground="Black"/>
+                        <Rectangle HorizontalAlignment="Center" Stroke="#F0F0F3" Width="450" />
+
+                        <ListView x:Name="listViewRanking" Margin="0 10 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridView.Columns>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="#" Width="120"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="260" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="65"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding prodBought }" Header="Purchases" Width="100"/>
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                    </Grid>
+
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Grid>
 
         <!-- Top Selling Items -->
-        <Grid Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2">
+        <Grid Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3">
             <Grid>
                 <Rectangle  Margin="10" RadiusX="10" RadiusY="10" Fill="White" >
-                <Rectangle.Effect>
-                    <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-                </Rectangle.Effect>
+                    <Rectangle.Effect>
+                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
+                    </Rectangle.Effect>
                 </Rectangle>
             </Grid>
 
             <!-- ListView -->
             <Grid Margin="20">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock x:Name="ordrsCom1" Text="Top Selling Items" FontSize="15" FontFamily="Segoe UI Bold" TextAlignment="Center" VerticalAlignment="Top" Margin="10" Foreground="Black"/>
+                <StackPanel Orientation="Vertical" ScrollViewer.CanContentScroll="True">
+                    <TextBlock Text="Stocks Status" FontSize="15" FontFamily="Segoe UI Bold" TextAlignment="Center" VerticalAlignment="Top" Margin="10" Foreground="Black"/>
                     <Rectangle HorizontalAlignment="Center" Stroke="#F0F0F3" Width="450" />
 
-                    <ListView x:Name="listViewRanking" Margin="0 10 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <ListView x:Name="listViewStocks" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <GridView.Columns>
+                                    <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="#" Width="120"/>
                                     <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="260" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding prodBought }" Header="Purchases" Width="100"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="65"/>
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>

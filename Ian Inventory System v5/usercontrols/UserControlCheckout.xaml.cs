@@ -198,8 +198,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     MessageBox.Show("Invalid Entry!");
                     clearPartial();
                 }
-
-                
             }
         }
 
