@@ -29,7 +29,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Barcode Scanner
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (entrySearch.Text.Length > 0)
+            if (e.Key == Key.Return)
             {
                 string search = entrySearch.Text;
                 string scan = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodDOA, prodEXPD FROM datainventory WHERE prodNo= '" + search + "'";
@@ -40,14 +40,14 @@ namespace NavigationDrawerPopUpMenu2.windows
                     MySqlDataReader reader = conn.read();
                     if (reader.Read())
                     {
-                        string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7) };
+                        string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6)};
                         restockItem.Text = row[0]; 
                         restockBrand.Text = row[1]; 
                         onrestockQty.Text = row[2]; 
-                        restockSRP.Text = row[4];
-                        restockRP.Text = row[5];
-                        restockDOA.Text = row[6]; 
-                        restockEXPD.Text = row[7]; 
+                        restockSRP.Text = row[3];
+                        restockRP.Text = row[4];
+                        restockDOA.Text = row[5]; 
+                        restockEXPD.Text = row[6]; 
                     }
                     else
 

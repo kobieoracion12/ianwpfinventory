@@ -158,8 +158,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Barcode Search Function
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
-            // Barcode Text Changed
-            if (entrySearch.Text.Length == 13)
+            if (e.Key == Key.Return)
             {
                 con.Close();
                 string search = entrySearch.Text;
@@ -194,8 +193,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 else
                 {
                     MessageBox.Show("Invalid Entry");
+                    clearPartial();
                 }
             }
+            
         }
 
         // Computes Recieved Data from Barcode
@@ -274,6 +275,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             {
                                 MessageBox.Show(x.Message);
                             }
+
                             listViewinVoice.Items.Add(new invoiceClass.gg { salesNo = entrySearch.Text, salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString(), salesDate = DateTime.Now });
                             clearPartial();
                         }

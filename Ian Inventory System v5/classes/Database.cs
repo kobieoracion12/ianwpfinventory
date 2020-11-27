@@ -21,6 +21,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         private MySqlCommand commandDatabase;
         private MySqlDataReader reader;
         private MySqlDataAdapter adp;
+        private object ver;
 
         public Database()
         {
