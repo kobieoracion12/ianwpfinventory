@@ -48,6 +48,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         // Check username
         public Boolean checkUsername()
         {
+            bool isTrue = false;
             try
             {
                 DataTable table = new DataTable();
@@ -65,18 +66,23 @@ namespace NavigationDrawerPopUpMenu2.classes
 
                 if (table.Rows.Count > 0) // Users Found
                 {
-                    return true;
+                    isTrue = true;
                 }
                 else
                 { // No Users Found
-                    return false;
+                    isTrue = false;
                 }
+
+                adapter.Dispose(); // Dispose Adapter
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                isTrue =  false;
             }
+            
+            return isTrue;
+
         }
         // Add User
         public void addUser(string privilege)
@@ -134,6 +140,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                     previleges = read["usersPrevileges"].ToString();
                 }
                 read.Close();
+                read.Dispose();
                 conn.Close();
             }
             catch (Exception ex)
@@ -162,6 +169,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                     pass = read["usersPass"].ToString();
                 }
                 read.Close();
+                read.Dispose();
                 conn.Close();
             }
             catch (Exception ex)
