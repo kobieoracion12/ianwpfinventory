@@ -158,10 +158,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Barcode Search Function
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
-            con.Close();
             // Barcode Text Changed
-            if (entrySearch.Text.Length > 0)
+            if (entrySearch.Text.Length == 13)
             {
+                con.Close();
                 string search = entrySearch.Text;
                 string query = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodBought FROM datainventory WHERE prodNo= '" + search + "'";
                 MySqlCommand cmd = new MySqlCommand(query, con);

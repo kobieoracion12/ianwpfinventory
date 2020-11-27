@@ -74,7 +74,6 @@
 
         <!-- Checkout List -->
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80 0 0 10" Background="#ffffff">
-            <Viewbox  HorizontalAlignment="Stretch" VerticalAlignment="Top" >
                 <ListView x:Name="listViewinVoice" SelectionMode="Single">
                     <ListView.View>
                         <GridView AllowsColumnReorder="False">
@@ -89,7 +88,6 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-            </Viewbox>
         </Grid>
 
 

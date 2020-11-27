@@ -50,6 +50,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                         restockEXPD.Text = row[7]; 
                     }
                     else
+
                     {
                         MessageBox.Show("Error");
                         entrySearch.Text = "";
