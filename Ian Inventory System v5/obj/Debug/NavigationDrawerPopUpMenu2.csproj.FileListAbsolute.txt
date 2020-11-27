@@ -226,3 +226,5 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POST_PROJEC
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POST_PROJECT\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POST_PROJECT\ianwpfinventory\Ian Inventory System v5\bin\Debug\BCrypt.Net.dll
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POST_PROJECT\ianwpfinventory\Ian Inventory System v5\bin\Debug\BCrypt.Net.xml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\BCrypt.Net.dll
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\BCrypt.Net.xml

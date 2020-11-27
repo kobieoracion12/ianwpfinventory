@@ -112,7 +112,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
 
         }
-
         
         // Overall Sales 
         private void overallSales()

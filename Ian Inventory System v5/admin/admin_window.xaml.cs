@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using NavigationDrawerPopUpMenu2.admin.admin_usercontrols;
+using NavigationDrawerPopUpMenu2.windows;
 
 namespace NavigationDrawerPopUpMenu2.admin
 {
@@ -53,6 +54,12 @@ namespace NavigationDrawerPopUpMenu2.admin
                 case "manageAcc":
                     usc = new admin_addUsers();
                     GridMain.Children.Add(usc);
+                    break;
+                case "logoutButton":
+                    MessageBox.Show("Logout Success!", "Logout", MessageBoxButton.OK, MessageBoxImage.Information);
+                    window_userLogin userLogin = new window_userLogin();
+                    userLogin.Show();
+                    this.Close();
                     break;
             }
         }

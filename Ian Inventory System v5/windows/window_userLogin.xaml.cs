@@ -18,9 +18,6 @@ using NavigationDrawerPopUpMenu2.admin;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
-    /// <summary>
-    /// Interaction logic for window_userLogin.xaml
-    /// </summary>
     public partial class window_userLogin : Window
     {
         public window_userLogin()
@@ -30,10 +27,8 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         Database conn = new Database();
 
-        // Login
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        public void Login()
         {
-
             string username = txtUsername.Text;
             string pwd = txtPassword.Password;
             // Call Auth Class
@@ -81,6 +76,13 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
         }
 
+
+        // Login Button
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            Login();
+        }
+
         
 
         // Exit Program
@@ -89,6 +91,14 @@ namespace NavigationDrawerPopUpMenu2.windows
             if (MessageBox.Show("Are you sure you want to exit?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Environment.Exit(0); // Exit program
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Login();
             }
         }
     }

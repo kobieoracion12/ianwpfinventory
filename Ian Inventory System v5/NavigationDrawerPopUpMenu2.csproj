@@ -95,11 +95,12 @@
       <DependentUpon>admin_window.xaml</DependentUpon>
     </Compile>
     <Compile Include="classes\Authentication.cs" />
-    <Compile Include="classes\checkOutClass.cs" />
+    <Compile Include="classes\Checkout.cs" />
     <Compile Include="classes\clientInfo.cs" />
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\invoiceClass.cs" />
     <Compile Include="classes\Product.cs" />
+    <Compile Include="classes\StocksCheck.cs" />
     <Compile Include="iantestinventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -286,7 +287,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="assets\pos_image2.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="assets\pos_image.jpg" />
   </ItemGroup>
