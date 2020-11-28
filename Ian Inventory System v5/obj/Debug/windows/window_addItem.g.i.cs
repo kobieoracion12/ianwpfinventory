@@ -41,7 +41,15 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
     public partial class window_addItem : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 69 "..\..\..\windows\window_addItem.xaml"
+        #line 25 "..\..\..\windows\window_addItem.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox checker;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 76 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tbProdNo;
         
@@ -49,7 +57,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 72 "..\..\..\windows\window_addItem.xaml"
+        #line 79 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tbProdItem;
         
@@ -57,7 +65,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 75 "..\..\..\windows\window_addItem.xaml"
+        #line 82 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tbProdBrand;
         
@@ -65,7 +73,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 78 "..\..\..\windows\window_addItem.xaml"
+        #line 85 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tbProdQty;
         
@@ -73,7 +81,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 81 "..\..\..\windows\window_addItem.xaml"
+        #line 88 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tbProdSRP;
         
@@ -81,7 +89,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 84 "..\..\..\windows\window_addItem.xaml"
+        #line 91 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tbProdRP;
         
@@ -89,7 +97,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 87 "..\..\..\windows\window_addItem.xaml"
+        #line 94 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.DatePicker tbProdDOA;
         
@@ -97,7 +105,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 90 "..\..\..\windows\window_addItem.xaml"
+        #line 97 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.DatePicker tbProdEXPD;
         
@@ -105,7 +113,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 96 "..\..\..\windows\window_addItem.xaml"
+        #line 103 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button addItemSubmit;
         
@@ -113,7 +121,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
         #line hidden
         
         
-        #line 99 "..\..\..\windows\window_addItem.xaml"
+        #line 106 "..\..\..\windows\window_addItem.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button addItemCancel;
         
@@ -151,42 +159,45 @@ namespace NavigationDrawerPopUpMenu2.usercontrols {
             switch (connectionId)
             {
             case 1:
-            this.tbProdNo = ((System.Windows.Controls.TextBox)(target));
+            this.checker = ((System.Windows.Controls.TextBox)(target));
             return;
             case 2:
-            this.tbProdItem = ((System.Windows.Controls.TextBox)(target));
+            this.tbProdNo = ((System.Windows.Controls.TextBox)(target));
             return;
             case 3:
-            this.tbProdBrand = ((System.Windows.Controls.TextBox)(target));
+            this.tbProdItem = ((System.Windows.Controls.TextBox)(target));
             return;
             case 4:
-            this.tbProdQty = ((System.Windows.Controls.TextBox)(target));
+            this.tbProdBrand = ((System.Windows.Controls.TextBox)(target));
             return;
             case 5:
-            this.tbProdSRP = ((System.Windows.Controls.TextBox)(target));
+            this.tbProdQty = ((System.Windows.Controls.TextBox)(target));
             return;
             case 6:
-            this.tbProdRP = ((System.Windows.Controls.TextBox)(target));
+            this.tbProdSRP = ((System.Windows.Controls.TextBox)(target));
             return;
             case 7:
-            this.tbProdDOA = ((System.Windows.Controls.DatePicker)(target));
+            this.tbProdRP = ((System.Windows.Controls.TextBox)(target));
             return;
             case 8:
-            this.tbProdEXPD = ((System.Windows.Controls.DatePicker)(target));
+            this.tbProdDOA = ((System.Windows.Controls.DatePicker)(target));
             return;
             case 9:
+            this.tbProdEXPD = ((System.Windows.Controls.DatePicker)(target));
+            return;
+            case 10:
             this.addItemSubmit = ((System.Windows.Controls.Button)(target));
             
-            #line 96 "..\..\..\windows\window_addItem.xaml"
+            #line 103 "..\..\..\windows\window_addItem.xaml"
             this.addItemSubmit.Click += new System.Windows.RoutedEventHandler(this.addItemSubmit_Click);
             
             #line default
             #line hidden
             return;
-            case 10:
+            case 11:
             this.addItemCancel = ((System.Windows.Controls.Button)(target));
             
-            #line 99 "..\..\..\windows\window_addItem.xaml"
+            #line 106 "..\..\..\windows\window_addItem.xaml"
             this.addItemCancel.Click += new System.Windows.RoutedEventHandler(this.addItemCancel_Click);
             
             #line default
