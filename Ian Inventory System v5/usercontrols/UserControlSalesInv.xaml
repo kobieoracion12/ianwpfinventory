@@ -36,6 +36,8 @@
                             </StackPanel>
                         </Border>
                         <Rectangle VerticalAlignment="Stretch" Stroke="#b2b2b2" Margin="50 0 0 0"/>
+                        <!-- Export Data to PDF Button -->
+                        <Button x:Name="exportData" Content="Clear Data" Width="110" Background="#ffb200" Margin="0 0 15 0" Click="exportData_Click"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -102,7 +104,7 @@
                 <Grid Grid.Column="3">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
                         <Button x:Name="sortButton" Content="Sort" Width="110" Margin="15 0 15 0" Click="sortButton_Click"/>
-                        <Button x:Name="sortClear" Content="Clear" Width="110" Background="#e86845" Margin="0 0 15 0" Click="sortClear_Click"/>
+                        <Button x:Name="sortClear" Content="Refresh" Width="110" Background="#e86845" Margin="0 0 15 0" Click="sortClear_Click"/>
                     </StackPanel>
                 </Grid>
 
