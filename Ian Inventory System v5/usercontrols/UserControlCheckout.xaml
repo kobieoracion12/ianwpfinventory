@@ -61,7 +61,6 @@
                         <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="20" Height="50" MinWidth="500" Margin="20 25 20 20" Background="White" KeyDown="entrySearch_KeyDown"/>
                     </Viewbox>
 
-
                     <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                         <Button x:Name="voidEntry" Content="Void Entry" IsEnabled="False" Background="#e86845" Margin="20 0 40 0" BorderBrush="#FFF75555" Click="Button_Click" />
                     </StackPanel>
@@ -116,14 +115,38 @@
                         <Grid Grid.Column="0" >
                             <Grid>
                                 <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="Subtotal"  FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10"/>
+                                    <Viewbox Stretch="Uniform">
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock Text="Subtotal"  FontWeight="SemiBold" FontSize="12" Foreground="Black" Margin="10"/>
+                                        </Canvas>
+                                    </Viewbox>
+                                    
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
-                                    <TextBlock Text="VAT" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10"/>
+                                    
+                                    <Viewbox Stretch="Uniform">
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock Text="VAT" FontWeight="SemiBold" FontSize="12" Foreground="Black" Margin="10"/>
+                                        </Canvas>
+                                    </Viewbox>
+                                    
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
-                                    <TextBlock Text="Total" FontWeight="SemiBold" FontSize="13" Foreground="#E86845" Margin="10" />
+
+                                    <Viewbox Stretch="Uniform" >
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock Text="Total" FontWeight="SemiBold" FontSize="13" Foreground="#E86845" Margin="10" />
+                                        </Canvas>
+                                    </Viewbox>
+                                    
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+                                    
                                     <TextBlock Text="Paid" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
-                                    <TextBox x:Name="pay_paid" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="Black" BorderBrush="Transparent" Margin="0 0 0 10" />
+
+                                    <Viewbox Stretch="Uniform" >
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock x:Name="pay_paid" Text="₱ 0.00" TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="Black" Canvas.Left="45" Canvas.Top="10" />
+                                        </Canvas>
+                                    </Viewbox>
+
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
                                     <TextBlock Text="Add Payment" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
                                     <Grid>
@@ -170,14 +193,37 @@
                         <Grid Grid.Column="1">
                             <Grid>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBox x:Name="pay_subtotal" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
+                                    <Viewbox Stretch="Uniform">
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock x:Name="pay_subtotal" Text="₱ 0.00" FontWeight="SemiBold" FontSize="13" Foreground="Black" Canvas.Left="82" Canvas.Top="10" />
+                                        </Canvas>
+                                    </Viewbox>
+
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
-                                    <TextBox x:Name="pay_discount" IsReadOnly="True" Text="0" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
+
+                                    <Viewbox Stretch="Uniform">
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock x:Name="pay_discount" Text="₱ 0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="13" Foreground="Black" Canvas.Left="82" Canvas.Top="10" />
+                                        </Canvas>
+                                    </Viewbox>
+
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
-                                    <TextBox x:Name="pay_total" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Right" FontWeight="Bold" FontSize="13" Foreground="Black" BorderBrush="Transparent" Margin="10 7 10 0" />
+
+                                    <Viewbox Stretch="Uniform" HorizontalAlignment="Right" >
+                                        <Canvas Width="130" Height="40" >
+                                            <TextBlock x:Name="pay_total" Text="₱ 0.00" TextAlignment="Right" FontWeight="Bold" FontSize="13" Foreground="Black" Canvas.Left="82" Canvas.Top="10" />
+                                        </Canvas>
+                                    </Viewbox>
+
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
                                     <TextBlock Text="Due" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
-                                    <TextBox x:Name="pay_due" IsReadOnly="True" Text="₱ 0.00" TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="#E86845" BorderBrush="Transparent" Margin="0 0 0 10" />
+
+                                    <Viewbox Stretch="Uniform" >
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock x:Name="pay_due" Text="₱ 0.00" TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="#E86845" Canvas.Left="45" Canvas.Top="10" />
+                                        </Canvas>
+                                    </Viewbox>
+
                                     <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
                                     <TextBlock Text="" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
 

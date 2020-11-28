@@ -55,8 +55,18 @@
                         <!-- Main -->
                         <Grid Grid.Column="1">
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                <TextBlock Text="Welcome Back!" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#08234B"/>
-                                <TextBlock Text="Please login so we can continue our business." FontFamily="Microsoft Tai Le" FontWeight="Regular" FontSize="10" Foreground="#08234B"/>
+                                <Viewbox Stretch="Uniform">
+                                    <Canvas Width="200" Height="12">
+                                        <TextBlock Text="Welcome Back!" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="10" Foreground="#08234B"/>
+                                    </Canvas>
+                                </Viewbox>
+
+                                <Viewbox Stretch="Uniform">
+                                    <Canvas Width="240" Height="40">
+                                        <TextBlock Text="Please login so we can continue our business." FontFamily="Microsoft Tai Le" FontWeight="Regular" FontSize="10" Foreground="#08234B"/>
+                                    </Canvas>
+                                </Viewbox>
+                                
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Center">
