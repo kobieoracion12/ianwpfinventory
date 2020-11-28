@@ -24,6 +24,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         public window_restockItem()
         {
             InitializeComponent();
+            entrySearch.Focus();
         }
 
         // Barcode Scanner
@@ -71,7 +72,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
         }
 
-
+        // Submit Button
         private void submitBrand_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -98,11 +99,13 @@ namespace NavigationDrawerPopUpMenu2.windows
                     if (check == 1)
                     {
                         MessageBox.Show("Data Updated!");
-                        restockItem.Text = "";
-                        restockBrand.Text = "";
-                        restockQty.Text = "";
-                        restockSRP.Text = "";
-                        restockRP.Text = "";
+                        entrySearch.Clear();
+                        entrySearch.Focus();
+                        restockItem.Clear();
+                        restockBrand.Clear();
+                        restockQty.Clear();
+                        restockSRP.Clear();
+                        restockRP.Clear();
                         restockDOA.Text = "";
                         restockEXPD.Text = "";
                     }
@@ -119,6 +122,8 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
 
         }
+
+        // Cancel Button
         private void submitCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

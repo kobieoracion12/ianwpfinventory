@@ -20,6 +20,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <Grid Grid.Column="1">
+            <!-- checker.Text -->
+            <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
+                <TextBox  x:Name="checker" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5" Visibility="Hidden"/>
+            </StackPanel>
+        </Grid>
+        
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -66,16 +73,19 @@
 
                 <!-- TextBox -->
                 <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
-                    <TextBox x:Name="tbProdNo" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox x:Name="tbProdNo" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5" KeyDown="tbProdNo_KeyDown"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical">
                     <TextBox x:Name="tbProdItem" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical">
-                    <TextBox x:Name="tbProdBrand" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <ComboBox x:Name="tbProdBrand" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="White" Width="340" Margin="5" IsEditable="True">
+                        <ComboBoxItem Content="Select" IsSelected="True" />
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical">
                     <TextBox x:Name="tbProdQty" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical">
                     <TextBox x:Name="tbProdSRP" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
@@ -101,10 +111,7 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- checker.Text -->
-        <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
-            <TextBox  x:Name="checker" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
-        </StackPanel>
+        
 
     </Grid>
 </Window>

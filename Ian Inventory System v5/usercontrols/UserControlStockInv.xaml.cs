@@ -34,6 +34,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             cbContents();
         }
 
+        // Populate ListView
         public void catchData()
         {
             try
@@ -66,13 +67,115 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-
+        // Add Item Button
         private void addItem_Click(object sender, RoutedEventArgs e)
         {
             window_addItem addItem = new window_addItem();
             addItem.Show();
         }
 
+        // Refresh Button
+        private void refreshItem_Click(object sender, RoutedEventArgs e)
+        {
+            conn.Close();
+            catchData();
+        }
+
+        // Edit Item
+        private void editItem_Click(object sender, RoutedEventArgs e)
+        {
+            string prdId = tbPrdId.Text;
+            if (prdId == "")
+            { // Check input if empty
+                MessageBox.Show("Please select one on the table cell");
+            }
+            else
+            {   // If not empty then proceed to edit window
+                long id = Convert.ToInt64(prdId); // Product Id No. to be pass to other form
+                window_editItem editItemWindow = new window_editItem(id); // pass the parameter to the next window
+                editItemWindow.Show(); // Open Edit Window}
+            }
+        }
+
+        // Delete Item
+        private void deleteItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbPrdId.Text == "")
+            { // Check if field is empty
+                MessageBox.Show("Please select one on the table cell");
+            }
+            else
+            {   // Delete the product
+                if (MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    deleteProductItem(); // If Yes then Delete the product
+                }
+            }
+        }
+
+        // Delete Function
+        private void deleteProductItem()
+        {
+            // Delete sql statement
+            string sql = "DELETE FROM datainventory WHERE prodNo = @prdNo";
+            conn.query(sql); // Command Database
+
+            try
+            {
+                conn.Open();   // Open Connection
+                conn.bind("@prdNo", tbPrdId.Text); // Bind parameter
+                conn.cmd().Prepare(); // Prepare
+                conn.execute(); // Execute
+
+
+                MessageBox.Show("Successfully Removed"); // Show Dialog Succes
+
+                conn.Close(); // Close Connection
+
+            }
+            catch (Exception ex)
+            {
+                // Ops, maybe the id doesn't exists ?
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Restock Button
+        private void sortRestock_Click(object sender, RoutedEventArgs e)
+        {
+            window_restockItem restockItem = new window_restockItem();
+            restockItem.ShowDialog();
+        }
+
+        // Sort Button
+        private void sortButton_Click(object sender, RoutedEventArgs e)
+        {
+            string brandSort = sortBrand.Text;
+            if (brandSort == "Select")
+            {
+                brandSort = null;
+            }
+
+            conn.Close();
+            try
+            {
+                conn.Open();
+                string query = "SELECT * FROM datainventory WHERE prodBrand LIKE '%" + brandSort + "%'";
+                conn.query(query);
+                conn.execute();
+                MySqlDataAdapter adapter = conn.adapter();
+                DataTable dt = new DataTable("datainventory");
+                adapter.Fill(dt);
+                listViewInventory.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+                adapter.Dispose(); // Dispose Adapter
+                conn.Close();   // Close Connection
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
 
         // Copy the id of product when click in listViewInventory cell
         private void listViewInventory_SelectedIndexChanged(object sender, EventArgs e)
@@ -118,69 +221,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             
         }
 
-        private void refreshItem_Click(object sender, RoutedEventArgs e)
-        {
-            conn.Close();
-            catchData();
-        }
-
-        private void editItem_Click(object sender, RoutedEventArgs e)
-        {
-            string prdId = tbPrdId.Text;
-            if (prdId == "")
-            { // Check input if empty
-                MessageBox.Show("Please select one on the table cell");
-            }
-            else
-            {   // If not empty then proceed to edit window
-                long id = Convert.ToInt64(prdId); // Product Id No. to be pass to other form
-                window_editItem editItemWindow = new window_editItem(id); // pass the parameter to the next window
-                editItemWindow.Show(); // Open Edit Window}
-            }
-        }
-
-        private void deleteItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (tbPrdId.Text == "")
-            { // Check if field is empty
-                MessageBox.Show("Please select one on the table cell");
-            }
-            else
-            {   // Delete the product
-                if (MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                {
-                    deleteProductItem(); // If Yes then Delete the product
-                }
-            }
-        }
-
-        // Delete Function
-        private void deleteProductItem()
-        {
-            // Delete sql statement
-            string sql = "DELETE FROM datainventory WHERE prodNo = @prdNo";
-            conn.query(sql); // Command Database
-
-            try
-            {
-                conn.Open();   // Open Connection
-                conn.bind("@prdNo", tbPrdId.Text); // Bind parameter
-                conn.cmd().Prepare(); // Prepare
-                conn.execute(); // Execute
-
-
-                MessageBox.Show("Successfully Removed"); // Show Dialog Succes
-
-                conn.Close(); // Close Connection
-
-            }
-            catch (Exception ex)
-            {
-                // Ops, maybe the id doesn't exists ?
-                MessageBox.Show(ex.Message);
-            }
-        }
-
 
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -190,6 +230,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Search Function
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             conn.Close();
@@ -224,40 +265,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void sortRestock_Click(object sender, RoutedEventArgs e)
-        {
-            window_restockItem restockItem = new window_restockItem();
-            restockItem.ShowDialog();
-        }
-
-        private void sortButton_Click(object sender, RoutedEventArgs e)
-        {
-            string brandSort = sortBrand.Text;
-            if (brandSort == "Select")
-            {
-                brandSort = null;
-            }
-
-            conn.Close();
-            try
-            {
-                conn.Open();
-                string query = "SELECT * FROM datainventory WHERE prodBrand LIKE '%" + brandSort + "%'";
-                conn.query(query);
-                conn.execute();
-                MySqlDataAdapter adapter = conn.adapter();
-                DataTable dt = new DataTable("datainventory");
-                adapter.Fill(dt);
-                listViewInventory.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-                adapter.Dispose(); // Dispose Adapter
-                conn.Close();   // Close Connection
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-        }
+        
     }
 }

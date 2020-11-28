@@ -58,7 +58,7 @@
                 <Grid Margin="80 10 0 10">
                     <Label Content="Enter Entry:" Margin="23 0 0 0"/>
                     <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <TextBox x:Name="entrySearch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="20" Height="50" MinWidth="500" Margin="20 25 20 20" Background="White" KeyDown="entrySearch_KeyDown"/>
+                        <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="20" Height="50" MinWidth="500" Margin="20 25 20 20" Background="White" KeyDown="entrySearch_KeyDown"/>
                     </Viewbox>
 
 

@@ -37,6 +37,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public UserControlCheckout()
         {
             InitializeComponent();
+            entrySearch.Focus();
         }
 
         public UserControlCheckout(string value)
@@ -45,7 +46,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             this.Value = value; // Store the passed value to the variable value
         }
 
-        public string Value { get; set; } // Create a variable to store the value
+        // Create a variable to store the value
+        public string Value { get; set; }
 
         // When Checkout loads
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -296,6 +298,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Void Button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var ans = MessageBox.Show("Are you sure you want to void?", "Void", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -305,6 +308,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // End Sale Button
         private void endSale_Click(object sender, RoutedEventArgs e)
         {
             var ans = MessageBox.Show("Are you sure you want to end transaction?", "End Transaction", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -314,9 +318,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        /// <summary>
-        /// SHORTCUT KEYS
-        /// </summary>
+        // Keyboard Shortcuts
         private void UserControl_KeyDown(object sender, KeyEventArgs e)
         {
             // CashButton Shortcut
