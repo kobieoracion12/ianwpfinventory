@@ -104,5 +104,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             tbProdDOA.Text = "";
             tbProdEXPD.Text = "";
         }
+
+        private void tbProdNo_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
