@@ -314,5 +314,27 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        /// <summary>
+        /// SHORTCUT KEYS
+        /// </summary>
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            // CashButton
+            if (cashButton.IsEnabled == true) {
+                if (e.Key == Key.F1)
+                {
+                    MessageBox.Show("CashButton Press");
+                }
+            }
+
+            if (endSale.IsEnabled == true)
+            {
+                if (e.Key == Key.F5)
+                {
+                    MessageBox.Show("endSale Press");
+                }
+            }
+
+        }
     }
 }

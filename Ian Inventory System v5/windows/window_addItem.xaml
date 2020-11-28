@@ -101,5 +101,10 @@
             </StackPanel>
         </StackPanel>
 
+        <!-- checker.Text -->
+        <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
+            <TextBox  x:Name="checker" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+        </StackPanel>
+
     </Grid>
 </Window>
