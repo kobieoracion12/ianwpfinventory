@@ -31,35 +31,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             Database con = new Database();
             try
             {
-                if (tbProdNo.Text == "")
-                {
-                    MessageBox.Show("Please Complete the Form");
-                }
-                else if (tbProdItem.Text == "")
-                {
-                    MessageBox.Show("Please Complete the Form");
-                }
-                else if (tbProdBrand.Text == "")
-                {
-                    MessageBox.Show("Please Complete the Form");
-                }
-                else if (tbProdQty.Text == "")
-                {
-                    MessageBox.Show("Please Complete the Form");
-                }
-                else if (tbProdSRP.Text == "")
-                {
-                    MessageBox.Show("Please Complete the Form");
-                }
-                else if (tbProdRP.Text == "")
-                {
-                    MessageBox.Show("Please Complete the Form");
-                }
-                else if (tbProdDOA.Text == "")
-                {
-                    MessageBox.Show("Please Complete the Form");
-                }
-                else if (tbProdEXPD.Text == "")
+                if (tbProdNo.Text == "" || tbProdItem.Text == "" || tbProdBrand.Text == "" || tbProdQty.Text == "" || tbProdSRP.Text == "" || tbProdRP.Text == "" || tbProdDOA.Text == "" || tbProdEXPD.Text == "")
                 {
                     MessageBox.Show("Please Complete the Form");
                 }
@@ -93,9 +65,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         tbProdQty.Text = "";
                         tbProdSRP.Text = "";
                         tbProdRP.Text = "";
-                        tbProdDOA.Text = "";
                         tbProdEXPD.Text = "";
-                        this.Close();
                     }
 
                     con.Close();
