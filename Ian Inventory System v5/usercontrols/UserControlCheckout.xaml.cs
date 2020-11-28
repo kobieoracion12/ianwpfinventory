@@ -23,7 +23,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     {
         Database conn = new Database();
         StocksCheck stocksck = new StocksCheck();
-        MySqlConnection con = new MySqlConnection("server=127.0.0.1;user id=ianinventory;database=iantestinventory; password='C73DPJxyXICd4Mjq'");
 
         public int rmstocks = 0;
         public int subtotal = 0;
@@ -76,15 +75,17 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             try
             {
                 string payment = "INSERT INTO sales_preview (payment_method, payment_vat, payment_total, payment_paid, payment_due, payment_date) VALUES (@method, @vat, @total, @paid, @due, @date)";
-                MySqlCommand cmddd = new MySqlCommand(payment, con);
-
-                cmddd.Parameters.AddWithValue("@method", payMethod);
-                cmddd.Parameters.AddWithValue("@vat", tax);
-                cmddd.Parameters.AddWithValue("@total", total);
-                cmddd.Parameters.AddWithValue("@paid", paid);
-                cmddd.Parameters.AddWithValue("@due", due);
-                cmddd.Parameters.AddWithValue("@date", DateTime.Now);
-                var cff = cmddd.ExecuteNonQuery();
+                conn.query(payment);  // Command DB
+                conn.Open();
+                conn.bind("@method", payMethod);
+                conn.bind("@vat", tax);
+                conn.bind("@total", total);
+                conn.bind("@paid", paid);
+                conn.bind("@due", due);
+                conn.bind("@date", DateTime.Now);
+                conn.cmd().Prepare();
+                
+                var cff = conn.execute();
                 if (cff == 1)
                 {
                     MessageBox.Show("Success!");
@@ -93,7 +94,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     voidEntry.IsEnabled = false;
                     endSale.IsEnabled = true;
                 }
-                con.Close();
+                conn.Close(); // Close Connection
             }
             catch (Exception x)
             {
@@ -160,12 +161,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             if (e.Key == Key.Return)
             {
-                con.Close();
+                conn.Close();
                 string search = entrySearch.Text;
                 string query = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodBought FROM datainventory WHERE prodNo= '" + search + "'";
-                MySqlCommand cmd = new MySqlCommand(query, con);
-                con.Open();
-                MySqlDataReader dr = cmd.ExecuteReader();
+                conn.query(query); //CMD 
+                conn.Open();
+                MySqlDataReader dr = conn.read();
                 if (dr.Read())
                 {
                     coItem.Text = dr.GetValue(0).ToString();
@@ -179,9 +180,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     int checkQty = Convert.ToInt32(stocksck.productQty);
                     if (checkQty >= 1)
                     {
-                        // Closes the reader so the next query will work
+                        // Closes the reader so the next query will work            
                         dr.Close();
+                        dr.Dispose(); // Dispose
                         Compute();
+                        
                     }
                     else
                     {
@@ -189,12 +192,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         clearPartial();
                         return;
                     }
+                    
                 }
                 else
                 {
                     MessageBox.Show("Invalid Entry");
                     clearPartial();
                 }
+                
             }
             
         }
@@ -230,28 +235,30 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     try
                     {
                         string query2 = "INSERT INTO datasalesinventory (salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate) VALUES (@a, @b, @c, @d, @e, @f, @g, @h)";
-                        MySqlCommand cmdd = new MySqlCommand(query2, con);
+                        conn.query(query2);
 
-                        cmdd.Parameters.AddWithValue("@a", entrySearch.Text);
-                        cmdd.Parameters.AddWithValue("@b", coItem.Text);
-                        cmdd.Parameters.AddWithValue("@c", coBrand.Text);
-                        cmdd.Parameters.AddWithValue("@d", coSRP.Text);
-                        cmdd.Parameters.AddWithValue("@e", coRP.Text);
-                        cmdd.Parameters.AddWithValue("@f", coQty.Text);
-                        cmdd.Parameters.AddWithValue("@g", coSubtotal.Text);
-                        cmdd.Parameters.AddWithValue("@h", DateTime.Now);
-                        var cf = cmdd.ExecuteNonQuery();
+                        conn.bind("@a", entrySearch.Text);
+                        conn.bind("@b", coItem.Text);
+                        conn.bind("@c", coBrand.Text);
+                        conn.bind("@d", coSRP.Text);
+                        conn.bind("@e", coRP.Text);
+                        conn.bind("@f", coQty.Text);
+                        conn.bind("@g", coSubtotal.Text);
+                        conn.bind("@h", DateTime.Now);
+                        conn.cmd().Prepare();
+                        var cf = conn.execute();
                         if (cf == 1)
                         {
                             try
                             {
-                                conn.Open();
+                                //conn.Open(); // Remove cause of Already Connection
                                 string ranking = "UPDATE datainventory SET prodBought = @bought WHERE prodNo = @itemNo";
-                                MySqlCommand cmddd = new MySqlCommand(ranking, con);
+                                conn.query(ranking);
 
-                                cmddd.Parameters.AddWithValue("@itemNo", entrySearch.Text);
-                                cmddd.Parameters.AddWithValue("@bought", coCurrentNew.Text);
-                                var check = cmddd.ExecuteNonQuery();
+                                conn.bind("@itemNo", entrySearch.Text);
+                                conn.bind("@bought", coCurrentNew.Text);
+                                
+                                var check = conn.execute();
                                 if (check == 1)
                                 {
                                     string remaining = "UPDATE datainventory SET prodQty = @rm WHERE prodNo = @ItemNo";
