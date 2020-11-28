@@ -56,9 +56,9 @@
                 </Rectangle>
 
                 <Grid Margin="80 10 0 10">
-                    <Label Content="Enter Entry:" Margin="23 10 0 0"/>
+                    <Label Content="Enter Entry:" Margin="23 0 0 0"/>
                     <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <TextBox x:Name="entrySearch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="350" Margin="20 25 20 20" Background="White" KeyDown="entrySearch_KeyDown"/>
+                        <TextBox x:Name="entrySearch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="20" Height="50" MinWidth="500" Margin="20 25 20 20" Background="White" KeyDown="entrySearch_KeyDown"/>
                     </Viewbox>
 
 
@@ -74,16 +74,16 @@
 
         <!-- Checkout List -->
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80 0 0 10" Background="#ffffff">
-                <ListView x:Name="listViewinVoice" SelectionMode="Single" >
+                <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" >
                     <ListView.View>
                         <GridView AllowsColumnReorder="False">
                             <GridView.Columns>
-                                <GridViewColumn DisplayMemberBinding="{Binding salesNo }" Header="#" Width="120"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="250" />
-                                <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price" Width="70" />
-                                <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Qty" Width="70"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding salesNo }" Header="#" Width="160"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="350" />
+                                <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price" Width="100" />
+                                <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Qty" Width="100"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding salesTotal }" Header="Subtotal" Width="90"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding salesDate }" Header="Date of Purchase" Width="200"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding salesDate }" Header="Date of Purchase" Width="300"/>
                             </GridView.Columns>
                         </GridView>
                     </ListView.View>
