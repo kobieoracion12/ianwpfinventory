@@ -319,19 +319,27 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         /// </summary>
         private void UserControl_KeyDown(object sender, KeyEventArgs e)
         {
-            // CashButton
+            // CashButton Shortcut
             if (cashButton.IsEnabled == true) {
                 if (e.Key == Key.F1)
-                {
-                    MessageBox.Show("CashButton Press");
+                {   
+                    payMethod = "Cash";
+                    window_cashButton cf = new window_cashButton();
+                    cf.DataSent += Cf_DataSent; // Register the Event Handler - When this Event fired 'Cf_DataSent' will be called
+                    cf.ShowDialog();
                 }
             }
 
+            // End Sale Shortcut
             if (endSale.IsEnabled == true)
             {
                 if (e.Key == Key.F5)
                 {
-                    MessageBox.Show("endSale Press");
+                    var ans = MessageBox.Show("Are you sure you want to end transaction?", "End Transaction", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (ans == MessageBoxResult.Yes)
+                    {
+                        clearAll();
+                    }
                 }
             }
 
