@@ -29,19 +29,20 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             InitializeComponent();
             genProfit();
             overallSales();
-            catchData();
+            onStock();
             ordersCompleted();
             topSelling();
         }
 
-        public void catchData()
+        // On Stock
+        public void onStock()
         {
             try
             {
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT prodNo, prodItem, prodQty FROM datainventory ORDER BY prodQty DESC";
+                string query = "SELECT prodNo, prodItem, prodQty FROM datainventory WHERE prodQty >= 1 ORDER BY prodQty DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -66,6 +67,73 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Almost Out of Stock
+        public void almostOut()
+        {
+            try
+            {
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT prodNo, prodItem, prodQty FROM datainventory WHERE prodQty <= 10 ORDER BY prodQty DESC";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("datainventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewStocks.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+
+                adapter.Dispose();  // Dispose Adapter
+                // Close Connection
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Out of Stock
+        public void outofStock()
+        {
+            try
+            {
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT prodNo, prodItem, prodQty FROM datainventory WHERE prodQty = 0";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("datainventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewStocks.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+
+                adapter.Dispose();  // Dispose Adapter
+                // Close Connection
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Top Selling
         public void topSelling()
         {
             conn.Close();
@@ -184,5 +252,33 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Sort Status
+        private void sortStatus_Click(object sender, RoutedEventArgs e)
+        {
+            string sort = sortStocks.Text;
+
+            try
+            {
+                switch (sort)
+                {
+                    case "On Stock":
+                        conn.Close();
+                        onStock();
+                        break;
+                    case "Almost Out":
+                        conn.Close();
+                        almostOut();
+                        break;
+                    case "Out of Stock":
+                        conn.Close();
+                        outofStock();
+                        break;
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
     }
 }

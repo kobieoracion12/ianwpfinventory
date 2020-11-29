@@ -247,7 +247,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     {
                         while (reader.Read())
                         {
-
                             string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7) };
                             long SalesNo = Convert.ToInt64(row[1]); // sales No
                             string SalesItem = row[2];  // Sales item
@@ -255,7 +254,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             int SalesRp = int.Parse(row[5]);
                             int SalesQty = int.Parse(row[6]);
                             int SalesTotal = int.Parse(row[7]);
-
 
                             mySales.Add(new Sale { salesNo = SalesNo, salesItem = SalesItem, salesBrand = SalesBrand, salesRP = SalesRp, salesQty = SalesQty, salesTotal = SalesTotal });
                         }

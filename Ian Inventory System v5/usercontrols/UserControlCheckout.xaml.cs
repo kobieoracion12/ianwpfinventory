@@ -108,6 +108,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Clear Textboxes Only
         public void clearPartial()
         {
+            entrySearch.Focus();
             entrySearch.Clear();
             coItem.Clear();
             coBrand.Clear();
@@ -123,7 +124,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Clear All
         public void clearAll()
         {
-
+            entrySearch.Focus();
             listViewinVoice.Items.Clear();
             entrySearch.Clear();
             coItem.Clear();

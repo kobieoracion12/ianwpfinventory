@@ -36,10 +36,15 @@
                             </StackPanel>
                         </Border>
                         <Rectangle VerticalAlignment="Stretch" Stroke="#b2b2b2" Margin="50 0 0 0"/>
-                        <!-- Export Data to PDF Button -->
-                        <Button x:Name="exportData" Content="Clear Data" Width="110" Background="#ffb200" Margin="0 0 15 0" Click="exportData_Click"/>
-                        <!-- Export Data to PDF Button -->
-                        <Button x:Name="exportSortedData" Content="Export File" Width="110" Background="#ffb200" Margin="0 0 15 0" Click="exportSortedData_Click"/>
+
+                        <StackPanel Orientation="Horizontal"> 
+                            <!-- Export Data to PDF Button -->
+                            <Button x:Name="exportData" Content="Clear Data" Width="110" Background="#ffb200" Margin="20 0 15 0" Click="exportData_Click"/>
+                            <!-- Export Data to PDF Button -->
+                            <Button x:Name="exportSortedData" Content="Export File" Width="110" Background="#ffb200" Margin="0 0 15 0" Click="exportSortedData_Click"/>
+
+                        </StackPanel>
+                        
                     </StackPanel>
                 </Grid>
             </Grid>

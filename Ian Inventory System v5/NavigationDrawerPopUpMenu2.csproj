@@ -102,6 +102,7 @@
     <Compile Include="classes\Authentication.cs" />
     <Compile Include="classes\Checkout.cs" />
     <Compile Include="classes\clientInfo.cs" />
+    <Compile Include="classes\Dashboard.cs" />
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\invoiceClass.cs" />
     <Compile Include="classes\Product.cs" />

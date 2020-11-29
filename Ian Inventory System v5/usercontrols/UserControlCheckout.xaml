@@ -72,21 +72,31 @@
 
 
         <!-- Checkout List -->
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="80 0 0 10" Background="#ffffff">
-                <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" >
-                    <ListView.View>
-                        <GridView AllowsColumnReorder="False">
-                            <GridView.Columns>
-                                <GridViewColumn DisplayMemberBinding="{Binding salesNo }" Header="#" Width="160"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="350" />
-                                <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price" Width="100" />
-                                <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Qty" Width="100"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding salesTotal }" Header="Subtotal" Width="90"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding salesDate }" Header="Date of Purchase" Width="300"/>
-                            </GridView.Columns>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid>
+                <Rectangle Margin="80 0 0 10" RadiusX="8" RadiusY="8" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+
+                <Grid Margin="80 10 0 10">
+                    <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" Margin="10">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <GridView.Columns>
+                                    <GridViewColumn DisplayMemberBinding="{Binding salesNo }" Header="#" Width="160"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="350" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price" Width="100" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Qty" Width="100"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding salesTotal }" Header="Subtotal" Width="120"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding salesDate }" Header="Date of Purchase" Width="300"/>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
         </Grid>
 
 

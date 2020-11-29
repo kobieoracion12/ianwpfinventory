@@ -35,46 +35,87 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.ColumnSpan="3">
-                <Rectangle Height="110" RadiusX="10" RadiusY="10" Margin="5" Fill="White" >
+                <Rectangle MinHeight="110" RadiusX="10" RadiusY="10" Margin="5" Fill="White" >
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>
                 </Rectangle>
             </Grid>
 
+            <!-- Generated Profit -->
             <Grid Grid.Column="0">
                 <!-- Rectangle Content -->
-                <Grid Grid.Column="0" Margin="20" Height="100">
-                    <!-- Icon Handler -->
-                    <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" >
-                        <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#54B971"/>
-                    </Grid>
+                <Grid Grid.Column="0" Margin="20" MinHeight="100">
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="160" Height="30">
+                            <materialDesign:PackIcon Width="20" Height="20" Kind="Sale" Foreground="#54B971" Canvas.Left="5" Canvas.Top="5"/>
+                        </Canvas>
+                    </Viewbox>
+                    
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="160" Height="55">
+                            <TextBlock Text="Generated Profit" FontSize="8" FontFamily="Segoe UI Bold" Foreground="Black" Canvas.Left="8"/>
+                        </Canvas>
+                    </Viewbox>
 
-                    <!-- Text Handler -->
-                    <TextBlock Text="Generated Profit" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="Black"/>
-                    <TextBlock x:Name="tb_profitSales" Text="₱ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#54B971"/>
-                    <TextBlock Text="Orders Completed" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Margin="10" Foreground="Black"/>
-                    <TextBlock x:Name="ordersCom1" Text="0" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="Black"/>
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="160" Height="30">
+                            <TextBlock x:Name="tb_profitSales" Text="₱ 0.00" FontSize="20" FontFamily="Segoe UI Bold" Foreground="#54B971" Canvas.Right="0"/>
+                        </Canvas>
+                    </Viewbox>
+
+                    <Viewbox Stretch="Uniform" >
+                        <Canvas Width="160" Height="60">
+                            <TextBlock Text="Orders Completed" FontSize="8" FontFamily="Segoe UI Semibold" Foreground="Black" Canvas.Left="8" Canvas.Bottom="0"/>
+                        </Canvas>
+                    </Viewbox>
+
+                    <Viewbox Stretch="Uniform" >
+                        <Canvas Width="160" Height="60">
+                            <TextBlock x:Name="ordersCom1" Text="0" FontSize="8" FontFamily="Segoe UI Semibold" Foreground="Black" Canvas.Right="0" Canvas.Bottom="0"/>
+                        </Canvas>
+                    </Viewbox>
                 </Grid>
             </Grid>
 
+            <!-- Divider -->
             <Grid Grid.Column="1">
                 <Rectangle HorizontalAlignment="Center" Stroke="#F0F0F3" Height="95"/>
             </Grid>
 
-            <Grid Grid.Column="2">
+            <!-- Overall Sales -->
+            <Grid Grid.Column="3">
                 <!-- Rectangle Content -->
-                <Grid Grid.Column="0" Margin="20" Height="100">
-                    <!-- Icon Handler -->
-                    <Grid Width="auto" Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" >
-                        <materialDesign:PackIcon Width="25" Height="25" Kind="Sale" Foreground="#FFBB5B"/>
-                    </Grid>
+                <Grid Grid.Column="0" Margin="20" MinHeight="100">
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="160" Height="30">
+                            <materialDesign:PackIcon Width="20" Height="20" Kind="Sale" Foreground="#FFBB5B" Canvas.Left="5" Canvas.Top="5"/>
+                        </Canvas>
+                    </Viewbox>
 
-                    <!-- Text Handler -->
-                    <TextBlock Text="Overall Sales" FontSize="10" FontFamily="Segoe UI Bold" TextAlignment="Left" Margin="10 15 0 0" Foreground="Black"/>
-                    <TextBlock x:Name="tb_overallSales" Text="₱ 0.00" FontSize="25" FontFamily="Segoe UI Bold" TextAlignment="Right" VerticalAlignment="Center" Margin="10" Foreground="#FFBB5B"/>
-                    <TextBlock Text="Orders Completed" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Left" VerticalAlignment="Bottom" Margin="10" Foreground="Black"/>
-                    <TextBlock x:Name="ordersCom2" Text="0" FontSize="10" FontFamily="Segoe UI Semibold" TextAlignment="Right" VerticalAlignment="Bottom" Margin="10" Foreground="Black"/>
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="160" Height="55">
+                            <TextBlock Text="Overall Sales" FontSize="8" FontFamily="Segoe UI Bold" Foreground="Black" Canvas.Left="8"/>
+                        </Canvas>
+                    </Viewbox>
+
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="160" Height="30">
+                            <TextBlock x:Name="tb_overallSales" Text="₱ 0.00" FontSize="20" FontFamily="Segoe UI Bold" Foreground="#FFBB5B" Canvas.Right="0"/>
+                        </Canvas>
+                    </Viewbox>
+
+                    <Viewbox Stretch="Uniform" >
+                        <Canvas Width="160" Height="60">
+                            <TextBlock Text="Orders Completed" FontSize="8" FontFamily="Segoe UI Semibold" Foreground="Black" Canvas.Left="8" Canvas.Bottom="0"/>
+                        </Canvas>
+                    </Viewbox>
+
+                    <Viewbox Stretch="Uniform" >
+                        <Canvas Width="160" Height="60">
+                            <TextBlock x:Name="ordersCom2" Text="0" FontSize="8" FontFamily="Segoe UI Semibold" Foreground="Black" Canvas.Right="0" Canvas.Bottom="0"/>
+                        </Canvas>
+                    </Viewbox>
                 </Grid>
             </Grid>
         </Grid>
@@ -119,22 +160,50 @@
 
             <!-- ListView -->
             <Grid Margin="20">
-                <StackPanel Orientation="Vertical" ScrollViewer.CanContentScroll="True">
-                    <TextBlock Text="Stocks Status" FontSize="15" FontFamily="Segoe UI Bold" TextAlignment="Center" VerticalAlignment="Top" Margin="10" Foreground="Black"/>
-                    <Rectangle HorizontalAlignment="Center" Stroke="#F0F0F3" Width="450" />
-                </StackPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                <ListView x:Name="listViewStocks" Margin="0 40 0 0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                    <ListView.View>
-                        <GridView AllowsColumnReorder="False">
-                            <GridView.Columns>
-                                <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="#" Width="120"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="260" />
-                                <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="65"/>
-                            </GridView.Columns>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="400*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Column="0" VerticalAlignment="Top" Margin="10">
+                    <Viewbox HorizontalAlignment="Left">
+                        <TextBlock Text="Stocks Status" FontSize="15" FontFamily="Segoe UI Bold" TextAlignment="Left" VerticalAlignment="Top" Foreground="Black"/>
+                    </Viewbox>
+                </Grid>
+
+
+                <Grid Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right">
+                    <Viewbox>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <ComboBox x:Name="sortStocks" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" Background="White" VerticalAlignment="Center">
+                                <ComboBoxItem Content="Select" IsSelected="True" />
+                                <ComboBoxItem Content="On Stock" />
+                                <ComboBoxItem Content="Almost Out" />
+                                <ComboBoxItem Content="Out of Stock" />
+                            </ComboBox>
+                            <Button x:Name="sortStatus" Content="Sort" VerticalAlignment="Center" Background="#e86845" Margin="5" FontSize="10" Height="20" BorderBrush="#FFF75555" Click="sortStatus_Click"/>
+                        </StackPanel>
+                    </Viewbox>
+                </Grid>
+
+                <Grid Grid.ColumnSpan="2" Grid.Row="1">
+                    <ListView x:Name="listViewStocks" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <GridView.Columns>
+                                    <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="#" Width="120"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="260" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="65"/>
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
             </Grid>
         </Grid>
 
