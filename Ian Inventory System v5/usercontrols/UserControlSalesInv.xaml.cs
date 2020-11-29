@@ -289,6 +289,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                     wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
                     app.Quit();
+                    mySales.Clear(); // Clear All Items
                     MessageBox.Show("Your data has been successfully exported", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 } // Closing of IF Statement
             }
@@ -317,5 +318,119 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        // Export Data To Excel Base on Sorted Data
+        private void exportDataToExcelSorted()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel WorkBook|*.xls";
+            sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // Save to MyDocuments
+            try
+            {
+                if (sfd.ShowDialog() == true)
+                {
+                    Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                    Workbook wb = app.Workbooks.Add(XlSheetType.xlWorksheet);
+                    Worksheet ws = (Worksheet)app.ActiveSheet;
+                    app.Visible = false;
+                    ws.Cells[1, 1] = "Product No";
+                    ws.Cells[1, 2] = "Item";
+                    ws.Cells[1, 3] = "Brand";
+                    //ws.Cells[1, 4] = "Date of Purchase";
+                    ws.Cells[1, 4] = "RP";
+                    ws.Cells[1, 5] = "Quantity";
+                    ws.Cells[1, 6] = "Total";
+                    int i = 2;
+
+                    // Start a Query
+                    string formattedFrom, formattedTo, brandSort;
+
+                    // Init selected dates from calendar
+                    DateTime? selectedDateFrom = sortCalendarFrom.SelectedDate;
+                    DateTime? selectedDateTo = sortCalendarTo.SelectedDate;
+
+                    if (selectedDateFrom.HasValue && selectedDateTo.HasValue)
+                    {
+                        brandSort = sortBrand.Text;
+                        if (brandSort == "Select")
+                        {
+                            brandSort = null;
+                        }
+                        // Making a format and getting the value of datepicker to string
+                        formattedFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                        formattedTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+
+                        string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
+                        conn.query(query);  // Command Database
+                        try
+                        {
+                            conn.Open(); // Open Connection
+                            MySqlDataReader reader = conn.read(); // Read
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7) };
+                                    long SalesNo = Convert.ToInt64(row[1]); // sales No
+                                    string SalesItem = row[2];  // Sales item
+                                    string SalesBrand = row[3];
+                                    int SalesRp = int.Parse(row[5]);
+                                    int SalesQty = int.Parse(row[6]);
+                                    int SalesTotal = int.Parse(row[7]);
+
+
+                                    mySales.Add(new Sale { salesNo = SalesNo, salesItem = SalesItem, salesBrand = SalesBrand, salesRP = SalesRp, salesQty = SalesQty, salesTotal = SalesTotal });
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("No Data Found", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                            }
+
+                            reader.Close();
+                            reader.Dispose();
+                            conn.Close(); // Close Connection
+                        }
+                        catch (Exception x)
+                        {
+                            MessageBox.Show(x.Message);
+                        }
+                    }
+
+                    // End of Query
+
+
+                    //string das = listViewSales.Items[0].ToString();
+                    foreach (Sale item in mySales)
+                    {
+                        //ws.Cells[i, 1] = (string)((DataRowView)listViewSales.SelectedItems[0])["refNo"];
+                        ws.Cells[i, 1] = item.salesNo.ToString();
+                        ws.Cells[i, 2] = item.salesItem;
+                        ws.Cells[i, 3] = item.salesBrand;
+                        ws.Cells[i, 4] = item.salesRP.ToString();
+                        ws.Cells[i, 5] = item.salesQty.ToString();
+                        ws.Cells[i, 6] = item.salesTotal.ToString();
+
+                        i++;
+
+                    } // Closing of Foreach
+
+                    wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                    app.Quit();
+                    mySales.Clear(); // Clear All Items
+                    MessageBox.Show("Your data has been successfully exported", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                } // Closing of IF Statement
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        // Export Button Data To Excel Base on Sorted Data
+        private void exportSortedData_Click(object sender, RoutedEventArgs e)
+        {
+            exportDataToExcelSorted();
+        }
+
+        
     }
 }
