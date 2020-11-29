@@ -75,7 +75,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT prodNo, prodItem, prodQty FROM datainventory WHERE prodQty <= 10 ORDER BY prodQty DESC";
+                string query = "SELECT prodNo, prodItem, prodQty FROM datainventory WHERE prodQty BETWEEN 1 AND 10 ORDER BY prodQty DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute

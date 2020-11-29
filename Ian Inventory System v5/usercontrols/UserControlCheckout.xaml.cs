@@ -199,7 +199,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Entry");
+                    MessageBox.Show("Item not Found");
                     clearPartial();
                 }
                 
