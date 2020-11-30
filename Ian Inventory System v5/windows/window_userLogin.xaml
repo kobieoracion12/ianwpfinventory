@@ -30,9 +30,9 @@
         <Grid Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="195*"/>
-                    <RowDefinition Height="50*"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -47,9 +47,9 @@
                 <Grid Grid.Row="1">
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="276*"/>
-                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="280*"/>
+                            <ColumnDefinition Width="60"/>
                         </Grid.ColumnDefinitions>
                         
                         <!-- Main -->
@@ -57,13 +57,13 @@
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top">
                                 <Viewbox Stretch="Uniform">
                                     <Canvas Width="200" Height="12">
-                                        <TextBlock Text="Welcome Back!" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="10" Foreground="#08234B"/>
+                                        <TextBlock Text="Welcome Back!" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="10" Foreground="#08234B" Canvas.Top="10"/>
                                     </Canvas>
                                 </Viewbox>
 
                                 <Viewbox Stretch="Uniform">
                                     <Canvas Width="240" Height="40">
-                                        <TextBlock Text="Please login so we can continue our business." FontFamily="Microsoft Tai Le" FontWeight="Regular" FontSize="10" Foreground="#08234B"/>
+                                        <TextBlock Text="Please login so we can continue our business." FontFamily="Microsoft Tai Le" FontWeight="Regular" FontSize="10" Foreground="#08234B" Canvas.Top="10"/>
                                     </Canvas>
                                 </Viewbox>
                                 

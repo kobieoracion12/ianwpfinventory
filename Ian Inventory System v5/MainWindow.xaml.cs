@@ -51,7 +51,7 @@ namespace NavigationDrawerPopUpMenu2
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemCreate":
-                    usc = new UserControlSalesInv();
+                    usc = new usc_sales();
                     GridMain.Children.Add(usc);
                     break;
                 case "inventoryStocks":

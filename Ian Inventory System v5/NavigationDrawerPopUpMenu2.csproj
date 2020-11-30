@@ -106,7 +106,7 @@
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\invoiceClass.cs" />
     <Compile Include="classes\Product.cs" />
-    <Compile Include="classes\Sale.cs" />
+    <Compile Include="classes\Sales.cs" />
     <Compile Include="classes\StocksCheck.cs" />
     <Compile Include="iantestinventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -115,6 +115,9 @@
     </Compile>
     <Compile Include="main Menu.xaml.cs">
       <DependentUpon>main Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\usc_sales.xaml.cs">
+      <DependentUpon>usc_sales.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\UserControlCheckout.xaml.cs">
       <DependentUpon>UserControlCheckout.xaml</DependentUpon>
@@ -200,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\customStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_sales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

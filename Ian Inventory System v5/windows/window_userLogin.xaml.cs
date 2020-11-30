@@ -23,6 +23,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         public window_userLogin()
         {
             InitializeComponent();
+            txtUsername.Focus();
         }
 
         Database conn = new Database();

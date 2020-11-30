@@ -110,7 +110,7 @@
                 <!-- Buttons -->
                 <Grid Grid.Column="3">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <Button x:Name="sortButton" Content="Sort" Width="110" Margin="15 0 15 0" Click="sortButton_Click"/>
+                        <Button x:Name="sortButton" Content="Sort" Width="110" Margin="15 0 15 0" Click="sortButton_Click" RenderTransformOrigin="0.5,0.5"/>
                         <Button x:Name="sortClear" Content="Refresh" Width="110" Background="#e86845" Margin="0 0 15 0" Click="sortClear_Click"/>
                     </StackPanel>
                 </Grid>

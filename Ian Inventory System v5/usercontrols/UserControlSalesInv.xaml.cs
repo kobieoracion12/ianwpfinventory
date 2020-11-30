@@ -24,7 +24,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     {
         
         Database conn = new Database();
-        List<Sale> mySales = new List<Sale>();
+        List<Sales> mySales = new List<Sales>();
         public UserControlSalesInv()
         {
             InitializeComponent();
@@ -255,7 +255,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             int SalesQty = int.Parse(row[6]);
                             int SalesTotal = int.Parse(row[7]);
 
-                            mySales.Add(new Sale { salesNo = SalesNo, salesItem = SalesItem, salesBrand = SalesBrand, salesRP = SalesRp, salesQty = SalesQty, salesTotal = SalesTotal });
+                            mySales.Add(new Sales { salesNo = SalesNo, salesItem = SalesItem, salesBrand = SalesBrand, salesRP = SalesRp, salesQty = SalesQty, salesTotal = SalesTotal });
                         }
                     }
                     else
@@ -271,7 +271,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
 
                     //string das = listViewSales.Items[0].ToString();
-                    foreach (Sale item in mySales)
+                    foreach (Sales item in mySales)
                     {
                         //ws.Cells[i, 1] = (string)((DataRowView)listViewSales.SelectedItems[0])["refNo"];
                         ws.Cells[i, 1] = item.salesNo.ToString();
@@ -296,6 +296,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         // DELETE ALL DATA FROM DATABASE
         private void ClearAllDataFromDatabase()
         {
@@ -316,6 +317,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         // Export Data To Excel Base on Sorted Data
         private void exportDataToExcelSorted()
         {
@@ -376,7 +378,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                     int SalesTotal = int.Parse(row[7]);
 
 
-                                    mySales.Add(new Sale { salesNo = SalesNo, salesItem = SalesItem, salesBrand = SalesBrand, salesRP = SalesRp, salesQty = SalesQty, salesTotal = SalesTotal });
+                                    mySales.Add(new Sales { salesNo = SalesNo, salesItem = SalesItem, salesBrand = SalesBrand, salesRP = SalesRp, salesQty = SalesQty, salesTotal = SalesTotal });
                                 }
                             }
                             else
@@ -398,7 +400,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
 
                     //string das = listViewSales.Items[0].ToString();
-                    foreach (Sale item in mySales)
+                    foreach (Sales item in mySales)
                     {
                         //ws.Cells[i, 1] = (string)((DataRowView)listViewSales.SelectedItems[0])["refNo"];
                         ws.Cells[i, 1] = item.salesNo.ToString();
@@ -423,12 +425,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
         // Export Button Data To Excel Base on Sorted Data
         private void exportSortedData_Click(object sender, RoutedEventArgs e)
         {
             exportDataToExcelSorted();
         }
-
-        
     }
 }
