@@ -158,6 +158,12 @@
     <Compile Include="windows\window_userLogin.xaml.cs">
       <DependentUpon>window_userLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_checkout.xaml.cs">
+      <DependentUpon>win_checkout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\win_checkoutBG.xaml.cs">
+      <DependentUpon>win_checkoutBG.xaml</DependentUpon>
+    </Compile>
     <Page Include="admin\admin_create.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -259,6 +265,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\window_userLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_checkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_checkoutBG.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -69,6 +69,7 @@
                                     <Label Content="Account Privilege" FontSize="15" Margin="0 30 0 0"/>
                                     <ComboBox x:Name="accPrivilege" Height="30" BorderBrush="#EDEFF3" BorderThickness="1">
                                         <ComboBoxItem Content="Admin" />
+                                        <ComboBoxItem Content="Cashier" />
                                         <ComboBoxItem Content="Users" IsSelected="True" />
                                     </ComboBox>
                                 </StackPanel>

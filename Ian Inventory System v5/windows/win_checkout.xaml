@@ -1,0 +1,340 @@
+﻿<Window x:Class="NavigationDrawerPopUpMenu2.windows.win_checkout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
+        mc:Ignorable="d"
+        Title="win_checkout" Height="600" Width="1080" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" WindowStyle="None">
+
+    <Grid Background="#EDEFF3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="141*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Margin="10 10 0 0" Grid.ColumnSpan="3" RadiusX="8" RadiusY="8" Fill="White">
+                <Rectangle.Effect>
+                    <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Grid Margin="10">
+                <Grid>
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="200" Height="50">
+                            <TextBlock Text="Cashier:" FontWeight="Bold" FontSize="10" Foreground="Black" Margin="20"/>
+                            <TextBlock Text="Full Name" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="20" Canvas.Left="45"/>
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="10">
+                <Grid>
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="200" Height="50">
+                            <TextBlock Text="Login Time:" FontWeight="Bold" FontSize="10" Foreground="Black" Margin="20"/>
+                            <TextBlock Text="Time Here" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="20" Canvas.Left="60"/>
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="2" Margin="10">
+                <Grid>
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="200" Height="50">
+                            <Button x:Name="settingButton" Margin="15" Height="25" Background="Transparent" BorderBrush="Transparent" Canvas.Left="70">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <materialDesign:PackIcon Kind="Settings" Foreground="Black" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </Canvas>
+                    </Viewbox>
+
+                    <Viewbox Stretch="Uniform">
+                        <Canvas Width="200" Height="50">
+                            <Button x:Name="logoutButton" Margin="15" Height="25" Background="Transparent" BorderBrush="Transparent" Canvas.Right="0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <materialDesign:PackIcon Kind="Logout" Foreground="Black" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+        </Grid>
+
+
+        <!-- Barcode Scanner -->
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="110*" />
+                <ColumnDefinition Width="80*" />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Margin="10 10 0 10" Grid.ColumnSpan="2" RadiusX="8" RadiusY="8" Fill="White">
+                <Rectangle.Effect>
+                    <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Grid Margin="10">
+                <Grid>
+                    <Label Content="Entry:" Margin="20 10"/>
+                    <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="20" Height="50" MinWidth="500" Margin="20 25 20 20" Background="White" KeyDown="entrySearch_KeyDown" />
+                    </Viewbox>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid>
+                    
+                    <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Button x:Name="voidEntry" Content="Void" IsEnabled="False" Background="#e86845" Margin="10 0 5 0" BorderBrush="#FFF75555" Click="voidEntry_Click"/>
+                        <Button x:Name="deleteEntry" Content="Delete Entry" IsEnabled="False" Background="#e86845" Margin="10 0 5 0" BorderBrush="#FFF75555" />
+                        <Button x:Name="changeQty" Content="Quantity" IsEnabled="False" Background="#e86845" Margin="5 0 20 0" BorderBrush="#FFF75555" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+
+
+
+        <!-- Checkout List -->
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid>
+                <Rectangle Margin="10 0 0 10" RadiusX="8" RadiusY="8" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="300*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid>
+                            <Viewbox Stretch="Uniform">
+                                <Canvas Width="210" Height="20">
+                                    <TextBlock Text="Order #" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="4"/>
+                                    <TextBlock x:Name="orderNo" Text="0000000000" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="4" Canvas.Left="40"/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Hidden Textbox -->
+                    <Grid Grid.Column="1">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBox x:Name="coItem" IsReadOnly="True" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="150" Margin="20" Background="White"  />
+                            <TextBox x:Name="coBrand" IsReadOnly="True" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="150" Margin="20" Background="White"  />
+                            <TextBox x:Name="coSRP" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White"  />
+                            <TextBox x:Name="coRP" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                            <TextBox x:Name="coQty" IsReadOnly="True" Text="1" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                            <TextBox x:Name="coStocks" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                            <TextBox x:Name="coRemStocks" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                            <TextBox x:Name="coSubtotal" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                            <TextBox x:Name="coCurrent" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                            <TextBox x:Name="coCurrentNew" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                            <TextBox x:Name="cashAmount" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" />
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- ListView -->
+                    <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                        <Grid>
+                            <ListView x:Name="listViewinVoice" FontSize="20" SelectionMode="Single" Margin="10">
+                                <ListView.View>
+                                    <GridView AllowsColumnReorder="False">
+                                        <GridView.Columns>
+                                            <GridViewColumn DisplayMemberBinding="{Binding num }" Header="#" Width="60" />
+                                            <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="350" />
+                                            <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Qty" Width="100"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price" Width="100" />
+                                            <GridViewColumn DisplayMemberBinding="{Binding salesTotal }" Header="Subtotal" Width="120"/>
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+
+
+        <!-- Exchange List -->
+        <Grid Grid.Row="0" Grid.Column="3" Grid.RowSpan="3" >
+            <Grid>
+                <Rectangle Margin="10" RadiusX="8" RadiusY="8" Fill="White">
+                    <Rectangle.Effect>
+                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+
+                <Grid Margin="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="420*" />
+                            <RowDefinition Height="60*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Left Side-->
+                        <Grid Grid.Column="0" >
+                            <Grid>
+                                <StackPanel Orientation="Vertical">
+                                    <Viewbox Stretch="Uniform" Margin="0 0 0 15">
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock Text="Total" FontWeight="Bold" FontSize="25" Foreground="Black" Margin="10"/>
+                                        </Canvas>
+                                    </Viewbox>
+
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+
+                                    <Viewbox Stretch="Uniform">
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock Text="VAT" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="20 13"/>
+                                        </Canvas>
+                                    </Viewbox>
+
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+
+                                    <Viewbox Stretch="Uniform">
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock Text="Subtotal" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="20 13" />
+                                        </Canvas>
+                                    </Viewbox>
+
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+
+                                    <TextBlock Text="Paid" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+
+                                    <Viewbox Stretch="Uniform" >
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock x:Name="pay_paid" Text="0.00" TextAlignment="Center" FontWeight="Bold" FontSize="20" Foreground="Black" Canvas.Left="45" Canvas.Top="5" />
+                                        </Canvas>
+                                    </Viewbox>
+
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="10 0 0 0"/>
+                                    <TextBlock Text="Add Payment" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+
+                                    <Grid>
+                                        <Grid Margin="10 20 10 10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid>
+                                                <StackPanel Orientation="Vertical">
+                                                    <Viewbox Stretch="Uniform" >
+                                                        <Button x:Name="cashButton" Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E" IsEnabled="False" Click="cashButton_Click">
+                                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                                <materialDesign:PackIcon Kind="Cash" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="3"/>
+                                                                <TextBlock Text="Cash" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                            </StackPanel>
+                                                        </Button>
+                                                    </Viewbox>
+
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+
+
+                        <!-- Right Side -->
+                        <Grid Grid.Column="1">
+                            <Grid>
+                                <StackPanel Orientation="Vertical">
+                                    <Viewbox Stretch="Uniform" Margin="0 0 0 15">
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock x:Name="pay_total" Text="0.00" FontWeight="Bold" FontSize="25" Foreground="Black" Canvas.Right="15" Canvas.Top="10" />
+                                        </Canvas>
+                                    </Viewbox>
+
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
+
+                                    <Viewbox Stretch="Uniform" >
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock x:Name="pay_discount" Text="0.00" TextAlignment="Right" FontWeight="SemiBold" FontSize="15" Foreground="Black" Canvas.Left="82" Canvas.Top="10" />
+                                        </Canvas>
+                                    </Viewbox>
+
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
+
+                                    <Viewbox Stretch="Uniform">
+                                        <Canvas Width="130" Height="40" >
+                                            <TextBlock x:Name="pay_subtotal" Text="0.00" TextAlignment="Right" FontWeight="Bold" FontSize="15" Foreground="Black" Canvas.Left="82" Canvas.Top="10" />
+                                        </Canvas>
+                                    </Viewbox>
+
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
+                                    <TextBlock Text="Due" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+
+                                    <Viewbox Stretch="Uniform" >
+                                        <Canvas Width="130" Height="40">
+                                            <TextBlock x:Name="pay_due" Text="0.00" TextAlignment="Center" FontWeight="Bold" FontSize="20" Foreground="#E86845" Canvas.Left="45" Canvas.Top="5" />
+                                        </Canvas>
+                                    </Viewbox>
+
+                                    <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 0 10 0"/>
+                                    <TextBlock Text="" FontWeight="SemiBold" FontSize="10" Foreground="Black" Margin="10 10 10 0" />
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!-- End Sale Button -->
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid>
+                                <Viewbox Stretch="Uniform" >
+                                    <Button x:Name="endSale" Margin="5 5 5 10" Height="25" Background="#A0EFD0" BorderBrush="#5BAF8E" IsEnabled="False" Click="endSale_Click">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <materialDesign:PackIcon Kind="Check" Foreground="#5BAF8E" VerticalAlignment="Center" Margin="3"/>
+                                            <TextBlock Text="END SALE" FontWeight="SemiBold" FontSize="12" Foreground="#5BAF8E" TextAlignment="Left" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+                                </Viewbox>
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

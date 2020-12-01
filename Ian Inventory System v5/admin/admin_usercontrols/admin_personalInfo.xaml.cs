@@ -32,6 +32,7 @@ namespace NavigationDrawerPopUpMenu2.admin
             accNumberGen();
         }
 
+        // Account Number Generator
         public string accNumberGen()
         {
             Random random = new Random();
@@ -66,6 +67,7 @@ namespace NavigationDrawerPopUpMenu2.admin
             return r;
         }
 
+        // Clear Textbox
         public void ClearTextbox()
         {
             accNumber.Clear();
@@ -82,6 +84,7 @@ namespace NavigationDrawerPopUpMenu2.admin
             accZipcode.Clear();
         }
 
+        // Next Button Click
         private void piNextButton_Click(object sender, RoutedEventArgs e)
         {
             // TextBoxes
@@ -130,7 +133,6 @@ namespace NavigationDrawerPopUpMenu2.admin
                 clientInfo.buss_zipcode = Convert.ToInt32(accZipcode.Text);
 
                 clientInfo.registerClient();
-                MessageBox.Show("Data Added", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 clientInfo.Clear();
                 ClearTextbox();
 

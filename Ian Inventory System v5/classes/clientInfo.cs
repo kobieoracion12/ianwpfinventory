@@ -23,6 +23,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         public int buss_zipcode = 0;
 
         Database conn = new Database();
+
         public void registerClient()
         {
             string query = "INSERT INTO client_information (accNo, firstName, lastName, bussName, bussBranch, bussType, bussTown, bussProvince, bussCountry, bussZipcode, accCreated) VALUES (@no, @first, @last, @name, @branch, @type, @town, @province, @country, @zipcode, @date)";
@@ -42,7 +43,11 @@ namespace NavigationDrawerPopUpMenu2.classes
                 conn.bind("@zipcode", buss_zipcode.ToString());
                 conn.bind("@date", DateTime.Now.ToString());
                 conn.cmd().Prepare();
-                conn.execute();
+                var check = conn.execute();
+                if (check == 1)
+                {
+                    MessageBox.Show("Data Added", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
                 conn.Close();
             }
             catch (Exception x)

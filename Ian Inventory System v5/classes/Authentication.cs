@@ -84,6 +84,8 @@ namespace NavigationDrawerPopUpMenu2.classes
             return isTrue;
 
         }
+
+
         // Add User
         public void addUser(string privilege)
         {
@@ -97,7 +99,6 @@ namespace NavigationDrawerPopUpMenu2.classes
                 // Hash/Encrypt Password
                 var hashedPwd = BCrypt.Net.BCrypt.HashPassword(this.password);
                 conn.query(query);
-
 
                 conn.bind("@username", this.username);
                 conn.bind("@password", hashedPwd);

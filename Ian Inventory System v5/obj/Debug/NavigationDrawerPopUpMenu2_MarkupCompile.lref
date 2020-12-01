@@ -10,6 +10,7 @@ FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invent
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\MainWindow.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\styleLibrary.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\customStyle.xaml;;
+FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_sales.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlCheckout.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlCreate.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlDashboard.xaml;;
@@ -23,5 +24,6 @@ FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invent
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_editItem.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_restockItem.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_userLogin.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_sales.xaml;;
+FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_checkout.xaml;;
+FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_checkoutBG.xaml;;
 

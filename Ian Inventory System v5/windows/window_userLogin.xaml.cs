@@ -46,22 +46,35 @@ namespace NavigationDrawerPopUpMenu2.windows
                     // If Password is Correct
                     if (auth.checkUserPassword())
                     {
-                        string userPrev = auth.getUserPrevilages(); // Users Previleges
-                        if (userPrev.Equals("Admin"))
-                        { // Go to Admin Dashboard
-                            admin_window adminDashboard = new admin_window();
-                            adminDashboard.Show(); // Show Dashboard
-                            this.Close(); // Close Login
+                        try
+                        {
+                            string userPrev = auth.getUserPrevilages(); // Users Previleges
+                            if (userPrev.Equals("Admin"))
+                            { // Go to Admin Dashboard
+                                admin_window adminDashboard = new admin_window();
+                                adminDashboard.Show(); // Show Dashboard
+                                this.Close(); // Close Login
+                            }
+                            else if (userPrev.Equals("Users"))
+                            { // Go to Users Dashboard
+                                MainWindow usersDashbord = new MainWindow();
+                                usersDashbord.Show(); // Show Dashboard
+                                this.Close(); // Close Login
+                            }
+                            else if (userPrev.Equals("Cashier"))
+                            { // Go to Users Dashboard
+                                win_checkout checkoutCashier = new win_checkout();
+                                checkoutCashier.Show(); // Show Dashboard
+                                this.Close(); // Close Login
+                            }
+                            else
+                            {   // IF Something Went Wrong // Error
+                                MessageBox.Show("Something went wrong, Please try again later", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
                         }
-                        else if (userPrev.Equals("Users"))
-                        { // Go to Users Dashboard
-                            MainWindow usersDashbord = new MainWindow();
-                            usersDashbord.Show(); // Show Dashboard
-                            this.Close(); // Close Login
-                        }
-                        else
-                        {   // IF Something Went Wrong // Error
-                            MessageBox.Show("Something went wrong, Please try again later", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                        catch (Exception x)
+                        {
+                            MessageBox.Show(x.Message);
                         }
                     }
                     else
