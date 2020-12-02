@@ -30,6 +30,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             InitializeComponent();
             catchData();
             countResult();
+            cbContents();
         }
 
         // ListView Data
@@ -63,6 +64,78 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        // Fills the Brand ComboBox with exisiting Brand Data from Database
+        public void cbContents()
+        {
+            conn.Open();
+            try
+            {
+                string query = "SELECT DISTINCT salesBrand FROM datasalesinventory";
+                conn.query(query);
+                conn.execute();
+                MySqlDataReader drd = conn.read();
+
+                while (drd.Read())
+                {
+                    this.sortBrand.Items.Add(drd.GetString(0).ToString());
+                }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
+
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+
+        }
+
+        // Sort by Date FROM - Date TO 
+        // Sort by Date Between Date From and Date To and Brand
+        public void sortByDate()
+        {
+            string formattedFrom, formattedTo, brandSort;
+
+            // Init selected dates from calendar
+            DateTime? selectedDateFrom = sortCalendarFrom.SelectedDate;
+            DateTime? selectedDateTo = sortCalendarTo.SelectedDate;
+
+            if (selectedDateFrom.HasValue && selectedDateTo.HasValue)
+            {
+                brandSort = sortBrand.Text;
+                if (brandSort == "Select")
+                {
+                    brandSort = null;
+                }
+                // Making a format and getting the value of datepicker to string
+                formattedFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                formattedTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+
+                try
+                {
+                    conn.Open(); // Open Connection
+                    string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
+                    conn.query(query);  // Command Database
+                    conn.execute(); // Execute Non Query
+                    MySqlDataAdapter adapter = conn.adapter(); // adapter
+                    System.Data.DataTable dt = new System.Data.DataTable("datasalesinventory"); // Make a datatable reference
+                    adapter.Fill(dt);  // Fill the datatable with data
+                    listViewSales.ItemsSource = dt.DefaultView;
+                    adapter.Update(dt);
+
+                    adapter.Dispose(); // Dispose Adapter
+                    conn.Close(); // Close Connection
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+            }
+
         }
 
         // Show Result Count
@@ -246,8 +319,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-
-
         // DELETE ALL DATA FROM DATABASE
         private void ClearAllDataFromDatabase()
         {
@@ -267,6 +338,35 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        // Reset Button
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult msg = MessageBox.Show("Do you want to export all the data before clearing them all?", "Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                // If Yes then Delete the Data
+                exportDataToExcel();
+                ClearAllDataFromDatabase();
+                catchData();
+            }
+            else if (msg == MessageBoxResult.No)
+            {
+                MessageBoxResult deleteMsg = MessageBox.Show("This will clear all the data without exporting a file, Are you sure?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (deleteMsg == MessageBoxResult.Yes)
+                {
+                    // Delete the Data
+                    ClearAllDataFromDatabase();
+                    catchData();
+                    countResult();
+                }
+            }
+            else if (msg == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+            else { return; }
         }
     }
 }
