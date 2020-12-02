@@ -138,6 +138,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         }
 
+        private void sortButton_Click(object sender, RoutedEventArgs e)
+        {
+            sortByDate();
+        }
+
         // Show Result Count
         public void countResult()
         {
@@ -368,5 +373,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             else { return; }
         }
+
+        
     }
 }

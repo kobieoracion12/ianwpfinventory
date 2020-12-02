@@ -134,7 +134,7 @@
                             <DatePicker x:Name="sortCalendarTo" BorderThickness="1" Padding="5" Text="StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" FontFamily="Microsoft Tai Le" FontSize="10" Width="110" Margin="10 0 0 0" VerticalAlignment="Center" Background="White"/>
                             
                             <Border BorderBrush="#BFC2C9" Width="100" Background="#5C9EF4" BorderThickness="1" CornerRadius="15" Margin="10">
-                                <Button x:Name="sortButton" Content="Sort" MinWidth="12" FontSize="12" Height="25" Foreground="White" Background="Transparent" BorderBrush="Transparent" />
+                                <Button Click="sortButton_Click" x:Name="sortButton" Content="Sort" MinWidth="12" FontSize="12" Height="25" Foreground="White" Background="Transparent" BorderBrush="Transparent" />
                             </Border>
 
                         </StackPanel>

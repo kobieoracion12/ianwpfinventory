@@ -268,12 +268,6 @@ namespace NavigationDrawerPopUpMenu2.windows {
             return;
             case 14:
             this.cashButton = ((System.Windows.Controls.Button)(target));
-            
-            #line 435 "..\..\..\windows\win_pos.xaml"
-            this.cashButton.Click += new System.Windows.RoutedEventHandler(this.cashButton_Click);
-            
-            #line default
-            #line hidden
             return;
             case 15:
             this.nerer = ((System.Windows.Controls.Button)(target));
