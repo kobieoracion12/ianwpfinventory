@@ -477,3 +477,9 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkoutBG.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkout.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkoutBG.baml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS_REAL\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_sales.g.cs
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS_REAL\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkout.g.cs
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS_REAL\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkoutBG.g.cs
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS_REAL\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_sales.baml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS_REAL\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkout.baml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS_REAL\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkoutBG.baml
