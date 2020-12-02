@@ -6,6 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
+        Loaded="WindowPOS_Loaded"
         Title="win_pos" Height="600" Width="1080" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" WindowStyle="None">
 
     <Grid Background="#EDEFF3">
@@ -38,12 +39,12 @@
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal" Margin="8 0 0 0">
                                         <TextBlock Text="Acc No:" FontWeight="Bold" FontSize="7" Foreground="Black"/>
-                                        <TextBlock x:Name="accNoText" Text="0000000" FontWeight="Regular" FontSize="7" Foreground="Black" Margin="5 0 0 0"/>
+                                        <TextBlock x:Name="accNo" Text="0000000" FontWeight="Regular" FontSize="7" Foreground="Black" Margin="5 0 0 0"/>
                                     </StackPanel>
                                     
                                     <StackPanel Orientation="Horizontal" Margin="8 0 0 0">
                                         <TextBlock Text="Cashier:" FontWeight="Bold" FontSize="10" Foreground="Black"/>
-                                        <TextBlock Text="Full Name" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="10 0 0 0"/>
+                                        <TextBlock x:Name="cashierName" Text="Full Name" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="10 0 0 0"/>
                                     </StackPanel>
 
                                 </StackPanel>                            </Canvas>
@@ -57,7 +58,7 @@
                             <Canvas Width="210" Height="30" >
                                 <StackPanel Orientation="Horizontal" Margin="8">
                                     <TextBlock Text="Login Time:" FontWeight="Bold" FontSize="10" Foreground="Black"/>
-                                    <TextBlock Text="12:00 AM" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="10 0 0 0"/>
+                                    <TextBlock x:Name="timeIn" Text="12:00 AM" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="10 0 0 0"/>
                                 </StackPanel>
                             </Canvas>
                         </Viewbox>
@@ -123,7 +124,7 @@
                                 </StackPanel>
                             </Button>
                             <!-- Logout -->
-                            <Button x:Name="logoutButton" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
+                            <Button Click="logoutButton_Click" x:Name="logoutButton" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="Logout" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
