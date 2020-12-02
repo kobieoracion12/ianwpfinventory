@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2020 at 10:36 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Dec 02, 2020 at 05:13 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `client_information` (
-  `accNo` bigint(10) NOT NULL,
+  `accNo` bigint(20) NOT NULL,
   `firstName` varchar(249) NOT NULL,
   `lastName` varchar(249) NOT NULL,
   `bussName` varchar(249) NOT NULL,
@@ -46,9 +47,10 @@ CREATE TABLE `client_information` (
 --
 
 INSERT INTO `client_information` (`accNo`, `firstName`, `lastName`, `bussName`, `bussBranch`, `bussType`, `bussTown`, `bussProvince`, `bussCountry`, `bussZipcode`, `accCreated`) VALUES
-(6560234550, 'Kobie', 'Oracion', 'Kobie Computer Shop', 'Luisiana Branch', 'Computer Cafe', 'Luisiana', 'Laguna', 'Philippines', 4032, '0000-00-00 00:00:00'),
-(6643053270, 'Kobie ', 'Oracion', 'Miras Music Studio INC.', 'Cavinti Branch', 'Music Studio', 'Cavinti', 'Laguna', 'Philippines', 4022, '0000-00-00 00:00:00'),
-(8417643240, 'Robert', 'Miras', 'Team Freelance', 'Cavinti Branch', 'Freelance', 'Cavinti', 'Laguna', 'PH', 3014, '0000-00-00 00:00:00');
+(4658428402, 'William ', 'Smith', 'Microsoft', 'Microsot Philippines', 'Enterprise', 'Taguig City', 'Makati', 'Philippines', 1224, '0000-00-00 00:00:00'),
+(6560234550, 'Kobie', 'Oracion', 'Kobie Computer Shop', 'Luisiana Branch', 'Computer Cafe', 'Luisiana', 'Laguna', 'Philippines', 4032, '2020-12-02 03:15:55'),
+(6643053270, 'Kobie ', 'Oracion', 'Miras Music Studio INC.', 'Cavinti Branch', 'Music Studio', 'Cavinti', 'Laguna', 'Philippines', 4022, '2020-12-02 03:16:03'),
+(8417643240, 'Robert', 'Miras', 'Team Freelance', 'Cavinti Branch', 'Freelance', 'Cavinti', 'Laguna', 'PH', 3014, '2020-12-02 03:16:10');
 
 -- --------------------------------------------------------
 
@@ -231,7 +233,7 @@ INSERT INTO `sales_preview` (`ref#`, `payment_method`, `payment_vat`, `payment_t
 --
 
 CREATE TABLE `usersinventory` (
-  `usersId` int(11) NOT NULL,
+  `acc_no` bigint(20) NOT NULL,
   `usersName` varchar(30) NOT NULL,
   `usersPass` text NOT NULL,
   `usersPrevileges` varchar(10) NOT NULL,
@@ -243,10 +245,11 @@ CREATE TABLE `usersinventory` (
 -- Dumping data for table `usersinventory`
 --
 
-INSERT INTO `usersinventory` (`usersId`, `usersName`, `usersPass`, `usersPrevileges`, `usersTimein`, `usersTimeout`) VALUES
-(5, 'admin', '$2a$10$tihqjhR7FWrfOijOCCBDl.0uXzlOkT2WrnDKQSk0s6XJ1QxelvTHq', 'Admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'user', '$2a$10$xjyzdSJIt6cfi39A.1cDx..QNWJwl9oH5F8UjQLhG/Hh.uw6cR3p.', 'Users', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'cashier', '$2a$10$KeqVWq/Z8PK9k78pxHR55OVQgbzVCra71vSgixOss6hvciqOboZ.K', 'Cashier', NULL, NULL);
+INSERT INTO `usersinventory` (`acc_no`, `usersName`, `usersPass`, `usersPrevileges`, `usersTimein`, `usersTimeout`) VALUES
+(4658428402, 'WilliamSmith03', '$2a$10$ImB14cTHutNDFOiCdizfnO2fy7BHaNirnLwAVatcc181xx/7QHSfi', 'Cashier', NULL, NULL),
+(6560234550, 'admin', '$2a$10$tihqjhR7FWrfOijOCCBDl.0uXzlOkT2WrnDKQSk0s6XJ1QxelvTHq', 'Admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6643053270, 'cashier', '$2a$10$KeqVWq/Z8PK9k78pxHR55OVQgbzVCra71vSgixOss6hvciqOboZ.K', 'Cashier', NULL, NULL),
+(8417643240, 'user', '$2a$10$xjyzdSJIt6cfi39A.1cDx..QNWJwl9oH5F8UjQLhG/Hh.uw6cR3p.', 'Users', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -256,7 +259,7 @@ INSERT INTO `usersinventory` (`usersId`, `usersName`, `usersPass`, `usersPrevile
 -- Indexes for table `client_information`
 --
 ALTER TABLE `client_information`
-  ADD UNIQUE KEY `AccNumber` (`accNo`);
+  ADD PRIMARY KEY (`accNo`);
 
 --
 -- Indexes for table `datainventory`
@@ -280,7 +283,7 @@ ALTER TABLE `sales_preview`
 -- Indexes for table `usersinventory`
 --
 ALTER TABLE `usersinventory`
-  ADD PRIMARY KEY (`usersId`);
+  ADD PRIMARY KEY (`acc_no`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -299,10 +302,14 @@ ALTER TABLE `sales_preview`
   MODIFY `ref#` int(249) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `usersinventory`
+-- Constraints for dumped tables
 --
-ALTER TABLE `usersinventory`
-  MODIFY `usersId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Constraints for table `client_information`
+--
+ALTER TABLE `client_information`
+  ADD CONSTRAINT `acc_no` FOREIGN KEY (`accNo`) REFERENCES `usersinventory` (`acc_no`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

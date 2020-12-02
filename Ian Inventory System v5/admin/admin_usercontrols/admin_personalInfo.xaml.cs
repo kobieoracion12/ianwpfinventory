@@ -25,11 +25,17 @@ namespace NavigationDrawerPopUpMenu2.admin
     {
         Database conn = new Database();
         clientInfo clientInfo = new clientInfo();
-        
+
+
+        // Call Auth Class
+        Authentication auth; 
         public admin_personalInfo()
         {
             InitializeComponent();
             accNumberGen();
+
+            // TextBoxes
+            
         }
 
         // Account Number Generator
@@ -41,7 +47,7 @@ namespace NavigationDrawerPopUpMenu2.admin
             for (i = 1; i < 11; i++)
             {
                 r += random.Next(0, 9).ToString();
-                string query = "SELECT COUNT(1) FROM usersinventory WHERE usersId = @accNo";
+                string query = "SELECT COUNT(1) FROM usersinventory WHERE acc_no = @accNo";
                 conn.query(query);
                 try
                 {
@@ -87,43 +93,43 @@ namespace NavigationDrawerPopUpMenu2.admin
         // Next Button Click
         private void piNextButton_Click(object sender, RoutedEventArgs e)
         {
-            // TextBoxes
+
             string username = userName.Text;
             string password = passWord.Password;
-            string privilege = accPrivilege.Text;
 
-            // Call Auth Class
-            Authentication auth = new Authentication(username, password);
+            auth = new Authentication(username, password);
 
             if (accNumber.Text == "" || lastName.Text == "" || firstName.Text == "" || userName.Text == "" || passWord.Password == "" || accPrivilege.Text == "")
             {
-                MessageBox.Show("Please Complete the Form", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
-            else if (auth.checkUsername()) // Check if username exist
-            {
-                MessageBox.Show("Username already exists", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please Complete the Form", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
                 clientInfo.acc_number = Convert.ToInt64(accNumber.Text);
                 clientInfo.first_name = firstName.Text;
                 clientInfo.last_name = lastName.Text;
-
-                // Add User
-                auth.addUser(privilege);
-
                 tabControlMain.SelectedIndex++;
             }
+            
         }
 
         private void bussButton_Click(object sender, RoutedEventArgs e)
         {
+
+            string username = userName.Text;
+            string password = passWord.Password;
+
+            auth = new Authentication(username, password);
+
             if (accBussName.Text == "" || accBranch.Text == "" || accBussType.Text == "" || accTown.Text == "" || accProvince.Text == "" || accCountry.Text == "" || accZipcode.Text == "" || accCreated.Text == "")
             {
-                MessageBox.Show("Please Complete the Form");
+                MessageBox.Show("Please Complete the Form", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
+                // Add User
+                auth.addUser(accPrivilege.Text, accNumber.Text); 
+
                 clientInfo.buss_name = accBussName.Text;
                 clientInfo.buss_branch = accBranch.Text;
                 clientInfo.buss_type = accBussType.Text;

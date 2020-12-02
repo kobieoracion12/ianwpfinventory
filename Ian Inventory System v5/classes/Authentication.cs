@@ -55,10 +55,11 @@ namespace NavigationDrawerPopUpMenu2.classes
 
                 MySqlDataAdapter adapter = conn.adapter();
 
-                string query = "SELECT * FROM usersinventory WHERE usersName = @username";
+                string query = "SELECT COUNT(1) FROM usersinventory WHERE usersName = @username";
                 conn.query(query);
 
                 conn.bind("@username", this.username);
+                conn.Open();
 
                 adapter.SelectCommand = conn.cmd();
 
@@ -67,10 +68,12 @@ namespace NavigationDrawerPopUpMenu2.classes
                 if (table.Rows.Count > 0) // Users Found
                 {
                     isTrue = true;
+                    conn.Close();
                 }
                 else
                 { // No Users Found
                     isTrue = false;
+                    conn.Close();
                 }
 
                 adapter.Dispose(); // Dispose Adapter
@@ -79,50 +82,54 @@ namespace NavigationDrawerPopUpMenu2.classes
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 isTrue =  false;
+                conn.Close();
             }
-            
             return isTrue;
-
+            
         }
 
 
         // Add User
-        public void addUser(string privilege)
+        public void addUser(string privilege, string accNumber)
         {
             try
             {
-                conn.Open();
-                // Add User
-                // Check if user is taken
-                // IF NO ERROR 
-                string query = "INSERT INTO usersinventory (usersName, usersPass, usersPrevileges) VALUES (@username, @password, @privilege)";
-                // Hash/Encrypt Password
-                var hashedPwd = BCrypt.Net.BCrypt.HashPassword(this.password);
-                conn.query(query);
+               
+                    conn.Open();
+                    // Add User
+                    // Check if user is taken
+                    // IF NO ERROR 
+                    string query = "INSERT INTO usersinventory (acc_no, usersName, usersPass, usersPrevileges) VALUES (@acc_no, @username, @password, @privilege)";
+                    // Hash/Encrypt Password
+                    var hashedPwd = BCrypt.Net.BCrypt.HashPassword(this.password);
+                    conn.query(query);
 
-                conn.bind("@username", this.username);
-                conn.bind("@password", hashedPwd);
-                conn.bind("@privilege", privilege);
-                conn.cmd().Prepare();
-                // INSERT NEW USER
-                var check = conn.execute();
-                if (check == 1)
-                {
-                    MessageBox.Show("Account Created Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Something went wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                    conn.bind("@acc_no", accNumber);
+                    conn.bind("@username", this.username);
+                    conn.bind("@password", hashedPwd);
+                    conn.bind("@privilege", privilege);
+                    conn.cmd().Prepare();
+                    // INSERT NEW USER
+                    var check = conn.execute();
+                    if (check == 1)
+                    {
+                        MessageBox.Show("Account Created Successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something went wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
 
-                conn.Close();
+                    conn.Close();
 
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
+                conn.Close();
             }
         }
+            
 
         // Get User Previlages
         public String getUserPrevilages()
@@ -147,6 +154,7 @@ namespace NavigationDrawerPopUpMenu2.classes
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Something went wrong", MessageBoxButton.OK, MessageBoxImage.Error);
+                conn.Close();
             }
 
             return previleges;
@@ -176,6 +184,7 @@ namespace NavigationDrawerPopUpMenu2.classes
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Something went wrong", MessageBoxButton.OK, MessageBoxImage.Error);
+                conn.Close();
             }
 
             // Check if users password is equal to db pass
