@@ -63,7 +63,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                             }
                             else if (userPrev.Equals("Cashier"))
                             { // Go to Users Dashboard
-                                win_checkout checkoutCashier = new win_checkout();
+                                win_pos checkoutCashier = new win_pos(this);
                                 checkoutCashier.Show(); // Show Dashboard
                                 this.Close(); // Close Login
                             }
