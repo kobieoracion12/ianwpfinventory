@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2020 at 05:25 AM
+-- Generation Time: Dec 03, 2020 at 07:45 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -77,7 +77,7 @@ INSERT INTO `datainventory` (`prodNo`, `prodItem`, `prodBrand`, `prodQty`, `prod
 (48025522, 'Magic Sarap 8g', 'Maggi', 0, 37, 48, 15, '2020-11-17', '2020-11-29'),
 (14285000051, 'UFC Hot & Spicy Banana Ketchup 320g', 'UFC', 20, 30, 32, 0, '2020-11-28', '2020-11-30'),
 (14285002789, 'UFC Banana Ketchup 100g', 'UFC', 28, 9, 10, 2, '2020-11-28', '2020-11-30'),
-(54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 29, 47, 57, 1, '2020-11-28', '2020-11-30'),
+(54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 26, 47, 57, 4, '2020-11-28', '2020-11-30'),
 (78895710021, 'Lee Kum Kee Sesame Oil 270mL', 'Lee Kum Kee', 20, 168, 175, 0, '2020-11-28', '2020-11-30'),
 (748485100401, 'Century Tuna Flakes in Oil 155g', 'Century Tuna', 28, 30, 32, 2, '2020-11-28', '2020-11-30'),
 (748485102245, 'Century Tuna Flakes in Oil 95g', 'Century Tuna', 29, 22, 25, 1, '2020-11-28', '2020-11-30'),
@@ -164,7 +164,7 @@ INSERT INTO `datainventory` (`prodNo`, `prodItem`, `prodBrand`, `prodQty`, `prod
 --
 
 CREATE TABLE `datasalesinventory` (
-  `orderNo` bigint(12) NOT NULL,
+  `salesTransNo` bigint(12) NOT NULL,
   `refNo` bigint(15) NOT NULL,
   `salesNo` bigint(249) NOT NULL,
   `salesItem` varchar(249) NOT NULL,
@@ -181,25 +181,8 @@ CREATE TABLE `datasalesinventory` (
 -- Dumping data for table `datasalesinventory`
 --
 
-INSERT INTO `datasalesinventory` (`orderNo`, `refNo`, `salesNo`, `salesItem`, `salesBrand`, `salesSRP`, `salesRP`, `salesQty`, `salesTotal`, `salesDate`, `salesStatus`) VALUES
-(0, 679, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
-(0, 680, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
-(0, 681, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
-(0, 682, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
-(0, 683, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
-(0, 684, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:53:14', NULL),
-(0, 685, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:53:14', NULL),
-(0, 686, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:53:14', NULL),
-(0, 687, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:54:34', NULL),
-(0, 688, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:54:34', NULL),
-(0, 689, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:54:34', NULL),
-(0, 690, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 04:01:53', NULL),
-(0, 691, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:01:53', NULL),
-(0, 692, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL),
-(0, 693, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL),
-(0, 694, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL),
-(0, 695, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL),
-(0, 696, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL);
+INSERT INTO `datasalesinventory` (`salesTransNo`, `refNo`, `salesNo`, `salesItem`, `salesBrand`, `salesSRP`, `salesRP`, `salesQty`, `salesTotal`, `salesDate`, `salesStatus`) VALUES
+(782223671324, 699, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:42:47', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -266,7 +249,7 @@ CREATE TABLE `usersinventory` (
 INSERT INTO `usersinventory` (`acc_no`, `usersName`, `usersPass`, `usersPrevileges`, `usersTimein`, `usersTimeout`) VALUES
 (4658428402, 'WilliamSmith03', '$2a$10$ImB14cTHutNDFOiCdizfnO2fy7BHaNirnLwAVatcc181xx/7QHSfi', 'Cashier', NULL, NULL),
 (6560234550, 'admin', '$2a$10$tihqjhR7FWrfOijOCCBDl.0uXzlOkT2WrnDKQSk0s6XJ1QxelvTHq', 'Admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6643053270, 'cashier', '$2a$10$KeqVWq/Z8PK9k78pxHR55OVQgbzVCra71vSgixOss6hvciqOboZ.K', 'Cashier', NULL, NULL),
+(6643053270, 'cashier', '$2a$10$KeqVWq/Z8PK9k78pxHR55OVQgbzVCra71vSgixOss6hvciqOboZ.K', 'Cashier', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (8417643240, 'user', '$2a$10$xjyzdSJIt6cfi39A.1cDx..QNWJwl9oH5F8UjQLhG/Hh.uw6cR3p.', 'Users', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
@@ -311,7 +294,7 @@ ALTER TABLE `usersinventory`
 -- AUTO_INCREMENT for table `datasalesinventory`
 --
 ALTER TABLE `datasalesinventory`
-  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=697;
+  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=700;
 
 --
 -- AUTO_INCREMENT for table `sales_preview`
