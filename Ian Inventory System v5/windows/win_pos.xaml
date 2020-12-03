@@ -46,8 +46,8 @@
                                         <TextBlock Text="Cashier:" FontWeight="Bold" FontSize="10" Foreground="Black"/>
                                         <TextBlock x:Name="cashierName" Text="Full Name" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="10 0 0 0"/>
                                     </StackPanel>
-
-                                </StackPanel>                            </Canvas>
+                                </StackPanel>                            
+                            </Canvas>
                         </Viewbox>
                     </Grid>
                 </Grid>
@@ -116,7 +116,7 @@
                             </Button>
 
                             <!-- Price Check -->
-                            <Button x:Name="priceCheck" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
+                            <Button x:Name="priceCheck" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="priceCheck_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="Price Check" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
@@ -163,7 +163,10 @@
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <TextBlock x:Name="orderNo" Text="Transaction #" Margin="15"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Transaction #" Margin="15"/>
+                    <TextBlock x:Name="orderNo" Text="00000" Margin="0 15 15 15"/>
+                </StackPanel>
                 <Viewbox HorizontalAlignment="Left">
                     <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="10" Width="300" Margin="10 20 10 10" Background="White" KeyDown="entrySearch_KeyDown"/>
                 </Viewbox>

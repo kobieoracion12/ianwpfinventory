@@ -170,6 +170,9 @@
     <Compile Include="windows\win_pos.xaml.cs">
       <DependentUpon>win_pos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_priceCheck.xaml.cs">
+      <DependentUpon>win_priceCheck.xaml</DependentUpon>
+    </Compile>
     <Page Include="admin\admin_create.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -287,6 +290,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_pos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_priceCheck.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

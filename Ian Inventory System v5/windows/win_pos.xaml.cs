@@ -52,7 +52,7 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         }
 
-        // Account Number Generator
+        // Transaction Number Generator
         public string accNumberGen()
         {
             Random random = new Random();
@@ -61,7 +61,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             for (i = 1; i < 13; i++)
             {
                 r += random.Next(0, 9).ToString();
-                string query = "SELECT COUNT(1) FROM datasalesinventory WHERE orderNo = @order";
+                string query = "SELECT COUNT(1) FROM datasalesinventory WHERE salesTransNo = @order";
                 conn.query(query);
                 try
                 {
@@ -75,7 +75,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     }
                     else
                     {
-                        orderNo.Text = "Transaction # " + Convert.ToString(r);
+                        orderNo.Text = Convert.ToString(r);
                     }
                     conn.Close();
                 }
@@ -238,7 +238,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     // Insert Scanned Data to Database (datasalesinventory)
                     try
                     {
-                        string query2 = "INSERT INTO datasalesinventory (orderNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate) VALUES (@no, @a, @b, @c, @d, @e, @f, @g, @h)";
+                        string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate, salesStatus) VALUES (@no, @a, @b, @c, @d, @e, @f, @g, @h, @status)";
                         conn.query(query2);
 
                         conn.bind("@no", orderNo.Text);
@@ -250,6 +250,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                         conn.bind("@f", coQty.Text);
                         conn.bind("@g", coSubtotal.Text);
                         conn.bind("@h", Convert.ToDateTime(transTime.Text));
+                        conn.bind("@status", "Pending");
                         conn.cmd().Prepare();
                         var cf = conn.execute();
                         if (cf == 1)
@@ -421,5 +422,11 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
         }
 
+        // Price Check
+        private void priceCheck_Click(object sender, RoutedEventArgs e)
+        {
+            win_priceCheck wpc = new win_priceCheck();
+            wpc.ShowDialog();
+        }
     }
 }
