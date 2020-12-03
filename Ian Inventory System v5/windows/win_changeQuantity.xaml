@@ -1,12 +1,12 @@
-﻿<Window x:Class="NavigationDrawerPopUpMenu2.windows.window_cashButton"
+﻿<Window x:Class="NavigationDrawerPopUpMenu2.windows.win_changeQuantity"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
-        Title="window_cashButton" Height="300" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" >
-    
+        Title="Change Quantity" Height="300" Width="540">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="118*"/>
@@ -30,13 +30,10 @@
                 <Grid>
                     <StackPanel VerticalAlignment="Center">
                         <TextBlock Text="Enter Amount:" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10 0 0 0"/>
-                        <TextBox x:Name="cashAmount" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Margin="5" Background="White" KeyDown="entrySearch_KeyDown"/>
+                        <TextBox x:Name="quantityAmount" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Margin="5" Background="White" KeyDown="quantityAmount_KeyDown"/>
                     </StackPanel>
                 </Grid>
             </Grid>
-
-
-
         </Grid>
     </Grid>
 </Window>

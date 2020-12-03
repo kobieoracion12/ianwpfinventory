@@ -94,7 +94,9 @@ namespace NavigationDrawerPopUpMenu2.windows
                     string date = restockEXPD.Text;
                     DateTime dateTime;
                     dateTime = DateTime.Parse(date);
+
                     conn.bind("@EXPD", dateTime);
+
                     var check = conn.execute();
                     if (check == 1)
                     {

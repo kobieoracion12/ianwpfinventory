@@ -158,6 +158,9 @@
     <Compile Include="windows\window_userLogin.xaml.cs">
       <DependentUpon>window_userLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_changeQuantity.xaml.cs">
+      <DependentUpon>win_changeQuantity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\win_checkout.xaml.cs">
       <DependentUpon>win_checkout.xaml</DependentUpon>
     </Compile>
@@ -268,6 +271,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\window_userLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_changeQuantity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -65,6 +65,24 @@
                     </Grid>
                 </Grid>
 
+                <Grid Grid.Column="1"></Grid>
+                <!-- Hidden Textbox -->
+                <Grid Grid.Column="1">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBox x:Name="coItem" IsReadOnly="True" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="150" Margin="20" Background="White" Visibility="Hidden" />
+                        <TextBox x:Name="coBrand" IsReadOnly="True" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="150" Margin="20" Background="White" Visibility="Hidden" />
+                        <TextBox x:Name="coSRP" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden" />
+                        <TextBox x:Name="coRP" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden" />
+                        <TextBox x:Name="coQty" IsReadOnly="True" Text="1" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden"/>
+                        <TextBox x:Name="coStocks" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden"/>
+                        <TextBox x:Name="coRemStocks" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden"/>
+                        <TextBox x:Name="coSubtotal" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden"/>
+                        <TextBox x:Name="coCurrent" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden"/>
+                        <TextBox x:Name="coCurrentNew" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden"/>
+                        <TextBox x:Name="cashAmount" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden"/>
+                        <TextBox x:Name="tbPrdId" IsReadOnly="True" TextAlignment="Center" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Width="50" Margin="20" Background="White" Visibility="Hidden"/>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
 
@@ -145,9 +163,9 @@
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <Label Content="Transaction #" Margin="10"/>
+                <TextBlock x:Name="orderNo" Text="Transaction #" Margin="15"/>
                 <Viewbox HorizontalAlignment="Left">
-                    <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="10" Width="300" Margin="10 20 10 10" Background="White"/>
+                    <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="10" Width="300" Margin="10 20 10 10" Background="White" KeyDown="entrySearch_KeyDown"/>
                 </Viewbox>
 
             </Grid>
@@ -165,7 +183,7 @@
 
                 <!-- Listview Panel-->
                 <Grid Margin="10">
-                    <ListView x:Name="listViewinVoice" FontSize="20" SelectionMode="Single" Margin="10">
+                    <ListView x:Name="listViewinVoice" FontSize="20" SelectionMode="Single" Margin="10" >
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <GridView.Columns>
@@ -240,8 +258,8 @@
                             <Viewbox Stretch="Uniform" Margin="5" VerticalAlignment="Top">
                                 <Canvas Width="100" Height="80">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                        <TextBlock Text="0" FontWeight="Regular" FontSize="15" TextAlignment="Left"/>
-                                        <TextBlock Text="0" FontWeight="Regular" Margin="0 3 10 5" FontSize="15" TextAlignment="Left"/>
+                                        <TextBlock x:Name="totalItems" Text="0" FontWeight="Regular" FontSize="15" TextAlignment="Left"/>
+                                        <TextBlock x:Name="discountItems" Text="0" FontWeight="Regular" Margin="0 3 10 5" FontSize="15" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
                             </Viewbox>
@@ -270,9 +288,9 @@
                             <Viewbox Stretch="Uniform" Margin="5" VerticalAlignment="Top">
                                 <Canvas Width="120" Height="150">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                        <TextBlock Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
-                                        <TextBlock Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
-                                        <TextBlock Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
+                                        <TextBlock x:Name="pay_subtotal" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
+                                        <TextBlock x:Name="oay_tax" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
+                                        <TextBlock x:Name="pay_discount" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
                             </Viewbox>
@@ -288,7 +306,7 @@
 
                     <Grid Grid.Row="2" Grid.Column="2">
                         <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                            <TextBlock Text="0.00" Margin="10" FontWeight="Bold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left"/>
+                            <TextBlock x:Name="pay_total" Text="0.00" Margin="10" FontWeight="Bold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left"/>
                         </Viewbox>
                     </Grid>
                 </Grid>
@@ -336,7 +354,7 @@
                                     <Viewbox Stretch="Uniform" Margin="5" VerticalAlignment="Top">
                                         <Canvas Width="150" Height="80">
                                             <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                                <TextBlock Text="00/00/0000 12:00 AM" Margin="10 3 10 5" FontWeight="Regular" FontSize="15" TextAlignment="Left"/>
+                                                <TextBlock x:Name="transTime" Text="00/00/0000 12:00 AM" Margin="10 3 10 5" FontWeight="Regular" FontSize="15" TextAlignment="Left"/>
                                             </StackPanel>
                                         </Canvas>
                                     </Viewbox>
@@ -380,7 +398,7 @@
                                 <Viewbox Stretch="Uniform" Margin="5" >
                                     <Canvas Width="120" Height="150">
                                         <StackPanel Orientation="Vertical" Margin="0 0 10 5">
-                                            <TextBlock Text="0.00" FontWeight="SemiBold" Margin="0 3 10 5" FontSize="25" TextAlignment="Left"/>
+                                            <TextBlock x:Name="pay_paid" Text="0.00" FontWeight="SemiBold" Margin="0 3 10 5" FontSize="25" TextAlignment="Left"/>
                                             <TextBlock Text="0.00" FontWeight="SemiBold" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
                                         </StackPanel>
                                     </Canvas>
@@ -397,7 +415,7 @@
 
                         <Grid Grid.Row="2" Grid.Column="3">
                             <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                                <TextBlock Text="0.00" Margin="10" FontWeight="Bold" FontSize="12" Foreground="#E86845"  TextAlignment="Left"/>
+                                <TextBlock  x:Name="pay_due" Text="0.00" Margin="10" FontWeight="Bold" FontSize="12" Foreground="#E86845"  TextAlignment="Left"/>
                             </Viewbox>
                         </Grid>
                     </Grid>
@@ -432,21 +450,21 @@
                         <Viewbox Stretch="Uniform">
                             <Canvas Width="300" Height="50">
                                 <StackPanel Orientation="Horizontal" Margin="5 10 5 5" Canvas.Left="22">
-                                    <Button x:Name="cashButton" Margin="0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7">
+                                    <Button x:Name="cashButton" Margin="0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False" Click="cashButton_Click">
                                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                             <TextBlock Text="Cash" FontWeight="SemiBold" FontSize="8" Foreground="Black" />
-                                            <TextBlock Text="[F1]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="[F4]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                     </Button>
 
-                                    <Button x:Name="nerer" Margin="5 0 0 0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7">
+                                    <Button x:Name="voucherButton" Margin="5 0 0 0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                             <TextBlock Text="Voucher" Foreground="Black" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
                                             <TextBlock Text="[F2]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                     </Button>
 
-                                    <Button x:Name="ner" Margin="5 0 0 0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7">
+                                    <Button x:Name="othersButton" Margin="5 0 0 0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False">
                                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                             <TextBlock Text="Others" Foreground="Black" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
                                             <TextBlock Text="[F3]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
@@ -476,21 +494,24 @@
                     <Viewbox Stretch="Uniform" Margin="10">
                         <Canvas Width="230" Height="50">
                             <StackPanel Orientation="Horizontal" Margin="5 10 5 5">
-                                <Button x:Name="neOrder" Margin="0" Height="25" Width="70" Background="#EC6464" BorderBrush="#EC6464">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Button x:Name="voidEntry" Margin="0" Height="25" Width="70" Background="#EC6464" BorderBrush="#EC6464" IsEnabled="False" Click="voidEntry_Click">
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                         <TextBlock Text="Void" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="[F1]" FontWeight="SemiBold" FontSize="5" Foreground="White" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
 
-                                <Button x:Name="neOrer" Margin="5 0 0 0" Height="25" Width="70" Background="#2C9CDB" BorderBrush="#2C9CDB">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                        <TextBlock Text="Hold" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
+                                <Button x:Name="holdOrder" Margin="5 0 0 0" Height="25" Width="70" Background="#2C9CDB" BorderBrush="#2C9CDB" IsEnabled="False">
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                        <TextBlock Text="Quantity" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="[F2]" FontWeight="SemiBold" FontSize="5" Foreground="White" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
 
-                                <Button x:Name="neer" Margin="5 0 0 0" Height="25" Width="70" Background="#29CC97" BorderBrush="#29CC97">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Button x:Name="endSale" Margin="5 0 0 0" Height="25" Width="70" Background="#29CC97" BorderBrush="#29CC97" IsEnabled="False" Click="endSale_Click">
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                         <TextBlock Text="Checkout" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="[F3]" FontWeight="SemiBold" FontSize="5" Foreground="White" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
                             </StackPanel>

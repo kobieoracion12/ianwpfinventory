@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2020 at 05:13 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: Dec 03, 2020 at 05:25 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -78,7 +77,7 @@ INSERT INTO `datainventory` (`prodNo`, `prodItem`, `prodBrand`, `prodQty`, `prod
 (48025522, 'Magic Sarap 8g', 'Maggi', 0, 37, 48, 15, '2020-11-17', '2020-11-29'),
 (14285000051, 'UFC Hot & Spicy Banana Ketchup 320g', 'UFC', 20, 30, 32, 0, '2020-11-28', '2020-11-30'),
 (14285002789, 'UFC Banana Ketchup 100g', 'UFC', 28, 9, 10, 2, '2020-11-28', '2020-11-30'),
-(54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 30, 47, 57, 0, '2020-11-28', '2020-11-30'),
+(54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 29, 47, 57, 1, '2020-11-28', '2020-11-30'),
 (78895710021, 'Lee Kum Kee Sesame Oil 270mL', 'Lee Kum Kee', 20, 168, 175, 0, '2020-11-28', '2020-11-30'),
 (748485100401, 'Century Tuna Flakes in Oil 155g', 'Century Tuna', 28, 30, 32, 2, '2020-11-28', '2020-11-30'),
 (748485102245, 'Century Tuna Flakes in Oil 95g', 'Century Tuna', 29, 22, 25, 1, '2020-11-28', '2020-11-30'),
@@ -115,15 +114,15 @@ INSERT INTO `datainventory` (`prodNo`, `prodItem`, `prodBrand`, `prodQty`, `prod
 (4800361413480, 'Milo Twin Pack', 'Nestle Philippines INC.', 0, 83, 90, 98, '2020-04-30', '2021-04-30'),
 (4800361415347, 'Nescafe Original Twin Pack', 'Nestle Philippines INC.', 50, 102, 110, 113, '2020-07-31', '2021-07-31'),
 (4800575110373, 'Alaska Classic 370mL', 'Alaska Milk Corporation', 20, 44, 50, 0, '2020-11-28', '2020-11-30'),
-(4800818808760, 'Yakee! Super Asim Gumball 145.6g', 'Columbia Intl Food Product INC.', 30, 25, 28, 0, '2020-11-28', '2021-07-25'),
-(4800818808906, 'Potchi Strawberyy Cream 135g', 'Columbia Intl Food Productions INC.', 11, 35, 50, 9, '2020-11-28', '2021-08-19'),
+(4800818808760, 'Yakee! Super Asim Gumball 145.6g', 'Columbia Intl Food Product INC.', 0, 25, 28, 30, '2020-11-28', '2021-07-25'),
+(4800818808906, 'Potchi Strawberyy Cream 135g', 'Columbia Intl Food Productions INC.', 0, 35, 50, 20, '2020-11-28', '2021-08-19'),
 (4801668602027, 'Datu Puti Vinegar 200mL', 'Datu Puti', 18, 9, 10, 2, '2020-11-28', '2020-11-30'),
 (4801668602034, 'Datu Puti Soy Sauce 200mL', 'Datu Puti', 18, 9, 10, 2, '2020-11-28', '2020-11-30'),
 (4801668603659, 'Oysterrific Oyster Sauce 30g', 'Datu Puti', 0, 35, 40, 0, '2020-11-09', '2020-11-24'),
 (4801668606865, 'Mafran All-Purpose Dressing  7.05oz', 'Mafran', 18, 12, 14, 2, '2020-11-28', '2020-11-30'),
 (4801958349106, 'Aji-Ginisa 7g x 16', 'Ajinomoto', 20, 28, 30, 0, '2020-11-28', '2020-11-30'),
 (4801981118502, 'Coca Cola 294mL', 'The CocaCola Company', 0, 10, 12, 0, '2020-11-13', '2020-11-10'),
-(4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 50, 30, 32, 0, '2020-11-28', '2021-03-14'),
+(4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 22, 30, 32, 28, '2020-11-28', '2021-03-14'),
 (4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 0, 22, 24, 0, '2020-11-28', '2021-03-12'),
 (4806014000137, 'Jolly Sweet Cream Corn 425g ', 'Jolly', 20, 46, 50, 0, '2020-11-28', '2020-11-30'),
 (4806014000397, 'Jolly Cream of Mushroom 298g', 'Jolly', 20, 72, 80, 0, '2020-11-28', '2020-11-30'),
@@ -174,18 +173,33 @@ CREATE TABLE `datasalesinventory` (
   `salesRP` int(249) NOT NULL,
   `salesQty` int(249) NOT NULL,
   `salesTotal` int(249) NOT NULL,
-  `salesDate` timestamp NOT NULL DEFAULT current_timestamp()
+  `salesDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `salesStatus` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `datasalesinventory`
 --
 
-INSERT INTO `datasalesinventory` (`orderNo`, `refNo`, `salesNo`, `salesItem`, `salesBrand`, `salesSRP`, `salesRP`, `salesQty`, `salesTotal`, `salesDate`) VALUES
-(821077510125, 623, 4800818808906, 'Potchi Strawberyy Cream 135g', 'Columbia Intl Food Productions INC.', 35, 50, 1, 50, '2020-12-01 09:35:03'),
-(821077510125, 624, 4800818808906, 'Potchi Strawberyy Cream 135g', 'Columbia Intl Food Productions INC.', 35, 50, 1, 50, '2020-12-01 09:35:05'),
-(821077510125, 625, 4800818808906, 'Potchi Strawberyy Cream 135g', 'Columbia Intl Food Productions INC.', 35, 50, 1, 50, '2020-12-01 09:35:06'),
-(821077510125, 626, 4800818808906, 'Potchi Strawberyy Cream 135g', 'Columbia Intl Food Productions INC.', 35, 50, 1, 50, '2020-12-01 09:35:06');
+INSERT INTO `datasalesinventory` (`orderNo`, `refNo`, `salesNo`, `salesItem`, `salesBrand`, `salesSRP`, `salesRP`, `salesQty`, `salesTotal`, `salesDate`, `salesStatus`) VALUES
+(0, 679, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
+(0, 680, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
+(0, 681, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
+(0, 682, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
+(0, 683, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:51:10', 'Completed'),
+(0, 684, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:53:14', NULL),
+(0, 685, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:53:14', NULL),
+(0, 686, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:53:14', NULL),
+(0, 687, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:54:34', NULL),
+(0, 688, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:54:34', NULL),
+(0, 689, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 03:54:34', NULL),
+(0, 690, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 04:01:53', NULL),
+(0, 691, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:01:53', NULL),
+(0, 692, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL),
+(0, 693, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL),
+(0, 694, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL),
+(0, 695, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL),
+(0, 696, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 1, 32, '2020-12-03 04:07:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -224,7 +238,11 @@ INSERT INTO `sales_preview` (`ref#`, `payment_method`, `payment_vat`, `payment_t
 (14, 'Cash', 0, 660, 700, 40, '2020-11-27 07:57:33'),
 (15, 'Cash', 0, 365, 400, 35, '2020-11-28 01:44:38'),
 (16, 'Cash', 0, 1280, 2000, 720, '2020-11-28 01:45:49'),
-(17, 'Cash', 0, 384, 500, 116, '2020-11-28 07:52:12');
+(17, 'Cash', 0, 384, 500, 116, '2020-11-28 07:52:12'),
+(18, 'Cash', 0, 50, 500, 450, '2020-12-03 02:32:24'),
+(19, 'Cash', 0, 50, 500, 450, '2020-12-03 02:34:53'),
+(20, 'Cash', 0, 165, 200, 35, '2020-12-03 03:50:19'),
+(21, 'Cash', 0, 165, 200, 35, '2020-12-03 03:51:31');
 
 -- --------------------------------------------------------
 
@@ -293,13 +311,13 @@ ALTER TABLE `usersinventory`
 -- AUTO_INCREMENT for table `datasalesinventory`
 --
 ALTER TABLE `datasalesinventory`
-  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=627;
+  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=697;
 
 --
 -- AUTO_INCREMENT for table `sales_preview`
 --
 ALTER TABLE `sales_preview`
-  MODIFY `ref#` int(249) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ref#` int(249) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
