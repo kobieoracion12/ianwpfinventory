@@ -219,13 +219,14 @@ namespace NavigationDrawerPopUpMenu2.windows
                 int qty = Convert.ToInt32(coQty.Text);
                 int cur = Convert.ToInt32(coCurrent.Text);
                 int stk = Convert.ToInt32(coStocks.Text);
+                int toit = Convert.ToInt32(totalItems.Text);
                 int sub = rp * qty;
 
                 // Here goes the math shits(2)
                 checkout.rmstocks = stk - qty;
                 checkout.total += checkout.vat + sub;
                 checkout.bought = cur + qty;
-                totalItems.Text = Convert.ToString(checkout.total);
+                totalItems.Text = Convert.ToString(toit + qty);
                 coRemStocks.Text = Convert.ToString(checkout.rmstocks);
                 coSubtotal.Text = Convert.ToString(sub);
                 pay_subtotal.Text = Convert.ToString(checkout.subtotal + sub);
