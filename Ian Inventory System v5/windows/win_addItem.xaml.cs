@@ -27,7 +27,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         public win_add_item(win_pos winPOS)
         {
             InitializeComponent();
-            win_pos win_pos = winPOS;
+            win_pos = winPOS;
             checkBarcode.Focus();
             cbBrand();
            
@@ -120,7 +120,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Error: " + ex.Message + ", Try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     con.Close();
                 }
             }
