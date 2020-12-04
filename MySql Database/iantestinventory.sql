@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2020 at 07:45 AM
+-- Generation Time: Dec 04, 2020 at 06:57 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `iantestinventory`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cashierinventory`
+--
+
+CREATE TABLE `cashierinventory` (
+  `itemNo` bigint(20) NOT NULL,
+  `itemName` varchar(249) NOT NULL,
+  `itemBrand` varchar(249) NOT NULL,
+  `itemRP` int(249) NOT NULL,
+  `itemSRP` int(249) NOT NULL,
+  `itemDOA` date NOT NULL,
+  `itemEXPD` date NOT NULL,
+  `cashierName` varchar(249) NOT NULL,
+  `cashierNo` int(12) NOT NULL,
+  `itemStatus` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cashierinventory`
+--
+
+INSERT INTO `cashierinventory` (`itemNo`, `itemName`, `itemBrand`, `itemRP`, `itemSRP`, `itemDOA`, `itemEXPD`, `cashierName`, `cashierNo`, `itemStatus`) VALUES
+(4806789440121, 'caasdas', 'Yakult Philippines INC.', 123, 123, '2020-12-04', '2020-12-21', '', 0, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -77,13 +103,13 @@ INSERT INTO `datainventory` (`prodNo`, `prodItem`, `prodBrand`, `prodQty`, `prod
 (48025522, 'Magic Sarap 8g', 'Maggi', 0, 37, 48, 15, '2020-11-17', '2020-11-29'),
 (14285000051, 'UFC Hot & Spicy Banana Ketchup 320g', 'UFC', 20, 30, 32, 0, '2020-11-28', '2020-11-30'),
 (14285002789, 'UFC Banana Ketchup 100g', 'UFC', 28, 9, 10, 2, '2020-11-28', '2020-11-30'),
-(54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 26, 47, 57, 4, '2020-11-28', '2020-11-30'),
+(54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 14, 47, 57, 16, '2020-11-28', '2020-11-30'),
 (78895710021, 'Lee Kum Kee Sesame Oil 270mL', 'Lee Kum Kee', 20, 168, 175, 0, '2020-11-28', '2020-11-30'),
 (748485100401, 'Century Tuna Flakes in Oil 155g', 'Century Tuna', 28, 30, 32, 2, '2020-11-28', '2020-11-30'),
 (748485102245, 'Century Tuna Flakes in Oil 95g', 'Century Tuna', 29, 22, 25, 1, '2020-11-28', '2020-11-30'),
 (748485102252, 'Century Tuna Hot & Spicy 95g', 'Century Tuna', 18, 22, 25, 2, '2020-11-28', '2020-11-30'),
 (748485801803, 'Argentina Corned Beef 100g', 'Argentina', 28, 22, 25, 2, '2020-11-28', '2020-11-30'),
-(750515018402, 'Skyflakes Crackers 25g', 'Monde MY San Corporation', -7, 50, 60, 38, '2020-11-17', '2021-03-23'),
+(750515018402, 'Skyflakes Crackers 25g', 'Monde MY San Corporation', 100, 50, 60, 38, '2020-11-17', '2021-03-23'),
 (750515018501, 'Skyflakes Crackers 250g', 'M.Y Sans', 45, 59, 69, 5, '2020-11-27', '2020-11-30'),
 (4800010781076, 'Cloud 9 Classic 336g', 'Jack n Jill', 34, 64, 80, 66, '2020-11-27', '2020-11-30'),
 (4800016022180, 'Great Taste White Crema Twin Pack 10 x 25g', 'Universal Robina', 16, 102, 110, 17, '2020-11-28', '2020-11-22'),
@@ -134,10 +160,10 @@ INSERT INTO `datainventory` (`prodNo`, `prodItem`, `prodBrand`, `prodQty`, `prod
 (4806511111121, 'Topsee Milk Chocolate 18g', 'Delicatesse Food Corporation', 0, 32, 40, 0, '2020-11-28', '2021-08-26'),
 (4806521791634, 'Super Bawang Garlic Flavor 20 x 18g', 'W.L. Foods', 30, 18, 20, 0, '2020-11-28', '2020-11-29'),
 (4806521796202, 'Kids Choice Teeth 100g', 'W.L. Foods', 50, 15, 22, 0, '2020-11-28', '2020-11-29'),
-(4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 50, 15, 17, 0, '2020-11-28', '2020-11-30'),
+(4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 48, 15, 17, 2, '2020-11-28', '2020-11-30'),
 (4806521796240, 'Kids Choice Worm 100g', 'W.L. Foods', 50, 15, 22, 0, '2020-11-28', '2020-11-29'),
 (4806525660561, 'Peanut Brittle Candy 150g', 'Rackey', 50, 27, 30, 0, '2020-11-28', '2020-11-30'),
-(4806534030164, 'MySip Juice Drink Lycee 255mL', 'MSP Golden Dragon Manufacturing', 92, 10, 15, 8, '2020-11-28', '2020-12-03'),
+(4806534030164, 'MySip Juice Drink Lycee 255mL', 'MSP Golden Dragon Manufacturing', 91, 10, 15, 9, '2020-11-28', '2020-12-03'),
 (4807770270024, 'Lucky Me Chicken na Chicken 55g', 'Lucky Me', 19, 8, 10, 1, '2020-11-28', '2020-11-30'),
 (4807770272097, 'Lucky Me Spicy Beef Labuyo 50g', 'Lucky Me', 19, 8, 10, 1, '2020-11-28', '2020-11-30'),
 (4807770273674, 'Lucky Me Pansit Canton Kalamansi Flavor 80g', 'Lucky Me', 19, 12, 14, 1, '2020-11-28', '2020-11-30'),
@@ -151,7 +177,7 @@ INSERT INTO `datainventory` (`prodNo`, `prodItem`, `prodBrand`, `prodQty`, `prod
 (4902430583169, 'Ariel Sunrise Fresh', 'Procter & Gamble Philippines INC.', 0, 60, 70, 0, '2020-07-12', '2020-07-12'),
 (8851717904967, 'Delight 100ml', 'Dutch Mill Corporation', 0, 55, 60, 0, '2020-11-16', '2021-11-16'),
 (8935001720126, 'Mentos Tropical Mix', 'Perfetti Van Melle', 0, 35, 50, 0, '2020-07-08', '2022-07-08'),
-(8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 50, 40, 50, 0, '2020-11-28', '2020-11-30'),
+(8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 44, 40, 50, 6, '2020-11-28', '2020-11-30'),
 (8992741942959, 'Yupi Strawberry Kiss', 'Yupi', 99, 100, 120, 1, '2020-11-27', '2020-11-28'),
 (8992741942973, 'Yupi Sour Iced Cola', 'Yupi', 99, 100, 120, 1, '2020-11-27', '2020-11-28'),
 (8993175537124, 'Richeese Cheese Wafer', 'Enerlife Philippines INC.', 0, 88, 98, 0, '2020-07-23', '2021-07-23'),
@@ -182,7 +208,28 @@ CREATE TABLE `datasalesinventory` (
 --
 
 INSERT INTO `datasalesinventory` (`salesTransNo`, `refNo`, `salesNo`, `salesItem`, `salesBrand`, `salesSRP`, `salesRP`, `salesQty`, `salesTotal`, `salesDate`, `salesStatus`) VALUES
-(782223671324, 699, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:42:47', 'Pending');
+(782223671324, 699, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:42:47', 'Pending'),
+(771063338846, 700, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:49:19', 'Pending'),
+(231270362108, 701, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:51:21', 'Pending'),
+(231270362108, 702, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:51:21', 'Pending'),
+(231270362108, 703, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:51:21', 'Pending'),
+(231270362108, 704, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:51:21', 'Pending'),
+(643832135201, 705, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:53:42', 'Pending'),
+(643832135201, 706, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:53:42', 'Pending'),
+(643832135201, 707, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:53:42', 'Pending'),
+(643832135201, 708, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:53:42', 'Pending'),
+(643832135201, 709, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:53:42', 'Pending'),
+(643832135201, 710, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:53:42', 'Pending'),
+(643832135201, 711, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 1, 57, '2020-12-03 06:53:42', 'Pending'),
+(800545011852, 712, 4806534030164, 'MySip Juice Drink Lycee 255mL', 'MSP Golden Dragon Manufacturing', 10, 15, 10, 15, '2020-12-04 04:42:39', 'Pending'),
+(800545011852, 713, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 1, 17, '2020-12-04 04:42:39', 'Pending'),
+(800545011852, 714, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 1, 17, '2020-12-04 04:42:39', 'Pending'),
+(484153148476, 715, 8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 40, 50, 1, 50, '2020-12-04 04:52:59', 'Pending'),
+(484153148476, 716, 8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 40, 50, 1, 50, '2020-12-04 04:52:59', 'Pending'),
+(484153148476, 717, 8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 40, 50, 1, 50, '2020-12-04 04:52:59', 'Pending'),
+(484153148476, 718, 8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 40, 50, 1, 50, '2020-12-04 04:52:59', 'Pending'),
+(484153148476, 719, 8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 40, 50, 1, 50, '2020-12-04 04:52:59', 'Pending'),
+(484153148476, 720, 8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 40, 50, 1, 50, '2020-12-04 04:52:59', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -257,6 +304,12 @@ INSERT INTO `usersinventory` (`acc_no`, `usersName`, `usersPass`, `usersPrevileg
 --
 
 --
+-- Indexes for table `cashierinventory`
+--
+ALTER TABLE `cashierinventory`
+  ADD PRIMARY KEY (`itemNo`);
+
+--
 -- Indexes for table `client_information`
 --
 ALTER TABLE `client_information`
@@ -294,7 +347,7 @@ ALTER TABLE `usersinventory`
 -- AUTO_INCREMENT for table `datasalesinventory`
 --
 ALTER TABLE `datasalesinventory`
-  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=700;
+  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=721;
 
 --
 -- AUTO_INCREMENT for table `sales_preview`
