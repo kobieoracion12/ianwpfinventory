@@ -17,6 +17,7 @@ namespace NavigationDrawerPopUpMenu2.windows
 {
     /// <summary>
     /// Interaction logic for window_change_quantity.xaml
+    /// CHANGE QUANTITY PRODUCT IN INVOICE
     /// </summary>
     public partial class window_change_quantity : Window
     {
@@ -42,14 +43,25 @@ namespace NavigationDrawerPopUpMenu2.windows
             {
                 if (e.Key == Key.Return)
                 {
-                
+                    /* SALES QUANTITY
+                     * SET A NEW TOTAL QUANTITY
+                     */
                     conn.Open();
                     string query = "UPDATE datasalesinventory SET salesQty = '"+ txtQtyChange.Text + "' WHERE salesTransNo = '" + win_pos.orderNo.Text + "' AND salesItem = '" + salesItem + "' ";
                     conn.query(query);
                     conn.execute();
-
-                    MessageBox.Show("Quantity Changed");
                     conn.Close();
+
+                    /* SALES TOTAL
+                     * SET A NEW TOTAL PRICE
+                     */
+                    conn.Open();
+                    string query2 = "UPDATE datasalesinventory SET salesTotal = (salesRP * salesQty) WHERE salesTransNo = '" + win_pos.orderNo.Text + "' AND salesItem = '" + salesItem + "' ";
+                    conn.query(query2);
+                    conn.execute();
+                    conn.Close();
+
+                    MessageBox.Show("Quantity Changed", "Quantiy", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close(); // Close
                     win_pos.catchData();
                 }
