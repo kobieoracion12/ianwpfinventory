@@ -23,6 +23,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     public partial class UserControlStockInv : UserControl
     {
         // Init database
+       
         Database conn = new Database();
         public static int prdID;
         public WindowState WindowState { get; private set; }
@@ -265,6 +266,21 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
+        private void listViewInventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                // Get the product id
+                string prodId = listViewInventory.SelectedItems[0].ToString();
+                // Append ID and Product name
+                tbPrdId.Text = prodId;
+
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                return;
+            }
+        }
     }
 }

@@ -26,7 +26,9 @@ namespace NavigationDrawerPopUpMenu2.windows
         Checkout checkout = new Checkout();
         StocksCheck stocksck = new StocksCheck();
         Authentication auth;
-
+        string transNo;
+        string salesItem;
+        string prodQty;
         public static int prdID;
 
         public win_pos(window_userLogin frmLogin)
@@ -50,6 +52,38 @@ namespace NavigationDrawerPopUpMenu2.windows
 
             transTime.Text = DateTime.Now.ToString();
 
+        }
+
+        public void catchData()
+        {
+            try
+            {
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text +"'";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("datasalesinventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewinVoice.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+                adapter.Dispose();
+                // Close Connection
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message);
+            }
         }
 
         // Transaction Number Generator
@@ -81,6 +115,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 }
                 catch (Exception x)
                 {
+                    conn.Close();
                     MessageBox.Show(x.Message);
                 }
             }
@@ -161,6 +196,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             if (e.Key == Key.Return)
             {
+                holdOrder.IsEnabled = false;
                 conn.Close();
                 string search = entrySearch.Text;
                 string query = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodBought FROM datainventory WHERE prodNo= '" + search + "'";
@@ -212,7 +248,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 voidEntry.IsEnabled = true;
                 voucherButton.IsEnabled = true;
                 othersButton.IsEnabled = true;
-                holdOrder.IsEnabled = true;
+                //holdOrder.IsEnabled = true;
 
                 // Here goes the math shits
                 int rp = Convert.ToInt32(coRP.Text);
@@ -293,12 +329,15 @@ namespace NavigationDrawerPopUpMenu2.windows
                             }
 
                             // Adds Scanned Item to the Listview
-                            listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
+                            //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
                             clearPartial();
+                            catchData();
+
                         }
                     }
                     catch (Exception x)
                     {
+                        conn.Close();
                         MessageBox.Show(x.Message);
                         clearPartial();
                     }
@@ -428,6 +467,44 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             win_priceCheck wpc = new win_priceCheck();
             wpc.ShowDialog();
+        }
+
+        // Update QTY
+        private void updQtyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbPrdName.Text != String.Empty)
+            {
+                window_change_quantity changeQtyWindow = new window_change_quantity(this, transNo, salesItem, prodQty);
+                changeQtyWindow.ShowDialog();
+            }
+            else
+            {
+                holdOrder.IsEnabled = false;
+                MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            
+        }
+
+        // IF CLICK ON LISTVIEW 
+        private void listViewinVoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                holdOrder.IsEnabled = true;
+                transNo = orderNo.Text;     // Transaction Number
+                // Product Item Name
+                salesItem = tbPrdName.Text;
+                // GET THE SELECTED ITEM
+
+                string selectedItem = listViewinVoice.SelectedItems[1].ToString();
+                if (selectedItem != null) {
+                    tbPrdName.Text = selectedItem;
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
         }
     }
 }
