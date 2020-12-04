@@ -54,6 +54,7 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         }
 
+        // DISPLAY THE ITEMS INTO THE LISTVIEW
         public void loadData()
         {
             try
@@ -84,6 +85,39 @@ namespace NavigationDrawerPopUpMenu2.windows
                 conn.Close();
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        // GET AND DISPLAY THE TOTAL SALES/DUE
+        public String sumOfSalesTotal()
+        {
+            string total = "";
+            try
+            {
+                // GET THE TOTAL SALES     
+                conn.Open();
+                string query = "SELECT SUM(salesTotal) as total_due FROM `datasalesinventory` WHERE salesTransNo = @transno GROUP BY salesTransNo";
+                conn.query(query);
+                conn.bind("@transno", orderNo.Text);
+                conn.cmd().Prepare();
+                MySqlDataReader dr = conn.read();
+                if (dr.HasRows)
+                {
+                    if (dr.Read())
+                    {
+                        total = dr["total_due"].ToString(); // TOTAL SUM OF SALESTOTAL
+                    }
+                }
+
+                dr.Close();
+                dr.Dispose();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show("Error: " + ex.Message + ", Try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            return total;
         }
 
         // Transaction Number Generator

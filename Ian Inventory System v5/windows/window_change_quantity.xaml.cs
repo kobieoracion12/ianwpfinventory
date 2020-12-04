@@ -1,4 +1,5 @@
-﻿using NavigationDrawerPopUpMenu2.classes;
+﻿using MySql.Data.MySqlClient;
+using NavigationDrawerPopUpMenu2.classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,8 +48,12 @@ namespace NavigationDrawerPopUpMenu2.windows
                      * SET A NEW TOTAL QUANTITY
                      */
                     conn.Open();
-                    string query = "UPDATE datasalesinventory SET salesQty = '"+ txtQtyChange.Text + "' WHERE salesTransNo = '" + win_pos.orderNo.Text + "' AND salesItem = '" + salesItem + "' ";
+                    string query = "UPDATE datasalesinventory SET salesQty = @salesQty  WHERE salesTransNo = @salesTransNo AND salesItem = @salesItem";
                     conn.query(query);
+                    conn.bind("@salesQty", txtQtyChange.Text);
+                    conn.bind("@salesTransNo", win_pos.orderNo.Text);
+                    conn.bind("@salesItem", salesItem);
+                    conn.cmd().Prepare();
                     conn.execute();
                     conn.Close();
 
@@ -66,6 +71,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     win_pos.holdOrder.IsEnabled = false;
                     this.Close(); // Close
                     win_pos.loadData();
+                    win_pos.pay_total.Text = win_pos.sumOfSalesTotal();
                 }
             }
             catch (Exception ex)
@@ -74,5 +80,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 MessageBox.Show("Error: " + ex.Message + ", Try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        
     }
 }
