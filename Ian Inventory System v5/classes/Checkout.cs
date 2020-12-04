@@ -20,7 +20,6 @@ namespace NavigationDrawerPopUpMenu2.classes
         public int bought = 0;
         public int items = 0;
         public string payMethod = "";
-
     }
 
     

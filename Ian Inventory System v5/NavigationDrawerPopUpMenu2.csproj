@@ -161,8 +161,8 @@
     <Compile Include="windows\window_userLogin.xaml.cs">
       <DependentUpon>window_userLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="windows\win_add_item.xaml.cs">
-      <DependentUpon>win_add_item.xaml</DependentUpon>
+    <Compile Include="windows\win_addItem.xaml.cs">
+      <DependentUpon>win_addItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\win_changeQuantity.xaml.cs">
       <DependentUpon>win_changeQuantity.xaml</DependentUpon>
@@ -176,8 +176,8 @@
     <Compile Include="windows\win_pos.xaml.cs">
       <DependentUpon>win_pos.xaml</DependentUpon>
     </Compile>
-    <Compile Include="windows\win_price _check.xaml.cs">
-      <DependentUpon>win_price _check.xaml</DependentUpon>
+    <Compile Include="windows\win_price Check.xaml.cs">
+      <DependentUpon>win_price Check.xaml</DependentUpon>
     </Compile>
     <Page Include="admin\admin_create.xaml">
       <SubType>Designer</SubType>
@@ -287,7 +287,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="windows\win_add_item.xaml">
+    <Page Include="windows\win_addItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -307,7 +307,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="windows\win_price _check.xaml">
+    <Page Include="windows\win_price Check.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

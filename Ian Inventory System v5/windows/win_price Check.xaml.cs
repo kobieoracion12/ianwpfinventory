@@ -58,14 +58,14 @@ namespace NavigationDrawerPopUpMenu2.windows
                         }
                         else if (status >= 1 && status <= 10)
                         {
-                            checkStatus.Text = "Low on Stock";
-                            checkStatus.Foreground = Brushes.Green;
+                            checkStatus.Text = "Running of Stock";
+                            checkStatus.Foreground = Brushes.Orange;
                         }
 
                         else if (status >= 11)
                         {
                             checkStatus.Text = "Good";
-                            checkStatus.Foreground = Brushes.Blue;
+                            checkStatus.Foreground = Brushes.Green;
                         }
                         checkBarcode.Text = "";
                     }
