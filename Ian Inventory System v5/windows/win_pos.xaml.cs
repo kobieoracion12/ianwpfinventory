@@ -54,7 +54,7 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         }
 
-        public void catchData()
+        public void loadData()
         {
             try
             {
@@ -331,7 +331,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                             // Adds Scanned Item to the Listview
                             //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
                             clearPartial();
-                            catchData();
+                            loadData();
 
                         }
                     }
@@ -510,7 +510,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Add Item Button
         private void addItem_Click(object sender, RoutedEventArgs e)
         {
-            win_add_item wai = new win_add_item();
+            win_add_item wai = new win_add_item(this);
             wai.Show();
         }
     }

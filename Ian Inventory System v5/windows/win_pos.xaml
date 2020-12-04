@@ -191,7 +191,7 @@
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>
                 </Rectangle>
-
+    
                 <!-- Listview Panel-->
                 <Grid Margin="10">
                     <ListView DisplayMemberPath="salesItem" ItemsSource="{Binding}" x:Name="listViewinVoice" FontSize="20" SelectionMode="Single" Margin="10" SelectionChanged="listViewinVoice_SelectionChanged" >
