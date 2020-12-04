@@ -149,6 +149,9 @@
     <Compile Include="windows\window_cashButton.xaml.cs">
       <DependentUpon>window_cashButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\window_change_quantity.xaml.cs">
+      <DependentUpon>window_change_quantity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\window_editItem.xaml.cs">
       <DependentUpon>window_editItem.xaml</DependentUpon>
     </Compile>
@@ -262,6 +265,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\window_cashButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\window_change_quantity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

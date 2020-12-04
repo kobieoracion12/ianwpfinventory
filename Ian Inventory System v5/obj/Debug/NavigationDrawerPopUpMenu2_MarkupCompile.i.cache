@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V2\ianwpfinventory\Ian Inventory System v5\obj\Debug\
 NavigationDrawerPopUpMenu2
 none
 false
 DEBUG;TRACE
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\App.xaml
-291694869549
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V2\ianwpfinventory\Ian Inventory System v5\App.xaml
+30-1199144110
 
-45-1398085337
-23-122350303
-admin\admin_create.xaml;admin\admin_usercontrols\admin_businessInfo.xaml;admin\admin_usercontrols\admin_personalInfo.xaml;admin\admin_usercontrols\admin_addUsers.xaml;admin\admin_usercontrols\admin_dashboard.xaml;admin\admin_window.xaml;main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\usc_sales.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;usercontrols\UserControlStockInv.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;windows\win_changeQuantity.xaml;windows\win_checkout.xaml;windows\win_checkoutBG.xaml;windows\win_pos.xaml;windows\win_priceCheck.xaml;
+46-300141898
+23449198878
+admin\admin_create.xaml;admin\admin_usercontrols\admin_businessInfo.xaml;admin\admin_usercontrols\admin_personalInfo.xaml;admin\admin_usercontrols\admin_addUsers.xaml;admin\admin_usercontrols\admin_dashboard.xaml;admin\admin_window.xaml;main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\usc_sales.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;usercontrols\UserControlStockInv.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_change_quantity.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;windows\win_changeQuantity.xaml;windows\win_checkout.xaml;windows\win_checkoutBG.xaml;windows\win_pos.xaml;windows\win_priceCheck.xaml;
 
-True
+False
 
