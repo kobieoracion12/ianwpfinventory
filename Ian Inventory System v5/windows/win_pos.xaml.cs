@@ -107,6 +107,10 @@ namespace NavigationDrawerPopUpMenu2.windows
                         total = dr["total_due"].ToString(); // TOTAL SUM OF SALESTOTAL
                     }
                 }
+
+                dr.Close();
+                dr.Dispose();
+                conn.Close();
             }
             catch (Exception ex)
             {
