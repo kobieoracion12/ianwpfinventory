@@ -59,8 +59,6 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             try
             {
-                // Open Connection
-                conn.Open();
                 // Query Statement
                 string query = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text +"'";
                 // Mysql Command
@@ -76,8 +74,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 listViewinVoice.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
                 adapter.Dispose();
-                // Close Connection
-                conn.Close();
 
             }
             catch (Exception ex)
@@ -94,9 +90,9 @@ namespace NavigationDrawerPopUpMenu2.windows
             try
             {
                 // GET THE TOTAL SALES     
-                conn.Open();
                 string query = "SELECT SUM(salesTotal) as total_due FROM `datasalesinventory` WHERE salesTransNo = @transno GROUP BY salesTransNo";
                 conn.query(query);
+
                 conn.bind("@transno", orderNo.Text);
                 conn.cmd().Prepare();
                 MySqlDataReader dr = conn.read();
@@ -110,11 +106,9 @@ namespace NavigationDrawerPopUpMenu2.windows
 
                 dr.Close();
                 dr.Dispose();
-                conn.Close();
             }
             catch (Exception ex)
             {
-                conn.Close();
                 MessageBox.Show("Error: " + ex.Message + ", Try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             return total;
@@ -254,7 +248,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                         dr.Close();
                         dr.Dispose(); // Dispose
                         Compute();
-
                     }
                     else
                     {
@@ -285,22 +278,20 @@ namespace NavigationDrawerPopUpMenu2.windows
                 //holdOrder.IsEnabled = true;
 
                 // Here goes the math shits
-                int rp = Convert.ToInt32(coRP.Text);
-                int qty = Convert.ToInt32(coQty.Text);
-                int cur = Convert.ToInt32(coCurrent.Text);
-                int stk = Convert.ToInt32(coStocks.Text);
-                int toit = Convert.ToInt32(totalItems.Text);
+                int rp = Convert.ToInt32(coRP.Text); // Retail Price
+                int qty = Convert.ToInt32(coQty.Text); // Quantity
+                int cur = Convert.ToInt32(coCurrent.Text); // Current Stocks
+                int stk = Convert.ToInt32(coStocks.Text); // Stocks
+                int toit = Convert.ToInt32(totalItems.Text); // Total Items
                 int sub = rp * qty;
 
-                // Here goes the math shits(2)
-                checkout.rmstocks = stk - qty;
-                checkout.total += checkout.vat + sub;
-                checkout.bought = cur + qty;
-                totalItems.Text = Convert.ToString(toit + qty);
-                coRemStocks.Text = Convert.ToString(checkout.rmstocks);
-                coSubtotal.Text = Convert.ToString(sub);
-                pay_subtotal.Text = Convert.ToString(checkout.subtotal + sub);
-                pay_total.Text = Convert.ToString(checkout.total);
+                checkout.rmstocks = stk - qty; // Remaining Stocks Based on How Many Are Bought
+                checkout.total += checkout.vat + sub; // Subtotal
+                checkout.bought = cur + qty; // For Ranking
+                totalItems.Text = Convert.ToString(toit + qty); // Shows the Total Items (Count Individual Items in Listview)
+                coRemStocks.Text = Convert.ToString(checkout.rmstocks); // Shows the Remaining Item Upon Buy
+                coSubtotal.Text = Convert.ToString(sub); // (Price * Qunatity)
+                pay_subtotal.Text = Convert.ToString(checkout.subtotal + sub); // Subtotal + (Price * Quantity)
                 coCurrentNew.Text = Convert.ToString(checkout.bought);
 
                 // Adds the data to the datasalesinventory
@@ -342,7 +333,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                                 {
                                     string remaining = "UPDATE datainventory SET prodQty = @rm WHERE prodNo = @ItemNo";
                                     conn.query(remaining);
-
                                     try
                                     {
                                         conn.bind("@rm", coRemStocks.Text);
@@ -354,7 +344,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                                     {
                                         MessageBox.Show(x.Message);
                                     }
-                                    conn.Close();
                                 }
                             }
                             catch (Exception x)
@@ -366,6 +355,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                             //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
                             clearPartial();
                             loadData();
+                            pay_total.Text = Convert.ToString(sumOfSalesTotal());
 
                         }
                     }
