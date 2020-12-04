@@ -75,6 +75,8 @@ namespace NavigationDrawerPopUpMenu2.windows
             addItem.Clear();
             addRP.Clear();
             addSRP.Clear();
+            addBrand.Text = "";
+            addEXPD.Text = "";
         }
 
         // Submit Button
@@ -140,7 +142,7 @@ namespace NavigationDrawerPopUpMenu2.windows
 
                 while (drd.Read())
                 {
-                    this.addBrand.Items.Add(drd.GetString(0).ToString());
+                    addBrand.Items.Add(drd.GetString(0).ToString());
                 }
 
                 drd.Close();
@@ -157,7 +159,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Cancel Button
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

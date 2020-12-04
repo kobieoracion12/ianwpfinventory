@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
         Title="win_add_item" Height="500" Width="880" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
@@ -102,14 +103,14 @@
                                 <StackPanel Orientation="Vertical">
                                     <Label Content="Date of Arrival" Margin="5 0 0 0"/>
                                     <Viewbox HorizontalAlignment="Left">
-                                        <DatePicker x:Name="addDOA" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" FontSize="15" Width="300" Margin="10 0 10 10"  />
+                                        <DatePicker x:Name="addDOA" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" FontSize="15" Width="300" Margin="10 0 10 10"  />
                                     </Viewbox>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Vertical">
                                     <Label Content="Expiration Date" Margin="5 0 0 0"/>
                                     <Viewbox HorizontalAlignment="Left">
-                                        <DatePicker x:Name="addEXPD" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" FontSize="15" Width="300" Margin="10 0 10 10"  />
+                                        <DatePicker x:Name="addEXPD" BorderThickness="1" BorderBrush="#BFC2C9"  FontFamily="Microsoft Tai Le" FontSize="15" Width="300" Margin="10 0 10 10"  />
                                     </Viewbox>
                                 </StackPanel>
                             </StackPanel>
