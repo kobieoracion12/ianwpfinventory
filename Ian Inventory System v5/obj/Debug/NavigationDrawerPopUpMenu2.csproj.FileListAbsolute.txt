@@ -274,9 +274,15 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V2\ianw
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V2\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V2\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_change_quantity.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V2\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_change_quantity.baml
+<<<<<<< HEAD
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_change_quantity.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_change_quantity.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_addItem.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_price Check.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_addItem.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_price Check.baml
+=======
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V3\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.exe.config
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V3\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V3\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
+>>>>>>> d6baa11c4c36503c9927d1e83ac153400009fa6f
