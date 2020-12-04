@@ -31,6 +31,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         string prodQty;
         public static int prdID;
 
+        List<Invoice> settleProducts = new List<Invoice>();
         public win_pos(window_userLogin frmLogin)
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             try
             {
                 // Query Statement
-                string query = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text +"'";
+                string query = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesStatus = 'Pending'";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -90,10 +91,11 @@ namespace NavigationDrawerPopUpMenu2.windows
             try
             {
                 // GET THE TOTAL SALES     
-                string query = "SELECT SUM(salesTotal) as total_due FROM `datasalesinventory` WHERE salesTransNo = @transno GROUP BY salesTransNo";
+                string query = "SELECT SUM(salesTotal) as total_due FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus=@status GROUP BY salesTransNo";
                 conn.query(query);
 
                 conn.bind("@transno", orderNo.Text);
+                conn.bind("@status", "Pending");
                 conn.cmd().Prepare();
                 MySqlDataReader dr = conn.read();
                 if (dr.HasRows)
@@ -317,44 +319,10 @@ namespace NavigationDrawerPopUpMenu2.windows
                         var cf = conn.execute();
                         if (cf == 1)
                         {
-                            // Subtracts the item quantity to the existing stocks in datainventory
-                            try
-                            {
-                                string ranking = "UPDATE datainventory SET prodBought = @bought WHERE prodNo = @itemNo";
-                                conn.query(ranking);
-
-                                conn.bind("@itemNo", entrySearch.Text);
-                                conn.bind("@bought", coCurrentNew.Text);
-
-                                var check = conn.execute();
-
-                                //  Updates the new remainding item quantity in datainventory
-                                if (check == 1)
-                                {
-                                    string remaining = "UPDATE datainventory SET prodQty = @rm WHERE prodNo = @ItemNo";
-                                    conn.query(remaining);
-                                    try
-                                    {
-                                        conn.bind("@rm", coRemStocks.Text);
-                                        conn.bind("@itemNo", entrySearch.Text);
-                                        conn.cmd().Prepare();
-                                        conn.execute();
-                                    }
-                                    catch (Exception x)
-                                    {
-                                        MessageBox.Show(x.Message);
-                                    }
-                                }
-                            }
-                            catch (Exception x)
-                            {
-                                MessageBox.Show(x.Message);
-                            }
-
                             // Adds Scanned Item to the Listview
                             //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
                             clearPartial();
-                            loadData();
+                            loadData(); // Display to ListView 
                             pay_total.Text = Convert.ToString(sumOfSalesTotal());
 
                         }
@@ -407,32 +375,69 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Checkout Button
         private void endSale_Click(object sender, RoutedEventArgs e)
         {
-            // Confirmation
-            conn.Close();
             var ans = MessageBox.Show("Are you sure you want to end transaction?", "End Transaction", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (ans == MessageBoxResult.Yes)
             {
-                // Updates the sales status to COMPLETED
-                string voidInvoice = "UPDATE datasalesinventory SET salesStatus = @complete WHERE salesDate = @date";
-                conn.query(voidInvoice);
                 try
                 {
+                    // Start a Query
+                    string sql = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesStatus = 'Pending'";
+                    conn.query(sql);
                     conn.Open();
+                    MySqlDataReader reader = conn.read();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetString(8), reader.GetString(9), reader.GetString(10) };
+                            string sales_transno = row[0]; // Trans No
+                            string sales_no = row[2]; // Sales No
+                            string sales_item = row[3]; // Sales Item
+                            string sales_rp = row[6]; // Sales RP
+                            string sales_qty = row[7]; // Sales Qty
+                            string sales_total = row[8]; // Sales Total
+                            string sales_status = row[10];  // Sales Status
+                                                            // Add Objects/Element to ListView Settle to get the Invoice Products
+                            settleProducts.Add(new Invoice { salesTransno = sales_transno, salesNo = sales_no, salesItem = sales_item, salesRP = sales_rp, salesQty = sales_qty, salesTotal = sales_total, salesStatus = sales_status });
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Products", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
 
-                    conn.bind("@complete", "Completed");
+                    reader.Close();
+                    reader.Dispose();
+                    conn.Close();
+                    // End of Query
 
-                    string date = transTime.Text;
-                    DateTime dateTime;
-                    dateTime = DateTime.Parse(date);
+                    // Second Query to SUBTRACT/UPDATE THE STOCKS
+                    foreach (Invoice prd in settleProducts)
+                    {
+                        conn.Open();
+                        string updateStockQuery = "UPDATE datainventory SET prodQty = prodQty - '" + int.Parse(prd.salesQty) + "' WHERE prodNo = '" + prd.salesNo + "'";
+                        conn.query(updateStockQuery);
+                        conn.execute();
+                        conn.Close();
 
-                    conn.bind("@date", dateTime);
-                    conn.execute();
-                    clearAll();
+                        conn.Open();
+                        // Now Update the Status to SOLD
+                        string updateStatus = "UPDATE datasalesinventory SET salesStatus = 'Sold' WHERE salesNo = '" + prd.salesNo + "' AND salesTransNo = '" + orderNo.Text + "'";
+                        conn.query(updateStatus);
+                        conn.execute();
+                        conn.Close();   
+                    }
+                    // Show Transaction Success
+                    MessageBox.Show("Transaction Complete", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //accNumberGen(); // Change the transaction Number
+                    settleProducts.Clear(); // Clear All SettleProduct Objects/Elementss    
+                    conn.Open();
+                    loadData(); // Update the ListView UI # Listview must be cleared
                     conn.Close();
                 }
-                catch (Exception x)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(x.Message);
+                    MessageBox.Show("Transaction Failed: " + ex.Message, "Transaction", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
         }
@@ -453,14 +458,14 @@ namespace NavigationDrawerPopUpMenu2.windows
             cashAmount.Text = Convert.ToString(checkout.paid);
             pay_paid.Text = Convert.ToString(checkout.paid);
 
-            checkout.due = checkout.paid - checkout.total;
+            checkout.due = checkout.paid - int.Parse(sumOfSalesTotal());
             pay_due.Text = Convert.ToString(checkout.due);
 
             try
             {
                 string payment = "INSERT INTO sales_preview (payment_method, payment_vat, payment_total, payment_paid, payment_due, payment_date) VALUES (@method, @vat, @total, @paid, @due, @date)";
                 conn.query(payment);  // Command DB
-                conn.Open();
+                //conn.Open();
                 conn.bind("@method", checkout.payMethod);
                 conn.bind("@vat", checkout.tax);
                 conn.bind("@total", checkout.total);
