@@ -117,7 +117,7 @@
                             </Button>
 
                             <!-- Request Stocks -->
-                            <Button x:Name="reqStock" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="priceCheck_Click">
+                            <Button x:Name="reqStock" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="Request Stock" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
