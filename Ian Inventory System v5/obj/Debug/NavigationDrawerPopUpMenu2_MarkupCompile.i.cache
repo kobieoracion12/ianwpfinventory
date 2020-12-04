@@ -4,30 +4,17 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\
-=======
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V3\ianwpfinventory\Ian Inventory System v5\obj\Debug\
->>>>>>> d6baa11c4c36503c9927d1e83ac153400009fa6f
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V4\ianwpfinventory\Ian Inventory System v5\obj\Debug\
 NavigationDrawerPopUpMenu2
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\App.xaml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V4\ianwpfinventory\Ian Inventory System v5\App.xaml
 31408996115
 
-471043763701
-23-122350303
+47-366503776
+23-57604728
 admin\admin_create.xaml;admin\admin_usercontrols\admin_businessInfo.xaml;admin\admin_usercontrols\admin_personalInfo.xaml;admin\admin_usercontrols\admin_addUsers.xaml;admin\admin_usercontrols\admin_dashboard.xaml;admin\admin_window.xaml;main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\usc_sales.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;usercontrols\UserControlStockInv.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_change_quantity.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;windows\win_addItem.xaml;windows\win_changeQuantity.xaml;windows\win_checkout.xaml;windows\win_checkoutBG.xaml;windows\win_pos.xaml;windows\win_price Check.xaml;
-=======
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V3\ianwpfinventory\Ian Inventory System v5\App.xaml
-311868021578
 
-47-1172069617
-2329577713
-admin\admin_create.xaml;admin\admin_usercontrols\admin_businessInfo.xaml;admin\admin_usercontrols\admin_personalInfo.xaml;admin\admin_usercontrols\admin_addUsers.xaml;admin\admin_usercontrols\admin_dashboard.xaml;admin\admin_window.xaml;main Menu.xaml;MainWindow.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\usc_sales.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;usercontrols\UserControlStockInv.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_change_quantity.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;windows\win_add_item.xaml;windows\win_changeQuantity.xaml;windows\win_checkout.xaml;windows\win_checkoutBG.xaml;windows\win_pos.xaml;windows\win_price _check.xaml;
->>>>>>> d6baa11c4c36503c9927d1e83ac153400009fa6f
-
-True
+False
 

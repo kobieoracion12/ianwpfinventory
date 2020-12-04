@@ -62,8 +62,10 @@ namespace NavigationDrawerPopUpMenu2.windows
                     conn.Close();
 
                     MessageBox.Show("Quantity Changed", "Quantiy", MessageBoxButton.OK, MessageBoxImage.Information);
+                    win_pos.tbPrdName.Text = ""; //
+                    win_pos.holdOrder.IsEnabled = false;
                     this.Close(); // Close
-                    win_pos.catchData();
+                    win_pos.loadData();
                 }
             }
             catch (Exception ex)

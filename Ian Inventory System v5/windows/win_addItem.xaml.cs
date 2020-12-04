@@ -23,11 +23,14 @@ namespace NavigationDrawerPopUpMenu2.windows
         Database con = new Database();
         Checkout checkout = new Checkout();
 
-        public win_add_item()
+        win_pos win_pos;
+        public win_add_item(win_pos winPOS)
         {
             InitializeComponent();
+            win_pos win_pos = winPOS;
             checkBarcode.Focus();
             cbBrand();
+           
         }
 
         // Barcode Scanner Function
@@ -94,8 +97,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                     con.bind("@brand", addBrand.Text);
                     con.bind("@rp", addRP.Text);
                     con.bind("@srp", addSRP.Text);
-                    con.bind("@cname", null); // ROBERT
-                    con.bind("@cno", null); // ROBERT
+                    con.bind("@cname", win_pos.cashierName.Text); // ROBERT
+                    con.bind("@cno", win_pos.accNo.Text); // ROBERT
                     con.bind("@status", "Pending");
 
                     string str = addEXPD.Text;
