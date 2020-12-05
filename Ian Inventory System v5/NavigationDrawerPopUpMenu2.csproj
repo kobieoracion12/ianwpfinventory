@@ -104,6 +104,7 @@
     <Compile Include="classes\clientInfo.cs" />
     <Compile Include="classes\Dashboard.cs" />
     <Compile Include="classes\Database.cs" />
+    <Compile Include="classes\Invoice.cs" />
     <Compile Include="classes\invoiceClass.cs" />
     <Compile Include="classes\Product.cs" />
     <Compile Include="classes\Sales.cs" />
