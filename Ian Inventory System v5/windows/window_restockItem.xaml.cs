@@ -53,7 +53,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     else
 
                     {
-                        MessageBox.Show("Error");
+                        MessageBox.Show("Item not Found");
                         entrySearch.Text = "";
                     }
 
@@ -108,6 +108,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                         restockQty.Clear();
                         restockSRP.Clear();
                         restockRP.Clear();
+                        onrestockQty.Clear();
                         restockDOA.Text = "";
                         restockEXPD.Text = "";
                     }

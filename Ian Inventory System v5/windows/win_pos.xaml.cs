@@ -52,7 +52,6 @@ namespace NavigationDrawerPopUpMenu2.windows
             cashierName.Text = auth.getFullName(accNo.Text);
 
             transTime.Text = DateTime.Now.ToString();
-
         }
 
         // DISPLAY THE ITEMS INTO THE LISTVIEW
@@ -60,6 +59,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             try
             {
+
                 // Query Statement
                 string query = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesStatus = 'Pending'";
                 // Mysql Command
@@ -193,6 +193,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             coCurrent.Clear();
             coCurrentNew.Clear();
 
+            totalItems.Text = "0";
             pay_discount.Text = "0";
             pay_subtotal.Text = "₱ 0.00";
             pay_total.Text = "₱ 0.00";
@@ -346,20 +347,16 @@ namespace NavigationDrawerPopUpMenu2.windows
             if (ans == MessageBoxResult.Yes)
             {
                 // Updates the sales status to VOIDED
-                string voidInvoice = "UPDATE datasalesinventory SET salesStatus = @void WHERE salesDate = @date";
+
+                listViewinVoice.ClearValue(ItemsControl.ItemsSourceProperty);
+                string voidInvoice = "UPDATE datasalesinventory SET salesStatus = @cancel WHERE salesTransNo = @trans";
                 conn.query(voidInvoice);
                 try
                 {
                     conn.Open();
 
-                    conn.bind("@void", "Voided");
-
-                    string date = transTime.Text;
-                    DateTime dateTime;
-                    dateTime = DateTime.Parse(date);
-
-                    conn.bind("@date", dateTime);
-
+                    conn.bind("@cancel", "Cancelled");
+                    conn.bind("@trans", Convert.ToInt64(orderNo.Text));
                     conn.execute();
                     MessageBox.Show("Item(s) Voided");
                     clearAll();
@@ -425,7 +422,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                         string updateStatus = "UPDATE datasalesinventory SET salesStatus = 'Sold' WHERE salesNo = '" + prd.salesNo + "' AND salesTransNo = '" + orderNo.Text + "'";
                         conn.query(updateStatus);
                         conn.execute();
-                        conn.Close();   
+                        conn.Close();
+                        clearAll();
                     }
                     // Show Transaction Success
                     MessageBox.Show("Transaction Complete", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -433,6 +431,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     settleProducts.Clear(); // Clear All SettleProduct Objects/Elementss    
                     conn.Open();
                     loadData(); // Update the ListView UI # Listview must be cleared
+                    clearAll();
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -458,7 +457,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             cashAmount.Text = Convert.ToString(checkout.paid);
             pay_paid.Text = Convert.ToString(checkout.paid);
 
-            checkout.due = checkout.paid - int.Parse(sumOfSalesTotal());
+            checkout.due = checkout.paid - Convert.ToInt32(sumOfSalesTotal());
             pay_due.Text = Convert.ToString(checkout.due);
 
             try
@@ -530,7 +529,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     tbPrdName.Text = selectedItem;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return;
             }
@@ -541,6 +540,13 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             win_add_item wai = new win_add_item(this);
             wai.Show();
+        }
+
+        // Settings Button
+        private void cashierSettings_Click(object sender, RoutedEventArgs e)
+        {
+            win_settings ws = new win_settings(this);
+            ws.ShowDialog();
         }
     }
 }

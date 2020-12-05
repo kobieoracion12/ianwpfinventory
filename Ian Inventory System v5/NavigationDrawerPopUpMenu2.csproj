@@ -72,9 +72,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -179,6 +181,12 @@
     </Compile>
     <Compile Include="windows\win_price Check.xaml.cs">
       <DependentUpon>win_price Check.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\win_receipt.xaml.cs">
+      <DependentUpon>win_receipt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\win_settings.xaml.cs">
+      <DependentUpon>win_settings.xaml</DependentUpon>
     </Compile>
     <Page Include="admin\admin_create.xaml">
       <SubType>Designer</SubType>
@@ -309,6 +317,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_price Check.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_receipt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

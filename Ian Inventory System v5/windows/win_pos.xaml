@@ -143,10 +143,11 @@
                                     <TextBlock Text="Tax Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-                            <!-- Cashier Settings -->
-                            <Button x:Name="cashierSettings" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
+                            
+                            <!-- Settings -->
+                            <Button x:Name="cashierSettings" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="cashierSettings_Click"> 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Cashier Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
                             <!-- Logout -->

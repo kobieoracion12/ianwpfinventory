@@ -290,3 +290,5 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V8\ianw
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V8\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.g.resources
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V8\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.Properties.Resources.resources
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V8\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_settings.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_settings.baml

@@ -72,6 +72,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     this.Close(); // Close
                     win_pos.loadData();
                     win_pos.pay_total.Text = win_pos.sumOfSalesTotal();
+                    win_pos.entrySearch.Focus();
                 }
             }
             catch (Exception ex)
