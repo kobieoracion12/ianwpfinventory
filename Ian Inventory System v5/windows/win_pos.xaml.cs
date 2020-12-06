@@ -426,6 +426,9 @@ namespace NavigationDrawerPopUpMenu2.windows
 
                         //MessageBox.Show(prd.salesItem);
                     }
+                    win_receipt rcpt = new win_receipt(this);
+                    rcpt.loadReport();
+                    rcpt.ShowDialog();
                     // Show Transaction Success
                     MessageBox.Show("Transaction Complete", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     //accNumberGen(); // Change the transaction Number

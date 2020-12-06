@@ -67,6 +67,11 @@ namespace NavigationDrawerPopUpMenu2.classes
             return this.adp = new MySqlDataAdapter(this.commandDatabase);
         }
 
+        // Data Adapter
+        public MySqlDataAdapter DataAdapter(string sql)
+        {
+            return this.adp = new MySqlDataAdapter(sql, this.conn);
+        }
         // Open the Database Conn
         public void Open()
         {
