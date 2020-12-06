@@ -181,7 +181,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         public void clearAll()
         {
             entrySearch.Focus();
-            listViewinVoice.Items.Clear();
+            //listViewinVoice.Items.Clear();
             entrySearch.Clear();
             coItem.Clear();
             coBrand.Clear();
@@ -423,7 +423,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                         conn.query(updateStatus);
                         conn.execute();
                         conn.Close();
-                        clearAll();
+
+                        //MessageBox.Show(prd.salesItem);
                     }
                     // Show Transaction Success
                     MessageBox.Show("Transaction Complete", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -431,8 +432,9 @@ namespace NavigationDrawerPopUpMenu2.windows
                     settleProducts.Clear(); // Clear All SettleProduct Objects/Elementss    
                     conn.Open();
                     loadData(); // Update the ListView UI # Listview must be cleared
-                    clearAll();
                     conn.Close();
+                    clearAll();
+
                 }
                 catch (Exception ex)
                 {
