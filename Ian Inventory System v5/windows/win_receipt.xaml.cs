@@ -57,11 +57,11 @@ namespace NavigationDrawerPopUpMenu2.windows
                 // Parameters
                 ReportParameter pStoreName = new ReportParameter("pStoreName", store_name);
                 ReportParameter pStoreAddress = new ReportParameter("pStoreAddress", store_address);
-                ReportParameter pTin = new ReportParameter("pTin", store_tin);
-                ReportParameter pSerialNumber = new ReportParameter("pSerialNumber", store_serial_number);
-                ReportParameter pMin = new ReportParameter("pMin", store_min);
-                ReportParameter pCashierName = new ReportParameter("pCashierName", win_pos.cashierName.Text);
-                ReportParameter pTransNo = new ReportParameter("pTransNo", win_pos.orderNo.Text);
+                ReportParameter pTin = new ReportParameter("pTin","Tin: "+ store_tin);
+                ReportParameter pSerialNumber = new ReportParameter("pSerialNumber","Serial No.: "+ store_serial_number);
+                ReportParameter pMin = new ReportParameter("pMin","Min: "+ store_min);
+                ReportParameter pCashierName = new ReportParameter("pCashierName","Cashier: "+win_pos.cashierName.Text);
+                ReportParameter pTransNo = new ReportParameter("pTransNo","Trans #: "+ win_pos.orderNo.Text);
                 ReportParameter pSubTotal = new ReportParameter("pSubTotal", win_pos.pay_subtotal.Text);
                 ReportParameter pTotal = new ReportParameter("pTotal", win_pos.pay_total.Text);
                 ReportParameter pCash = new ReportParameter("pCash", win_pos.pay_paid.Text);

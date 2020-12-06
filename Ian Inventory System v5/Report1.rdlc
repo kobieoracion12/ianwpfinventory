@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.27662in</Width>
+              <Width>0.35576in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.28212in</Width>
+              <Width>1.28211in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.4213in</Width>
+              <Width>0.53071in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -30,6 +30,7 @@
                             <TextRun>
                               <Value>Qty</Value>
                               <Style>
+                                <FontFamily>Merchant Copy Doublesize</FontFamily>
                                 <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
@@ -62,8 +63,9 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Item</Value>
+                              <Value />
                               <Style>
+                                <FontFamily>Merchant Copy Doublesize</FontFamily>
                                 <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
@@ -98,6 +100,7 @@
                             <TextRun>
                               <Value>Amount</Value>
                               <Style>
+                                <FontFamily>Merchant Copy Doublesize</FontFamily>
                                 <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
@@ -137,6 +140,7 @@
                             <TextRun>
                               <Value>=Fields!salesQty.Value</Value>
                               <Style>
+                                <FontFamily>Merchant Copy Doublesize</FontFamily>
                                 <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
@@ -171,6 +175,7 @@
                             <TextRun>
                               <Value>=Fields!salesItem.Value</Value>
                               <Style>
+                                <FontFamily>Merchant Copy Doublesize</FontFamily>
                                 <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
@@ -205,6 +210,7 @@
                             <TextRun>
                               <Value>=Fields!salesTotal.Value</Value>
                               <Style>
+                                <FontFamily>Merchant Copy Doublesize</FontFamily>
                                 <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
@@ -251,9 +257,9 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.00347in</Top>
-        <Left>0in</Left>
+        <Left>0.00574in</Left>
         <Height>0.5in</Height>
-        <Width>1.98003in</Width>
+        <Width>2.16858in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -262,9 +268,9 @@
       </Tablix>
       <Line Name="Line2">
         <Top>0.51736in</Top>
-        <Left>0in</Left>
+        <Left>0.00574in</Left>
         <Height>0in</Height>
-        <Width>1.98003in</Width>
+        <Width>2.16857in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -281,20 +287,21 @@
               <TextRun>
                 <Value>=Parameters!pSubTotal.Value</Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pSubTotal</rd:DefaultName>
         <Top>0.53125in</Top>
-        <Left>0.98003in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Left>1.14692in</Left>
+        <Height>0.19444in</Height>
+        <Width>1.02739in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -315,6 +322,7 @@
               <TextRun>
                 <Value>SubTotal</Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
@@ -326,8 +334,8 @@
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
         <Top>0.53125in</Top>
-        <Left>0in</Left>
-        <Height>0.25in</Height>
+        <Left>0.00574in</Left>
+        <Height>0.19444in</Height>
         <Width>0.79745in</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -348,7 +356,9 @@
             <TextRuns>
               <TextRun>
                 <Value>Amount Due</Value>
-                <Style />
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -357,10 +367,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>0.79514in</Top>
-        <Left>0in</Left>
+        <Top>0.72569in</Top>
+        <Left>0.00574in</Left>
         <Height>0.25in</Height>
-        <Width>0.79745in</Width>
+        <Width>1.07174in</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -380,19 +390,21 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!pTotal.Value</Value>
-                <Style />
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pTotal</rd:DefaultName>
-        <Top>0.79514in</Top>
-        <Left>0.98004in</Left>
+        <Top>0.72569in</Top>
+        <Left>1.09136in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Width>1.08296in</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -413,6 +425,7 @@
               <TextRun>
                 <Value>   Amount Tendered:</Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
@@ -421,10 +434,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>1.11458in</Top>
-        <Left>0in</Left>
-        <Height>0.25in</Height>
-        <Width>1.98003in</Width>
+        <Top>0.97569in</Top>
+        <Height>0.18407in</Height>
+        <Width>2.1743in</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -445,6 +457,7 @@
               <TextRun>
                 <Value>Cash</Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
@@ -455,9 +468,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>1.37847in</Top>
-        <Left>0in</Left>
-        <Height>0.25in</Height>
+        <Top>1.17365in</Top>
+        <Left>0.00575in</Left>
+        <Height>0.17089in</Height>
         <Width>0.79745in</Width>
         <ZIndex>7</ZIndex>
         <Style>
@@ -479,20 +492,21 @@
               <TextRun>
                 <Value>=Parameters!pCash.Value</Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pCash</rd:DefaultName>
-        <Top>1.37847in</Top>
-        <Left>0.98004in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Top>1.15977in</Top>
+        <Left>0.98578in</Left>
+        <Height>0.18477in</Height>
+        <Width>1.18853in</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
@@ -512,7 +526,9 @@
             <TextRuns>
               <TextRun>
                 <Value>Change</Value>
-                <Style />
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -521,9 +537,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>1.64236in</Top>
-        <Left>0in</Left>
-        <Height>0.25in</Height>
+        <Top>1.34454in</Top>
+        <Left>0.00575in</Left>
+        <Height>0.21704in</Height>
         <Width>0.79745in</Width>
         <ZIndex>9</ZIndex>
         <Style>
@@ -544,19 +560,21 @@
             <TextRuns>
               <TextRun>
                 <Value>=Parameters!pChange.Value</Value>
-                <Style />
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Right</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pChange</rd:DefaultName>
-        <Top>1.64236in</Top>
-        <Left>0.98003in</Left>
+        <Top>1.34454in</Top>
+        <Left>0.98578in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
+        <Width>1.18853in</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <Border>
@@ -577,6 +595,7 @@
               <TextRun>
                 <Value>FREELANCE DEVS LAGUNA</Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
@@ -587,9 +606,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox27</rd:DefaultName>
-        <Top>2.08189in</Top>
-        <Height>0.25in</Height>
-        <Width>1.98003in</Width>
+        <Top>1.68658in</Top>
+        <Left>0.00575in</Left>
+        <Height>0.21985in</Height>
+        <Width>2.16857in</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <Border>
@@ -611,6 +631,7 @@
                 <Value>93 BONIFACIO ST. BARANGAY ZONE IV</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
@@ -628,6 +649,7 @@
                 <Value>LUISIANA, LAGUNA</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
@@ -642,9 +664,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox27</rd:DefaultName>
-        <Top>2.33189in</Top>
-        <Height>0.30064in</Height>
-        <Width>1.98003in</Width>
+        <Top>1.90643in</Top>
+        <Left>0.00579in</Left>
+        <Height>0.43294in</Height>
+        <Width>2.16853in</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -666,6 +689,7 @@
                 <Value>TIN: </Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
@@ -679,9 +703,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox29</rd:DefaultName>
-        <Top>2.63252in</Top>
-        <Height>0.25in</Height>
-        <Width>1.98003in</Width>
+        <Top>2.33937in</Top>
+        <Left>0.00571in</Left>
+        <Height>0.17818in</Height>
+        <Width>2.16853in</Width>
         <ZIndex>13</ZIndex>
         <Style>
           <Border>
@@ -702,6 +727,7 @@
               <TextRun>
                 <Value>Date Issued: 01/12/2020</Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
@@ -712,9 +738,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox30</rd:DefaultName>
-        <Top>2.88252in</Top>
-        <Height>0.25in</Height>
-        <Width>1.98003in</Width>
+        <Top>2.53144in</Top>
+        <Left>0.00579in</Left>
+        <Height>0.17748in</Height>
+        <Width>2.16853in</Width>
         <ZIndex>14</ZIndex>
         <Style>
           <Border>
@@ -735,6 +762,7 @@
               <TextRun>
                 <Value>PERMIT: </Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
@@ -745,9 +773,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox31</rd:DefaultName>
-        <Top>3.13252in</Top>
-        <Height>0.25in</Height>
-        <Width>1.98003in</Width>
+        <Top>2.70892in</Top>
+        <Left>0.00572in</Left>
+        <Height>0.17089in</Height>
+        <Width>2.16853in</Width>
         <ZIndex>15</ZIndex>
         <Style>
           <Border>
@@ -760,9 +789,10 @@
         </Style>
       </Textbox>
       <Line Name="Line4">
-        <Top>3.45197in</Top>
+        <Top>1.63102in</Top>
+        <Left>0.00574in</Left>
         <Height>0in</Height>
-        <Width>1.98003in</Width>
+        <Width>2.16857in</Width>
         <ZIndex>16</ZIndex>
         <Style>
           <Border>
@@ -780,6 +810,7 @@
                 <Value>***This serves as your  temporary receipt only***</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>6pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
@@ -793,10 +824,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox32</rd:DefaultName>
-        <Top>3.52141in</Top>
-        <Left>0.00001in</Left>
-        <Height>0.25in</Height>
-        <Width>1.98003in</Width>
+        <Top>2.83238in</Top>
+        <Left>0.00571in</Left>
+        <Height>0.29435in</Height>
+        <Width>2.16853in</Width>
         <ZIndex>17</ZIndex>
         <Style>
           <Border>
@@ -817,6 +848,7 @@
               <TextRun>
                 <Value>Thank you</Value>
                 <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>6pt</FontSize>
                 </Style>
               </TextRun>
@@ -827,10 +859,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>3.77141in</Top>
-        <Left>0.00001in</Left>
-        <Height>0.25in</Height>
-        <Width>1.98002in</Width>
+        <Top>3.12673in</Top>
+        <Left>0.00572in</Left>
+        <Height>0.18491in</Height>
+        <Width>2.16852in</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -843,13 +875,13 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>4.02749in</Height>
+    <Height>3.66241in</Height>
     <Style />
   </Body>
-  <Width>1.98004in</Width>
+  <Width>2.17432in</Width>
   <Page>
     <PageHeader>
-      <Height>2.73032in</Height>
+      <Height>2.13038in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -862,7 +894,8 @@
                 <TextRun>
                   <Value>=Parameters!pStoreName.Value</Value>
                   <Style>
-                    <FontSize>8pt</FontSize>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
+                    <FontSize>7pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -872,9 +905,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>pStoreName</rd:DefaultName>
-          <Left>0in</Left>
+          <Left>0.00574in</Left>
           <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Width>2.16858in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -894,7 +927,8 @@
                 <TextRun>
                   <Value>=Parameters!pStoreAddress.Value</Value>
                   <Style>
-                    <FontSize>8pt</FontSize>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
+                    <FontSize>7pt</FontSize>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -905,9 +939,9 @@
           </Paragraphs>
           <rd:DefaultName>pStoreAddress</rd:DefaultName>
           <Top>0.25in</Top>
-          <Left>0in</Left>
+          <Left>0.00574in</Left>
           <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Width>2.16857in</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -928,6 +962,7 @@
                 <TextRun>
                   <Value>VAT REGISTERED</Value>
                   <Style>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
                     <FontSize>8pt</FontSize>
                   </Style>
                 </TextRun>
@@ -939,9 +974,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox9</rd:DefaultName>
           <Top>0.51389in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Left>0.00574in</Left>
+          <Height>0.19444in</Height>
+          <Width>2.16857in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -962,6 +997,7 @@
                 <TextRun>
                   <Value>=Parameters!pTin.Value</Value>
                   <Style>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
                     <FontSize>7pt</FontSize>
                   </Style>
                 </TextRun>
@@ -972,10 +1008,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>pTin</rd:DefaultName>
-          <Top>0.77778in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Top>0.70833in</Top>
+          <Left>0.00575in</Left>
+          <Height>0.19444in</Height>
+          <Width>2.16857in</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -996,6 +1032,7 @@
                 <TextRun>
                   <Value>=Parameters!pSerialNumber.Value</Value>
                   <Style>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
                     <FontSize>7pt</FontSize>
                   </Style>
                 </TextRun>
@@ -1006,10 +1043,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>pSerialNumber</rd:DefaultName>
-          <Top>1.04167in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Top>0.90278in</Top>
+          <Left>0.00575in</Left>
+          <Height>0.18407in</Height>
+          <Width>2.16857in</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1030,6 +1067,7 @@
                 <TextRun>
                   <Value>=Parameters!pMin.Value</Value>
                   <Style>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
                     <FontSize>7pt</FontSize>
                   </Style>
                 </TextRun>
@@ -1040,10 +1078,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>pMin</rd:DefaultName>
-          <Top>1.30556in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Top>1.08685in</Top>
+          <Left>0.00575in</Left>
+          <Height>0.19726in</Height>
+          <Width>2.16857in</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>
@@ -1064,6 +1102,7 @@
                 <TextRun>
                   <Value>SALES INVOICE</Value>
                   <Style>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
@@ -1075,10 +1114,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox9</rd:DefaultName>
-          <Top>1.56944in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Top>1.28411in</Top>
+          <Left>0.00575in</Left>
+          <Height>0.17748in</Height>
+          <Width>2.16856in</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
@@ -1099,6 +1138,7 @@
                 <TextRun>
                   <Value>=Parameters!pCashierName.Value</Value>
                   <Style>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
                     <FontSize>7pt</FontSize>
                   </Style>
                 </TextRun>
@@ -1109,10 +1149,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>pCashierName</rd:DefaultName>
-          <Top>1.83333in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Top>1.46159in</Top>
+          <Left>0.00574in</Left>
+          <Height>0.17089in</Height>
+          <Width>2.16858in</Width>
           <ZIndex>7</ZIndex>
           <Style>
             <Border>
@@ -1133,6 +1173,7 @@
                 <TextRun>
                   <Value>="Date/Time" + Now</Value>
                   <Style>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
                     <FontSize>7pt</FontSize>
                   </Style>
                 </TextRun>
@@ -1143,10 +1184,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Top>2.09722in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Top>1.64636in</Top>
+          <Left>0.00575in</Left>
+          <Height>0.17089in</Height>
+          <Width>2.16857in</Width>
           <ZIndex>8</ZIndex>
           <Style>
             <Border>
@@ -1167,6 +1208,7 @@
                 <TextRun>
                   <Value>=Parameters!pTransNo.Value</Value>
                   <Style>
+                    <FontFamily>Merchant Copy Doublesize</FontFamily>
                     <FontSize>7pt</FontSize>
                   </Style>
                 </TextRun>
@@ -1177,10 +1219,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>pTransNo</rd:DefaultName>
-          <Top>2.36111in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
-          <Width>1.98003in</Width>
+          <Top>1.83114in</Top>
+          <Left>0.00575in</Left>
+          <Height>0.22105in</Height>
+          <Width>2.16857in</Width>
           <ZIndex>9</ZIndex>
           <Style>
             <Border>
@@ -1193,10 +1235,10 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>2.68056in</Top>
-          <Left>0in</Left>
+          <Top>2.12163in</Top>
+          <Left>0.00578in</Left>
           <Height>0in</Height>
-          <Width>1.98003in</Width>
+          <Width>2.16853in</Width>
           <ZIndex>10</ZIndex>
           <Style>
             <Border>

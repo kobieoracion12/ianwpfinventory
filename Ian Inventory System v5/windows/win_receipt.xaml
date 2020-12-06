@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
-        Title="win_receipt" Height="600" Width="400" MaxWidth="500">
+        Title="win_receipt" Height="600" Width="300" MaxWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
