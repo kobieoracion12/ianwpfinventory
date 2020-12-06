@@ -98,15 +98,16 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Sort by Date Between Date From and Date To and Brand
         public void sortByDate()
         {
-            string formattedFrom, formattedTo, brandSort;
+            string formattedFrom, formattedTo, brandSort, statusSort;
 
             // Init selected dates from calendar
             DateTime? selectedDateFrom = sortCalendarFrom.SelectedDate;
             DateTime? selectedDateTo = sortCalendarTo.SelectedDate;
 
-            if (selectedDateFrom.HasValue && selectedDateTo.HasValue)
+            if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
             {
                 brandSort = sortBrand.Text;
+                statusSort = sortStatus.Text;
                 if (brandSort == "Select")
                 {
                     brandSort = null;
@@ -118,7 +119,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 try
                 {
                     conn.Open(); // Open Connection
-                    string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
+                    string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesStatus LIKE '%" + statusSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
                     conn.query(query);  // Command Database
                     conn.execute(); // Execute Non Query
                     MySqlDataAdapter adapter = conn.adapter(); // adapter
@@ -138,8 +139,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         }
 
+        // Sort Button
         private void sortButton_Click(object sender, RoutedEventArgs e)
         {
+            //checkSort();
             sortByDate();
         }
 
@@ -374,6 +377,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             else { return; }
         }
 
-        
+        // Clear Filter
+        private void clearFilter_Click(object sender, RoutedEventArgs e)
+        {
+            sortBrand.Text = "Select";
+            sortStatus.Text = "Select";
+        }
     }
 }

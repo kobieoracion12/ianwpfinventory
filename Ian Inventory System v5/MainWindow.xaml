@@ -75,12 +75,6 @@
                             <TextBlock Text="Storage Stocks" VerticalAlignment="Center"  Margin="10 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="checkOut" Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Basket" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Checkout" VerticalAlignment="Center"  Margin="10 10"/>
-                        </StackPanel>
-                    </ListViewItem>
                     <ListViewItem x:Name="logoutButton" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="LogoutVariant" Height="25" Width="25" Margin="10"/>
