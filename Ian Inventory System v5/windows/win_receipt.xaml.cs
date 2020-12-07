@@ -30,6 +30,15 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             InitializeComponent();
             win_pos = winPOS;
+            //ReportViewerDemo.RenderingComplete += new RenderingCompleteEventHandler(RenderingCompleteEventHandler);
+        }
+
+        // When Receipt Report Loads
+        private void RenderingCompleteEventHandler(object sender, RenderingCompleteEventArgs e)
+        {   // If Report Viewer is Loaded 
+            // Do Something
+            /*ReportViewerDemo.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+            ReportViewerDemo.PrintDialog();*/
         }
 
         public void loadReport()

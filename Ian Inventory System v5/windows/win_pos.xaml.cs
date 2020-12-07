@@ -426,9 +426,7 @@ namespace NavigationDrawerPopUpMenu2.windows
 
                         //MessageBox.Show(prd.salesItem);
                     }
-                    win_receipt rcpt = new win_receipt(this);
-                    rcpt.loadReport();
-                    rcpt.ShowDialog();
+                    
                     // Show Transaction Success
                     MessageBox.Show("Transaction Complete", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     //accNumberGen(); // Change the transaction Number
@@ -487,6 +485,11 @@ namespace NavigationDrawerPopUpMenu2.windows
                 voucherButton.IsEnabled = false;
                 endSale.IsEnabled = true;
                 conn.Close(); // Close Connection
+
+                // Generate a Receipt
+                win_receipt rcpt = new win_receipt(this);
+                rcpt.loadReport();
+                rcpt.ReportViewerDemo.LocalReport.Print();
             }
             catch (Exception x)
             {

@@ -124,6 +124,7 @@
     <Compile Include="classes\Database.cs" />
     <Compile Include="classes\Invoice.cs" />
     <Compile Include="classes\invoiceClass.cs" />
+    <Compile Include="classes\LocalReportExtension.cs" />
     <Compile Include="classes\Product.cs" />
     <Compile Include="classes\Sales.cs" />
     <Compile Include="classes\StocksCheck.cs" />
