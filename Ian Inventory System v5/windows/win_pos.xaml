@@ -156,6 +156,8 @@
                                     <TextBlock Text="Logout" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
+                            
+                            
                         </StackPanel>
                     </Viewbox>
 

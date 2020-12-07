@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.35576in</Width>
+              <Width>0.21651in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.28211in</Width>
+              <Width>0.94589in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.53071in</Width>
+              <Width>0.43785in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -31,7 +31,7 @@
                               <Value>Qty</Value>
                               <Style>
                                 <FontFamily>Merchant Copy Doublesize</FontFamily>
-                                <FontSize>7pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -58,6 +58,7 @@
                   <CellContents>
                     <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
+                      <CanShrink>true</CanShrink>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -66,7 +67,7 @@
                               <Value />
                               <Style>
                                 <FontFamily>Merchant Copy Doublesize</FontFamily>
-                                <FontSize>7pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -101,7 +102,7 @@
                               <Value>Amount</Value>
                               <Style>
                                 <FontFamily>Merchant Copy Doublesize</FontFamily>
-                                <FontSize>7pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -141,7 +142,7 @@
                               <Value>=Fields!salesQty.Value</Value>
                               <Style>
                                 <FontFamily>Merchant Copy Doublesize</FontFamily>
-                                <FontSize>7pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -176,7 +177,7 @@
                               <Value>=Fields!salesItem.Value</Value>
                               <Style>
                                 <FontFamily>Merchant Copy Doublesize</FontFamily>
-                                <FontSize>7pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -211,7 +212,7 @@
                               <Value>=Fields!salesTotal.Value</Value>
                               <Style>
                                 <FontFamily>Merchant Copy Doublesize</FontFamily>
-                                <FontSize>7pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -255,11 +256,12 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <KeepTogether>true</KeepTogether>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.00347in</Top>
-        <Left>0.00574in</Left>
+        <Top>2.43435in</Top>
+        <Left>0.01878in</Left>
         <Height>0.5in</Height>
-        <Width>2.16858in</Width>
+        <Width>1.60025in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -267,10 +269,10 @@
         </Style>
       </Tablix>
       <Line Name="Line2">
-        <Top>0.51736in</Top>
-        <Left>0.00574in</Left>
+        <Top>2.94824in</Top>
+        <Left>0in</Left>
         <Height>0in</Height>
-        <Width>2.16857in</Width>
+        <Width>1.79574in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -278,78 +280,9 @@
           </Border>
         </Style>
       </Line>
-      <Textbox Name="pSubTotal">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Parameters!pSubTotal.Value</Value>
-                <Style>
-                  <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Right</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>pSubTotal</rd:DefaultName>
-        <Top>0.53125in</Top>
-        <Left>1.14692in</Left>
-        <Height>0.19444in</Height>
-        <Width>1.02739in</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox18">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>SubTotal</Value>
-                <Style>
-                  <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>0.53125in</Top>
-        <Left>0.00574in</Left>
-        <Height>0.19444in</Height>
-        <Width>0.79745in</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox19">
         <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -358,32 +291,32 @@
                 <Value>Amount Due</Value>
                 <Style>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>0.72569in</Top>
-        <Left>0.00574in</Left>
+        <Top>3.15657in</Top>
+        <Left>0.00418in</Left>
         <Height>0.25in</Height>
-        <Width>1.07174in</Width>
-        <ZIndex>4</ZIndex>
+        <Width>0.79745in</Width>
+        <ZIndex>2</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingLeft>5pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="pTotal">
-        <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -392,6 +325,7 @@
                 <Value>=Parameters!pTotal.Value</Value>
                 <Style>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -401,11 +335,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pTotal</rd:DefaultName>
-        <Top>0.72569in</Top>
-        <Left>1.09136in</Left>
+        <Top>3.15657in</Top>
+        <Left>0.79745in</Left>
         <Height>0.25in</Height>
-        <Width>1.08296in</Width>
-        <ZIndex>5</ZIndex>
+        <Width>0.99829in</Width>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -418,6 +352,7 @@
       </Textbox>
       <Textbox Name="Textbox21">
         <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -426,18 +361,21 @@
                 <Value>   Amount Tendered:</Value>
                 <Style>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
+                  <FontSize>5pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>0.97569in</Top>
+        <Top>3.40657in</Top>
+        <Left>0in</Left>
         <Height>0.18407in</Height>
-        <Width>2.1743in</Width>
-        <ZIndex>6</ZIndex>
+        <Width>1.79574in</Width>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -450,6 +388,7 @@
       </Textbox>
       <Textbox Name="Textbox22">
         <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -458,26 +397,26 @@
                 <Value>Cash</Value>
                 <Style>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
+                  <FontSize>5pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>1.17365in</Top>
-        <Left>0.00575in</Left>
+        <Top>3.60453in</Top>
+        <Left>0.00418in</Left>
         <Height>0.17089in</Height>
         <Width>0.79745in</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingLeft>5pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
@@ -485,6 +424,7 @@
       </Textbox>
       <Textbox Name="pCash">
         <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -493,7 +433,7 @@
                 <Value>=Parameters!pCash.Value</Value>
                 <Style>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
+                  <FontSize>5pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -503,23 +443,20 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pCash</rd:DefaultName>
-        <Top>1.15977in</Top>
-        <Left>0.98578in</Left>
-        <Height>0.18477in</Height>
-        <Width>1.18853in</Width>
-        <ZIndex>8</ZIndex>
+        <Top>3.60453in</Top>
+        <Left>0.79745in</Left>
+        <Height>0.17089in</Height>
+        <Width>0.99829in</Width>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Textbox Name="Textbox24">
         <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -528,25 +465,26 @@
                 <Value>Change</Value>
                 <Style>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>1.34454in</Top>
-        <Left>0.00575in</Left>
+        <Top>3.77542in</Top>
+        <Left>0.00418in</Left>
         <Height>0.21704in</Height>
         <Width>0.79745in</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingLeft>5pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
@@ -554,6 +492,7 @@
       </Textbox>
       <Textbox Name="pChange">
         <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -562,6 +501,7 @@
                 <Value>=Parameters!pChange.Value</Value>
                 <Style>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>7pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -571,229 +511,23 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pChange</rd:DefaultName>
-        <Top>1.34454in</Top>
-        <Left>0.98578in</Left>
-        <Height>0.25in</Height>
-        <Width>1.18853in</Width>
-        <ZIndex>10</ZIndex>
+        <Top>3.77542in</Top>
+        <Left>0.79745in</Left>
+        <Height>0.21704in</Height>
+        <Width>0.99829in</Width>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox27">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>FREELANCE DEVS LAGUNA</Value>
-                <Style>
-                  <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox27</rd:DefaultName>
-        <Top>1.68658in</Top>
-        <Left>0.00575in</Left>
-        <Height>0.21985in</Height>
-        <Width>2.16857in</Width>
-        <ZIndex>11</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox28">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>93 BONIFACIO ST. BARANGAY ZONE IV</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#000000</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>LUISIANA, LAGUNA</Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#000000</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-              <LineHeight>12pt</LineHeight>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox27</rd:DefaultName>
-        <Top>1.90643in</Top>
-        <Left>0.00579in</Left>
-        <Height>0.43294in</Height>
-        <Width>2.16853in</Width>
-        <ZIndex>12</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox29">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>TIN: </Value>
-                <Style>
-                  <FontStyle>Normal</FontStyle>
-                  <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
-                  <FontWeight>Normal</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                  <Color>#000000</Color>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox29</rd:DefaultName>
-        <Top>2.33937in</Top>
-        <Left>0.00571in</Left>
-        <Height>0.17818in</Height>
-        <Width>2.16853in</Width>
-        <ZIndex>13</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox30">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Date Issued: 01/12/2020</Value>
-                <Style>
-                  <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox30</rd:DefaultName>
-        <Top>2.53144in</Top>
-        <Left>0.00579in</Left>
-        <Height>0.17748in</Height>
-        <Width>2.16853in</Width>
-        <ZIndex>14</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox31">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>PERMIT: </Value>
-                <Style>
-                  <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>7pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox31</rd:DefaultName>
-        <Top>2.70892in</Top>
-        <Left>0.00572in</Left>
-        <Height>0.17089in</Height>
-        <Width>2.16853in</Width>
-        <ZIndex>15</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
       <Line Name="Line4">
-        <Top>1.63102in</Top>
-        <Left>0.00574in</Left>
+        <Top>4.0619in</Top>
+        <Left>0in</Left>
         <Height>0in</Height>
-        <Width>2.16857in</Width>
-        <ZIndex>16</ZIndex>
+        <Width>1.79574in</Width>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -802,6 +536,7 @@
       </Line>
       <Textbox Name="Textbox32">
         <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -811,7 +546,7 @@
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
-                  <FontSize>6pt</FontSize>
+                  <FontSize>5pt</FontSize>
                   <FontWeight>Normal</FontWeight>
                   <TextDecoration>None</TextDecoration>
                   <Color>#000000</Color>
@@ -824,11 +559,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox32</rd:DefaultName>
-        <Top>2.83238in</Top>
-        <Left>0.00571in</Left>
+        <Top>4.13134in</Top>
+        <Left>0.00418in</Left>
         <Height>0.29435in</Height>
-        <Width>2.16853in</Width>
-        <ZIndex>17</ZIndex>
+        <Width>1.79574in</Width>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -841,6 +576,7 @@
       </Textbox>
       <Textbox Name="Textbox33">
         <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
@@ -859,10 +595,262 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>3.12673in</Top>
-        <Left>0.00572in</Left>
+        <Top>4.42569in</Top>
+        <Left>0.00418in</Left>
         <Height>0.18491in</Height>
-        <Width>2.16852in</Width>
+        <Width>1.79574in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="pTransNo">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!pTransNo.Value</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>pTransNo</rd:DefaultName>
+        <Top>2.08839in</Top>
+        <Height>0.22105in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox15">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>="Date/Time" + Now</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>1.90361in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.17089in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="pCashierName">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!pCashierName.Value</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>pCashierName</rd:DefaultName>
+        <Top>1.72145in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.17089in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>SALES INVOICE</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>6pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox9</rd:DefaultName>
+        <Top>1.54397in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.17748in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="pMin">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!pMin.Value</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>pMin</rd:DefaultName>
+        <Top>1.34931in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.19726in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="pSerialNumber">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!pSerialNumber.Value</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>pSerialNumber</rd:DefaultName>
+        <Top>1.16524in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.18407in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>VAT REGISTERED</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>6pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox9</rd:DefaultName>
+        <Top>0.77375in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.19444in</Height>
+        <Width>1.79574in</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -874,388 +862,137 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="pTin">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!pTin.Value</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>pTin</rd:DefaultName>
+        <Top>0.96819in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.19444in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="pStoreAddress">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!pStoreAddress.Value</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>pStoreAddress</rd:DefaultName>
+        <Top>0.52114in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.25in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="pStoreName">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!pStoreName.Value</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>pStoreName</rd:DefaultName>
+        <Top>0.27114in</Top>
+        <Left>0.00418in</Left>
+        <Height>0.25in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>21</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line1">
+        <Top>2.37879in</Top>
+        <Height>0in</Height>
+        <Width>1.79574in</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
-    <Height>3.66241in</Height>
+    <Height>4.77941in</Height>
     <Style />
   </Body>
-  <Width>2.17432in</Width>
+  <Width>1.90881in</Width>
   <Page>
-    <PageHeader>
-      <Height>2.13038in</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
-      <ReportItems>
-        <Textbox Name="pStoreName">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!pStoreName.Value</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>pStoreName</rd:DefaultName>
-          <Left>0.00574in</Left>
-          <Height>0.25in</Height>
-          <Width>2.16858in</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="pStoreAddress">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!pStoreAddress.Value</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>pStoreAddress</rd:DefaultName>
-          <Top>0.25in</Top>
-          <Left>0.00574in</Left>
-          <Height>0.25in</Height>
-          <Width>2.16857in</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox9">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>VAT REGISTERED</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>8pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox9</rd:DefaultName>
-          <Top>0.51389in</Top>
-          <Left>0.00574in</Left>
-          <Height>0.19444in</Height>
-          <Width>2.16857in</Width>
-          <ZIndex>2</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="pTin">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!pTin.Value</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>pTin</rd:DefaultName>
-          <Top>0.70833in</Top>
-          <Left>0.00575in</Left>
-          <Height>0.19444in</Height>
-          <Width>2.16857in</Width>
-          <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="pSerialNumber">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!pSerialNumber.Value</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>pSerialNumber</rd:DefaultName>
-          <Top>0.90278in</Top>
-          <Left>0.00575in</Left>
-          <Height>0.18407in</Height>
-          <Width>2.16857in</Width>
-          <ZIndex>4</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="pMin">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!pMin.Value</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>pMin</rd:DefaultName>
-          <Top>1.08685in</Top>
-          <Left>0.00575in</Left>
-          <Height>0.19726in</Height>
-          <Width>2.16857in</Width>
-          <ZIndex>5</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox10">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>SALES INVOICE</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>8pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox9</rd:DefaultName>
-          <Top>1.28411in</Top>
-          <Left>0.00575in</Left>
-          <Height>0.17748in</Height>
-          <Width>2.16856in</Width>
-          <ZIndex>6</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="pCashierName">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!pCashierName.Value</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Left</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>pCashierName</rd:DefaultName>
-          <Top>1.46159in</Top>
-          <Left>0.00574in</Left>
-          <Height>0.17089in</Height>
-          <Width>2.16858in</Width>
-          <ZIndex>7</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox15">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>="Date/Time" + Now</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Left</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox15</rd:DefaultName>
-          <Top>1.64636in</Top>
-          <Left>0.00575in</Left>
-          <Height>0.17089in</Height>
-          <Width>2.16857in</Width>
-          <ZIndex>8</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="pTransNo">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=Parameters!pTransNo.Value</Value>
-                  <Style>
-                    <FontFamily>Merchant Copy Doublesize</FontFamily>
-                    <FontSize>7pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Left</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>pTransNo</rd:DefaultName>
-          <Top>1.83114in</Top>
-          <Left>0.00575in</Left>
-          <Height>0.22105in</Height>
-          <Width>2.16857in</Width>
-          <ZIndex>9</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Line Name="Line1">
-          <Top>2.12163in</Top>
-          <Left>0.00578in</Left>
-          <Height>0in</Height>
-          <Width>2.16853in</Width>
-          <ZIndex>10</ZIndex>
-          <Style>
-            <Border>
-              <Style>Solid</Style>
-            </Border>
-          </Style>
-        </Line>
-      </ReportItems>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-      </Style>
-    </PageHeader>
-    <LeftMargin>0.2in</LeftMargin>
-    <TopMargin>0.2in</TopMargin>
-    <BottomMargin>0.2in</BottomMargin>
+    <PageWidth>1.89in</PageWidth>
+    <LeftMargin>0.05in</LeftMargin>
+    <RightMargin>0.01in</RightMargin>
+    <TopMargin>0.05in</TopMargin>
+    <BottomMargin>0.01in</BottomMargin>
+    <ColumnSpacing>0in</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
