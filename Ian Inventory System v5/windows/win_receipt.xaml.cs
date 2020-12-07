@@ -25,6 +25,7 @@ namespace NavigationDrawerPopUpMenu2.windows
     {
         Database conn = new Database();
         win_pos win_pos;
+        Store store = new Store();
         public win_receipt(win_pos winPOS)
         {
             InitializeComponent();
@@ -33,12 +34,6 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         public void loadReport()
         {
-
-            string store_name = "MIRAS COMPUTER CAFE AND STORE";
-            string store_address = "22 JP RIZAL ST. POBLACION CAVINTI, LAGUNA";
-            string store_tin = "000-000-000";
-            string store_serial_number = "WTF000001";
-            string store_min = "000000001";
 
             ReportDataSource rptDataSource;
             try
@@ -55,11 +50,11 @@ namespace NavigationDrawerPopUpMenu2.windows
                 conn.Close();
 
                 // Parameters
-                ReportParameter pStoreName = new ReportParameter("pStoreName", store_name);
-                ReportParameter pStoreAddress = new ReportParameter("pStoreAddress", store_address);
-                ReportParameter pTin = new ReportParameter("pTin","Tin: "+ store_tin);
-                ReportParameter pSerialNumber = new ReportParameter("pSerialNumber","Serial No.: "+ store_serial_number);
-                ReportParameter pMin = new ReportParameter("pMin","Min: "+ store_min);
+                ReportParameter pStoreName = new ReportParameter("pStoreName", store.storeName(conn));
+                ReportParameter pStoreAddress = new ReportParameter("pStoreAddress", store.storeAddress(conn));
+                ReportParameter pTin = new ReportParameter("pTin","Tin: "+ store.storeTin(conn));
+                ReportParameter pSerialNumber = new ReportParameter("pSerialNumber","Serial No.: "+ store.storeSN(conn));
+                ReportParameter pMin = new ReportParameter("pMin","Min: "+ store.storeMin(conn));
                 ReportParameter pCashierName = new ReportParameter("pCashierName","Cashier: "+win_pos.cashierName.Text);
                 ReportParameter pTransNo = new ReportParameter("pTransNo","Trans #: "+ win_pos.orderNo.Text);
                 ReportParameter pSubTotal = new ReportParameter("pSubTotal", win_pos.pay_subtotal.Text);
@@ -93,7 +88,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             catch (Exception ex)
             {
                 conn.Close();
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + ", Try again later", "Receipt Printing Failed",  MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
         }
