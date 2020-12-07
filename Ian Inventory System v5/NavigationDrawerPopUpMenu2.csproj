@@ -140,6 +140,12 @@
     <Compile Include="main Menu.xaml.cs">
       <DependentUpon>main Menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_inventory.xaml.cs">
+      <DependentUpon>usc_inventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\usc_parent_request.xaml.cs">
+      <DependentUpon>usc_parent_request.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_sales.xaml.cs">
       <DependentUpon>usc_sales.xaml</DependentUpon>
     </Compile>
@@ -254,6 +260,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\customStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_parent_request.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

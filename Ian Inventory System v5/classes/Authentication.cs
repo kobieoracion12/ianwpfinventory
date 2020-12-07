@@ -185,7 +185,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 conn.Close();
             }
