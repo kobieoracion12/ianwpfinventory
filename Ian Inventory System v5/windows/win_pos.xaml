@@ -521,7 +521,6 @@
                                         <TextBlock Text="[F1]" FontWeight="SemiBold" FontSize="5" Foreground="White" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
-
                                 <Button Click="updQtyBtn_Click" x:Name="holdOrder" Margin="5 0 0 0" Height="25" Width="70" Background="#2C9CDB" BorderBrush="#2C9CDB" IsEnabled="False">
                                     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                         <TextBlock Text="Quantity" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
