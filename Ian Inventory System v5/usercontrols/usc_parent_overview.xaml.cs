@@ -41,7 +41,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM datainventory";
+                string query = "SELECT * FROM datainventory ORDER BY prodItem ASC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -244,6 +244,38 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             catchData();
             sortBrand.Text = "Select";
             sortStatus.Text = "Select";
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            conn.Close(); // Close the connection first
+            try
+            {
+                // Open Connection 
+                conn.Open();
+                // Query Statement
+                string query = "SELECT * FROM datainventory WHERE prodNo LIKE '%" + tbSearch.Text + "%' OR prodItem LIKE '%" + tbSearch.Text + "%' OR prodBrand LIKE '%" + tbSearch.Text + "%' OR prodSRP LIKE '%" + tbSearch.Text + "%' OR prodRP LIKE '%" + tbSearch.Text + "%'";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                System.Data.DataTable dt = new System.Data.DataTable("datainventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewInventory.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+
+                adapter.Dispose(); // Dispose Adapter
+                // Close Connection
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
         }
     }
 }

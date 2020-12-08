@@ -68,7 +68,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                     e.Graphics.DrawImage(pageImage, adjustedRect);
                     currentPageIndex++;
                     e.HasMorePages = (currentPageIndex < streams.Count);
-                    e.Graphics.DrawRectangle(Pens.Red, adjustedRect);
+                    //e.Graphics.DrawRectangle(Pens.Red, adjustedRect);
                 };
                 printDocument.EndPrint += (Sender, e) =>
                 {

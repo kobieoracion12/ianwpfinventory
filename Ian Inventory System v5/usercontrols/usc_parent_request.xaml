@@ -117,7 +117,7 @@
 
                             <!-- Buttons-->
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Button x:Name="addItem" Margin="0 10 5 0" Height="15" Background="#29CC97" BorderBrush="#29CC97">
+                                <Button x:Name="addItem" Margin="0 10 5 0" Height="15" Background="#29CC97" BorderBrush="#29CC97" Click="addItem_Click">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                         <TextBlock Text="Approve" FontWeight="SemiBold" FontSize="5" Foreground="#FFFFFF" TextAlignment="Center" VerticalAlignment="Center"/>
                                     </StackPanel>

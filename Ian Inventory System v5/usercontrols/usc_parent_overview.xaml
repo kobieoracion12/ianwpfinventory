@@ -38,7 +38,7 @@
                                     <Border BorderBrush="#b2b2b2" Opacity="0.5" CornerRadius="2" BorderThickness="1" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="38" Width="530">
                                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
                                             <materialDesign:PackIcon Foreground="#b2b2b2" Kind="Magnify" Width="20" Height="20" Margin="10 2 0 0" />
-                                            <TextBox x:Name="tbSearch" BorderBrush="Transparent" FontFamily="Microsoft Tai Le" Margin="10 0 0 0" Width="460" Background="White" />
+                                            <TextBox x:Name="tbSearch" BorderBrush="Transparent" FontFamily="Microsoft Tai Le" Margin="10 0 0 0" Width="460" Background="White" TextChanged="tbSearch_TextChanged" />
                                         </StackPanel>
                                     </Border>
                                     <Rectangle VerticalAlignment="Stretch" Stroke="#b2b2b2" Margin="55 0 0 0"/>
@@ -108,7 +108,7 @@
                                         <!-- Brand -->
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                             <TextBlock Text="Brand" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10" Margin="0 10 0 5"/>
-                                            <ComboBox x:Name="sortBrand" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#b2b2b2">
+                                            <ComboBox x:Name="sortBrand" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#b2b2b2" IsEditable="True">
                                                 <ComboBoxItem Content="Select" IsSelected="True" />
                                             </ComboBox>
                                         </StackPanel>
@@ -133,8 +133,8 @@
                                             </StackPanel>
                                         </Button>
 
-                                        <!-- Refresh -->
-                                        <Button x:Name="refreshItem" Margin="5 0 5 10" Height="30" Width="130" Background="White" BorderBrush="#b2b2b2" Click="refreshItem_Click">
+                                   <!-- Refresh -->
+                                             <Button x:Name="refreshItem" Margin="5 0 5 10" Height="30" Width="130" Background="White" BorderBrush="#b2b2b2" Click="refreshItem_Click">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                 <TextBlock Text="Refresh" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
                                             </StackPanel>

@@ -53,15 +53,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Select Cashier Button
-        private void selectCashier_Click(object sender, RoutedEventArgs e)
+        public void fetchData()
         {
             try
             {
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT itemNo, itemName FROM cashierinventory";
+                string query = "SELECT itemNo, itemName FROM cashierinventory WHERE itemStatus = 'Pending'";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -85,6 +84,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Select Cashier Button
+        private void selectCashier_Click(object sender, RoutedEventArgs e)
+        {
+            fetchData();
+        }
+
         // Copy the id of product when click in lv_browse cell
         private void lv_browse_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -104,6 +109,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         }
 
+        // Populate textbox according to the product id
         private void itemNo_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -140,6 +146,65 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 MessageBox.Show(x.Message);
             }
+        }
+
+        // Approve Button
+        private void addItem_Click(object sender, RoutedEventArgs e)
+        {
+            conn.Open();
+            try
+            {
+                string addRequest = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodSRP, prodRP, prodDOA, prodEXPD) VALUES (@no, @item, @brand, @srp, @rp, @doa, @expd)";
+                conn.query(addRequest);
+
+                conn.bind("@no", itemNo.Text);
+                conn.bind("@item", itemName.Text);
+                conn.bind("@brand", itemBrand.Text);
+                conn.bind("@srp", itemSRP.Text);
+                conn.bind("@rp", itemRP.Text);
+                conn.bind("@doa", DateTime.Now);
+
+                string str = itemEXPD.Text;
+                DateTime dt = DateTime.Parse(str);
+
+                conn.bind("@expd", dt);
+                var check = conn.execute();
+                if (check == 1)
+                {
+                    MessageBox.Show("Item Added!");
+                    try
+                    {
+                        string itemStatus = "UPDATE cashierinventory SET itemStatus = 'Approved' WHERE itemNo = @item";
+                        conn.query(itemStatus);
+                        conn.bind("@item", itemNo.Text);
+                        conn.execute();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                conn.Close();
+                Clear();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Clear Function
+        public void Clear()
+        {
+            itemNo.Clear();
+            itemName.Clear();
+            itemBrand.Clear();
+            itemSRP.Clear();
+            itemRP.Clear();
+            itemDOA.Text = "";
+            itemEXPD.Text = "";
+            fetchData();
         }
     }
 }

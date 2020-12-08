@@ -60,8 +60,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     usc = new usc_parent_overview();
                     mainSubColumn.Children.Add(usc);
                     break;
-                case "ItemCreate":
-                    usc = new usc_sales();
+                case "stAddItem":
+                    usc = new usc_parent_add_item();
                     mainSubColumn.Children.Add(usc);
                     break;
                 case "stItemReq":
