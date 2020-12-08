@@ -27,14 +27,13 @@ namespace NavigationDrawerPopUpMenu2.windows
         string salesItem;
         string prodQty;
         win_pos win_pos;
-        public window_change_quantity(win_pos winPOS, string trans_no, string sales_item, string prod_qty)
+        public window_change_quantity(win_pos winPOS, string trans_no, string sales_item)
         {
             InitializeComponent();
             win_pos = winPOS;
 
             transNo = trans_no;
             salesItem = sales_item;
-            prodQty = prod_qty;
         }
 
         // IF PRESS ENTER
@@ -44,35 +43,62 @@ namespace NavigationDrawerPopUpMenu2.windows
             {
                 if (e.Key == Key.Return)
                 {
-                    /* SALES QUANTITY
-                     * SET A NEW TOTAL QUANTITY
-                     */
                     conn.Open();
-                    string query = "UPDATE datasalesinventory SET salesQty = @salesQty  WHERE salesTransNo = @salesTransNo AND salesItem = @salesItem";
-                    conn.query(query);
-                    conn.bind("@salesQty", txtQtyChange.Text);
-                    conn.bind("@salesTransNo", win_pos.orderNo.Text);
+                    string queryQty = "SELECT prodQty FROM datainventory WHERE prodItem = @salesItem";
+                    conn.query(queryQty);
                     conn.bind("@salesItem", salesItem);
                     conn.cmd().Prepare();
-                    conn.execute();
+                    MySqlDataReader dr = conn.read();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            prodQty = dr["prodQty"].ToString();
+                        }
+                    }
+
+                    dr.Close();
+                    dr.Dispose();
                     conn.Close();
 
-                    /* SALES TOTAL
-                     * SET A NEW TOTAL PRICE
+                    // Check if Database Stock is Less Than users quantity
+                    if (int.Parse(prodQty) < int.Parse(txtQtyChange.Text))
+                    {
+                        MessageBox.Show("Unable to proceed, Only " + prodQty + " stocks left", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        /* SALES QUANTITY
+                     * SET A NEW TOTAL QUANTITY
                      */
-                    conn.Open();
-                    string query2 = "UPDATE datasalesinventory SET salesTotal = (salesRP * salesQty) WHERE salesTransNo = '" + win_pos.orderNo.Text + "' AND salesItem = '" + salesItem + "' ";
-                    conn.query(query2);
-                    conn.execute();
-                    conn.Close();
+                        conn.Open();
+                        string query = "UPDATE datasalesinventory SET salesQty = @salesQty  WHERE salesTransNo = @salesTransNo AND salesItem = @salesItem";
+                        conn.query(query);
+                        conn.bind("@salesQty", txtQtyChange.Text.Trim());
+                        conn.bind("@salesTransNo", win_pos.orderNo.Text);
+                        conn.bind("@salesItem", salesItem);
+                        conn.cmd().Prepare();
+                        conn.execute();
+                        conn.Close();
 
-                    MessageBox.Show("Quantity Changed", "Quantiy", MessageBoxButton.OK, MessageBoxImage.Information);
-                    win_pos.tbPrdName.Text = ""; //
-                    win_pos.holdOrder.IsEnabled = false;
-                    this.Close(); // Close
-                    win_pos.loadData();
-                    win_pos.pay_total.Text = win_pos.sumOfSalesTotal();
-                    win_pos.entrySearch.Focus();
+                        /* SALES TOTAL
+                         * SET A NEW TOTAL PRICE
+                         */
+                        conn.Open();
+                        string query2 = "UPDATE datasalesinventory SET salesTotal = (salesRP * salesQty) WHERE salesTransNo = '" + win_pos.orderNo.Text + "' AND salesItem = '" + salesItem + "' ";
+                        conn.query(query2);
+                        conn.execute();
+                        conn.Close();
+
+                        MessageBox.Show("Quantity Changed", "Quantiy", MessageBoxButton.OK, MessageBoxImage.Information);
+                        win_pos.tbPrdName.Text = ""; //
+                        win_pos.holdOrder.IsEnabled = false;
+                        this.Close(); // Close
+                        win_pos.loadData();
+                        win_pos.pay_total.Text = win_pos.sumOfSalesTotal(); // Update UI Total
+                        win_pos.entrySearch.Focus();
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -82,6 +108,18 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
         }
 
-        
+        // Prevent User to type Letters
+        private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var txtQtyChange = sender as TextBox;
+            // Use SelectionStart property to find the caret position.
+            // Insert the previewed text into the existing text in the textbox.
+            var fullText = txtQtyChange.Text.Insert(txtQtyChange.SelectionStart, e.Text);
+
+            double val;
+            // If parsing is successful, set Handled to false
+            e.Handled = !double.TryParse(fullText, out val);
+        }
+
     }
 }

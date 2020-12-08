@@ -30,8 +30,8 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         public void Login()
         {
-            string username = txtUsername.Text;
-            string pwd = txtPassword.Password;
+            string username = txtUsername.Text.Trim();
+            string pwd = txtPassword.Password.Trim();
             // Call Auth Class
             Authentication auth = new Authentication(username, pwd);
 

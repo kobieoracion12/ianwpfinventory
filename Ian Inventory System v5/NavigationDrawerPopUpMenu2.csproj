@@ -142,6 +142,9 @@
     <Compile Include="main Menu.xaml.cs">
       <DependentUpon>main Menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="reports\report_sales.xaml.cs">
+      <DependentUpon>report_sales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_inventory.xaml.cs">
       <DependentUpon>usc_inventory.xaml</DependentUpon>
     </Compile>
@@ -263,6 +266,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="reports\report_sales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="styleLibrary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -399,6 +406,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="ReportSale.rdlc" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>

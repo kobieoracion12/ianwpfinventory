@@ -109,6 +109,7 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V12\ian
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V12\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V12\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V12\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
+<<<<<<< HEAD
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.exe.config
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
@@ -225,3 +226,7 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overview.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_restock.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_restock.baml
+=======
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V12\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_sales.g.cs
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V12\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_sales.baml
+>>>>>>> 978d08f7b077462617fec3bfdcdf937682162897

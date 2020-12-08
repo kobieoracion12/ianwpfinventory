@@ -108,11 +108,18 @@
                                     <TextBlock Text="New Order" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-
+       
                             <!-- Add Item -->
                             <Button x:Name="addItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="addItem_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="Add Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Delete Item -->
+                            <Button x:Name="removeItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="removeItem_Click">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBlock Text="Remove Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
 
@@ -514,7 +521,6 @@
                                         <TextBlock Text="[F1]" FontWeight="SemiBold" FontSize="5" Foreground="White" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
-
                                 <Button Click="updQtyBtn_Click" x:Name="holdOrder" Margin="5 0 0 0" Height="25" Width="70" Background="#2C9CDB" BorderBrush="#2C9CDB" IsEnabled="False">
                                     <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                         <TextBlock Text="Quantity" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>

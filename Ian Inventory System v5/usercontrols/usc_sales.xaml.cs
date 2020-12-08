@@ -18,6 +18,8 @@ using Microsoft.Win32;
 using Microsoft.Office.Interop.Excel;
 using NavigationDrawerPopUpMenu2.classes;
 using NavigationDrawerPopUpMenu2.usercontrols;
+using Microsoft.Reporting.WinForms;
+using NavigationDrawerPopUpMenu2.reports;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
@@ -243,6 +245,13 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 return;
             }
             else { return; }
+        }
+
+        private void printPreview_Click(object sender, RoutedEventArgs e)
+        {
+            report_sales rptsales = new report_sales(this);
+            rptsales.printPreview();
+            rptsales.ShowDialog();
         }
 
         // EXPORT DATA TO EXCEL

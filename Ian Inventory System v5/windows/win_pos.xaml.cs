@@ -28,7 +28,6 @@ namespace NavigationDrawerPopUpMenu2.windows
         Authentication auth;
         string transNo;
         string salesItem;
-        string prodQty;
         public static int prdID;
 
         List<Invoice> settleProducts = new List<Invoice>();
@@ -490,6 +489,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 win_receipt rcpt = new win_receipt(this);
                 rcpt.loadReport();
                 rcpt.ReportViewerDemo.LocalReport.Print();
+                // End of Receipt
             }
             catch (Exception x)
             {
@@ -510,7 +510,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             if (tbPrdName.Text != String.Empty)
             {
-                window_change_quantity changeQtyWindow = new window_change_quantity(this, transNo, salesItem, prodQty);
+                window_change_quantity changeQtyWindow = new window_change_quantity(this, transNo, salesItem);
                 changeQtyWindow.ShowDialog();
             }
             else
@@ -555,6 +555,31 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             win_settings ws = new win_settings(this);
             ws.ShowDialog();
+        }
+
+        // Remove Item from Listview
+        private void removeItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbPrdName.Text.Equals(""))
+            {
+                MessageBox.Show("No Selected Item", "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                string query = "DELETE FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesItem = '" + tbPrdName.Text + "'";
+                conn.query(query);
+                try
+                {
+                    conn.execute();
+                    loadData();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show("Failed Removing Item, " + ex.Message, "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            
         }
     }
 }

@@ -12,6 +12,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="txtQtyChange" Text="1" Grid.Column="0" TextAlignment="Center" Padding="10" FontSize="30" FontWeight="Bold" KeyDown="txtQtyChange_KeyDown" />
+        <TextBox x:Name="txtQtyChange" Text="1" Grid.Column="0" TextAlignment="Center" Padding="10" FontSize="30" FontWeight="Bold" KeyDown="txtQtyChange_KeyDown" PreviewTextInput="TextBox_OnPreviewTextInput" />
     </Grid>
 </Window>
