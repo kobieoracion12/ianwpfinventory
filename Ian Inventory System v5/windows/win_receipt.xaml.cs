@@ -53,7 +53,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 DataSet1 ds = new DataSet1();
 
                 conn.Open();
-                string query = "SELECT * FROM datasalesinventory WHERE salesTransNo='"+win_pos.orderNo.Text+ "' AND salesStatus = 'Pending' OR salesStatus = 'Sold'";
+                string query = "SELECT * FROM datasalesinventory WHERE salesTransNo='"+win_pos.orderNo.Text+ "' AND salesStatus = 'Pending'";
                 MySqlDataAdapter da = conn.DataAdapter(query);
                 da.Fill(ds.Tables["dtSold"]);
                 conn.Close();

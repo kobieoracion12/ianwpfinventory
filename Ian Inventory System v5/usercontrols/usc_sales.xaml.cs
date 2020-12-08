@@ -30,7 +30,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public usc_sales()
         {
             InitializeComponent();
-            catchData();
+            //catchData();
             countResult();
             cbContents();
         }
