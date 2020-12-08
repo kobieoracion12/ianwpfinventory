@@ -28,7 +28,6 @@ namespace NavigationDrawerPopUpMenu2.windows
         Authentication auth;
         string transNo;
         string salesItem;
-        string prodQty;
         public static int prdID;
 
         List<Invoice> settleProducts = new List<Invoice>();
@@ -490,6 +489,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 win_receipt rcpt = new win_receipt(this);
                 rcpt.loadReport();
                 rcpt.ReportViewerDemo.LocalReport.Print();
+                // End of Receipt
             }
             catch (Exception x)
             {
@@ -510,7 +510,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             if (tbPrdName.Text != String.Empty)
             {
-                window_change_quantity changeQtyWindow = new window_change_quantity(this, transNo, salesItem, prodQty);
+                window_change_quantity changeQtyWindow = new window_change_quantity(this, transNo, salesItem);
                 changeQtyWindow.ShowDialog();
             }
             else
