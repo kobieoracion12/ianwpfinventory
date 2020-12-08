@@ -145,8 +145,14 @@
     <Compile Include="usercontrols\usc_inventory.xaml.cs">
       <DependentUpon>usc_inventory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_parent_overview.xaml.cs">
+      <DependentUpon>usc_parent_overview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_parent_request.xaml.cs">
       <DependentUpon>usc_parent_request.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\usc_parent_restock.xaml.cs">
+      <DependentUpon>usc_parent_restock.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\usc_sales.xaml.cs">
       <DependentUpon>usc_sales.xaml</DependentUpon>
@@ -269,7 +275,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="usercontrols\usc_parent_overview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="usercontrols\usc_parent_request.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_parent_restock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -39,7 +39,7 @@
         <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid>
                 <!-- Background -->
-                <Rectangle Margin="10" RadiusX="8" RadiusY="8" Fill="White">
+                <Rectangle Margin="10,0,10,20" RadiusX="8" RadiusY="8" Fill="White">
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>

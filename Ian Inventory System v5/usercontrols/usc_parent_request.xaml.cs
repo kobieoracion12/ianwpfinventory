@@ -93,46 +93,53 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Get the product id
                 string prodId = lv_browse.SelectedItems[0].ToString();
                 // Append ID and Product name
-                itemNo.Text = prodId.ToString();
+                itemNo.Text = prodId;
 
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
             }
+
+
         }
 
-        //
-        private void checkItem_TextChanged(object sender, TextChangedEventArgs e)
+        private void itemNo_TextChanged(object sender, TextChangedEventArgs e)
         {
-            conn.Close();
-            if (itemNo.Text.Length > 0)
+            try
             {
-                string search = itemNo.Text;
-                string query = "SELECT itemNo, itemName, itemBrand, itemRP, itemSRP, itemDOA, itemEXPD FROM cashierinventory WHERE itemNo = '" + search + "'";
-                conn.query(query); //CMD 
-                conn.Open();
-                MySqlDataReader dr = conn.read();
-                if (dr.Read())
-                {
-                    itemNo.Text = dr.GetValue(0).ToString();
-                    itemName.Text = dr.GetValue(1).ToString();
-                    itemBrand.Text = dr.GetValue(2).ToString();
-                    itemRP.Text = dr.GetValue(3).ToString();
-                    itemSRP.Text = dr.GetValue(4).ToString();
-                    itemDOA.Text = dr.GetValue(5).ToString();
-                    itemEXPD.Text = dr.GetValue(6).ToString();
-                    dr.Close();
-                    dr.Dispose(); // Dispose
-                }
-                else
-                {
-                    MessageBox.Show("Error!");
-                    return;
-                }
                 conn.Close();
+                if (itemNo.Text.Length > 0)
+                {
+                    string search = itemNo.Text;
+                    string query = "SELECT itemNo, itemName, itemBrand, itemRP, itemSRP, itemDOA, itemEXPD FROM cashierinventory WHERE itemNo = '" + search + "'";
+                    conn.query(query); //CMD 
+                    conn.Open();
+                    MySqlDataReader dr = conn.read();
+                    if (dr.Read())
+                    {
+                        itemNo.Text = dr.GetValue(0).ToString();
+                        itemName.Text = dr.GetValue(1).ToString();
+                        itemBrand.Text = dr.GetValue(2).ToString();
+                        itemRP.Text = dr.GetValue(3).ToString();
+                        itemSRP.Text = dr.GetValue(4).ToString();
+                        itemDOA.Text = dr.GetValue(5).ToString();
+                        itemEXPD.Text = dr.GetValue(6).ToString();
+                        dr.Close();
+                        dr.Dispose(); // Dispose
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error!");
+                        return;
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
             }
         }
-
     }
 }

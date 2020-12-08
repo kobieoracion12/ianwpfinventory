@@ -63,6 +63,7 @@
                             </ListView.View>
                         </ListView>
                     </Grid>
+
                 </Grid>
             </Grid>
         </Grid>
@@ -75,43 +76,43 @@
                             <!--Item Number -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Item Number" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 0 0 0"/>
-                                <TextBox x:Name="itemNo" BorderThickness="1" Padding="5 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Height="20" Width="190" VerticalAlignment="Center" />
+                                <TextBox x:Name="itemNo" Text="{Binding ElementName=lv_browse, Path=SelectedItem.itemNo}" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" TextChanged="itemNo_TextChanged"/>
                             </StackPanel>
                             
                             <!--Item Description -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Item Description" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <TextBox x:Name="itemName" BorderThickness="1" Padding="5 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Height="20" Width="190" VerticalAlignment="Center" />
+                                <TextBox x:Name="itemName" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
                             <!--Item Brand -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Brand" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <TextBox x:Name="itemBrand" BorderThickness="1" Padding="5 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Height="20" Width="190" VerticalAlignment="Center" />
+                                <TextBox x:Name="itemBrand" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
                             <!--SRP -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Suggested Retail Price (SRP)" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <TextBox x:Name="itemSRP" BorderThickness="1" Padding="5 0 0 0" FontFamily="Microsoft Tai Le" FontWeight="Regular" FontSize="8" Height="20" Width="190" VerticalAlignment="Center" />
+                                <TextBox x:Name="itemSRP" BorderThickness="1" FontFamily="Microsoft Tai Le" FontWeight="Regular" Background="White" Padding="2 0 0 0" FontSize="8" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
                             <!-- RP -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Retail Price (RP)" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <TextBox x:Name="itemRP" BorderThickness="1" Padding="5 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Height="20" Width="190" VerticalAlignment="Center" />
+                                <TextBox x:Name="itemRP" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
                             <!-- Date of Arrival -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Date of Arrival" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <DatePicker x:Name="itemDOA" FontSize="8" Height="20" BorderThickness="1" Padding="5 0 0 0" FontFamily="Microsoft Tai Le" Width="190" VerticalAlignment="Center" />
+                                <DatePicker x:Name="itemDOA" FontSize="8" Height="20" BorderThickness="1" FontFamily="Microsoft Tai Le" Background="White" Padding="2 0 0 0" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
                             <!-- Expiration Date-->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Expiration Date" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <DatePicker x:Name="itemEXPD" BorderThickness="1" Padding="5 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Height="20" Width="190" VerticalAlignment="Center" />
+                                <DatePicker x:Name="itemEXPD" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
                             <!-- Buttons-->

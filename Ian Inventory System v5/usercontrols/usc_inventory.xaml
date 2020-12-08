@@ -12,7 +12,7 @@
     <Grid Background="#F5F6FA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="180*"/>
+            <ColumnDefinition Width="150*"/>
             <ColumnDefinition Width="850*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,96 +23,57 @@
         <!-- Navigation Bar -->
         <Grid Grid.Column="1" Grid.RowSpan="2">
             <Grid Background="White">
-                <Viewbox Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Center">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Manage Inventory" FontWeight="Bold" FontSize="10" Foreground="Black" Margin="20" TextAlignment="Center"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*" />
+                    <RowDefinition Height="320*" />
+                    <RowDefinition Height="220*" />
+                </Grid.RowDefinitions>
 
-                        <!-- Add Item -->
-                        <Button x:Name="addItem" Margin="20 5 20 10" Height="30" Width="130" Background="White" BorderBrush="#b2b2b2" Click="addItem_Click">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Add Item" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
+                <!-- Navigation Header -->
+                <Grid Grid.Row="0">
+                    <Grid>
+                        <Viewbox Stretch="Uniform">
+                            <TextBlock Text="Manage Inventory" FontWeight="Bold" FontSize="10" Foreground="Black" Margin="20" TextAlignment="Center"/>
+                        </Viewbox>
+                    </Grid>
+                </Grid>
+
+                <!-- Navigation Buttons -->
+                <Grid Grid.Row="1">
+                    <Grid>
+                        <Viewbox Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <ListView x:Name="ListViewMenu" Foreground="#b1b1b1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged_1">
+                                    <!-- Overview -->
+                                    <ListViewItem x:Name="stStocks" Height="35" HorizontalAlignment="Center">
+                                        <TextBlock Text="Overview" TextAlignment="Center" FontSize="8" Margin="5 5"/>
+                                    </ListViewItem>
+                                    <!-- Add Item-->
+                                    <ListViewItem x:Name="stAddItem" Height="35" HorizontalAlignment="Center">
+                                        <TextBlock Text="Add Item" FontSize="8"/>
+                                    </ListViewItem>
+                                    <!-- Item Request -->
+                                    <ListViewItem x:Name="stItemReq" Height="35" HorizontalAlignment="Center">
+                                        <TextBlock Text="Item Request" FontSize="8"/>
+                                    </ListViewItem>
+
+                                    <ListViewItem x:Name="stRestock" Height="35" HorizontalAlignment="Center">
+                                        <TextBlock Text="Restock Item" FontSize="8"/>
+                                    </ListViewItem>
+
+                                    <ListViewItem x:Name="stStockReq" Height="35" HorizontalAlignment="Center">
+                                        <TextBlock Text="Stock Request" FontSize="8"/>
+                                    </ListViewItem>
+
+                                </ListView>
                             </StackPanel>
-                        </Button>
-
-                        <!-- Item Request -->
-                        <Button x:Name="itemRequest" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#b2b2b2" Click="itemRequest_Click">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Item Request" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button>
-
-                        <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="#b2b2b2" Margin="20 10 20 10"/>
-
-                        <!-- Restock -->
-                        <Button x:Name="restockItem" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#b2b2b2" Click="restockItem_Click">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Restock Item" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button>
-
-                        <!-- Stocks Request -->
-                        <Button x:Name="stockRequest" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#b2b2b2">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Stock Request" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button>
-
-                        <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="#b2b2b2" Margin="20 10 20 10"/>
-
-                        <!-- Date of Arrival (From) -->
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="Date of Arrival (From)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10" Margin="0 0 0 5"/>
-                            <DatePicker x:Name="sortDOAfrom" FontSize="12" Text="Select" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" Height="25" Width="130" VerticalAlignment="Center" Foreground="Black" BorderBrush="#b2b2b2"/>
-                        </StackPanel>
-
-                        <!-- Date of Arrival (To) -->
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="Date of Arrival (To)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10" Margin="0 10 0 5"/>
-                            <DatePicker x:Name="sortDOAto" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:yyyy MM, dd}'}" FontSize="12" BorderThickness="1" Padding="10 0 0 0" FontFamily="Microsoft Tai Le" Height="25" Width="130" VerticalAlignment="Center" Foreground="Black" BorderBrush="#b2b2b2"/>
-                        </StackPanel>
-
-                        <!-- Brand -->
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="Brand" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10" Margin="0 10 0 5"/>
-                            <ComboBox x:Name="sortBrand" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#b2b2b2">
-                                <ComboBoxItem Content="Select" IsSelected="True" />
-                            </ComboBox>
-                        </StackPanel>
-
-                        <!-- Brand -->
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="Stock Status" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10" Margin="0 10 0 5"/>
-                            <ComboBox x:Name="sortStatus" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#b2b2b2">
-                                <ComboBoxItem Content="Select" IsSelected="True" />
-                                <ComboBoxItem Content="On Stock" />
-                                <ComboBoxItem Content="Running of Stock" />
-                                <ComboBoxItem Content="Out of Stock" />
-                            </ComboBox>
-                        </StackPanel>
-
-                        <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stroke="#b2b2b2" Margin="20 20 20 10"/>
-
-                        <!-- Filter -->
-                        <Button x:Name="sortButton" Margin="5 10 5 10" Height="30" Width="130" Background="White" BorderBrush="#b2b2b2" Click="sortButton_Click">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Filter" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button>
-
-                        <!-- Refresh -->
-                        <Button x:Name="refreshItem" Margin="5 0 5 10" Height="30" Width="130" Background="White" BorderBrush="#b2b2b2" Click="refreshItem_Click">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Refresh" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button>
-
-                        <TextBox Text="{Binding ElementName=listViewInventory, Path=SelectedItem.prodNo}" x:Name="tbPrdId" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="10" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
-
-                    </StackPanel>
-                </Viewbox>
+                        </Viewbox>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
 
+        <!-- Main Grid -->
         <Grid x:Name="mainSubColumn" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="10">
             <Rectangle RadiusX="10" RadiusY="10" Fill="White" >
                 <Rectangle.Effect>
@@ -120,73 +81,6 @@
                 </Rectangle.Effect>
             </Rectangle>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20*" />
-                    <RowDefinition Height="130*" />
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Column="0">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="600*" />
-                            <ColumnDefinition Width="200*" />
-                        </Grid.ColumnDefinitions>
-
-                        <!-- Left Side -->
-                        <Grid Grid.Column="0">
-                            <Grid>
-                                <Viewbox Stretch="Uniform" Margin="20">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border BorderBrush="#b2b2b2" Opacity="0.5" CornerRadius="2" BorderThickness="1" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="38" Width="530">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                                                <materialDesign:PackIcon Foreground="#b2b2b2" Kind="Magnify" Width="20" Height="20" Margin="10 2 0 0" />
-                                                <TextBox x:Name="tbSearch" BorderBrush="Transparent" FontFamily="Microsoft Tai Le" Margin="10 0 0 0" Width="460" Background="White" />
-                                            </StackPanel>
-                                        </Border>
-                                        <Rectangle VerticalAlignment="Stretch" Stroke="#b2b2b2" Margin="55 0 0 0"/>
-                                    </StackPanel>
-                                </Viewbox>
-                            </Grid>
-                        </Grid>
-
-                        <!-- Right Side -->
-                        <Grid Grid.Column="1">
-                            <Grid>
-                                <Viewbox Stretch="Uniform" HorizontalAlignment="Right" >
-                                    <StackPanel Orientation="Horizontal" Margin="20">
-                                        <Button x:Name="editItem" Content="Edit" Margin="5 0 5 0" Background="#5C9EF4" Click="editItem_Click"/>
-                                        <Button x:Name="deleteItem" Content="Remove" Margin="5 0 5 0" Background="#E86845" BorderBrush="#FFFF6C6C" Click="deleteItem_Click"/>
-                                    </StackPanel>
-                                </Viewbox>
-                            </Grid>
-                        </Grid>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Row="1">
-                    <Grid>
-                        <ListView x:Name="listViewInventory" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" Margin="10">
-                            <ListView.View>
-                                <GridView AllowsColumnReorder="False">
-                                    <GridView.Columns>
-                                        <GridViewColumn DisplayMemberBinding="{Binding refNo }" Header="#" Width="50"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="Product #" Width="200"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="300" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="100"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodBrand }" Header="Brand" Width="250"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodSRP }" Header="SRP" Width="100" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodRP }" Header="Retail Price" Width="120"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodDOA }" Header="Date of Arrival" Width="200"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodEXPD }" Header="Expiration Date" Width="200"/>
-                                    </GridView.Columns>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-
-                    </Grid>
-                </Grid>
-            </Grid>
 
         </Grid>
 
