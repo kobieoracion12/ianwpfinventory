@@ -556,5 +556,30 @@ namespace NavigationDrawerPopUpMenu2.windows
             win_settings ws = new win_settings(this);
             ws.ShowDialog();
         }
+
+        // Remove Item from Listview
+        private void removeItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbPrdName.Text.Equals(""))
+            {
+                MessageBox.Show("No Selected Item", "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                string query = "DELETE FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesItem = '" + tbPrdName.Text + "'";
+                conn.query(query);
+                try
+                {
+                    conn.execute();
+                    loadData();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show("Failed Removing Item, " + ex.Message, "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+            
+        }
     }
 }
