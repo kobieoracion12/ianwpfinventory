@@ -598,6 +598,12 @@ namespace NavigationDrawerPopUpMenu2.windows
             
         }
 
+        // Discount
+        private void discountItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         // Shortcut Keys
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
@@ -616,7 +622,10 @@ namespace NavigationDrawerPopUpMenu2.windows
                 addItem_Click(sender, e); // Add Item
             else if (e.Key == Key.F7)
                 priceCheck_Click(sender, e); // Price Check
+            else if (e.Key == Key.F12)
+                cashierSettings_Click(sender, e);
 
         }
+        
     }
 }

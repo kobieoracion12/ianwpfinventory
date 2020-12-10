@@ -125,7 +125,7 @@
                             </Button>
 
                             <!-- Discount Item -->
-                            <Button x:Name="discountItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
+                            <Button x:Name="discountItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="discountItem_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="[F5]Discount Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
@@ -162,7 +162,7 @@
                             <!-- Settings -->
                             <Button x:Name="cashierSettings" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="cashierSettings_Click"> 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Text="[F12]Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
                             <!-- Logout -->
