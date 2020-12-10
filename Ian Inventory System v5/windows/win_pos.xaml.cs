@@ -577,14 +577,15 @@ namespace NavigationDrawerPopUpMenu2.windows
                     if (sumOfSalesTotal() == "")
                     { 
                         pay_total.Text = "0.00";
+                        pay_subtotal.Text = "0.00";
                         totalItems.Text = "0";
                     }
                     else
                     {
                         pay_total.Text = sumOfSalesTotal(); // Update the Total
+                        pay_subtotal.Text = sumOfSalesTotal(); // Update the Subtotal
                         int totalItem = int.Parse(totalItems.Text) - 1;
                         totalItems.Text = totalItem.ToString(); // Update the Total Item
-
                     }
 
                 }
