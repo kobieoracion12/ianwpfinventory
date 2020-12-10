@@ -597,5 +597,26 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             
         }
+
+        // Shortcut Keys
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.F1)
+                voidEntry_Click(sender, e); // Void
+            else if (e.Key == Key.F2)
+                updQtyBtn_Click(sender, e); // Quantity
+            else if (e.Key == Key.F3)
+                endSale_Click(sender, e); // Checkout
+            else if (e.Key == Key.F4)
+                cashButton_Click(sender, e); // Cash Button
+            else if (e.Key == Key.Delete)
+                removeItem_Click(sender, e); // Remove Item Button
+            else if (e.Key == Key.Insert)
+                addItem_Click(sender, e); // Add Item
+            else if (e.Key == Key.F7)
+                priceCheck_Click(sender, e); // Price Check
+
+        }
     }
 }
