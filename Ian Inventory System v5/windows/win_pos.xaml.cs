@@ -489,6 +489,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 win_receipt rcpt = new win_receipt(this);
                 rcpt.loadReport();
                 rcpt.ReportViewerDemo.LocalReport.Print();
+                //rcpt.ShowDialog();
                 // End of Receipt
             }
             catch (Exception x)
@@ -572,6 +573,20 @@ namespace NavigationDrawerPopUpMenu2.windows
                 {
                     conn.execute();
                     loadData();
+
+                    if (sumOfSalesTotal() == "")
+                    { 
+                        pay_total.Text = "0.00";
+                        totalItems.Text = "0";
+                    }
+                    else
+                    {
+                        pay_total.Text = sumOfSalesTotal(); // Update the Total
+                        int totalItem = int.Parse(totalItems.Text) - 1;
+                        totalItems.Text = totalItem.ToString(); // Update the Total Item
+
+                    }
+
                 }
                 catch (Exception ex)
                 {
