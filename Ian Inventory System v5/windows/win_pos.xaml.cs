@@ -602,7 +602,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             if (tbPrdName.Text != String.Empty)
             {
-                addDiscount addDiscWindow = new addDiscount(salesItem);
+                addDiscount addDiscWindow = new addDiscount(salesItem, this);
                 addDiscWindow.ShowDialog();
             }
             else

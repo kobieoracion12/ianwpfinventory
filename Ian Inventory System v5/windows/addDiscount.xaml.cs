@@ -24,10 +24,12 @@ namespace NavigationDrawerPopUpMenu2.windows
         Database conn = new Database();
         string salesItem;
         string prodTotal;
-        public addDiscount(string sales_item)
+        win_pos win_pos;
+        public addDiscount(string sales_item, win_pos pos)
         {
             InitializeComponent();
             salesItem = sales_item;
+            win_pos = pos;
         }
 
         // Add Discount
@@ -63,6 +65,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 // Subtract the discount from the original price:
                 double subtractDiscountToOrigPrice = (originalPrice - multiplyPriceByDecimalDiscount);
                 // Answer - subtractDiscountToOrigPrice
+                int discountedPrice = Convert.ToInt32(subtractDiscountToOrigPrice);
 
                 conn.Open();
                 string addDiscountToPrice = "UPDATE datasalesinventory SET salesTotal = @total WHERE salesItem = @item AND salesStatus = 'Pending'";
@@ -74,7 +77,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 conn.Close();
                 MessageBox.Show("Discount Added", "Discount", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close(); // Close
-
+                win_pos.pay_total.Text = discountedPrice.ToString(); // Update UI
 
             }
             catch (Exception ex)
