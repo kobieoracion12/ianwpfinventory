@@ -16,7 +16,7 @@
             </Viewbox>
         </StackPanel>
 
-        <Button x:Name="addDiscBtn" Content="Add Discount" Margin="15 70 15 0" />
+        <Button x:Name="addDiscBtn" Content="Add Discount" Margin="15 70 15 0" Click="addDiscBtn_Click" />
 
     </Grid>
 </Window>

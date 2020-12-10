@@ -519,7 +519,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 holdOrder.IsEnabled = false;
                 MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            
         }
 
         // IF CLICK ON LISTVIEW 
@@ -601,8 +600,16 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Discount
         private void discountItem_Click(object sender, RoutedEventArgs e)
         {
-            addDiscount addDiscWindow = new addDiscount();
-            addDiscWindow.ShowDialog();
+            if (tbPrdName.Text != String.Empty)
+            {
+                addDiscount addDiscWindow = new addDiscount(salesItem);
+                addDiscWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
         }
 
         // Shortcut Keys

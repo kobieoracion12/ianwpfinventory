@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
+using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
@@ -19,12 +21,69 @@ namespace NavigationDrawerPopUpMenu2.windows
     /// </summary>
     public partial class addDiscount : Window
     {
-        public addDiscount()
+        Database conn = new Database();
+        string salesItem;
+        string prodTotal;
+        public addDiscount(string sales_item)
         {
             InitializeComponent();
+            salesItem = sales_item;
         }
 
         // Add Discount
+        private void addDiscBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                conn.Open();
+                string queryQty = "SELECT salesTotal FROM datasalesinventory WHERE salesStatus = 'Pending'";
+                conn.query(queryQty);
+                conn.bind("@salesItem", salesItem);
+                conn.cmd().Prepare();
+                MySqlDataReader dr = conn.read();
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        prodTotal = dr["salesTotal"].ToString();
+                    }
+                }
+
+                dr.Close();
+                dr.Dispose();
+                conn.Close();
+
+                // Do The Calculation
+                double discount = double.Parse(addDisc.Text)/100;
+                int originalPrice = int.Parse(prodTotal);
+
+                // Multiply the original price by the decimal(discount)
+                double multiplyPriceByDecimalDiscount = (originalPrice * discount);
+
+                // Subtract the discount from the original price:
+                double subtractDiscountToOrigPrice = (originalPrice - multiplyPriceByDecimalDiscount);
+                // Answer - subtractDiscountToOrigPrice
+
+                conn.Open();
+                string addDiscountToPrice = "UPDATE datasalesinventory SET salesTotal = @total WHERE salesItem = @item AND salesStatus = 'Pending'";
+                conn.query(addDiscountToPrice);
+                conn.bind("@total", subtractDiscountToOrigPrice);
+                conn.bind("@item", salesItem);
+                conn.cmd().Prepare();
+                conn.execute(); // Execute
+                conn.Close();
+                MessageBox.Show("Discount Added", "Discount", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close(); // Close
+
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message + " , Please try again later", "Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
 
         // Exit
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -45,5 +104,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             // If parsing is successful, set Handled to false
             e.Handled = !double.TryParse(fullText, out val);
         }
+
+        
     }
 }
