@@ -23,5 +23,27 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             InitializeComponent();
         }
+
+        // Add Discount
+
+        // Exit
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {   // Close using escape
+            if (e.Key == Key.Escape)
+                this.Close();
+        }
+
+        // Prevent User to type LETTERS
+        private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var addDisc = sender as TextBox;
+            // Use SelectionStart property to find the caret position.
+            // Insert the previewed text into the existing text in the textbox.
+            var fullText = addDisc.Text.Insert(addDisc.SelectionStart, e.Text);
+
+            double val;
+            // If parsing is successful, set Handled to false
+            e.Handled = !double.TryParse(fullText, out val);
+        }
     }
 }

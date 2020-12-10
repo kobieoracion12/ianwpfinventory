@@ -601,7 +601,8 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Discount
         private void discountItem_Click(object sender, RoutedEventArgs e)
         {
-
+            addDiscount addDiscWindow = new addDiscount();
+            addDiscWindow.ShowDialog();
         }
 
         // Shortcut Keys
@@ -616,6 +617,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                 endSale_Click(sender, e); // Checkout
             else if (e.Key == Key.F4)
                 cashButton_Click(sender, e); // Cash Button
+            else if (e.Key == Key.F5)
+                discountItem_Click(sender, e); // Discount
             else if (e.Key == Key.Delete)
                 removeItem_Click(sender, e); // Remove Item Button
             else if (e.Key == Key.Insert)

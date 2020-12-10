@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Add Discount" Height="160" Width="450" MaxWidth="450" MaxHeight="160">
+        KeyDown="Window_KeyDown"
+        Title="Add Discount" Height="160" Width="450" MaxWidth="450" MaxHeight="160" ResizeMode="NoResize">
     <Grid>
         <StackPanel Orientation="Vertical">
             <Label Content="Discount Percent (%)" Margin="5 0 0 0"/>
             <Viewbox HorizontalAlignment="Left">
-                <TextBox TextAlignment="Center" x:Name="addSRP" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Margin="10 0 10 10"  />
+                <TextBox TextAlignment="Center" x:Name="addDisc" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Margin="10 0 10 10" PreviewTextInput="TextBox_OnPreviewTextInput" />
             </Viewbox>
         </StackPanel>
 
