@@ -581,5 +581,10 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             
         }
+
+        private void reqStock_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

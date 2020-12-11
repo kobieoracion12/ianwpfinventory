@@ -246,6 +246,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             sortStatus.Text = "Select";
         }
 
+        // Search Function
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             conn.Close(); // Close the connection first

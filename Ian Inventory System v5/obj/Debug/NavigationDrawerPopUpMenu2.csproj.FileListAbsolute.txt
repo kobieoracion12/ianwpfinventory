@@ -118,3 +118,5 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_req_stock.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_req_stock.baml

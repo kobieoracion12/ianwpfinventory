@@ -226,6 +226,9 @@
     <Compile Include="windows\win_receipt.xaml.cs">
       <DependentUpon>win_receipt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_req_stock.xaml.cs">
+      <DependentUpon>win_req_stock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\win_settings.xaml.cs">
       <DependentUpon>win_settings.xaml</DependentUpon>
     </Compile>
@@ -386,6 +389,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_receipt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_req_stock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
