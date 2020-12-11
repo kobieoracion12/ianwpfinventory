@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
         Loaded="WindowPOS_Loaded"
+        KeyDown="Window_KeyDown"
         Title="win_pos" Height="600" Width="1080" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" WindowStyle="None">
 
     <Grid Background="#EDEFF3">
@@ -112,14 +113,21 @@
                             <!-- Add Item -->
                             <Button x:Name="addItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="addItem_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Add Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Text="[Ins]Add Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
 
                             <!-- Delete Item -->
                             <Button x:Name="removeItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="removeItem_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Remove Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Text="[Del]Remove Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Discount Item -->
+                            <Button x:Name="discountItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="discountItem_Click">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBlock Text="[F5]Discount Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
 
@@ -133,7 +141,7 @@
                             <!-- Price Check -->
                             <Button x:Name="priceCheck" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="priceCheck_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Price Check" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Text="[F7]Price Check" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
 
@@ -154,7 +162,7 @@
                             <!-- Settings -->
                             <Button x:Name="cashierSettings" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="cashierSettings_Click"> 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Text="[F12]Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
                             <!-- Logout -->
@@ -481,14 +489,14 @@
                                     <Button x:Name="voucherButton" Margin="5 0 0 0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                             <TextBlock Text="Voucher" Foreground="Black" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="[F2]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="[F5]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                     </Button>
 
                                     <Button x:Name="othersButton" Margin="5 0 0 0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False">
                                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                             <TextBlock Text="Others" Foreground="Black" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="[F3]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="[F10]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>

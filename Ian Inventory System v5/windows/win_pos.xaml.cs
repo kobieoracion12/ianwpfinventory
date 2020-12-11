@@ -489,6 +489,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 win_receipt rcpt = new win_receipt(this);
                 rcpt.loadReport();
                 rcpt.ReportViewerDemo.LocalReport.Print();
+                //rcpt.ShowDialog();
                 // End of Receipt
             }
             catch (Exception x)
@@ -518,7 +519,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 holdOrder.IsEnabled = false;
                 MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            
         }
 
         // IF CLICK ON LISTVIEW 
@@ -572,6 +572,21 @@ namespace NavigationDrawerPopUpMenu2.windows
                 {
                     conn.execute();
                     loadData();
+
+                    if (sumOfSalesTotal() == "")
+                    { 
+                        pay_total.Text = "0.00";
+                        pay_subtotal.Text = "0.00";
+                        totalItems.Text = "0";
+                    }
+                    else
+                    {
+                        pay_total.Text = sumOfSalesTotal(); // Update the Total
+                        pay_subtotal.Text = sumOfSalesTotal(); // Update the Subtotal
+                        int totalItem = int.Parse(totalItems.Text) - 1;
+                        totalItems.Text = totalItem.ToString(); // Update the Total Item
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -582,9 +597,52 @@ namespace NavigationDrawerPopUpMenu2.windows
             
         }
 
+<<<<<<< HEAD
         private void reqStock_Click(object sender, RoutedEventArgs e)
         {
 
         }
+=======
+        // Discount
+        private void discountItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbPrdName.Text != String.Empty)
+            {
+                addDiscount addDiscWindow = new addDiscount(salesItem, this);
+                addDiscWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+        }
+
+        // Shortcut Keys
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.F1)
+                voidEntry_Click(sender, e); // Void
+            else if (e.Key == Key.F2)
+                updQtyBtn_Click(sender, e); // Quantity
+            else if (e.Key == Key.F3)
+                endSale_Click(sender, e); // Checkout
+            else if (e.Key == Key.F4)
+                cashButton_Click(sender, e); // Cash Button
+            else if (e.Key == Key.F5)
+                discountItem_Click(sender, e); // Discount
+            else if (e.Key == Key.Delete)
+                removeItem_Click(sender, e); // Remove Item Button
+            else if (e.Key == Key.Insert)
+                addItem_Click(sender, e); // Add Item
+            else if (e.Key == Key.F7)
+                priceCheck_Click(sender, e); // Price Check
+            else if (e.Key == Key.F12)
+                cashierSettings_Click(sender, e);
+
+        }
+        
+>>>>>>> c4112823e9bb0dcb12751080db2ae50c52abc6db
     }
 }
