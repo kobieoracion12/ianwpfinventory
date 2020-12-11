@@ -118,6 +118,10 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
+<<<<<<< HEAD
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_req_stock.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_req_stock.baml
+=======
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.exe.config
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
@@ -239,3 +243,4 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ian
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\addDiscount.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\addDiscount.baml
+>>>>>>> c4112823e9bb0dcb12751080db2ae50c52abc6db

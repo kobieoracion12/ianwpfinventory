@@ -643,6 +643,12 @@ namespace NavigationDrawerPopUpMenu2.windows
             
         }
 
+<<<<<<< HEAD
+        private void reqStock_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+=======
         // Discount
         private void discountItem_Click(object sender, RoutedEventArgs e)
         {
@@ -683,5 +689,6 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         }
         
+>>>>>>> c4112823e9bb0dcb12751080db2ae50c52abc6db
     }
 }
