@@ -224,6 +224,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Barcode Scanner Function
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.Key == Key.Return)
             {
                 holdOrder.IsEnabled = false;
@@ -302,29 +303,74 @@ namespace NavigationDrawerPopUpMenu2.windows
                     // Insert Scanned Data to Database (datasalesinventory)
                     try
                     {
-                        string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate, salesStatus) VALUES (@no, @a, @b, @c, @d, @e, @f, @g, @h, @status)";
-                        conn.query(query2);
-
-                        conn.bind("@no", orderNo.Text);
-                        conn.bind("@a", entrySearch.Text);
-                        conn.bind("@b", coItem.Text);
-                        conn.bind("@c", coBrand.Text);
-                        conn.bind("@d", coSRP.Text);
-                        conn.bind("@e", coRP.Text);
-                        conn.bind("@f", coQty.Text);
-                        conn.bind("@g", coSubtotal.Text);
-                        conn.bind("@h", Convert.ToDateTime(transTime.Text));
-                        conn.bind("@status", "Pending");
-                        conn.cmd().Prepare();
-                        var cf = conn.execute();
-                        if (cf == 1)
+                        string refno = "";
+                        bool doesExist = false;
+                        string check = "SELECT * FROM datasalesinventory WHERE salesTransNo = '"+orderNo.Text+ "' AND salesItem = '"+ coItem.Text + "'";
+                        conn.query(check);
+                        MySqlDataReader reader = conn.read();
+                        if (reader.HasRows)
                         {
-                            // Adds Scanned Item to the Listview
-                            //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
-                            clearPartial();
-                            loadData(); // Display to ListView 
-                            pay_total.Text = Convert.ToString(sumOfSalesTotal());
+                            while (reader.Read())
+                            {
+                                doesExist = true;
+                                refno = reader["refNo"].ToString();
+                            }
+                        }
+                        else
+                        {
+                            doesExist = false;
+                        }
 
+                        reader.Close();
+                        reader.Dispose();
+                        // If Item exist
+                        if (doesExist == true)
+                        {
+                            string addQuantityToExistingItem = "UPDATE datasalesinventory SET salesQty = (salesQty + @qty) WHERE refNo = @refno";
+                            conn.query(addQuantityToExistingItem);
+                            conn.bind("@qty", 1);
+                            conn.bind("@refno", refno);
+                            conn.cmd().Prepare();
+                            var cf = conn.execute();
+                            if (cf == 1)
+                            {
+                                string updTotal = "UPDATE datasalesinventory SET salesTotal = (salesRP * salesQty) WHERE salesTransNo = '" + orderNo.Text + "' AND refNo = '" + refno + "' ";
+                                conn.query(updTotal);
+                                conn.execute();
+                                // Adds Scanned Item to the Listview
+                                //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
+                                clearPartial();
+                                loadData(); // Display to ListView 
+                                pay_total.Text = Convert.ToString(sumOfSalesTotal());
+
+                            }
+                        }
+                        else
+                        { // if not exist then insert
+                            string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate, salesStatus) VALUES (@no, @a, @b, @c, @d, @e, @f, @g, @h, @status)";
+                            conn.query(query2);
+
+                            conn.bind("@no", orderNo.Text);
+                            conn.bind("@a", entrySearch.Text);
+                            conn.bind("@b", coItem.Text);
+                            conn.bind("@c", coBrand.Text);
+                            conn.bind("@d", coSRP.Text);
+                            conn.bind("@e", coRP.Text);
+                            conn.bind("@f", coQty.Text);
+                            conn.bind("@g", coSubtotal.Text);
+                            conn.bind("@h", Convert.ToDateTime(transTime.Text));
+                            conn.bind("@status", "Pending");
+                            conn.cmd().Prepare();
+                            var cf = conn.execute();
+                            if (cf == 1)
+                            {
+                                // Adds Scanned Item to the Listview
+                                //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
+                                clearPartial();
+                                loadData(); // Display to ListView 
+                                pay_total.Text = Convert.ToString(sumOfSalesTotal());
+
+                            }
                         }
                     }
                     catch (Exception x)

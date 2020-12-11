@@ -68,7 +68,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     }
                     else
                     {
-                        /* SALES QUANTITY
+                      /* SALES QUANTITY
                      * SET A NEW TOTAL QUANTITY
                      */
                         conn.Open();

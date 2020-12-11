@@ -37,47 +37,54 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             try
             {
-                conn.Open();
-                string queryQty = "SELECT salesTotal FROM datasalesinventory WHERE salesStatus = 'Pending'";
-                conn.query(queryQty);
-                conn.bind("@salesItem", salesItem);
-                conn.cmd().Prepare();
-                MySqlDataReader dr = conn.read();
-                if (dr.HasRows)
+                if (int.Parse(addDisc.Text) <= 100)
                 {
-                    while (dr.Read())
+                    conn.Open();
+                    string queryQty = "SELECT salesTotal FROM datasalesinventory WHERE salesStatus = 'Pending'";
+                    conn.query(queryQty);
+                    conn.bind("@salesItem", salesItem);
+                    conn.cmd().Prepare();
+                    MySqlDataReader dr = conn.read();
+                    if (dr.HasRows)
                     {
-                        prodTotal = dr["salesTotal"].ToString();
+                        while (dr.Read())
+                        {
+                            prodTotal = dr["salesTotal"].ToString();
+                        }
                     }
+
+                    dr.Close();
+                    dr.Dispose();
+                    conn.Close();
+
+                    // Do The Calculation
+                    double discount = double.Parse(addDisc.Text) / 100;
+                    int originalPrice = int.Parse(prodTotal);
+
+                    // Multiply the original price by the decimal(discount)
+                    double multiplyPriceByDecimalDiscount = (originalPrice * discount);
+
+                    // Subtract the discount from the original price:
+                    double subtractDiscountToOrigPrice = (originalPrice - multiplyPriceByDecimalDiscount);
+                    // Answer - subtractDiscountToOrigPrice
+                    int discountedPrice = Convert.ToInt32(subtractDiscountToOrigPrice);
+
+                    conn.Open();
+                    string addDiscountToPrice = "UPDATE datasalesinventory SET salesTotal = @total WHERE salesItem = @item AND salesStatus = 'Pending'";
+                    conn.query(addDiscountToPrice);
+                    conn.bind("@total", subtractDiscountToOrigPrice);
+                    conn.bind("@item", salesItem);
+                    conn.cmd().Prepare();
+                    conn.execute(); // Execute
+                    conn.Close();
+                    MessageBox.Show("Discount Added", "Discount", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close(); // Close
+                    win_pos.pay_total.Text = discountedPrice.ToString(); // Update UI
                 }
-
-                dr.Close();
-                dr.Dispose();
-                conn.Close();
-
-                // Do The Calculation
-                double discount = double.Parse(addDisc.Text)/100;
-                int originalPrice = int.Parse(prodTotal);
-
-                // Multiply the original price by the decimal(discount)
-                double multiplyPriceByDecimalDiscount = (originalPrice * discount);
-
-                // Subtract the discount from the original price:
-                double subtractDiscountToOrigPrice = (originalPrice - multiplyPriceByDecimalDiscount);
-                // Answer - subtractDiscountToOrigPrice
-                int discountedPrice = Convert.ToInt32(subtractDiscountToOrigPrice);
-
-                conn.Open();
-                string addDiscountToPrice = "UPDATE datasalesinventory SET salesTotal = @total WHERE salesItem = @item AND salesStatus = 'Pending'";
-                conn.query(addDiscountToPrice);
-                conn.bind("@total", subtractDiscountToOrigPrice);
-                conn.bind("@item", salesItem);
-                conn.cmd().Prepare();
-                conn.execute(); // Execute
-                conn.Close();
-                MessageBox.Show("Discount Added", "Discount", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close(); // Close
-                win_pos.pay_total.Text = discountedPrice.ToString(); // Update UI
+                else
+                {
+                    MessageBox.Show("Discount Percent is only up to 100", "Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
 
             }
             catch (Exception ex)
@@ -93,6 +100,8 @@ namespace NavigationDrawerPopUpMenu2.windows
         {   // Close using escape
             if (e.Key == Key.Escape)
                 this.Close();
+            else if (e.Key == Key.Return)
+                addDiscBtn_Click(sender, e);
         }
 
         // Prevent User to type LETTERS
