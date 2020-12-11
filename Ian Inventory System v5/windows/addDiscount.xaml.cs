@@ -79,7 +79,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     conn.Close();
                     MessageBox.Show("Discount Added", "Discount", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close(); // Close
-                    win_pos.pay_total.Text = discountedPrice.ToString(); // Update UI
+                    win_pos.pay_total.Text = win_pos.sumOfSalesTotal(); // Update UI
                 }
                 else
                 {

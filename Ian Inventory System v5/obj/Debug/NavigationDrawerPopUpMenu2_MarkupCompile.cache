@@ -9,21 +9,12 @@ NavigationDrawerPopUpMenu2
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\App.xaml
-402070029394
-
-56-1450961863
-82555133759
-admin\admin_create.xaml;admin\admin_usercontrols\admin_businessInfo.xaml;admin\admin_usercontrols\admin_personalInfo.xaml;admin\admin_usercontrols\admin_addUsers.xaml;admin\admin_usercontrols\admin_dashboard.xaml;admin\admin_window.xaml;main Menu.xaml;MainWindow.xaml;reports\report_sales.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\usc_inventory.xaml;usercontrols\usc_parent_add_item.xaml;usercontrols\usc_parent_overview.xaml;usercontrols\usc_parent_request.xaml;usercontrols\usc_parent_restock.xaml;usercontrols\usc_sales.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;usercontrols\UserControlStockInv.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_change_quantity.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;windows\win_addItem.xaml;windows\win_changeQuantity.xaml;windows\win_checkout.xaml;windows\win_checkoutBG.xaml;windows\win_pos.xaml;windows\win_price Check.xaml;windows\win_receipt.xaml;windows\win_req_stock.xaml;windows\win_settings.xaml;
-=======
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\App.xaml
-40-376235832
+411400967004
 
-562019757086
+57-1559691980
 821950542260
-admin\admin_create.xaml;admin\admin_usercontrols\admin_businessInfo.xaml;admin\admin_usercontrols\admin_personalInfo.xaml;admin\admin_usercontrols\admin_addUsers.xaml;admin\admin_usercontrols\admin_dashboard.xaml;admin\admin_window.xaml;main Menu.xaml;MainWindow.xaml;reports\report_sales.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\usc_inventory.xaml;usercontrols\usc_parent_add_item.xaml;usercontrols\usc_parent_overview.xaml;usercontrols\usc_parent_request.xaml;usercontrols\usc_parent_restock.xaml;usercontrols\usc_sales.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;usercontrols\UserControlStockInv.xaml;windows\addDiscount.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_change_quantity.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;windows\win_addItem.xaml;windows\win_changeQuantity.xaml;windows\win_checkout.xaml;windows\win_checkoutBG.xaml;windows\win_pos.xaml;windows\win_price Check.xaml;windows\win_receipt.xaml;windows\win_settings.xaml;
->>>>>>> c4112823e9bb0dcb12751080db2ae50c52abc6db
+admin\admin_create.xaml;admin\admin_usercontrols\admin_businessInfo.xaml;admin\admin_usercontrols\admin_personalInfo.xaml;admin\admin_usercontrols\admin_addUsers.xaml;admin\admin_usercontrols\admin_dashboard.xaml;admin\admin_window.xaml;main Menu.xaml;MainWindow.xaml;reports\report_sales.xaml;styleLibrary.xaml;usercontrols\customStyle.xaml;usercontrols\usc_inventory.xaml;usercontrols\usc_parent_add_item.xaml;usercontrols\usc_parent_overview.xaml;usercontrols\usc_parent_request.xaml;usercontrols\usc_parent_restock.xaml;usercontrols\usc_sales.xaml;usercontrols\UserControlCheckout.xaml;usercontrols\UserControlCreate.xaml;usercontrols\UserControlDashboard.xaml;usercontrols\UserControlHome.xaml;usercontrols\UserControlInventory.xaml;usercontrols\UserControlSales.xaml;usercontrols\UserControlSalesInv.xaml;usercontrols\UserControlStockInv.xaml;windows\addDiscount.xaml;windows\window_addItem.xaml;windows\window_cashButton.xaml;windows\window_change_quantity.xaml;windows\window_editItem.xaml;windows\window_restockItem.xaml;windows\window_userLogin.xaml;windows\win_addItem.xaml;windows\win_changeQuantity.xaml;windows\win_checkout.xaml;windows\win_checkoutBG.xaml;windows\win_pos.xaml;windows\win_price Check.xaml;windows\win_receipt.xaml;windows\win_req_stock.xaml;windows\win_settings.xaml;
 
 False
 

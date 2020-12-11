@@ -1,130 +1,4 @@
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.exe.config
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csprojResolveAssemblyReference.cache
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.NavigationDrawerPopUpMenu2.exe.config
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_create.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_businessInfo.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_personalInfo.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_addUsers.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_dashboard.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_window.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\main Menu.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\MainWindow.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_sales.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_inventory.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_add_item.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overview.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_request.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_restock.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_sales.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlCheckout.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlCreate.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlDashboard.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlHome.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlInventory.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSales.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSalesInv.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlStockInv.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_addItem.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_cashButton.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_change_quantity.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_editItem.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_restockItem.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_userLogin.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_addItem.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_changeQuantity.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkout.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkoutBG.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_pos.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_price Check.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_receipt.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_settings.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\App.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2_MarkupCompile.cache
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2_MarkupCompile.lref
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.exe
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.pdb
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\BCrypt.Net.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\LiveCharts.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\LiveCharts.Wpf.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\MaterialDesignColors.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\MaterialDesignThemes.Wpf.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\Microsoft.ReportViewer.Common.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\Microsoft.ReportViewer.DataVisualization.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\Microsoft.ReportViewer.ProcessingObjectModel.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\Microsoft.ReportViewer.WinForms.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\MySql.Data.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\Google.Protobuf.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\Zstandard.Net.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\K4os.Compression.LZ4.Streams.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\Ubiety.Dns.Core.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\Renci.SshNet.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\System.Buffers.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\K4os.Compression.LZ4.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\K4os.Hash.xxHash.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\BCrypt.Net.xml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\LiveCharts.pdb
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\LiveCharts.xml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\LiveCharts.Wpf.pdb
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\LiveCharts.Wpf.xml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\MaterialDesignThemes.Wpf.pdb
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\bin\Debug\MySql.Data.xml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\App.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_create.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_businessInfo.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_personalInfo.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_addUsers.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_dashboard.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_window.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\main Menu.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\MainWindow.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_sales.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\styleLibrary.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\customStyle.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_inventory.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_add_item.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overview.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_request.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_restock.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_sales.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlCheckout.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlCreate.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlDashboard.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlHome.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlInventory.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSales.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSalesInv.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlStockInv.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_addItem.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_cashButton.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_change_quantity.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_editItem.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_restockItem.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_userLogin.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_addItem.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_changeQuantity.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkout.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_checkoutBG.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_pos.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_price Check.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_receipt.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_settings.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.g.resources
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.Properties.Resources.resources
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.cache
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
-<<<<<<< HEAD
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_req_stock.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_req_stock.baml
-=======
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.exe.config
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.exe
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.pdb
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\bin\Debug\BCrypt.Net.dll
@@ -154,7 +28,6 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ian
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\bin\Debug\MaterialDesignThemes.Wpf.pdb
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\bin\Debug\MaterialDesignThemes.Wpf.xml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\bin\Debug\MySql.Data.xml
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csprojResolveAssemblyReference.cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.NavigationDrawerPopUpMenu2.exe.config
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_create.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\admin\admin_usercontrols\admin_businessInfo.g.cs
@@ -179,6 +52,7 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ian
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSales.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSalesInv.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlStockInv.g.cs
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\addDiscount.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_addItem.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_cashButton.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_change_quantity.g.cs
@@ -192,6 +66,7 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ian
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_pos.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_price Check.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_receipt.g.cs
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_req_stock.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_settings.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\App.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2_MarkupCompile.cache
@@ -222,6 +97,7 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ian
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSales.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlSalesInv.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\UserControlStockInv.baml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\addDiscount.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_addItem.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_cashButton.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\window_change_quantity.baml
@@ -235,12 +111,12 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ian
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_pos.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_price Check.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_receipt.baml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_req_stock.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_settings.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.g.resources
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.Properties.Resources.resources
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\addDiscount.g.cs
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\addDiscount.baml
->>>>>>> c4112823e9bb0dcb12751080db2ae50c52abc6db
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\POS V13\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
