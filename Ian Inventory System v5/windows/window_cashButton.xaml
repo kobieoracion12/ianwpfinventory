@@ -5,38 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
-        Title="window_cashButton" Height="300" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" >
-    
+        Title="" Height="300" Width="540" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="118*"/>
-            <ColumnDefinition Width="299"/>
-            <ColumnDefinition Width="117*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="15*"/>
-            <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Column="1" Grid.Row="1" >
-            <Rectangle Fill="Beige" RadiusX="10" RadiusY="10">
-                <Rectangle.Effect>
-                    <DropShadowEffect RenderingBias="Quality" Color="#FFBFBCBC" />
-                </Rectangle.Effect>
-            </Rectangle>
-
-            <Grid Margin="10">
-                <Grid>
-                    <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="Enter Amount:" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10 0 0 0"/>
-                        <TextBox x:Name="cashAmount" FontFamily="Microsoft Tai Le" FontSize="10" Height="30" Margin="5" Background="White" KeyDown="entrySearch_KeyDown"/>
-                    </StackPanel>
-                </Grid>
+        <Grid Margin="10">
+            <Grid>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="Enter Amount:" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10 0 0 0"/>
+                    <TextBox x:Name="cashAmount" FontFamily="Microsoft Tai Le" FontSize="50" Margin="5" Background="White" KeyDown="entrySearch_KeyDown"/>
+                </StackPanel>
             </Grid>
-
-
-
         </Grid>
     </Grid>
 </Window>

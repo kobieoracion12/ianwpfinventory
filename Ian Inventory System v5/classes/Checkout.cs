@@ -19,6 +19,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         public int tax = 0;
         public int bought = 0;
         public int items = 0;
+        public int paytotal = 0;
         public string payMethod = "";
     }
 

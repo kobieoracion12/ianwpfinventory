@@ -341,8 +341,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                                 //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
                                 clearPartial();
                                 loadData(); // Display to ListView 
-                                pay_total.Text = Convert.ToString(sumOfSalesTotal());
-
+                                checkout.paytotal = int.Parse(sumOfSalesTotal());
+                                pay_total.Text = Convert.ToString(checkout.paytotal);
                             }
                         }
                         else
@@ -474,7 +474,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     
                     // Show Transaction Success
                     MessageBox.Show("Transaction Complete", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    //accNumberGen(); // Change the transaction Number
+                    accNumberGen(); // Change the transaction Number
                     settleProducts.Clear(); // Clear All SettleProduct Objects/Elementss    
                     conn.Open();
                     loadData(); // Update the ListView UI # Listview must be cleared
@@ -631,6 +631,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                         pay_subtotal.Text = sumOfSalesTotal(); // Update the Subtotal
                         int totalItem = int.Parse(totalItems.Text) - 1;
                         totalItems.Text = totalItem.ToString(); // Update the Total Item
+                        clearPartial();
+                        conn.Close();
                     }
 
                 }
