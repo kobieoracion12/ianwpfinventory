@@ -505,8 +505,22 @@ namespace NavigationDrawerPopUpMenu2.windows
             cashAmount.Text = Convert.ToString(checkout.paid);
             pay_paid.Text = Convert.ToString(checkout.paid);
 
+            /*
             checkout.due = checkout.paid - Convert.ToInt32(sumOfSalesTotal());
             pay_due.Text = Convert.ToString(checkout.due);
+            */
+
+            // Check if Total is Null or Nothing
+            if (sumOfSalesTotal() == "")
+            {
+                checkout.due = 0;
+                pay_due.Text = Convert.ToString(checkout.due);
+            }
+            else
+            {
+                checkout.due = checkout.paid - Convert.ToInt32(sumOfSalesTotal());
+                pay_due.Text = Convert.ToString(checkout.due);
+            }
 
             try
             {
