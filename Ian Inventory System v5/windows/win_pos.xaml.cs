@@ -154,10 +154,45 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Logout Button
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
-            auth.addTimeInOut(timeIn.Text, accNo.Text); // Bug 
-            window_userLogin posLogin = new window_userLogin();
-            posLogin.Show();
-            this.Close();
+            bool hasProducts = false;
+            try
+            {
+                DataTable table = new DataTable();
+
+                MySqlDataAdapter adapter = conn.adapter();
+
+                string query = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesStatus = 'Pending'";
+                conn.query(query);
+                adapter.SelectCommand = conn.cmd();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0) // Found
+                {
+                    hasProducts = true;
+                }
+                else
+                { // No Users Found
+                    hasProducts = false;
+                }
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Logout Failed, " + ex.Message, "Logout", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+            if (hasProducts)
+            {
+                MessageBox.Show("Unable to proceed, please clear your transaction", "Logout", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                auth.addTimeInOut(DateTime.Parse(timeIn.Text) , accNo.Text); 
+                window_userLogin posLogin = new window_userLogin();
+                posLogin.Show();
+                this.Close();
+            }
+            
         }
 
         // Clear Textboxes Only

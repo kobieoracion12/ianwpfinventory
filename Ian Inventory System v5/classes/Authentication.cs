@@ -254,7 +254,7 @@ namespace NavigationDrawerPopUpMenu2.classes
             return accNo;
         }
 
-        public void addTimeInOut(string timeIn, string accNo)
+        public void addTimeInOut(object timeIn, string accNo)
         {
             try
             {
@@ -267,7 +267,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                 conn.query(query);
 
                 conn.bind("@timein", timeIn);
-                conn.bind("@timeout", DateTime.Now.ToLongTimeString());
+                conn.bind("@timeout", DateTime.Now);
                 conn.bind("@accno", accNo);
 
                 conn.cmd().Prepare();

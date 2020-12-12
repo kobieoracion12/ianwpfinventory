@@ -25,16 +25,19 @@ namespace NavigationDrawerPopUpMenu2.reports
     {
         Database conn = new Database();
         usc_sales usc_sales;
-        public report_sales(usc_sales s)
+        string reportToPrint;
+        public report_sales(usc_sales s, string report1)
         {
             InitializeComponent();
             usc_sales = s;
+            reportToPrint = report1;
         }
 
         // Print Preview
         public void printPreview()
         {
             string formattedFrom, formattedTo, brandSort, statusSort;
+            string query = "";
 
             // Init selected dates from calendar
             DateTime? selectedDateFrom = usc_sales.sortCalendarFrom.SelectedDate;
@@ -62,7 +65,15 @@ namespace NavigationDrawerPopUpMenu2.reports
                     DataSet1 ds = new DataSet1();
 
                     conn.Open();
-                    string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesStatus LIKE '%" + statusSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
+                    if (reportToPrint == "Select")
+                    {
+                        query = "SELECT * FROM datasalesinventory";
+                    }
+                    else if (reportToPrint == "Sort")
+                    {
+                         query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesStatus LIKE '%" + statusSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
+                    }
+
                     MySqlDataAdapter da = conn.DataAdapter(query);
                     da.Fill(ds.Tables["dtSold"]);
                     conn.Close();

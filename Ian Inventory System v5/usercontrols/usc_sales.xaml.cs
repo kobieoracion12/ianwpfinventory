@@ -27,12 +27,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     {
         Database conn = new Database();
         List<Sales> mySales = new List<Sales>();
+        string reportSales;
         public usc_sales()
         {
             InitializeComponent();
             catchData();
             countResult();
             cbContents();
+            reportSales = "Select";
         }
 
         // ListView Data
@@ -145,6 +147,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void sortButton_Click(object sender, RoutedEventArgs e)
         {
             //checkSort();
+            reportSales = "Sort";
             sortByDate();
         }
 
@@ -217,6 +220,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void sortRefresh_Click(object sender, RoutedEventArgs e)
         {
             catchData();
+            reportSales = "Select";
         }
 
         //Export Button
@@ -249,7 +253,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         private void printPreview_Click(object sender, RoutedEventArgs e)
         {
-            report_sales rptsales = new report_sales(this);
+            report_sales rptsales = new report_sales(this, reportSales);
             rptsales.printPreview();
             rptsales.ShowDialog();
         }
@@ -389,6 +393,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Clear Filter
         private void clearFilter_Click(object sender, RoutedEventArgs e)
         {
+            reportSales = "Select";
             sortBrand.Text = "Select";
             sortStatus.Text = "Select";
         }
