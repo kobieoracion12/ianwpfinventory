@@ -688,6 +688,12 @@ namespace NavigationDrawerPopUpMenu2.windows
                 cashierSettings_Click(sender, e);
 
         }
-        
+
+        // Refund Item
+        private void refundItem_Click(object sender, RoutedEventArgs e)
+        {
+            win_refund wrf = new win_refund();
+            wrf.ShowDialog();
+        }
     }
 }
