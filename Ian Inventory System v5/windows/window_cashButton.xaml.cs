@@ -24,20 +24,27 @@ namespace NavigationDrawerPopUpMenu2.windows
         public static string myCash;
         Checkout checkout = new Checkout();
 
+        string paytotal = "";
         public window_cashButton()
         {
             InitializeComponent();
             cashAmount.Focus();
         }
 
+        public String total(string payTotal)
+        {
+            paytotal = payTotal;
+            return paytotal;
+        }
+
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
             {
-                int cashtoPay = Convert.ToInt32(cashAmount.Text); 
-                if (cashtoPay >  checkout.paytotal)
+                
+                if (int.Parse(cashAmount.Text) < int.Parse(total(paytotal)))
                 {
-                    MessageBox.Show("Invalid Payment");
+                    MessageBox.Show("Insufficient Payment", "Cash", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {

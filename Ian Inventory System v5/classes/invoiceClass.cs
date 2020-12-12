@@ -10,6 +10,7 @@ namespace NavigationDrawerPopUpMenu2.classes
 {
     class invoiceClass
     {
+        
         window_cashButton wcb = new window_cashButton();
 
         public string cash

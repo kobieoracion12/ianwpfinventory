@@ -529,6 +529,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             checkout.payMethod = "Cash";
             window_cashButton cf = new window_cashButton();
+            cf.total(pay_total.Text);
             cf.DataSent += Cf_DataSent; // Register the Event Handler - When this Event fired 'Cf_DataSent' will be called
             cf.ShowDialog();
         }
@@ -687,7 +688,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 }
                 catch (Exception ex)
                 {
-                    conn.Close();
+                    
                     MessageBox.Show("Failed Removing Item, " + ex.Message, "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
@@ -721,9 +722,9 @@ namespace NavigationDrawerPopUpMenu2.windows
                 voidEntry_Click(sender, e); // Void
             else if (e.Key == Key.F2)
                 updQtyBtn_Click(sender, e); // Quantity
-            else if (e.Key == Key.F3)
+            else if (e.Key == Key.F3 && endSale.IsEnabled == true)
                 endSale_Click(sender, e); // Checkout
-            else if (e.Key == Key.F4)
+            else if (e.Key == Key.F4 && cashButton.IsEnabled == true)
                 cashButton_Click(sender, e); // Cash Button
             else if (e.Key == Key.F5)
                 discountItem_Click(sender, e); // Discount
