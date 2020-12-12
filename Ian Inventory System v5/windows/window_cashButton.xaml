@@ -12,7 +12,7 @@
             <Grid>
                 <StackPanel VerticalAlignment="Center">
                     <TextBlock Text="Enter Amount:" FontWeight="SemiBold" FontSize="13" Foreground="Black" Margin="10 0 0 0"/>
-                    <TextBox x:Name="cashAmount" FontFamily="Microsoft Tai Le" FontSize="50" Margin="5" Background="White" KeyDown="entrySearch_KeyDown"/>
+                    <TextBox x:Name="cashAmount" FontFamily="Microsoft Tai Le" FontSize="50" Margin="5" Background="White" TextAlignment="Center" KeyDown="entrySearch_KeyDown"/>
                 </StackPanel>
             </Grid>
         </Grid>
