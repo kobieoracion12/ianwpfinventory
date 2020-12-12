@@ -24,9 +24,9 @@
         <Grid Grid.Column="1" Grid.RowSpan="2">
             <Grid Background="White">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="55*" />
-                    <RowDefinition Height="320*" />
-                    <RowDefinition Height="220*" />
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="385*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <!-- Navigation Header -->
@@ -43,33 +43,70 @@
                     <Grid>
                         <Viewbox Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Center">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <ListView x:Name="ListViewMenu" Foreground="#b1b1b1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged_1">
+                                <ListView x:Name="ListViewMenu" Foreground="#343841" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged_1">
                                     <!-- Overview -->
                                     <ListViewItem x:Name="stStocks" Height="35" HorizontalAlignment="Center">
-                                        <TextBlock Text="Overview" TextAlignment="Center" FontSize="8" Margin="5 5"/>
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="ViewGrid" Width="12" />
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Overview" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Inventory Overview" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
                                     </ListViewItem>
-                                    <!-- Add Item-->
+
+                                    <!-- Add Stocks-->
                                     <ListViewItem x:Name="stAddItem" Height="35" HorizontalAlignment="Center">
-                                        <TextBlock Text="Add Item" FontSize="8"/>
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="CartPlus" Width="12"/>
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Add Stocks" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Add/Manage Stocks" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
                                     </ListViewItem>
+
+                                    <!-- Add to Shelf -->
+                                    <ListViewItem x:Name="stShelf" Height="35" HorizontalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="Shopping" Width="12"/>
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Stocks to Shelf" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Choose Products to Shelf" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListViewItem>
+
+                                    <!-- Restock Item -->
+                                    <ListViewItem x:Name="stRestock" Height="35" HorizontalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="CartOutline" Width="12"/>
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Restock Items" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Manage Stock Request" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListViewItem>
+
                                     <!-- Item Request -->
                                     <ListViewItem x:Name="stItemReq" Height="35" HorizontalAlignment="Center">
-                                        <TextBlock Text="Item Request" FontSize="8"/>
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="Inbox" Width="12"/>
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Stock Request" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Manage Stock Request" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
                                     </ListViewItem>
 
-                                    <ListViewItem x:Name="stRestock" Height="35" HorizontalAlignment="Center">
-                                        <TextBlock Text="Restock Item" FontSize="8"/>
-                                    </ListViewItem>
-
-                                    <ListViewItem x:Name="stStockReq" Height="35" HorizontalAlignment="Center">
-                                        <TextBlock Text="Stock Request" FontSize="8"/>
-                                    </ListViewItem>
-
+                                    
                                 </ListView>
                             </StackPanel>
                         </Viewbox>
                     </Grid>
                 </Grid>
+
+
             </Grid>
         </Grid>
 
