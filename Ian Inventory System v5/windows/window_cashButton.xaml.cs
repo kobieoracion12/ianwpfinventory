@@ -35,7 +35,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             if (e.Key == Key.Return)
             {
                 int cashtoPay = Convert.ToInt32(cashAmount.Text); 
-                if (cashtoPay > checkout.paytotal)
+                if (cashtoPay >  checkout.paytotal)
                 {
                     MessageBox.Show("Invalid Payment");
                 }

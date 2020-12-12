@@ -48,7 +48,7 @@
                                         <TextBlock x:Name="cashierName" Text="Full Name" FontWeight="Regular" FontSize="10" Foreground="Black" Margin="10 0 0 0"/>
                                         <TextBox Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.salesItem}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
                                     </StackPanel>
-                                </StackPanel>                            
+                                </StackPanel>
                             </Canvas>
                         </Viewbox>
                     </Grid>
@@ -109,7 +109,7 @@
                                     <TextBlock Text="New Order" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-       
+
                             <!-- Add Item -->
                             <Button x:Name="addItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="addItem_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -118,9 +118,16 @@
                             </Button>
 
                             <!-- Delete Item -->
-                            <Button x:Name="removeItem" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="removeItem_Click">
+                            <Button x:Name="removeItem" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="removeItem_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="[Del]Remove Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+
+                            <!-- Refund Item -->
+                            <Button x:Name="refundItem" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="refundItem_Click">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <TextBlock Text="Refund Item" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
 
@@ -158,21 +165,21 @@
                                     <TextBlock Text="Tax Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-                            
+
                             <!-- Settings -->
-                            <Button x:Name="cashierSettings" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="cashierSettings_Click"> 
+                            <Button x:Name="cashierSettings" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="cashierSettings_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="[F12]Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-                            <!-- Logout -->
                             <Button Click="logoutButton_Click" x:Name="logoutButton" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="Logout" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-                            
-                            
+                            <!-- Logout -->
+
+
                         </StackPanel>
                     </Viewbox>
 
@@ -209,7 +216,7 @@
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>
                 </Rectangle>
-    
+
                 <!-- Listview Panel-->
                 <Grid Margin="10">
                     <ListView DisplayMemberPath="salesItem" ItemsSource="{Binding}" x:Name="listViewinVoice" FontSize="20" SelectionMode="Single" Margin="10" SelectionChanged="listViewinVoice_SelectionChanged" >
@@ -472,7 +479,7 @@
                         <TextBlock Text="Payment Method" Margin="10" FontWeight="Bold" FontSize="20" Foreground="#2C9CDB" TextAlignment="Left"/>
                     </Viewbox>
                 </Grid>
-                
+
                 <!-- Buttons -->
                 <Grid Grid.Row="1">
                     <Grid Margin="10">
