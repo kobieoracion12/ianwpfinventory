@@ -647,3 +647,5 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\INVENTORY V
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\INVENTORY V4\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\INVENTORY V4\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\INVENTORY V4\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_changequantity_stockout.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_changequantity_stockout.baml
