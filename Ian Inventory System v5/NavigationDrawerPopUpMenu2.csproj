@@ -175,8 +175,8 @@
     <Compile Include="usercontrols\UserControlHome.xaml.cs">
       <DependentUpon>UserControlHome.xaml</DependentUpon>
     </Compile>
-    <Compile Include="usercontrols\UserControlInventory.xaml.cs">
-      <DependentUpon>UserControlInventory.xaml</DependentUpon>
+    <Compile Include="usercontrols\UserControlCategory.xaml.cs">
+      <DependentUpon>UserControlCategory.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\UserControlSales.xaml.cs">
       <DependentUpon>UserControlSales.xaml</DependentUpon>
@@ -211,6 +211,9 @@
     <Compile Include="windows\win_addItem.xaml.cs">
       <DependentUpon>win_addItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_add_category.xaml.cs">
+      <DependentUpon>win_add_category.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\win_changeQuantity.xaml.cs">
       <DependentUpon>win_changeQuantity.xaml</DependentUpon>
     </Compile>
@@ -219,6 +222,9 @@
     </Compile>
     <Compile Include="windows\win_checkoutBG.xaml.cs">
       <DependentUpon>win_checkoutBG.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\win_edit_category.xaml.cs">
+      <DependentUpon>win_edit_category.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\win_pos.xaml.cs">
       <DependentUpon>win_pos.xaml</DependentUpon>
@@ -330,7 +336,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="usercontrols\UserControlInventory.xaml">
+    <Page Include="usercontrols\UserControlCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -378,6 +384,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="windows\win_add_category.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\win_changeQuantity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -387,6 +397,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_checkoutBG.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_edit_category.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -42,7 +42,7 @@ namespace NavigationDrawerPopUpMenu2
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM datainventory";
+                string query = "SELECT * FROM category";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -50,7 +50,7 @@ namespace NavigationDrawerPopUpMenu2
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("datainventory");
+                DataTable dt = new DataTable("category");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewInventory.ItemsSource = dt.DefaultView;
@@ -78,7 +78,7 @@ namespace NavigationDrawerPopUpMenu2
                 tbPrdId.Text = prodId;
 
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception ex)
             {
                 return;
             }
@@ -87,8 +87,8 @@ namespace NavigationDrawerPopUpMenu2
         // Add Button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            window_addItem addItem = new window_addItem();
-            addItem.Show();
+            win_add_category addCateg = new win_add_category(this);
+            addCateg.ShowDialog();
         }
 
         // Refresh Button
@@ -101,16 +101,14 @@ namespace NavigationDrawerPopUpMenu2
         // Edit Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            string prdId = tbPrdId.Text;
-            if (prdId == "")
+            if (tbPrdId.Text == "")
             { // Check input if empty
-                MessageBox.Show("Please select one on the table cell");
+                MessageBox.Show("No selected category", "Edit Category", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {   // If not empty then proceed to edit window
-                long id = Convert.ToInt64(prdId); // Product Id No. to be pass to other form
-                window_editItem editItemWindow = new window_editItem(id); // pass the parameter to the next window
-                editItemWindow.Show(); // Open Edit Window}
+                win_edit_category win_edit_category = new win_edit_category(this); // pass the parameter to the next window
+                win_edit_category.ShowDialog(); // Open Edit Window}
             }
         }
 
@@ -124,39 +122,41 @@ namespace NavigationDrawerPopUpMenu2
         {
             if (tbPrdId.Text == "")
             { // Check if field is empty
-                MessageBox.Show("Please select one on the table cell");
+                MessageBox.Show("No Selected Category", "Remove Category", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else 
             {   // Delete the product
                 if (MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    deleteProductItem(); // If Yes then Delete the product
+                    deleteCategory(); // If Yes then Delete the product
+                    catchData();
                 }
             } 
         }
 
         // Delete Function
-        private void deleteProductItem()
+        private void deleteCategory()
         {
             // Delete sql statement
-            string sql = "DELETE FROM datainventory WHERE prodNo = @prdNo";
+            string sql = "DELETE FROM category WHERE cId = @cId";
             conn.query(sql); // Command Database
 
             try
             {
                 conn.Open();   // Open Connection
-                conn.bind("@prdNo", tbPrdId.Text); // Bind parameter
+                conn.bind("@cId", tbPrdId.Text); // Bind parameter
                 conn.cmd().Prepare(); // Prepare
                 conn.execute(); // Execute
                 
                  
-                MessageBox.Show("Successfully Removed"); // Show Dialog Succes
+                MessageBox.Show("Successfully Removed", "Category Removed", MessageBoxButton.OK, MessageBoxImage.Information); // Show Dialog Succes
 
                 conn.Close(); // Close Connection
 
             }
             catch (Exception ex)
             {
+                conn.Close();
                 // Ops, maybe the id doesn't exists ?
                 MessageBox.Show(ex.Message);
             }
@@ -165,18 +165,18 @@ namespace NavigationDrawerPopUpMenu2
         // RealTime Search
         private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
 
         // Search Function 
-        private void searchProductItem() {
+        private void searchCategory() {
             conn.Close(); // Close the connection first
             try
             {
                 // Open Connection 
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM datainv!entory WHERE prodNo LIKE '%" + tbSearch.Text + "%' OR prodItem LIKE '%" + tbSearch.Text + "%' OR prodBrand LIKE '%" + tbSearch.Text + "%' OR prodSRP LIKE '%" + tbSearch.Text + "%' OR prodRP LIKE '%" + tbSearch.Text + "%'";
+                string query = "SELECT * FROM category WHERE cId LIKE '%" + tbSearch.Text + "%' OR category_name LIKE '%" + tbSearch.Text + "%' ";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -184,7 +184,7 @@ namespace NavigationDrawerPopUpMenu2
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("datainventory");
+                DataTable dt = new DataTable("category");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewInventory.ItemsSource = dt.DefaultView; 
@@ -197,6 +197,7 @@ namespace NavigationDrawerPopUpMenu2
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message);
             }
         }
@@ -204,7 +205,7 @@ namespace NavigationDrawerPopUpMenu2
         // Search Button
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            searchProductItem();
+            searchCategory();
         }
 
         // When the window loads
@@ -217,6 +218,45 @@ namespace NavigationDrawerPopUpMenu2
         {
             window_restockItem restockItem = new window_restockItem();
             restockItem.ShowDialog();
+        }
+
+        // Clear All Category
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+                if (MessageBox.Show("Are you sure you want to remove all?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    if (MessageBox.Show("This will clear all your categories?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        clearAllCategory(); // If Yes then Delete the product
+                        catchData();
+                    }
+                }
+        }
+
+        // Clear All
+        public void clearAllCategory()
+        {
+            // Delete sql statement
+            string sql = "DELETE FROM category";
+            conn.query(sql); // Command Database
+
+            try
+            {
+                conn.Open();   // Open Connection
+                conn.execute(); // Execute
+
+
+                MessageBox.Show("All category has been removed"); // Show Dialog Succes
+
+                conn.Close(); // Close Connection
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                // Ops, maybe the id doesn't exists ?
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
