@@ -88,8 +88,14 @@
                     </ListViewItem>
                     <ListViewItem x:Name="stockOutButton" Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Download" Height="25" Width="25" Margin="10"/>
+                            <materialDesign:PackIcon Kind="Upload" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Stock Out" VerticalAlignment="Center"  Margin="10 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="stockReturnButton" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Download" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Stock Return" VerticalAlignment="Center"  Margin="10 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="logoutButton" Height="60">
