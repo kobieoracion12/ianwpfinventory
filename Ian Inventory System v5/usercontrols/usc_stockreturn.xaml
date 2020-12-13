@@ -5,105 +5,150 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.usercontrols"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1080">
-    <Grid Background="#EDEFF3">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="368*"/>
-            <ColumnDefinition Width="357*"/>
-            <ColumnDefinition Width="295*"/>
-        </Grid.ColumnDefinitions>
 
+    <Grid Background="#F5F6FA">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="141*"/>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="130*" />
         </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Background="White" Margin="70 0 0 0">
-            <Grid.Effect>
-                <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-            </Grid.Effect>
-
-            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                <materialDesign:PackIcon Kind="Upload" Width="25" Height="25" Margin="50 0 0 0"/>
-                <TextBlock Text="Stock Return" TextAlignment="Left" FontSize="20" FontFamily="Segoe UI Semibold" Margin="5 0 0 0"/>
-            </StackPanel>
-        </Grid>
-
-        <!-- Void Section -->
-        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
-            <Grid>
-                <Rectangle Margin="80 10 0 10" RadiusX="8" RadiusY="8" Fill="White">
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+            <Grid Margin="10">
+                <Rectangle RadiusX="10" RadiusY="10" Fill="White" >
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <Grid Margin="80 10 0 10">
-                    <Label Content="Enter Entry:" Margin="23 0 0 0"/>
-                    <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center" >
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="20" Height="50" MinWidth="800" Margin="20 25 20 20" Background="White"/>
-                            <Button Background="Transparent" BorderBrush="Transparent" Width="100" Height="60" Margin="60 0 0 0" >
-                                <materialDesign:PackIcon Kind="Printer" Foreground="Black" Width="50" Height="50" />
-                            </Button>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*" />
+                        <RowDefinition Height="420*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid>
+                            <Viewbox Stretch="Uniform"  HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="Enter Trans#" HorizontalAlignment="Left" FontWeight="Bold" FontSize="10" Margin="5 0 5 5"/>
+                                        <TextBox x:Name="itemo" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="25" Width="150" VerticalAlignment="Center" TextChanged="itemo_TextChanged"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Vertical" Margin="10 0 0 0">
+                                        <TextBlock Text="Select Date" HorizontalAlignment="Left" FontWeight="Bold" FontSize="10" Margin="5 0 5 5"/>
+                                        <DatePicker x:Name="sortCashier" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="10" Height="25" Width="130" VerticalAlignment="Center" />
+
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Filter" Background="#2C9CDB" BorderBrush="#2C9CDB" FontSize="10" Height="25" Margin="10 0 0 0"/>
+                                    </StackPanel>
+
+                                </StackPanel>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <ListView x:Name="lv_browse" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" Margin="10" >
+                            <ListView.View>
+                                <GridView AllowsColumnReorder="False">
+                                    <GridView.Columns>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutTransNo }" Header="Trans #" Width="200"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="300" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="100" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutDate }" Header="Date of Purchase" Width="200" />
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="2">
+            <Grid Grid.ColumnSpan="2">
+                <Viewbox Stretch="Uniform" Grid.ColumnSpan="2">
+                    <Canvas Width="210" Height="290" >
+                        <StackPanel Orientation="Vertical" Margin="10" Canvas.Top="30">
+                            <!--Transaction Number -->
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="Transaction Number" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 0 0 0"/>
+                                <TextBox x:Name="itemTransNo" Text="{Binding ElementName=lv_browse, Path=SelectedItem.stockoutTransNo}" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" TextChanged="itemTransNo_TextChanged" IsEnabled="False"/>
+                            </StackPanel>
+                            
+                            <!--Item Number -->
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="Item Number" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
+                                <TextBox x:Name="itemNo" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" IsEnabled="False"/>
+                            </StackPanel>
+
+                            <!--Item Description -->
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="Item Description" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
+                                <TextBox x:Name="itemName" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" IsEnabled="False"/>
+                            </StackPanel>
+
+                            <!--Item Qty -->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Quantity" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
+                                    <TextBox x:Name="itemQty" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="91" VerticalAlignment="Center" IsEnabled="False"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="9 0 0 0">
+                                    <TextBlock Text="To Return" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
+                                    <TextBox x:Name="itemReduce" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="91" VerticalAlignment="Center" IsEnabled="False"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <!-- Date of Arrival -->
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="Date of Stock Out" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
+                                <DatePicker x:Name="itemDOP" FontSize="8" Height="20" BorderThickness="1" FontFamily="Microsoft Tai Le" Background="White" Padding="2 0 0 0" Width="190" VerticalAlignment="Center" IsEnabled="False"/>
+                            </StackPanel>
+
+                            <!-- Buttons-->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Button x:Name="addItem" Margin="0 10 5 0" Height="15" Background="#29CC97" BorderBrush="#29CC97" Click="addItem_Click">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <TextBlock Text="Return" FontWeight="SemiBold" FontSize="5" Foreground="#FFFFFF" TextAlignment="Center" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button x:Name="addIem" Margin="0 10 0 0" Height="15" Background="#E86845" BorderBrush="#FFFF6C6C">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <TextBlock Text="Cancel" FontWeight="SemiBold" FontSize="5" Foreground="#FFFFFF" TextAlignment="Center" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+
+                            <TextBlock x:Name="curQty" Width="50" TextAlignment="Center"/>
+                            <TextBlock x:Name="remQty" Width="50" TextAlignment="Center"/>
+
                         </StackPanel>
-                    </Viewbox>
-                </Grid>
-            </Grid>
-        </Grid>
-
-
-
-        <!-- Checkout List -->
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
-            <Grid>
-                <Rectangle Margin="80 0 0 10" RadiusX="8" RadiusY="8" Fill="White">
-                    <Rectangle.Effect>
-                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-                    </Rectangle.Effect>
-                </Rectangle>
-
-                <Grid Margin="80 10 0 10">
-                    <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" Margin="10">
-                        <ListView.View>
-                            <GridView AllowsColumnReorder="False">
-                                <GridView.Columns>
-                                    <GridViewColumn DisplayMemberBinding="{Binding salesNo }" Header="#" Width="160"/>
-                                    <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="350" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price" Width="100" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Qty" Width="100"/>
-                                </GridView.Columns>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </Grid>
-            </Grid>
-        </Grid>
-
-        <Grid Grid.Row="3" Grid.ColumnSpan="4">
-            <Grid Margin="80 0 0 0">
-                <Viewbox Stretch="Uniform" HorizontalAlignment="Right">
-                    <StackPanel Orientation="Horizontal" Margin="15">
-                        <Button Content="Remove" Background="#D6332E" BorderBrush="#D6332E" Margin="0 0 8 0"/>
-                        <Button Content="Clear" Background="#EC6464" BorderBrush="#EC6464" Margin="0 0 8 0"/>
-                        <Button Content="Save" Background="#54b971" BorderBrush="#54b971" Margin="0 0 8 0"/>
-                    </StackPanel>
-                </Viewbox>
-                <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                    <StackPanel Orientation="Horizontal" Margin="15">
-                        <Button Content="View Products" Background="#5c9ef4" Margin="0 0 8 0"/>
-                        <Button Content="Quantity" Background="#5c9ef4" Margin="0 0 8 0"/>
-                    </StackPanel>
+                    </Canvas>
                 </Viewbox>
             </Grid>
+
+
+
+
         </Grid>
-
-
 
     </Grid>
+
 
 </UserControl>
