@@ -168,17 +168,14 @@
     <Compile Include="usercontrols\usc_stockreturn.xaml.cs">
       <DependentUpon>usc_stockreturn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\UserControlBrand.xaml.cs">
+      <DependentUpon>UserControlBrand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\UserControlCheckout.xaml.cs">
       <DependentUpon>UserControlCheckout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="usercontrols\UserControlCreate.xaml.cs">
-      <DependentUpon>UserControlCreate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="usercontrols\UserControlDashboard.xaml.cs">
       <DependentUpon>UserControlDashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\UserControlHome.xaml.cs">
-      <DependentUpon>UserControlHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\UserControlCategory.xaml.cs">
       <DependentUpon>UserControlCategory.xaml</DependentUpon>
@@ -216,11 +213,11 @@
     <Compile Include="windows\win_addItem.xaml.cs">
       <DependentUpon>win_addItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_add_brand.xaml.cs">
+      <DependentUpon>win_add_brand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\win_add_category.xaml.cs">
       <DependentUpon>win_add_category.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="windows\win_changeQuantity.xaml.cs">
-      <DependentUpon>win_changeQuantity.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\win_changequantity_stockout.xaml.cs">
       <DependentUpon>win_changequantity_stockout.xaml</DependentUpon>
@@ -230,6 +227,9 @@
     </Compile>
     <Compile Include="windows\win_checkoutBG.xaml.cs">
       <DependentUpon>win_checkoutBG.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\win_edit_brand.xaml.cs">
+      <DependentUpon>win_edit_brand.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\win_edit_category.xaml.cs">
       <DependentUpon>win_edit_category.xaml</DependentUpon>
@@ -335,19 +335,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="usercontrols\UserControlBrand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="usercontrols\UserControlCheckout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="usercontrols\UserControlCreate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="usercontrols\UserControlDashboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="usercontrols\UserControlHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -399,11 +395,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="windows\win_add_category.xaml">
+    <Page Include="windows\win_add_brand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="windows\win_changeQuantity.xaml">
+    <Page Include="windows\win_add_category.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -416,6 +412,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_checkoutBG.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_edit_brand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

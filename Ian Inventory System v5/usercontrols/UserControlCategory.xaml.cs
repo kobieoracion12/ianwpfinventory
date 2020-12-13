@@ -61,11 +61,10 @@ namespace NavigationDrawerPopUpMenu2
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message);
             }
         }
-
-        
 
         // Copy the id of product when click in listViewInventory cell
         private void listViewInventory_SelectedIndexChanged(object sender, EventArgs e)

@@ -86,6 +86,12 @@
                             <TextBlock Text="Category" VerticalAlignment="Center"  Margin="10 10"/>
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem x:Name="brandButton" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Tag" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Brand" VerticalAlignment="Center"  Margin="10 10"/>
+                        </StackPanel>
+                    </ListViewItem>
                     <ListViewItem x:Name="stockOutButton" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Upload" Height="25" Width="25" Margin="10"/>
