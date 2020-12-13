@@ -31,7 +31,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             overallSales();
             onStock();
             ordersCompleted();
-            topSelling();
         }
 
         // On Stock
@@ -133,23 +132,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Top Selling
-        public void topSelling()
-        {
-            conn.Close();
-            conn.Open();
-            string query = "SELECT prodItem, prodBought FROM datainventory ORDER BY prodBought DESC LIMIT 6";
-            conn.query(query);
-            conn.execute();
-            MySqlDataAdapter adapter = conn.adapter();
-            DataTable dt = new DataTable("datainventory");
-            adapter.Fill(dt);
-            listViewRanking.ItemsSource = dt.DefaultView;
-            adapter.Update(dt);
-
-            adapter.Dispose(); // Dispose Adapter
-            conn.Close();
-        }
 
         // Generated Profit
         private void genProfit()

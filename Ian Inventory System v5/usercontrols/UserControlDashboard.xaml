@@ -120,34 +120,6 @@
             </Grid>
         </Grid>
 
-        <!-- Stock Status -->
-        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3">
-            <Grid Grid.Row="1">
-                <Rectangle  Margin="10" RadiusX="10" RadiusY="10" Fill="White" >
-                    <Rectangle.Effect>
-                        <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-                    </Rectangle.Effect>
-                </Rectangle>
-
-                <Grid Margin="20">
-                    <StackPanel>
-                        <TextBlock Text="Top Selling Items" FontSize="15" FontFamily="Segoe UI Bold" TextAlignment="Center" VerticalAlignment="Top" Margin="10" Foreground="Black"/>
-                        <Rectangle HorizontalAlignment="Center" Stroke="#F0F0F3" Width="450" />
-                    </StackPanel>
-                    <ListView x:Name="listViewRanking" Margin="0 40 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                        <ListView.View>
-                            <GridView AllowsColumnReorder="False">
-                                <GridView.Columns>
-                                    <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="260" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding prodBought }" Header="Purchases" Width="100"/>
-                                </GridView.Columns>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </Grid>
-            </Grid>
-        </Grid>
-
         <!-- Top Selling Items -->
         <Grid Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="3">
             <Grid>
