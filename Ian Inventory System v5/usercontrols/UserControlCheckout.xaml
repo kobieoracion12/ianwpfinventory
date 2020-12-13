@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.usercontrols"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="600" d:DesignWidth="1080" >
 
 
@@ -33,6 +34,9 @@
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
                 <materialDesign:PackIcon Kind="Download" Width="25" Height="25" Margin="50 0 0 0"/>
                 <TextBlock Text="Stock Out" TextAlignment="Left" FontSize="20" FontFamily="Segoe UI Semibold" Margin="5 0 0 0"/>
+                <!-- Trans # -->
+                <TextBlock Text="Transaction #" Margin="5 0 0 0"/>
+                <TextBlock x:Name="orderNo" Text="00000" Margin="5 0 0 0"/>
             </StackPanel>
         </Grid>
 
@@ -49,7 +53,7 @@
                     <Label Content="Enter Entry:" Margin="23 0 0 0"/>
                     <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center" >
                         <StackPanel Orientation="Horizontal" >
-                            <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="20" Height="50" MinWidth="800" Margin="20 25 20 20" Background="White"/>
+                            <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="20" Height="50" MinWidth="800" Margin="20 25 20 20" Background="White" KeyDown="entrySearch_KeyDown" PreviewTextInput="TextBox_OnPreviewTextInput" />
                             <Button Background="Transparent" BorderBrush="Transparent" Width="100" Height="60" Margin="60 0 0 0">
                                 <materialDesign:PackIcon Kind="Printer" Foreground="Black" Width="50" Height="50" />
                             </Button>
@@ -75,10 +79,10 @@
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <GridView.Columns>
-                                    <GridViewColumn DisplayMemberBinding="{Binding salesNo }" Header="#" Width="160"/>
-                                    <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="350" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price" Width="100" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Qty" Width="100"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding stockoutId }" Header="#" Width="160"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="350" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding stockoutPrice }" Header="Price" Width="100" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="100"/>
                                 </GridView.Columns>
                             </GridView>
                         </ListView.View>

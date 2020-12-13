@@ -74,10 +74,13 @@ namespace NavigationDrawerPopUpMenu2
                     break;
                 case "stockOutButton":
                     usc = new UserControlCheckout();
+<<<<<<< HEAD
                     GridMain.Children.Add(usc);
                     break;
                 case "stockReturnButton":
                     usc = new usc_stockreturn();
+=======
+>>>>>>> 803a00c3d14da8f7413f64d77ccd46965745cf03
                     GridMain.Children.Add(usc);
                     break;
                 default:
