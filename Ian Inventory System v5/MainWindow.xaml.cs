@@ -68,6 +68,10 @@ namespace NavigationDrawerPopUpMenu2
                     userLogin.Show();
                     this.Close();
                     break;
+                case "brandButton":
+                    usc = new UserControlBrand();
+                    GridMain.Children.Add(usc);
+                    break;
                 case "categoryButton":
                     usc = new UserControlInventory();
                     GridMain.Children.Add(usc);

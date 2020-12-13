@@ -171,6 +171,9 @@
     <Compile Include="usercontrols\usc_stockreturn.xaml.cs">
       <DependentUpon>usc_stockreturn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\UserControlBrand.xaml.cs">
+      <DependentUpon>UserControlBrand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\UserControlCheckout.xaml.cs">
       <DependentUpon>UserControlCheckout.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,9 @@
     <Compile Include="windows\win_addItem.xaml.cs">
       <DependentUpon>win_addItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_add_brand.xaml.cs">
+      <DependentUpon>win_add_brand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\win_add_category.xaml.cs">
       <DependentUpon>win_add_category.xaml</DependentUpon>
     </Compile>
@@ -224,6 +230,9 @@
     </Compile>
     <Compile Include="windows\win_checkoutBG.xaml.cs">
       <DependentUpon>win_checkoutBG.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\win_edit_brand.xaml.cs">
+      <DependentUpon>win_edit_brand.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\win_edit_category.xaml.cs">
       <DependentUpon>win_edit_category.xaml</DependentUpon>
@@ -333,10 +342,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="usercontrols\UserControlBrand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+<<<<<<< HEAD
+=======
     <Page Include="usercontrols\UserControlCheckout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+>>>>>>> 3440308644136c0daf1420a9c3042aa326bbb852
     <Page Include="usercontrols\UserControlDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -389,10 +405,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="windows\win_add_brand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+<<<<<<< HEAD
+=======
     <Page Include="windows\win_add_category.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+>>>>>>> 3440308644136c0daf1420a9c3042aa326bbb852
     <Page Include="windows\win_changequantity_stockout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -402,6 +425,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_checkoutBG.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_edit_brand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
