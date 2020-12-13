@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
-using System.Data;
-using NavigationDrawerPopUpMenu2.classes;
-using NavigationDrawerPopUpMenu2.windows;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
-    public partial class UserControlCheckout : UserControl
+    /// <summary>
+    /// Interaction logic for usc_stockreturn.xaml
+    /// </summary>
+    public partial class usc_stockreturn : UserControl
     {
-        public UserControlCheckout()
+        public usc_stockreturn()
         {
             InitializeComponent();
         }

@@ -163,6 +163,9 @@
     <Compile Include="usercontrols\usc_sales.xaml.cs">
       <DependentUpon>usc_sales.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_stockreturn.xaml.cs">
+      <DependentUpon>usc_stockreturn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\UserControlCheckout.xaml.cs">
       <DependentUpon>UserControlCheckout.xaml</DependentUpon>
     </Compile>
@@ -317,6 +320,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\usc_sales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_stockreturn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

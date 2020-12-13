@@ -81,7 +81,7 @@
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
                         <GridView.Columns>
-                            <GridViewColumn DisplayMemberBinding="{Binding cId }" Header="Category #" Width="50"/>
+                            <GridViewColumn DisplayMemberBinding="{Binding cId }" Header="#" Width="50"/>
                             <GridViewColumn DisplayMemberBinding="{Binding category_name }" Header="Category Name" Width="200"/>
                         </GridView.Columns>
                     </GridView>
