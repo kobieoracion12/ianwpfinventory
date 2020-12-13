@@ -439,5 +439,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
             }
         }
+
+        // View All Products
+        private void viewProdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            win_view_all_products viewlist = new win_view_all_products();
+            viewlist.ShowDialog();
+        }
     }
 }
