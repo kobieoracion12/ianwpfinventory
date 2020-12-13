@@ -96,9 +96,9 @@
             <Grid Margin="80 0 0 0">
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal" Margin="15">
-                        <Button Content="Remove" Background="#D6332E" BorderBrush="#D6332E" Margin="0 0 8 0"/>
-                        <Button Content="Clear" Background="#EC6464" BorderBrush="#EC6464" Margin="0 0 8 0"/>
-                        <Button Content="Save" Background="#54b971" BorderBrush="#54b971" Margin="0 0 8 0"/>
+                        <Button Content="Remove" Click="removeStockOutBtn_Click" x:Name="removeStockOutBtn" Background="#D6332E" BorderBrush="#D6332E" Margin="0 0 8 0"/>
+                        <Button Content="Clear" Click="clearStockOutBtn_Click" x:Name="clearStockOutBtn" Background="#EC6464" BorderBrush="#EC6464" Margin="0 0 8 0"/>
+                        <Button Content="Save" Click="saveStockOutBtn_Click" x:Name="saveStockOutBtn" Background="#54b971" BorderBrush="#54b971" Margin="0 0 8 0"/>
                     </StackPanel>
                 </Viewbox>
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Left">

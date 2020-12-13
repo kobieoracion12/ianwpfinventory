@@ -22,6 +22,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     public partial class UserControlCheckout : UserControl
     {
         Database conn = new Database();
+        List<Stock_Out> stockOut = new List<Stock_Out>();
         string stockoutTransNo = "";
         string stockoutNo = "";
         string stockoutItem = "";
@@ -35,6 +36,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             InitializeComponent();
         }
 
+        // When UserControl Loads
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             transGenerator();
@@ -322,6 +324,119 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             catch (Exception)
             {
                 return;
+            }
+        }
+
+        // Remove Item from ListView
+        private void removeStockOutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbPrdName.Text.Equals(""))
+            {
+                MessageBox.Show("No Selected Item", "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                string query = "DELETE FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutItem = '" + tbPrdName.Text + "'";
+                conn.query(query);
+                try
+                {
+                    conn.Open();
+                    conn.execute();
+                    loadData();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show("Failed Removing Item, " + ex.Message, "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+
+        }
+
+        // Remove ALL ITEM from ListView
+        private void clearStockOutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var ans = MessageBox.Show("Clear All?", "End Transaction", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (ans == MessageBoxResult.Yes)
+            {
+                ClearUnsavedDate();
+                conn.Open();
+                loadData();
+                conn.Close();
+                saveStockOutBtn.IsEnabled = false;
+            }
+        }
+
+        // Save Data
+        private void saveStockOutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var ans = MessageBox.Show("Save your changes?", "Save", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (ans == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    string sql = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutStatus = 'Stock Out Pending'";
+                    conn.query(sql);
+                    conn.Open();
+                    MySqlDataReader dr = conn.read();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            string stockoutTransNo = dr["stockoutTransNo"].ToString();
+                            string stockoutNo = dr["stockoutNo"].ToString();
+                            string stockoutItem = dr["stockoutItem"].ToString();
+                            string stockoutQty = dr["stockoutQty"].ToString();
+                            string stockoutPrice = dr["stockoutPrice"].ToString();
+                            string stockoutDate = dr["stockoutDate"].ToString();
+                            string stockoutId = dr["stockoutId"].ToString();
+                            string stockoutStatus = dr["stockoutStatus"].ToString();
+
+                            stockOut.Add(new Stock_Out { stockoutTransNo = stockoutTransNo, stockoutNo = stockoutNo, stockoutItem = stockoutItem, stockoutQty = stockoutQty, stockoutPrice = stockoutPrice, stockoutId = stockoutId, stockoutStatus = stockoutStatus });
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Saving Failed: No Data Found", "Stock Out", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+
+                    conn.Close();
+                    dr.Close();
+                    dr.Dispose();
+                    // End of Query
+
+                    // Second Query to SUBTRACT/UPDATE THE STOCKS
+                    foreach (Stock_Out prd in stockOut)
+                    {
+                        conn.Open();
+                        string updateStockQuery = "UPDATE datainventory SET prodQty = prodQty - '" + int.Parse(prd.stockoutQty) + "' WHERE prodNo = '" + prd.stockoutNo + "'";
+                        conn.query(updateStockQuery);
+                        conn.execute();
+                        conn.Close();
+
+                        conn.Open();
+                        // Now Update the Status to SOLD
+                        string updateStatus = "UPDATE stock_out SET stockoutStatus = 'Stock Out' WHERE stockoutNo = '" + prd.stockoutNo + "' AND stockoutTransNo = '" + orderNo.Text + "'";
+                        conn.query(updateStatus);
+                        conn.execute();
+                        conn.Close();
+
+                        //MessageBox.Show(prd.salesItem);
+                    }
+
+                    MessageBox.Show("Your changes has been saved", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    conn.Open();
+                    loadData(); // Update UI
+                    conn.Close();
+                    transGenerator(); // Generate a new Trans#
+                    stockOut.Clear(); // Clear ListView
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Saving Failed \n" + ex.Message, "Stock Out", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
         }
     }
