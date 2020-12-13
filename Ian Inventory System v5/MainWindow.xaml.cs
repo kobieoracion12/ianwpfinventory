@@ -23,7 +23,7 @@ namespace NavigationDrawerPopUpMenu2
         public MainWindow()
         {
             InitializeComponent();
-            UserControlDashboard usd = new UserControlDashboard();
+            usc_dashboard usd = new usc_dashboard();
             GridMain.Children.Add(usd);
         }
         
@@ -47,7 +47,7 @@ namespace NavigationDrawerPopUpMenu2
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemHome":
-                    usc = new UserControlDashboard();
+                    usc = new usc_dashboard();
                     GridMain.Children.Add(usc);
                     break;
                 case "ItemCreate":

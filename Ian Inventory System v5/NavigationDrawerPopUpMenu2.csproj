@@ -147,6 +147,9 @@
     <Compile Include="reports\report_sales.xaml.cs">
       <DependentUpon>report_sales.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_dashboard.xaml.cs">
+      <DependentUpon>usc_dashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_inventory.xaml.cs">
       <DependentUpon>usc_inventory.xaml</DependentUpon>
     </Compile>
@@ -171,14 +174,8 @@
     <Compile Include="usercontrols\UserControlCheckout.xaml.cs">
       <DependentUpon>UserControlCheckout.xaml</DependentUpon>
     </Compile>
-    <Compile Include="usercontrols\UserControlCreate.xaml.cs">
-      <DependentUpon>UserControlCreate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="usercontrols\UserControlDashboard.xaml.cs">
       <DependentUpon>UserControlDashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\UserControlHome.xaml.cs">
-      <DependentUpon>UserControlHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\UserControlCategory.xaml.cs">
       <DependentUpon>UserControlCategory.xaml</DependentUpon>
@@ -218,9 +215,6 @@
     </Compile>
     <Compile Include="windows\win_add_category.xaml.cs">
       <DependentUpon>win_add_category.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="windows\win_changeQuantity.xaml.cs">
-      <DependentUpon>win_changeQuantity.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\win_changequantity_stockout.xaml.cs">
       <DependentUpon>win_changequantity_stockout.xaml</DependentUpon>
@@ -307,6 +301,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="usercontrols\usc_dashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="usercontrols\usc_inventory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -339,15 +337,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="usercontrols\UserControlCreate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="usercontrols\UserControlDashboard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="usercontrols\UserControlHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -400,10 +390,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_add_category.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="windows\win_changeQuantity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
