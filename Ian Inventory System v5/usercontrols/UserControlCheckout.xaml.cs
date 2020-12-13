@@ -38,30 +38,21 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             transGenerator();
-            loadUnsavedDate();
+            ClearUnsavedDate(); 
         }
 
-        // Load Unsaved Data
-        public void loadUnsavedDate()
+        // Delete All Unsaved Data
+        public void ClearUnsavedDate()
         {
             try
             {
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out Pending'";
+                string query = "DELETE FROM stock_out WHERE stockoutStatus = 'Stock Out Pending'";
                 // Mysql Command
                 conn.query(query);
                 // Execute
                 conn.execute();
-                // Adapter
-                MySqlDataAdapter adapter = conn.adapter();
-                //  Datatable
-                DataTable dt = new DataTable("stock_out");
-                // Fill the datatable
-                adapter.Fill(dt);
-                listViewinVoice.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-                adapter.Dispose();
                 conn.Close();
 
             }
@@ -99,7 +90,38 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             catch (Exception ex)
             {
                 conn.Close();
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Load Data", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        // Load Data For Other Forms
+        public void loadDatas()
+        {
+            try
+            {
+                conn.Open();
+                // Query Statement
+                string query = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutStatus = 'Stock Out Pending'";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("stock_out");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewinVoice.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+                adapter.Dispose();
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message, "Load Data", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -269,5 +291,38 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             e.Handled = !double.TryParse(fullText, out val);
         }
 
+        // Change Quantity
+        private void ChangeQty_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbPrdName.Text != String.Empty)
+            {
+                win_changequantity_stockout changeQtyWindow = new win_changequantity_stockout(this, orderNo.Text);
+                changeQtyWindow.ShowDialog();
+            }
+            else
+            {
+                changeQtyBtn.IsEnabled = false;
+                MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        // Passing ListView Data to TextBox
+        private void listViewinVoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                changeQtyBtn.IsEnabled = true;     
+                // GET THE SELECTED ITEM
+                string selectedItem = listViewinVoice.SelectedItems[1].ToString();
+                if (selectedItem != null)
+                {
+                    tbPrdName.Text = selectedItem;
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
     }
 }

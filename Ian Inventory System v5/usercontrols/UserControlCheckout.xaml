@@ -37,6 +37,7 @@
                 <!-- Trans # -->
                 <TextBlock Text="Transaction #" Margin="5 0 0 0"/>
                 <TextBlock x:Name="orderNo" Text="00000" Margin="5 0 0 0"/>
+                <TextBox Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.stockoutItem}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
             </StackPanel>
         </Grid>
 
@@ -75,7 +76,7 @@
                 </Rectangle>
 
                 <Grid Margin="80 10 0 10">
-                    <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" Margin="10">
+                    <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" Margin="10" SelectionChanged="listViewinVoice_SelectionChanged">
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <GridView.Columns>
@@ -103,7 +104,7 @@
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal" Margin="15">
                         <Button Content="View Products" Background="#5c9ef4" Margin="0 0 8 0"/>
-                        <Button Content="Quantity" Background="#5c9ef4" Margin="0 0 8 0"/>
+                        <Button Click="ChangeQty_Click" x:Name="changeQtyBtn" Content="Quantity" Background="#5c9ef4" Margin="0 0 8 0"/>
                     </StackPanel>
                 </Viewbox>
             </Grid>
