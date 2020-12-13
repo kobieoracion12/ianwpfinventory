@@ -252,6 +252,9 @@
     <Compile Include="windows\win_settings.xaml.cs">
       <DependentUpon>win_settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_view_all_products.xaml.cs">
+      <DependentUpon>win_view_all_products.xaml</DependentUpon>
+    </Compile>
     <Page Include="admin\admin_create.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -441,6 +444,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_view_all_products.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

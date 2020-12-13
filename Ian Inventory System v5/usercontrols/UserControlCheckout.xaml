@@ -103,7 +103,7 @@
                 </Viewbox>
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal" Margin="15">
-                        <Button Content="View Products" Background="#5c9ef4" Margin="0 0 8 0"/>
+                        <Button Content="View Products" x:Name="viewProdBtn" Click="viewProdBtn_Click" Background="#5c9ef4" Margin="0 0 8 0"/>
                         <Button Click="ChangeQty_Click" x:Name="changeQtyBtn" Content="Quantity" Background="#5c9ef4" Margin="0 0 8 0"/>
                     </StackPanel>
                 </Viewbox>
