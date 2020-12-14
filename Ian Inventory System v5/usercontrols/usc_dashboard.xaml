@@ -13,7 +13,7 @@
             <ColumnDefinition Width="70"/>
             <ColumnDefinition Width="350*"/>
             <ColumnDefinition Width="350*"/>
-            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Grid Grid.Column="1" Grid.ColumnSpan="3">
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
             <Grid>
                 <Rectangle Fill="White" >
                     <Rectangle.Effect>
@@ -31,9 +31,11 @@
                 </Rectangle>
 
                 <Grid>
-                    <Viewbox Stretch="Uniform">
-                        
-                    </Viewbox>
+                    <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
+                        <Canvas Width="260" Height="20" >
+                            <TextBlock x:Name="dateTimeNow" Text="12:00 AM  01/01/01" FontSize="4" FontFamily="Segoe UI Bold" Foreground="Black" Canvas.Right="8" Canvas.Top="7"/>
+                        </Canvas>
+                    </Viewbox> 
                 </Grid>
             </Grid>
         </Grid>
@@ -251,13 +253,152 @@
         </Grid>
 
         <!-- Right Navigation -->
-        <Grid Grid.Column="3" Grid.RowSpan="2">
+        <Grid Grid.Column="3" Grid.Row="0" Grid.RowSpan="2">
             <Grid>
                 <Rectangle MinHeight="110" Fill="White" Grid.RowSpan="2" >
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2" Direction="-90"/>
                     </Rectangle.Effect>
                 </Rectangle>
+
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="140*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Navigation Header -->
+                    <Grid Grid.Row="0">
+                        <Grid>
+                            <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
+                                <Canvas Width="160" Height="20" >
+                                    <TextBlock Text="Quick Preview" FontSize="10" FontFamily="Segoe UI Bold" Foreground="Black" Canvas.Left="8" Canvas.Top="4"/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </Grid>
+                    
+                    <!-- Out of Stock Total -->
+                    <Grid Grid.Row="1">
+                        <Grid>
+                            <Rectangle RadiusX="10" RadiusY="10" Fill="#FFF2F2" Margin="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.1"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <!-- Content -->
+                            <Grid Margin="10">
+                                <Viewbox Stretch="Uniform" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Canvas Width="160" Height="60">
+                                            <materialDesign:PackIcon Kind="Alert" Width="15" Height="15" Foreground="#7E0000" Canvas.Left="10" Canvas.Top="22"/>
+                                            <StackPanel Orientation="Vertical" Canvas.Left="35" Canvas.Top="20">
+                                                <TextBlock Text="Out of Stock" TextAlignment="Left" FontSize="10" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#000000" />
+                                                <TextBlock Text="Total Number of Out of Stock Items" TextAlignment="Left" FontSize="5" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#828490" />
+                                            </StackPanel>
+
+                                            <TextBlock x:Name="outNo" Text="0" FontSize="12" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#7E0000" Canvas.Right="10" Canvas.Top="22"/>
+
+                                        </Canvas>
+                                    </StackPanel>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Stocks On Hand Total -->
+                    <Grid Grid.Row="2">
+                        <Grid>
+                            <Rectangle RadiusX="10" RadiusY="10" Fill="#FFF9F1" Margin="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.1"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <!-- Content -->
+                            <Grid Margin="10">
+                                <Viewbox Stretch="Uniform" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Canvas Width="160" Height="60">
+                                            <materialDesign:PackIcon Kind="AlertCircle" Width="15" Height="15" Foreground="#FD9148" Canvas.Left="10" Canvas.Top="22"/>
+                                            <StackPanel Orientation="Vertical" Canvas.Left="35" Canvas.Top="20">
+                                                <TextBlock Text="Critical Items" TextAlignment="Left" FontSize="10" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#000000" />
+                                                <TextBlock Text="Total Number of Critical Items" TextAlignment="Left" FontSize="5" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#828490" />
+                                            </StackPanel>
+
+                                            <TextBlock x:Name="critNo" Text="0" FontSize="12" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#FD9148" Canvas.Right="10" Canvas.Top="22"/>
+
+                                        </Canvas>
+                                    </StackPanel>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Stocks On Hand Total -->
+                    <Grid Grid.Row="3">
+                        <Grid>
+                            <Rectangle RadiusX="10" RadiusY="10" Fill="#EDFFEC" Margin="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.1"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <!-- Content -->
+                            <Grid Margin="10">
+                                <Viewbox Stretch="Uniform" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Canvas Width="160" Height="60">
+                                            <materialDesign:PackIcon Kind="Store" Width="15" Height="15" Foreground="#40BA6F" Canvas.Left="10" Canvas.Top="22"/>
+                                            <StackPanel Orientation="Vertical" Canvas.Left="35" Canvas.Top="20">
+                                                <TextBlock Text="Stocks on Hand" TextAlignment="Left" FontSize="10" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#000000" />
+                                                <TextBlock Text="Total Number of Stock Items" TextAlignment="Left" FontSize="5" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#828490" />
+                                            </StackPanel>
+
+                                            <TextBlock x:Name="stocksNo" Text="0" FontSize="12" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#40BA6F" Canvas.Right="10" Canvas.Top="22"/>
+
+                                        </Canvas>
+                                    </StackPanel>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <!-- Product Line -->
+                    <Grid Grid.Row="4">
+                        <Grid>
+                            <Rectangle RadiusX="10" RadiusY="10" Fill="#EEFBFF" Margin="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.1"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+
+                            <!-- Content -->
+                            <Grid Margin="10">
+                                <Viewbox Stretch="Uniform" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Canvas Width="160" Height="60">
+                                            <materialDesign:PackIcon Kind="AccountBoxOutline" Width="15" Height="15" Foreground="#287A9D" Canvas.Left="10" Canvas.Top="22"/>
+                                            <StackPanel Orientation="Vertical" Canvas.Left="35" Canvas.Top="20">
+                                                <TextBlock Text="Product Line" TextAlignment="Left" FontSize="10" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#000000" />
+                                                <TextBlock Text="Total Number of Products" TextAlignment="Left" FontSize="5" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#828490" />
+                                            </StackPanel>
+
+                                            <TextBlock x:Name="lineNo" Text="0" FontSize="12" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#287A9D" Canvas.Right="10" Canvas.Top="22"/>
+
+                                        </Canvas>
+                                    </StackPanel>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
             </Grid>
         </Grid>
     </Grid>
