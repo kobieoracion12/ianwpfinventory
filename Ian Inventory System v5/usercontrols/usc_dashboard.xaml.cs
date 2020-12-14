@@ -29,7 +29,118 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             ordersCompleted();
             criticalItems();
             topSelling();
-            recentTrans();
+            outTotal();
+            critTotal();
+            stocksTotal();
+            lineTotal();
+        }
+
+        // Out of Stock Total
+        public void outTotal()
+        {
+            conn.Close();
+            string query = "SELECT COUNT(prodQty) FROM datainventory WHERE prodQty = 0";
+            conn.query(query);
+
+            try
+            {
+                conn.Open();
+
+                MySqlDataReader dr = conn.read();
+                if (dr.Read())
+                {
+                    outNo.Text = dr.GetValue(0).ToString();
+                }
+
+                dr.Close();
+                dr.Dispose();
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        // Critical Items Total
+        public void critTotal()
+        {
+            conn.Close();
+            string query = "SELECT COUNT(prodQty) FROM datainventory WHERE prodQty <= 10 AND prodQty >= 1";
+            conn.query(query);
+
+            try
+            {
+                conn.Open();
+
+                MySqlDataReader dr = conn.read();
+                if (dr.Read())
+                {
+                    critNo.Text = dr.GetValue(0).ToString();
+                }
+
+                dr.Close();
+                dr.Dispose();
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        // Stocks on Hand Total
+        public void stocksTotal()
+        {
+            conn.Close();
+            string query = "SELECT COUNT(prodNo) FROM datainventory WHERE prodQty > 1";
+            conn.query(query);
+
+            try
+            {
+                conn.Open();
+
+                MySqlDataReader dr = conn.read();
+                if (dr.Read())
+                {
+                    stocksNo.Text = dr.GetValue(0).ToString();
+                }
+
+                dr.Close();
+                dr.Dispose();
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        // Stocks on Hand Total
+        public void lineTotal()
+        {
+            conn.Close();
+            string query = "SELECT COUNT(prodNo) FROM datainventory";
+            conn.query(query);
+
+            try
+            {
+                conn.Open();
+
+                MySqlDataReader dr = conn.read();
+                if (dr.Read())
+                {
+                    lineNo.Text = dr.GetValue(0).ToString();
+                }
+
+                dr.Close();
+                dr.Dispose();
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
         }
 
         // Critical Items
@@ -85,38 +196,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Fill the datatable
                 adapter.Fill(dt);
                 listviewTop.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-
-                adapter.Dispose();  // Dispose Adapter
-                                    // Close Connection
-                conn.Close();
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-        }
-
-        // Recent Transcations
-        public void recentTrans()
-        {
-            try
-            {
-                // Open Connection
-                conn.Open();
-                // Query Statement
-                string query = "SELECT payment_method, payment_total FROM sales_preview ORDER BY refNo DESC LIMIT 5";
-                // Mysql Command
-                conn.query(query);
-                // Execute
-                conn.execute();
-                // Adapter
-                MySqlDataAdapter adapter = conn.adapter();
-                //  Datatable
-                DataTable dt = new DataTable("datainventory");
-                // Fill the datatable
-                adapter.Fill(dt);
-                listviewRecent.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
 
                 adapter.Dispose();  // Dispose Adapter
