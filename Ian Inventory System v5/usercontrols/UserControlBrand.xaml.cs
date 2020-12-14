@@ -31,23 +31,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             catchData();
         }
 
-        // Pass Data to ListView
-        private void listViewInventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                // Get the product id
-                string prodId = listViewInventory.SelectedItems[0].ToString();
-                // Append ID and Product name
-                tbPrdId.Text = prodId;
-
-            }
-            catch (Exception ex)
-            {
-                return;
-            }
-        }
-
         // Load Data
         public void catchData()
         {
@@ -148,7 +131,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 conn.execute(); // Execute
 
 
-                MessageBox.Show("All brand has been removed"); // Show Dialog Succes
+                MessageBox.Show("All brand has been removed", "Brand Cleared", MessageBoxButton.OK, MessageBoxImage.Information); // Show Dialog Succes
 
                 conn.Close(); // Close Connection
 
@@ -182,7 +165,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void deleteCategory()
         {
             // Delete sql statement
-            string sql = "DELETE FROM category WHERE bId = @bId";
+            string sql = "DELETE FROM brand WHERE bId = @bId";
             conn.query(sql); // Command Database
 
             try
@@ -227,6 +210,27 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        
+        // Pass ListView Data To TextBox
+        private void listViewInventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                // Get the product id
+                string prodId = listViewInventory.SelectedItems[1].ToString();
+                // Append ID and Product name
+                tbPrdId.Text = prodId;
+
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
+        // Search Button
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            searchCategory();
+        }
     }
 }
