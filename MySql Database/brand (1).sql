@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2020 at 04:36 PM
+-- Generation Time: Dec 14, 2020 at 04:17 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -38,8 +38,9 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`bId`, `brand_name`) VALUES
-(1, 'Eunice Brand'),
-(2, 'Yakult Brand');
+(5, 'Golden Grillz\r\n\r\n'),
+(6, 'Coca Cola'),
+(7, 'Lucy Me');
 
 --
 -- Indexes for dumped tables
@@ -59,7 +60,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-  MODIFY `bId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `bId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

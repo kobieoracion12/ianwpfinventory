@@ -43,7 +43,7 @@
 
                 <!-- INVISIBLE TEXTBOX -->
                 <StackPanel Grid.Column="1">
-                    <TextBox Text="{Binding ElementName=listViewInventory, Path=SelectedItem.cId}" x:Name="tbPrdId" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Margin="10 10 50 5" Background="#edeff3" TextChanged="tbSearch_TextChanged" IsEnabled="False" />
+                    <TextBox Text="{Binding ElementName=listViewInventory, Path=SelectedItem.cId}" x:Name="tbPrdId" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Margin="10 10 50 5" Background="#edeff3" TextChanged="tbSearch_TextChanged" IsEnabled="False" Visibility="Hidden" />
                 </StackPanel>
 
                 <!-- Crud Buttons -->
