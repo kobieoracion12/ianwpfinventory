@@ -54,6 +54,9 @@
                                 <StackPanel Orientation="Horizontal" Margin="20">
                                     <Button x:Name="editItem" Content="Edit" Margin="5 0 5 0" Background="#5C9EF4" Click="editItem_Click"/>
                                     <Button x:Name="deleteItem" Content="Remove" Margin="5 0 5 0" Background="#E86845" BorderBrush="#FFFF6C6C" Click="deleteItem_Click"/>
+                                    <Button x:Name="printBtn" Background="Transparent" BorderBrush="Transparent" Width="80" Height="50" Margin="0 0 0 0" Click="printPreview_Click">
+                                        <materialDesign:PackIcon Kind="Printer" Foreground="Black" Width="50" Height="40" />
+                                    </Button>
                                 </StackPanel>
                             </Viewbox>
                         </Grid>

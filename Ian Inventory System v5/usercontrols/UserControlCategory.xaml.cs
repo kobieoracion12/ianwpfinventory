@@ -257,5 +257,11 @@ namespace NavigationDrawerPopUpMenu2
                 MessageBox.Show(ex.Message);
             }
         }
+
+        // Print Category
+        private void printCategory_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

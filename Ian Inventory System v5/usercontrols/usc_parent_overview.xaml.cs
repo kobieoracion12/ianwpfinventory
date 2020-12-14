@@ -17,6 +17,7 @@ using MySql.Data.MySqlClient;
 using NavigationDrawerPopUpMenu2.windows;
 using NavigationDrawerPopUpMenu2.usercontrols;
 using NavigationDrawerPopUpMenu2.classes;
+using NavigationDrawerPopUpMenu2.reports;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
@@ -24,6 +25,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     {
         Database conn = new Database();
         public static int prdID;
+        public string filter = "Select";
         public WindowState WindowState { get; private set; }
         public usc_parent_overview()
         {
@@ -116,7 +118,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             string prdId = tbPrdId.Text;
             if (prdId == "")
             { // Check input if empty
-                MessageBox.Show("Please select one on the table cell");
+                MessageBox.Show("Please select one on the table cell", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {   // If not empty then proceed to edit window
@@ -131,7 +133,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             if (tbPrdId.Text == "")
             { // Check if field is empty
-                MessageBox.Show("Please select one on the table cell");
+                MessageBox.Show("Please select one on the table cell", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {   // Delete the product
@@ -200,6 +202,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Filter Button
         public void sortButton_Click(object sender, RoutedEventArgs e)
         {
+            filter = "Sort";
             string doaFrom, doaTo, brand;
             // Init selected dates from calendar
             DateTime? selectedDateFrom = sortDOAfrom.SelectedDate;
@@ -244,6 +247,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             catchData();
             sortBrand.Text = "Select";
             sortStatus.Text = "Select";
+            filter = "Select";
         }
 
         // Search Function
@@ -277,6 +281,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 MessageBox.Show(x.Message);
             }
+        }
+
+        // Print
+        private void printPreview_Click(object sender, RoutedEventArgs e)
+        {
+            report_inventory rprtinv = new report_inventory(this);
+            rprtinv.printPreview();
+            rprtinv.ShowDialog();
         }
     }
 }
