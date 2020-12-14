@@ -16,6 +16,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using NavigationDrawerPopUpMenu2.classes;
 using NavigationDrawerPopUpMenu2.windows;
+using NavigationDrawerPopUpMenu2.reports;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
@@ -424,13 +425,16 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                         //MessageBox.Show(prd.salesItem);
                     }
+                    report_stockout rptstockout = new report_stockout(this);
+                    rptstockout.printPreview();
+                    rptstockout.ShowDialog();
 
-                    MessageBox.Show("Your changes has been saved", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     conn.Open();
                     loadData(); // Update UI
                     conn.Close();
                     transGenerator(); // Generate a new Trans#
                     stockOut.Clear(); // Clear ListView
+                    MessageBox.Show("Your changes has been saved", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
                 catch (Exception ex)

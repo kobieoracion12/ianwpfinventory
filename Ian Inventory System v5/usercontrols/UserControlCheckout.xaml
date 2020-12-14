@@ -35,7 +35,7 @@
                 <materialDesign:PackIcon Kind="Download" Width="25" Height="25" Margin="50 0 0 0"/>
                 <TextBlock Text="Stock Out" TextAlignment="Left" FontSize="20" FontFamily="Segoe UI Semibold" Margin="5 0 0 0"/>
                 <!-- Trans # -->
-                <TextBlock Text="Transaction #" Margin="5 0 0 0"/>
+                <TextBlock Text="Stock Out #" Margin="5 0 0 0"/>
                 <TextBlock x:Name="orderNo" Text="00000" Margin="5 0 0 0"/>
                 <TextBox Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.stockoutItem}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
             </StackPanel>
