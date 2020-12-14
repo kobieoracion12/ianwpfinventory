@@ -32,7 +32,9 @@
 
                 <Grid>
                     <Viewbox Stretch="Uniform">
-                        
+                        <StackPanel Orientation="Horizontal">
+                            
+                        </StackPanel>
                     </Viewbox>
                 </Grid>
             </Grid>
@@ -251,13 +253,35 @@
         </Grid>
 
         <!-- Right Navigation -->
-        <Grid Grid.Column="3" Grid.RowSpan="2">
+        <Grid Grid.Column="3" Grid.Row="1" Grid.RowSpan="2">
             <Grid>
                 <Rectangle MinHeight="110" Fill="White" Grid.RowSpan="2" >
                     <Rectangle.Effect>
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2" Direction="-90"/>
                     </Rectangle.Effect>
                 </Rectangle>
+
+                <Grid Margin="5">
+                    <Viewbox Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Recent Transactions" FontWeight="Bold" FontSize="10" Foreground="Black" Margin="10" TextAlignment="Center"/>
+                            <ListView x:Name="listviewRecent" SelectionMode="Single" FontSize="10" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                                <ListView.View>
+                                    <GridView AllowsColumnReorder="False">
+                                        <GridView.Columns>
+                                            <GridViewColumn DisplayMemberBinding="{Binding payment_method }" Header="Payment" Width="80"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding payment_total }" Header="Total" Width="70" />
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            
+                            <Rectangle HorizontalAlignment="Stretch" Stroke="#F0F0F3" Margin="0 20 0 0"/>
+                        
+                        </StackPanel>
+                    </Viewbox>
+                </Grid>
+                
             </Grid>
         </Grid>
     </Grid>

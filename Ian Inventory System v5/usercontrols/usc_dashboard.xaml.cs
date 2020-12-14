@@ -29,6 +29,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             ordersCompleted();
             criticalItems();
             topSelling();
+            recentTrans();
         }
 
         // Critical Items
@@ -67,26 +68,65 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Top Selling Items
         public void topSelling()
         {
-            // Open Connection
-            conn.Open();
-            // Query Statement
-            string query = "SELECT prodNo, prodItem, prodBought FROM datainventory WHERE prodBought ORDER BY prodBought DESC";
-            // Mysql Command
-            conn.query(query);
-            // Execute
-            conn.execute();
-            // Adapter
-            MySqlDataAdapter adapter = conn.adapter();
-            //  Datatable
-            DataTable dt = new DataTable("datainventory");
-            // Fill the datatable
-            adapter.Fill(dt);
-            listviewTop.ItemsSource = dt.DefaultView;
-            adapter.Update(dt);
+            try
+            {
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT prodNo, prodItem, prodBought FROM datainventory WHERE prodBought ORDER BY prodBought DESC";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("datainventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listviewTop.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
 
-            adapter.Dispose();  // Dispose Adapter
-                                // Close Connection
-            conn.Close();
+                adapter.Dispose();  // Dispose Adapter
+                                    // Close Connection
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        // Recent Transcations
+        public void recentTrans()
+        {
+            try
+            {
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT payment_method, payment_total FROM sales_preview ORDER BY refNo DESC LIMIT 5";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("datainventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listviewRecent.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+
+                adapter.Dispose();  // Dispose Adapter
+                                    // Close Connection
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
         }
 
         // Generated Profit
