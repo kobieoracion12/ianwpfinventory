@@ -346,13 +346,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
-=======
     <Page Include="usercontrols\UserControlCheckout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
->>>>>>> 3440308644136c0daf1420a9c3042aa326bbb852
     <Page Include="usercontrols\UserControlDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -409,13 +406,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
-=======
     <Page Include="windows\win_add_category.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
->>>>>>> 3440308644136c0daf1420a9c3042aa326bbb852
     <Page Include="windows\win_changequantity_stockout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
