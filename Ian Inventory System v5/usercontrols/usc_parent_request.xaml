@@ -103,16 +103,16 @@
                                 <TextBox x:Name="itemRP" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
+                            <!-- VAT -->
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="Value Added Tax (VAT)" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
+                                <TextBox x:Name="itemVAT" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
+                            </StackPanel>
+
                             <!-- Date of Arrival -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Date of Arrival" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
                                 <DatePicker x:Name="itemDOA" FontSize="8" Height="20" BorderThickness="1" FontFamily="Microsoft Tai Le" Background="White" Padding="2 0 0 0" Width="190" VerticalAlignment="Center" />
-                            </StackPanel>
-
-                            <!-- Expiration Date-->
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <TextBlock Text="Expiration Date" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <DatePicker x:Name="itemEXPD" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
                             <!-- Buttons-->

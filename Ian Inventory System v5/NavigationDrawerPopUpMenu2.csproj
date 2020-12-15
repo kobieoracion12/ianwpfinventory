@@ -153,6 +153,9 @@
     <Compile Include="reports\report_stockout.xaml.cs">
       <DependentUpon>report_stockout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_category.xaml.cs">
+      <DependentUpon>usc_category.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_dashboard.xaml.cs">
       <DependentUpon>usc_dashboard.xaml</DependentUpon>
     </Compile>
@@ -321,6 +324,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\customStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_category.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

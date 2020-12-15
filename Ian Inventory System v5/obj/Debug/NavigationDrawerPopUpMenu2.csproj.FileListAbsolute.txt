@@ -281,3 +281,5 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_stockout.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_inventory.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_stockout.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_category.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_category.baml

@@ -18,7 +18,6 @@ using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
-    /// </summary>
     public partial class usc_stockreturn : UserControl
     {
         Database conn = new Database();
@@ -37,7 +36,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT stockoutTransNo, stockoutItem, stockoutQty, stockoutDate, stockoutStatus FROM stock_out WHERE stockoutStatus = 'Stock Out'";
+                string query = "SELECT stockoutTransNo, stockoutItem, stockoutQty, stockoutDate, stockoutStatus FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutDate DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute

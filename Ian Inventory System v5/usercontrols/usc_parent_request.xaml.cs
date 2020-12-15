@@ -118,7 +118,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 if (itemNo.Text.Length > 0)
                 {
                     string search = itemNo.Text;
-                    string query = "SELECT itemNo, itemName, itemBrand, itemRP, itemSRP, itemDOA, itemEXPD FROM cashierinventory WHERE itemNo = '" + search + "'";
+                    string query = "SELECT itemNo, itemName, itemBrand, itemRP, itemSRP, itemVAT, itemDOA FROM cashierinventory WHERE itemNo = '" + search + "'";
                     conn.query(query); //CMD 
                     conn.Open();
                     MySqlDataReader dr = conn.read();
@@ -129,8 +129,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         itemBrand.Text = dr.GetValue(2).ToString();
                         itemRP.Text = dr.GetValue(3).ToString();
                         itemSRP.Text = dr.GetValue(4).ToString();
-                        itemDOA.Text = dr.GetValue(5).ToString();
-                        itemEXPD.Text = dr.GetValue(6).ToString();
+                        itemVAT.Text = dr.GetValue(5).ToString();
+                        itemDOA.Text = dr.GetValue(6).ToString();
                         dr.Close();
                         dr.Dispose(); // Dispose
                     }
@@ -154,7 +154,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             conn.Open();
             try
             {
-                string addRequest = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodSRP, prodRP, prodDOA, prodEXPD) VALUES (@no, @item, @brand, @srp, @rp, @doa, @expd)";
+                string addRequest = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodSRP, prodRP, prodVAT, prodDOA) VALUES (@no, @item, @brand, @srp, @rp, @vat, @doa)";
                 conn.query(addRequest);
 
                 conn.bind("@no", itemNo.Text);
@@ -162,12 +162,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 conn.bind("@brand", itemBrand.Text);
                 conn.bind("@srp", itemSRP.Text);
                 conn.bind("@rp", itemRP.Text);
+                conn.bind("vat", itemVAT.Text);
                 conn.bind("@doa", DateTime.Now);
-
-                string str = itemEXPD.Text;
-                DateTime dt = DateTime.Parse(str);
-
-                conn.bind("@expd", dt);
                 var check = conn.execute();
                 if (check == 1)
                 {
@@ -202,8 +198,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             itemBrand.Clear();
             itemSRP.Clear();
             itemRP.Clear();
+            itemVAT.Clear();
             itemDOA.Text = "";
-            itemEXPD.Text = "";
             fetchData();
         }
     }

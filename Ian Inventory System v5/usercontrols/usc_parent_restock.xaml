@@ -66,19 +66,20 @@
                                 <Viewbox Stretch="Uniform">
                                     <StackPanel Orientation="Vertical">
                                         <Label Content="Item Description" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
-                                        <TextBox x:Name="restockItem" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                        <TextBox x:Name="restockItem" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
+                                        
                                         <Label Content="Brand" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
-                                        <TextBox x:Name="restockBrand" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                        <TextBox x:Name="restockBrand" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
 
                                         <Label Content="Quantity (In Stock / To Add)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
                                         <StackPanel Orientation="Horizontal">
-                                            <TextBox x:Name="onrestockQty" IsReadOnly="True" TextAlignment="Center" HorizontalAlignment="Left" Width="200" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                            <TextBox x:Name="onrestockQty" IsReadOnly="True" TextAlignment="Center" HorizontalAlignment="Left" Width="200" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
                                             <Label Content="+" FontWeight="SemiBold" FontSize="15" Foreground="Black"/>
-                                            <TextBox x:Name="restockQty" Text="0" TextAlignment="Center" HorizontalAlignment="Right" Width="100" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                            <TextBox x:Name="restockQty" TextAlignment="Center" HorizontalAlignment="Right" Width="100" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
                                         </StackPanel>
 
                                         <Label Content="Sugested Retail Price (SRP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
-                                        <TextBox x:Name="restockSRP" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                        <TextBox x:Name="restockSRP" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
                                     </StackPanel>
                                 </Viewbox>
                             </Grid>
@@ -88,19 +89,21 @@
                             <Grid>
                                 <Viewbox Stretch="Uniform">
                                     <StackPanel Orientation="Vertical">
+                                        <Label Content="Value Added Tax (VAT)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" />
+                                        <TextBox x:Name="restockVAT" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
+                                        
                                         <Label Content="Retail Price (RP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
-                                        <TextBox x:Name="restockRP" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                        <TextBox x:Name="restockRP" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
 
                                         <Label Content="Date of Arrival" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
-                                        <DatePicker x:Name="restockDOA" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" HorizontalAlignment="Stretch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                        <DatePicker x:Name="restockDOA" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" HorizontalAlignment="Stretch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False" />
 
-                                        <Label Content="Expiration Date" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
+                                        <Label Content="Expiration Date" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>
                                         <StackPanel Orientation="Horizontal">
-                                            <DatePicker x:Name="restockEXPD" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="370"  Margin="25 0 25 0" Background="White"/>
+                                            <DatePicker x:Name="restockEXPD" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="370"  Margin="25 0 25 0" Background="White" IsEnabled="False" Visibility="Hidden"/>
                                         </StackPanel>
 
-                                        <Label Content="Sugested Retail Price (SRP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>
-                                        <TextBox HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" Visibility="Hidden"/>
+                                        
                                     </StackPanel>
                                 </Viewbox>
                             </Grid>

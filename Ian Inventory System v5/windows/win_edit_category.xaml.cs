@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using NavigationDrawerPopUpMenu2.usercontrols;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
@@ -24,11 +25,18 @@ namespace NavigationDrawerPopUpMenu2.windows
         Database conn = new Database();
         UserControlInventory usc_categ;
         string cName = "";
+        private usc_category usc_category;
+
         public win_edit_category(UserControlInventory usc_categ)
         {
             InitializeComponent();
             this.usc_categ = usc_categ;
             editCateg.Text = returnCategory();
+        }
+
+        public win_edit_category(usc_category usc_category)
+        {
+            this.usc_category = usc_category;
         }
 
         private void editCategoryBtn_Click(object sender, RoutedEventArgs e)

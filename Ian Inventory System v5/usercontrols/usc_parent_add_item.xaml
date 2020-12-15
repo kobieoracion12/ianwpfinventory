@@ -30,7 +30,7 @@
                 <Grid Margin="10">
                     <Viewbox Stretch="Uniform" Margin="10">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                            <Label Content="Product Entry:" />
+                            <Label Content="Product Code (Barcode):" />
                             <TextBox x:Name="checkBarcode" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="40" Width="700" Margin="25 0 25 0" Background="White" KeyDown="checkBarcode_KeyDown"/>
                         </StackPanel>
                     </Viewbox>
@@ -95,17 +95,15 @@
                                         <Label Content="Retail Price (RP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
                                         <TextBox x:Name="addSRP" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
 
+                                        <Label Content="Value Added Tax (VAT)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" />
+                                        <TextBox x:Name="addVAT" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+
                                         <Label Content="Date of Arrival" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
                                         <DatePicker x:Name="addDOA" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" HorizontalAlignment="Stretch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
 
-                                        <Label Content="Expiration Date" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
-                                        <StackPanel Orientation="Horizontal">
-                                            <DatePicker x:Name="addEXPD" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="370"  Margin="25 0 25 0" Background="White"/>
-                                        </StackPanel>
-
                                         <Label Content="Expiration Date" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>
                                         <StackPanel Orientation="Horizontal">
-                                            <DatePicker HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="370"  Margin="25 0 25 0" Background="White" Visibility="Hidden"/>
+                                            <DatePicker x:Name="addEXPD" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="370"  Margin="25 0 25 0" Background="White" Visibility="Hidden"/>
                                         </StackPanel>
 
                                         <Label Content="Sugested Retail Price (SRP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>

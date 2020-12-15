@@ -35,6 +35,7 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
 
                 <StackPanel Orientation="Vertical">
@@ -49,11 +50,18 @@
                     <TextBlock Text="PRODUCT BRAND" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Vertical">
-                    <TextBlock Text="SUGGESTED RETAIL PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                    <TextBlock Text="SUGGESTED RETAIL PRICE (SRP)" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
                 </StackPanel>
                 <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Vertical">
-                    <TextBlock Text="RETAIL PRICE" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
-                </StackPanel>          
+                    <TextBlock Text="RETAIL PRICE (RP)" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="5" Orientation="Vertical">
+                    <TextBlock Text="VALUE ADDED TAX (VAT)" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="0" Grid.Row="6" Orientation="Vertical">
+                    <TextBlock Text="Category" FontFamily="Microsoft Tai Le" FontWeight="Bold" FontSize="20" Foreground="#7B7873" Padding="10" Margin="50 0 100 0"/>
+                </StackPanel>
+                
                 <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left">
                     <TextBox Padding="2" IsEnabled="False" x:Name="editProdNo" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
@@ -61,13 +69,23 @@
                     <TextBox Padding="2" x:Name="editProdItem" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Vertical">
-                    <TextBox Padding="2" x:Name="editProdBrand" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <ComboBox Padding="2" x:Name="editProdBrand" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Height="40" Margin="5" IsEditable="True">
+                        <ComboBoxItem Content="Select" IsSelected="True" />
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical">
                     <TextBox Padding="2" x:Name="editProdSRP" x:FieldModifier="public" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical">
                     <TextBox Padding="2" x:Name="editProdRP" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
+                    <TextBox Padding="2" x:Name="editProdVAT" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Vertical">
+                    <ComboBox Padding="2" x:Name="editProdCategory" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Height="40" Margin="5" IsEditable="True">
+                        <ComboBoxItem Content="Select" IsSelected="True"/>
+                    </ComboBox>
                 </StackPanel>
             </Grid>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">

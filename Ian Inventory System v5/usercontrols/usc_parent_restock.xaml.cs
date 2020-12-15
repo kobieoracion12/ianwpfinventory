@@ -34,7 +34,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             if (e.Key == Key.Return)
             {
                 string search = entrySearch.Text;
-                string scan = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodDOA, prodEXPD FROM datainventory WHERE prodNo= '" + search + "'";
+                string scan = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodDOA FROM datainventory WHERE prodNo= '" + search + "'";
                 conn.query(scan);
                 try
                 {
@@ -48,8 +48,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         onrestockQty.Text = row[2];
                         restockSRP.Text = row[3];
                         restockRP.Text = row[4];
-                        restockDOA.Text = row[5];
-                        restockEXPD.Text = row[6];
+                        restockVAT.Text = row[5];
+                        restockDOA.Text = row[6];
+
+                        restockQty.Focus();
                     }
                     else
 
@@ -78,25 +80,19 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             try
             {
-                string restock = "UPDATE datainventory SET prodItem = @Itm, prodBrand = @Brnd, prodItem = @Itm, prodQty = @Qty, prodSRP = @SRP, prodRP = @RP, prodDOA = @DOA, prodEXPD = @EXPD WHERE prodNo = @No";
+                int current = int.Parse(onrestockQty.Text);
+                int toRestock = int.Parse(restockQty.Text);
+
+                int toRestockTotal = (current + toRestock);
+
+                string restock = "UPDATE datainventory SET prodQty = @Qty WHERE prodNo = @No";
                 conn.query(restock);
 
                 try
                 {
                     conn.Open();
                     conn.bind("@No", entrySearch.Text);
-                    conn.bind("@Itm", restockItem.Text);
-                    conn.bind("@Brnd", restockBrand.Text);
-                    conn.bind("@Qty", restockQty.Text);
-                    conn.bind("@SRP", restockSRP.Text);
-                    conn.bind("@RP", restockRP.Text);
-                    conn.bind("@DOA", DateTime.Now);
-
-                    string date = restockEXPD.Text;
-                    DateTime dateTime;
-                    dateTime = DateTime.Parse(date);
-
-                    conn.bind("@EXPD", dateTime);
+                    conn.bind("@Qty", toRestockTotal);
 
                     var check = conn.execute();
                     if (check == 1)
@@ -109,6 +105,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         restockQty.Clear();
                         restockSRP.Clear();
                         restockRP.Clear();
+                        restockVAT.Clear();
                         onrestockQty.Clear();
                         restockDOA.Text = "";
                         restockEXPD.Text = "";

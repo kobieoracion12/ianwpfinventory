@@ -83,8 +83,9 @@
                                         <GridViewColumn DisplayMemberBinding="{Binding prodBrand }" Header="Brand" Width="250"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding prodSRP }" Header="SRP" Width="100" />
                                         <GridViewColumn DisplayMemberBinding="{Binding prodRP }" Header="Retail Price" Width="120"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding prodVAT }" Header="VAT" Width="100"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding prodCategory }" Header="Category" Width="200"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding prodDOA }" Header="Date of Arrival" Width="200"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodEXPD }" Header="Expiration Date" Width="200"/>
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>

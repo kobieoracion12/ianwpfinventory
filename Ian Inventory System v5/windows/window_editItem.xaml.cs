@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using NavigationDrawerPopUpMenu2.classes;
+using NavigationDrawerPopUpMenu2.usercontrols;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,13 +43,15 @@ namespace NavigationDrawerPopUpMenu2.windows
             editProdNo.Text = Value.ToString();
             // Append the data in the textboxes to be edited.
             catchData();
+            cbBrand();
+            cbCatergory();
         }
 
         // Select Data the Edit
         public void catchData()
         {
             long prdNo = Convert.ToInt64(editProdNo.Text); // Product Number
-            string sql = "SELECT * FROM datainventory WHERE prodNo = '" + prdNo + "'"; // Sql Statement 
+            string sql = "SELECT prodNo, prodItem, prodBrand, prodSRP, prodRP, prodVAT, prodCategory FROM datainventory WHERE prodNo = '" + prdNo + "'"; // Sql Statement 
             conn.query(sql); // Command Database
             
             try
@@ -59,13 +62,19 @@ namespace NavigationDrawerPopUpMenu2.windows
                 // Append the data to be edited in the textbox
                 if (reader.Read())
                 {
-                    //  0 = Product No, 1 = ProdItem, 2 = ProdBrand, 3 = ProdSRP, 4 = ProdRP, 5 =  prodDOA, 6 = ProdEXPD
-                    string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5) };
-                    editProdNo.Text = row[0]; // Product No
-                    editProdItem.Text = row[1]; // Product Item
-                    editProdBrand.Text = row[2]; // Product Brand
-                    editProdSRP.Text = row[4]; // Product SRP
-                    editProdRP.Text = row[5]; // Product RP
+                    string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6) };
+                    editProdNo.Text = row[0]; 
+                    editProdItem.Text = row[1]; 
+                    editProdBrand.Text = row[2]; 
+                    editProdSRP.Text = row[3]; 
+                    editProdRP.Text = row[4];
+                    editProdVAT.Text = row[5];
+                    editProdCategory.Text = row[6];
+
+                    if (editProdCategory.Text == "")
+                    {
+                        editProdCategory.Text = "Select";
+                    }
                 }
 
                 reader.Close();
@@ -87,9 +96,10 @@ namespace NavigationDrawerPopUpMenu2.windows
             string prdBrand = editProdBrand.Text; // Product Brand
             string prdSRP = editProdSRP.Text; // Product SRP
             string prdRP = editProdRP.Text; // Product RP
+            string prdVAT = editProdVAT.Text; // Product VAT
 
             // Check if fields are empty
-            if (prdNo == "" || prdItem == "" || prdBrand == "" || prdSRP == "" || prdRP == "")
+            if (prdNo == "" || prdItem == "" || prdBrand == "" || prdSRP == "" || prdRP == "" || prdVAT == "")
             {
                 MessageBox.Show("Fields cannot be empty");
             }
@@ -107,12 +117,23 @@ namespace NavigationDrawerPopUpMenu2.windows
             long prdNo = Convert.ToInt64(editProdNo.Text); // Product No
             string prdItem = editProdItem.Text; // Product Item
             string prdBrand = editProdBrand.Text; // Product Brand
+            if (prdBrand == "Select")
+            {
+                prdBrand = null;
+            }
             string prdSRP = editProdSRP.Text; // Product SRP
             string prdRP = editProdRP.Text; // Product RP
+            string prdVAT = editProdVAT.Text; // Product VAT
+            string prdCateg = editProdCategory.Text;
+            if (prdCateg == "Select")
+            {
+                prdCateg = null;
+            }
 
             // Sql Statement
-            string sql = "UPDATE datainventory SET prodItem = @prdItem, prodBrand = @prdBrand, prodSRP = @prdSRP, prodRP = @prdRP WHERE prodNo = @prdNo ";
-            
+            string sql = "UPDATE datainventory SET prodItem = @prdItem, prodBrand = @prdBrand, prodSRP = @prdSRP, prodRP = @prdRP, prodVAT = @prdVAT, prodCategory = @prdCateg WHERE prodNo = @prdNo ";
+
+            conn.Close();
             try
             {
                 conn.Open();  // Open Connection
@@ -123,14 +144,17 @@ namespace NavigationDrawerPopUpMenu2.windows
                 conn.bind("@prdBrand", prdBrand);
                 conn.bind("@prdSRP", prdSRP);
                 conn.bind("@prdRP", prdRP);
+                conn.bind("@prdVAT", prdVAT);
+                conn.bind("@prdCateg", prdCateg);
                 conn.bind("@prdNo", editProdNo.Text);
- 
+
                 conn.cmd().Prepare(); // Prepare
                 conn.execute(); // ExecuteNonQuery
 
                 MessageBox.Show("Successfully Updated"); // Show Dialog Succes
 
                 conn.Close(); // Close Connection
+                Close();
 
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
@@ -142,7 +166,61 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Close the window 
         private void editCancel_Click(object sender, RoutedEventArgs e)
         { 
-            this.Close();
+            Close();
+        }
+
+        // Catch Brands
+        public void cbBrand()
+        {
+            conn.Close();
+            try
+            {
+                conn.Open();
+                string query = "SELECT DISTINCT prodBrand FROM datainventory ORDER BY prodBrand ASC";
+                conn.query(query);
+                conn.execute();
+                MySqlDataReader drd = conn.read();
+
+                while (drd.Read())
+                {
+                    editProdBrand.Items.Add(drd.GetString(0).ToString());
+                }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        // Catch Category
+        public void cbCatergory()
+        {
+            conn.Close();
+            try
+            {
+                conn.Open();
+                string asd = "SELECT DISTINCT category_name FROM category ORDER BY category_name ASC";
+                conn.query(asd);
+                conn.execute();
+                MySqlDataReader drd = conn.read();
+
+                while (drd.Read())
+                {
+                    editProdCategory.Items.Add(drd.GetString(0).ToString());
+                }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
         }
     }
 }

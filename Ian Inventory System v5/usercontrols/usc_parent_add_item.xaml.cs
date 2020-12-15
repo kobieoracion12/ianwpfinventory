@@ -31,7 +31,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             cbBrand();
         }
 
-        // Barcode Scanner Function
+        // Checks if the Item Already Exist in the Database
         private void checkBarcode_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)
@@ -74,6 +74,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             addRP.Clear();
             addSRP.Clear();
             addQty.Clear();
+            addVAT.Clear();
             addBrand.Text = "";
             addEXPD.Text = "";
         }
@@ -81,7 +82,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Submit Button
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (checkBarcode.Text == "" || addItem.Text == "" || addBrand.Text == "" || addQty.Text == "" || addSRP.Text == "" || addRP.Text == "" || addDOA.Text == "" || addEXPD.Text == "")
+            if (checkBarcode.Text == "" || addItem.Text == "" || addBrand.Text == "" || addQty.Text == "" || addSRP.Text == "" || addRP.Text == "" || addVAT.Text == "" || addDOA.Text == "")
             {
                 MessageBox.Show("Please Complete the Form");
             }
@@ -90,7 +91,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 try
                 {
                     con.Open();
-                    string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pdoa, @pexpd);";
+                    string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVat, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pv, @pdoa);";
                     con.query(itemInsert);
 
                     con.bind("@pn", checkBarcode.Text);
@@ -99,12 +100,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     con.bind("@py", addQty.Text);
                     con.bind("@pp", addSRP.Text);
                     con.bind("@pq", addRP.Text);
-
-                    string str = addEXPD.Text;
-                    DateTime dt = DateTime.Parse(str);
-
+                    con.bind("@pv", addVAT.Text);
                     con.bind("@pdoa", DateTime.Now);
-                    con.bind("@pexpd", dt);
 
                     con.cmd().Prepare();
                     int a = con.execute();

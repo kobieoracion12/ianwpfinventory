@@ -241,7 +241,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // RefreshButton
+        // Refresh Button
         private void refreshItem_Click(object sender, RoutedEventArgs e)
         {
             catchData();
@@ -259,7 +259,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Open Connection 
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM datainventory WHERE prodNo LIKE '%" + tbSearch.Text + "%' OR prodItem LIKE '%" + tbSearch.Text + "%' OR prodBrand LIKE '%" + tbSearch.Text + "%' OR prodSRP LIKE '%" + tbSearch.Text + "%' OR prodRP LIKE '%" + tbSearch.Text + "%'";
+                string query = "SELECT * FROM datainventory WHERE prodNo LIKE '%" + tbSearch.Text + "%' OR prodItem LIKE '%" + tbSearch.Text + "%' OR prodBrand LIKE '%" + tbSearch.Text + "%' OR prodSRP LIKE '%" + tbSearch.Text + "%' OR prodRP LIKE '%" + tbSearch.Text + "%' ORDER BY prodItem ASC";
                 // Mysql Command
                 conn.query(query);
                 // Execute

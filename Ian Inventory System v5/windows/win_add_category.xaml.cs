@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using NavigationDrawerPopUpMenu2.usercontrols;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
@@ -25,10 +26,17 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         // UserControl Category
         UserControlInventory usc_category;
+        private usc_category usc_category1;
+
         public win_add_category(UserControlInventory usc_category)
         {
             InitializeComponent();
             this.usc_category = usc_category;
+        }
+
+        public win_add_category(usc_category usc_category1)
+        {
+            this.usc_category1 = usc_category1;
         }
 
         // Add Category
