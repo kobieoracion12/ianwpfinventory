@@ -77,44 +77,10 @@
                                         </StackPanel>
                                     </ListViewItem>
 
-                                    <!-- Add Brand-->
-                                    <ListViewItem x:Name="stAddBrand" Height="35" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal" Width="70">
-                                            <materialDesign:PackIcon Kind="Barley" Width="12"/>
-                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Text="Add Brand" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
-                                                <TextBlock Text="Add/Manage Brands" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListViewItem>
-
-                                    <!-- Stocks to Shelf -->
-                                    <ListViewItem x:Name="stShelf" Height="35" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal" Width="70">
-                                            <materialDesign:PackIcon Kind="Shopping" Width="12"/>
-                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Text="Stocks to Shelf" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
-                                                <TextBlock Text="Choose Products to Shelf" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListViewItem>
-
-                                    <!-- Return Stocks -->
-                                    <ListViewItem x:Name="stReturn" Height="35" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal" Width="70">
-                                            <materialDesign:PackIcon Kind="KeyboardReturn" Width="12"/>
-                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Text="Return Stocks" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
-                                                <TextBlock Text="Return Stocks to Inventory" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListViewItem>
-                                    
-
                                     <!-- Stock Request -->
                                     <ListViewItem x:Name="stItemReq" Height="35" HorizontalAlignment="Center">
                                         <StackPanel Orientation="Horizontal" Width="70">
-                                            <materialDesign:PackIcon Kind="Inbox" Width="12"/>
+                                            <materialDesign:PackIcon Kind="NotificationClearAll" Width="12"/>
                                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                                 <TextBlock Text="Stock Request" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
                                                 <TextBlock Text="Manage Stock Request" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>

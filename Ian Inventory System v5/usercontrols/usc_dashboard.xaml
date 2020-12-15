@@ -35,7 +35,13 @@
                         <Canvas Width="260" Height="20" >
                             <TextBlock x:Name="dateTimeNow" Text="12:00 AM  01/01/01" FontSize="4" FontFamily="Segoe UI Bold" Foreground="Black" Canvas.Right="8" Canvas.Top="7"/>
                         </Canvas>
-                    </Viewbox> 
+                    </Viewbox>
+
+                    <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
+                        <Canvas Width="260" Height="20" >
+                            <TextBlock Text="Dashboard" FontSize="4" FontFamily="Segoe UI Bold" Foreground="Black" Canvas.Left="8" Canvas.Top="7"/>
+                        </Canvas>
+                    </Viewbox>
                 </Grid>
             </Grid>
         </Grid>
@@ -263,12 +269,12 @@
 
                 <Grid Margin="5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="30*"/>
                         <RowDefinition Height="60*"/>
                         <RowDefinition Height="60*"/>
                         <RowDefinition Height="60*"/>
                         <RowDefinition Height="60*"/>
-                        <RowDefinition Height="140*"/>
+                        <RowDefinition Height="130*"/>
                     </Grid.RowDefinitions>
 
                     <!-- Navigation Header -->
@@ -276,7 +282,10 @@
                         <Grid>
                             <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
                                 <Canvas Width="160" Height="20" >
-                                    <TextBlock Text="Quick Preview" FontSize="10" FontFamily="Segoe UI Bold" Foreground="Black" Canvas.Left="8" Canvas.Top="4"/>
+                                    <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="3">
+                                        <materialDesign:PackIcon Kind="FormatListBulleted" Width="15" Height="15" Margin="0 0 5 0"/>
+                                        <TextBlock Text="Status Report" FontSize="10" FontFamily="Segoe UI Bold" Foreground="Black"/>
+                                    </StackPanel>
                                 </Canvas>
                             </Viewbox>
                         </Grid>
@@ -395,6 +404,25 @@
                                     </StackPanel>
                                 </Viewbox>
                             </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <Grid>
+                            <Viewbox Stretch="Uniform" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Canvas Width="160" Height="140">
+
+                                        <StackPanel Orientation="Vertical" Canvas.Left="5" Canvas.Top="5">
+                                            <Image Source="../assets/all_caught_up.png" Stretch="Uniform" Width="150" Canvas.Left="5"/>
+                                            <TextBlock Text="You're All Caught Up" TextAlignment="Center" FontSize="10" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#000000" />
+                                            <TextBlock Text="Keeping Things Updated..." TextAlignment="Center" FontSize="5" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#828490" />
+                                        </StackPanel>
+
+
+                                    </Canvas>
+                                </StackPanel>
+                            </Viewbox>
                         </Grid>
                     </Grid>
 

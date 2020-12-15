@@ -93,7 +93,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public void stocksTotal()
         {
             conn.Close();
-            string query = "SELECT COUNT(prodNo) FROM datainventory WHERE prodQty > 1";
+            string query = "SELECT SUM(prodQty) FROM datainventory WHERE prodQty > 1";
             conn.query(query);
 
             try
@@ -281,6 +281,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Orders Completed
         private void ordersCompleted()
         {
+            dateTimeNow.Text = DateTime.Now.ToLongDateString();
             // Make sure Connection is Closed
             conn.Close();
             //  Command Database

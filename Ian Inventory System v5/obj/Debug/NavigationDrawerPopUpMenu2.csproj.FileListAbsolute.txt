@@ -277,3 +277,7 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\inv\ianwpfi
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\inv\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_stockout.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\inv\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_inventory.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\inv\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_inventory.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_inventory.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_stockout.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_inventory.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\reports\report_stockout.baml
