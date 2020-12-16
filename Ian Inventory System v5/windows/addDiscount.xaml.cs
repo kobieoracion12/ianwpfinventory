@@ -32,6 +32,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             win_pos = pos;
         }
 
+        /*
         // Add Discount
         private void addDiscBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -93,15 +94,42 @@ namespace NavigationDrawerPopUpMenu2.windows
                 MessageBox.Show(ex.Message + " , Please try again later", "Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+        */
 
+        public void discountContent()
+        {
+            conn.Open();
+            try
+            {
+                string query = "SELECT * FROM discount";
+                conn.query(query);
+                conn.execute();
+                MySqlDataReader drd = conn.read();
+
+                while (drd.Read())
+                {
+                    this.sortDiscount.Items.Add(drd["discount_name"].ToString());
+                }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
+
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+
+        }
 
         // Exit
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {   // Close using escape
             if (e.Key == Key.Escape)
                 this.Close();
-            else if (e.Key == Key.Return)
-                addDiscBtn_Click(sender, e);
+            //else if (e.Key == Key.Return)
+                //addDiscBtn_Click(sender, e);
         }
 
         // Prevent User to type LETTERS
@@ -117,6 +145,11 @@ namespace NavigationDrawerPopUpMenu2.windows
             e.Handled = !double.TryParse(fullText, out val);
         }
 
-        
+        // Add Discount Window
+        private void plusIconBtn_Click(object sender, RoutedEventArgs e)
+        {
+            win_add_edit_discount plusIcon = new win_add_edit_discount();
+            plusIcon.ShowDialog();
+        }
     }
 }

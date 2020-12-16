@@ -4,19 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
+                     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         KeyDown="Window_KeyDown"
-        Title="Add Discount" Height="160" Width="450" MaxWidth="450" MaxHeight="160" ResizeMode="NoResize">
-    <Grid>
-        <StackPanel Orientation="Vertical">
-            <Label Content="Discount Percent (%)" Margin="5 0 0 0"/>
-            <Viewbox HorizontalAlignment="Left">
-                <TextBox TextAlignment="Center" x:Name="addDisc" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Margin="10 0 10 10" PreviewTextInput="TextBox_OnPreviewTextInput" />
-            </Viewbox>
-        </StackPanel>
+        Title="Add Discount" Height="150" Width="430" ResizeMode="NoResize">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Button x:Name="addDiscBtn" Content="Add Discount" Margin="15 70 15 0" Click="addDiscBtn_Click" />
+            <!-- Add Discount -->
+            <StackPanel>
+                <Button x:Name="plusIconBtn" Click="plusIconBtn_Click" Background="Transparent" BorderBrush="Transparent" Width="80" Height="30" Margin="350 0 0 0">
+                    <materialDesign:PackIcon Kind="Plus" Foreground="Black" Width="30" Height="30" />
+                </Button>
+            </StackPanel>
+            
+            <!-- Brand -->
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0">
+                <TextBlock Width="300" Text="Select discount" HorizontalAlignment="Center" Foreground="#000" FontWeight="Bold" FontSize="10" Margin="0 10 0 0"/>
+                <ComboBox Width="300" Height="30" x:Name="sortDiscount" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="16" VerticalAlignment="Center" BorderBrush="#45D5D5" Background="White" IsEditable="True">
+                    <ComboBoxItem Content="Select" IsSelected="True"/>
+                </ComboBox>
 
-    </Grid>
+                <Button Content="Apply" Margin="0 10 0 0" Width="200" Padding="5"/>
+            </StackPanel>
+
+        </Grid>
+    </StackPanel>
 </Window>

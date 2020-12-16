@@ -237,6 +237,9 @@
     <Compile Include="windows\win_add_category.xaml.cs">
       <DependentUpon>win_add_category.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_add_edit_discount.xaml.cs">
+      <DependentUpon>win_add_edit_discount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\win_changequantity_stockout.xaml.cs">
       <DependentUpon>win_changequantity_stockout.xaml</DependentUpon>
     </Compile>
@@ -442,6 +445,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_add_category.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_add_edit_discount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
