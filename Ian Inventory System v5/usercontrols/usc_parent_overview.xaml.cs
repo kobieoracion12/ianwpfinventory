@@ -286,9 +286,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Print
         private void printPreview_Click(object sender, RoutedEventArgs e)
         {
+            /*
             report_inventory rprtinv = new report_inventory(this);
             rprtinv.printPreview();
-            rprtinv.ShowDialog();
+            rprtinv.ShowDialog(); */
         }
     }
 }
