@@ -29,6 +29,8 @@ namespace NavigationDrawerPopUpMenu2.windows
         string transNo;
         string salesItem;
         public static int prdID;
+        string checkStockRepeat = "";
+        int checkQty = 0;
 
         List<Invoice> settleProducts = new List<Invoice>();
         public win_pos(window_userLogin frmLogin)
@@ -279,7 +281,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     coCurrent.Text = dr.GetValue(5).ToString();
 
                     stocksck.productQty = Convert.ToInt32(dr.GetValue(2));
-                    int checkQty = Convert.ToInt32(stocksck.productQty);
+                    checkQty = Convert.ToInt32(stocksck.productQty);
                     if (checkQty >= 1)
                     {
                         // Closes the reader so the next query will work            
@@ -349,6 +351,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                             {
                                 doesExist = true;
                                 refno = reader["refNo"].ToString();
+                                checkStockRepeat = reader["salesQty"].ToString(); // Datasalesinventory Stock
                             }
                         }
                         else
@@ -361,24 +364,35 @@ namespace NavigationDrawerPopUpMenu2.windows
                         // If Item exist
                         if (doesExist == true)
                         {
-                            string addQuantityToExistingItem = "UPDATE datasalesinventory SET salesQty = (salesQty + @qty) WHERE refNo = @refno";
-                            conn.query(addQuantityToExistingItem);
-                            conn.bind("@qty", 1);
-                            conn.bind("@refno", refno);
-                            conn.cmd().Prepare();
-                            var cf = conn.execute();
-                            if (cf == 1)
+
+                            // Check if item stock is still good
+                            // checkQty = Datainventory stock // checkStockRepeat = datasalesinventory stock
+                            if ((checkQty - int.Parse(checkStockRepeat)) == 0)
                             {
-                                string updTotal = "UPDATE datasalesinventory SET salesTotal = (salesRP * salesQty) WHERE salesTransNo = '" + orderNo.Text + "' AND refNo = '" + refno + "' ";
-                                conn.query(updTotal);
-                                conn.execute();
-                                // Adds Scanned Item to the Listview
-                                //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
-                                clearPartial();
-                                loadData(); // Display to ListView 
-                                checkout.paytotal = int.Parse(sumOfSalesTotal());
-                                pay_total.Text = Convert.ToString(checkout.paytotal);
+                                MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                             }
+                            else
+                            {
+                                string addQuantityToExistingItem = "UPDATE datasalesinventory SET salesQty = (salesQty + @qty) WHERE refNo = @refno";
+                                conn.query(addQuantityToExistingItem);
+                                conn.bind("@qty", 1);
+                                conn.bind("@refno", refno);
+                                conn.cmd().Prepare();
+                                var cf = conn.execute();
+                                if (cf == 1)
+                                {
+                                    string updTotal = "UPDATE datasalesinventory SET salesTotal = (salesRP * salesQty) WHERE salesTransNo = '" + orderNo.Text + "' AND refNo = '" + refno + "' ";
+                                    conn.query(updTotal);
+                                    conn.execute();
+                                    // Adds Scanned Item to the Listview
+                                    //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
+                                    clearPartial();
+                                    loadData(); // Display to ListView 
+                                    checkout.paytotal = int.Parse(sumOfSalesTotal());
+                                    pay_total.Text = Convert.ToString(checkout.paytotal);
+                                }
+                            }
+                            
                         }
                         else
                         { // if not exist then insert

@@ -64,7 +64,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     // Check if Database Stock is Less Than users quantity
                     if (int.Parse(prodQty) < int.Parse(txtQtyChange.Text))
                     {
-                        MessageBox.Show("Unable to proceed, Only " + prodQty + " stocks left", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("Unable to proceed, You only have " + prodQty + " stocks in your database", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                     else
                     {
