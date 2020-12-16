@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2020 at 03:00 PM
+-- Generation Time: Dec 16, 2020 at 05:04 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -53,6 +53,7 @@ CREATE TABLE `cashierinventory` (
   `itemRP` int(249) NOT NULL,
   `itemSRP` int(249) NOT NULL,
   `itemVAT` int(11) NOT NULL,
+  `itemCategory` varchar(249) NOT NULL,
   `itemDOA` date NOT NULL,
   `itemEXPD` date NOT NULL,
   `cashierName` varchar(249) NOT NULL,
@@ -64,11 +65,11 @@ CREATE TABLE `cashierinventory` (
 -- Dumping data for table `cashierinventory`
 --
 
-INSERT INTO `cashierinventory` (`itemNo`, `itemName`, `itemBrand`, `itemRP`, `itemSRP`, `itemVAT`, `itemDOA`, `itemEXPD`, `cashierName`, `cashierNo`, `itemStatus`) VALUES
-(4801958341100, 'Ajinomoto Seasoning 18 x 11g', 'Ajinomoto', 18, 20, 0, '2020-12-07', '2020-12-14', 'Kobie Oracion', 2147483647, 'Approved'),
-(4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 41, 45, 0, '2020-12-07', '2020-12-08', 'Kobie Oracion', 2147483647, 'Approved'),
-(4902430587907, 'Tide Original Jumbo 12 x 80g', 'Tide', 120, 144, 0, '2020-12-07', '2020-12-21', 'Kobie Oracion', 2147483647, 'Pending'),
-(8850006493014, 'Palmolive Sachet Intensive Moisture Shampoo 6 x 15ml', 'Palmolive', 31, 32, 0, '2020-12-07', '2020-12-08', 'Kobie Oracion', 2147483647, 'Approved');
+INSERT INTO `cashierinventory` (`itemNo`, `itemName`, `itemBrand`, `itemRP`, `itemSRP`, `itemVAT`, `itemCategory`, `itemDOA`, `itemEXPD`, `cashierName`, `cashierNo`, `itemStatus`) VALUES
+(4801958341100, 'Ajinomoto Seasoning 18 x 11g', 'Ajinomoto', 18, 20, 0, 'Condiment', '2020-12-07', '2020-12-14', 'Kobie Oracion', 2147483647, 'Approved'),
+(4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 41, 45, 0, 'Personal Care', '2020-12-07', '2020-12-08', 'Kobie Oracion', 2147483647, 'Approved'),
+(4902430587907, 'Tide Original Jumbo 12 x 80g', 'Tide', 120, 144, 0, 'Cleaners', '2020-12-07', '2020-12-21', 'Kobie Oracion', 2147483647, 'Pending'),
+(8850006493014, 'Palmolive Sachet Intensive Moisture Shampoo 6 x 15ml', 'Palmolive', 31, 32, 0, 'Personal Care', '2020-12-07', '2020-12-08', 'Kobie Oracion', 2147483647, 'Approved');
 
 -- --------------------------------------------------------
 
@@ -265,66 +266,6 @@ CREATE TABLE `datasalesinventory` (
   `salesDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `salesStatus` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `datasalesinventory`
---
-
-INSERT INTO `datasalesinventory` (`salesTransNo`, `refNo`, `salesNo`, `salesItem`, `salesBrand`, `salesSRP`, `salesRP`, `salesVAT`, `salesQty`, `salesTotal`, `salesDate`, `salesStatus`) VALUES
-(148115705300, 971, 4800010781076, 'Cloud 9 Classic 336g', 'Jack n Jill', 64, 80, 0, 1, 80, '2020-12-08 06:20:28', 'Pending'),
-(148115705300, 972, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 1, 57, '2020-12-08 06:20:28', 'Pending'),
-(148115705300, 973, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-08 06:20:28', 'Pending'),
-(148115705300, 974, 8935001721697, 'Mentos Fruit Rainbow 135g', 'Perfetti van Melle', 40, 50, 0, 1, 50, '2020-12-08 06:20:28', 'Pending'),
-(148115705300, 975, 4800818808906, 'Potchi Strawberyy Cream 135g', 'Columbia Intl Food Productions INC.', 35, 50, 0, 1, 50, '2020-12-08 06:20:28', 'Pending'),
-(628316868077, 976, 4800818808760, 'Yakee! Super Asim Gumball 145.6g', 'Columbia Intl Food Product INC.', 25, 28, 0, 1, 28, '2020-12-08 07:16:31', 'Sold'),
-(628316868077, 977, 4800016306013, 'Maxx Honey Lemon 200g', 'Jack n Jill', 35, 50, 0, 1, 50, '2020-12-08 07:16:31', 'Sold'),
-(628316868077, 978, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 1, 57, '2020-12-08 07:16:31', 'Sold'),
-(628316868077, 979, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-08 07:16:31', 'Sold'),
-(656811488437, 982, 4800818808760, 'Yakee! Super Asim Gumball 145.6g', 'Columbia Intl Food Product INC.', 25, 28, 0, 1, 28, '2020-12-09 06:43:24', 'Pending'),
-(881602668257, 983, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 5, 285, '2020-12-11 13:32:51', 'Cancelled'),
-(74037116730, 985, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 2, 114, '2020-12-11 14:24:22', 'Pending'),
-(444130852587, 986, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 2, 114, '2020-12-11 14:30:47', 'Pending'),
-(627080583044, 990, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 1, 57, '2020-12-11 14:32:50', 'Pending'),
-(341048854377, 995, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 2, 114, '2020-12-11 14:40:15', 'Pending'),
-(341048854377, 996, 4800818808760, 'Yakee! Super Asim Gumball 145.6g', 'Columbia Intl Food Product INC.', 25, 28, 0, 3, 84, '2020-12-11 14:40:15', 'Pending'),
-(341048854377, 997, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-11 14:40:15', 'Pending'),
-(341048854377, 998, 4800016961625, 'Chooey Toffee 236.5g', 'Jack n Jill', 40, 43, 0, 1, 43, '2020-12-11 14:40:15', 'Pending'),
-(223477757362, 1000, 4800103343563, 'Vita Cubes Singles 90g', 'SPI Corporation', 20, 22, 0, 1, 22, '2020-12-11 14:42:00', 'Sold'),
-(223477757362, 1001, 4800818808760, 'Yakee! Super Asim Gumball 145.6g', 'Columbia Intl Food Product INC.', 25, 28, 0, 7, 196, '2020-12-11 14:42:00', 'Sold'),
-(223477757362, 1002, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 9, 216, '2020-12-11 14:42:00', 'Sold'),
-(223477757362, 1003, 4806521796240, 'Kids Choice Worm 100g', 'W.L. Foods', 15, 22, 0, 2, 44, '2020-12-11 14:42:00', 'Sold'),
-(223477757362, 1004, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 9, 513, '2020-12-11 14:43:14', 'Sold'),
-(223477757362, 1005, 4800016961625, 'Chooey Toffee 236.5g', 'Jack n Jill', 40, 43, 0, 1, 43, '2020-12-11 14:43:14', 'Sold'),
-(223477757362, 1006, 4806525660561, 'Peanut Brittle Candy 150g', 'Rackey', 27, 30, 0, 8, 240, '2020-12-11 14:43:14', 'Refunded'),
-(223477757362, 1007, 4806511111121, 'Topsee Milk Chocolate 18g', 'Delicatesse Food Corporation', 32, 40, 0, 1, 40, '2020-12-11 14:43:14', 'Refunded'),
-(223477757362, 1008, 4800010781076, 'Cloud 9 Classic 336g', 'Jack n Jill', 64, 80, 0, 3, 240, '2020-12-11 14:43:14', 'Refunded'),
-(223477757362, 1009, 4800016306013, 'Maxx Honey Lemon 200g', 'Jack n Jill', 35, 50, 0, 6, 300, '2020-12-11 14:46:10', 'Pending'),
-(36435256245, 1010, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 2, 114, '2020-12-11 14:53:23', 'Refunded'),
-(36435256245, 1011, 4800103343563, 'Vita Cubes Singles 90g', 'SPI Corporation', 20, 22, 0, 1, 22, '2020-12-11 14:53:23', 'Refunded'),
-(36435256245, 1012, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 1, 17, '2020-12-11 14:53:23', 'Refunded'),
-(468580624717, 1014, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 1, 17, '2020-12-11 14:54:24', 'Refunded'),
-(468580624717, 1015, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 1, 57, '2020-12-11 14:54:24', 'Pending'),
-(387430612574, 1016, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 1, 17, '2020-12-11 14:57:57', 'Refunded'),
-(387430612574, 1017, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 47, 57, 0, 1, 57, '2020-12-11 14:57:57', 'Cancelled'),
-(262225472180, 1018, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 1, 17, '2020-12-11 15:01:28', 'Refunded'),
-(562374181848, 1019, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 1, 17, '2020-12-11 15:05:33', 'Refunded'),
-(884834006714, 1020, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 1, 17, '2020-12-11 15:17:17', 'Refunded'),
-(35514550313, 1021, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 1, 17, '2020-12-11 15:20:37', 'Refunded'),
-(38747745523, 1022, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 2, 34, '2020-12-11 15:25:08', 'Refunded'),
-(768320636754, 1023, 4806525660561, 'Peanut Brittle Candy 150g', 'Rackey', 27, 30, 0, 1, 30, '2020-12-12 01:17:05', 'Pending'),
-(768320636754, 1024, 4800016306013, 'Maxx Honey Lemon 200g', 'Jack n Jill', 35, 50, 0, 1, 50, '2020-12-12 01:17:05', 'Pending'),
-(768320636754, 1025, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-12 01:17:05', 'Pending'),
-(768320636754, 1026, 4800103343563, 'Vita Cubes Singles 90g', 'SPI Corporation', 20, 22, 0, 1, 22, '2020-12-12 01:17:05', 'Pending'),
-(243315824804, 1027, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-12 07:53:50', 'Pending'),
-(243315824804, 1028, 4800016306013, 'Maxx Honey Lemon 200g', 'Jack n Jill', 35, 50, 0, 1, 50, '2020-12-12 07:53:50', 'Pending'),
-(243315824804, 1029, 4806521796233, 'Kids Choice DIY Burger', 'W.L. Foods', 15, 17, 0, 1, 17, '2020-12-12 07:53:50', 'Pending'),
-(688458037320, 1030, 4806525660561, 'Peanut Brittle Candy 150g', 'Rackey', 27, 30, 0, 1, 30, '2020-12-12 07:56:37', 'Pending'),
-(873106381826, 1031, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-12 07:58:50', 'Pending'),
-(304762766558, 1032, 4806525660561, 'Peanut Brittle Candy 150g', 'Rackey', 27, 30, 0, 1, 30, '2020-12-12 08:02:20', 'Pending'),
-(663645462883, 1033, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-12 08:03:48', 'Pending'),
-(520417211361, 1034, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-12 08:06:32', 'Pending'),
-(641515726551, 1035, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-12 08:07:29', 'Sold'),
-(717413003185, 1036, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 1, 24, '2020-12-12 08:07:45', 'Pending');
 
 -- --------------------------------------------------------
 
