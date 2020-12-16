@@ -27,7 +27,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     {
         Database conn = new Database();
         List<Sales> mySales = new List<Sales>();
-        string reportSales;
+        string reportSales = "Select";
 
         public usc_sales_inventory()
         {
@@ -199,29 +199,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Export Button
         private void exportButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult msg = MessageBox.Show("Do you want to export all the data before clearing them all?", "Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-            if (msg == MessageBoxResult.Yes)
-            {
-                // If Yes then Delete the Data
-                exportDataToExcel();
-                ClearAllDataFromDatabase();
-                catchData();
-            }
-            else if (msg == MessageBoxResult.No)
-            {
-                MessageBoxResult deleteMsg = MessageBox.Show("This will clear all the data without exporting a file, Are you sure?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (deleteMsg == MessageBoxResult.Yes)
-                {
-                    // Delete the Data
-                    ClearAllDataFromDatabase();
-                    catchData();
-                }
-            }
-            else if (msg == MessageBoxResult.Cancel)
-            {
-                return;
-            }
-            else { return; }
+            report_sales rptsales = new report_sales(this, reportSales);
+            rptsales.printPreview();
+            rptsales.ShowDialog();
         }
 
         // Export Data to Excel

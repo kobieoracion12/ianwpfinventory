@@ -24,9 +24,9 @@ namespace NavigationDrawerPopUpMenu2.reports
     public partial class report_sales : Window
     {
         Database conn = new Database();
-        usc_sales usc_sales;
+        usc_sales_inventory usc_sales;
         string reportToPrint;
-        public report_sales(usc_sales s, string report1)
+        public report_sales(usc_sales_inventory s, string report1)
         {
             InitializeComponent();
             usc_sales = s;

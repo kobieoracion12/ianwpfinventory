@@ -253,9 +253,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         private void printPreview_Click(object sender, RoutedEventArgs e)
         {
+            /*
             report_sales rptsales = new report_sales(this, reportSales);
             rptsales.printPreview();
-            rptsales.ShowDialog();
+            rptsales.ShowDialog();*/
         }
 
         // EXPORT DATA TO EXCEL
