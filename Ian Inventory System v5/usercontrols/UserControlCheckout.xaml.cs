@@ -31,7 +31,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         string stockoutPrice = "";
         string stockoutDate = "";
         string stockoutStatus = "";
-
+        string checkStockRepeat = "";
         public UserControlCheckout()
         {
             InitializeComponent();
@@ -220,6 +220,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                 {
                                     doesExist = true;
                                     refno = reader["stockoutId"].ToString();
+                                    checkStockRepeat = reader["stockoutQty"].ToString(); // Stock Out Stock
                                 }
                             }
                             else
@@ -233,19 +234,29 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             // If Item exist
                             if (doesExist == true)
                             {
-                                conn.Open();
-                                string addQuantityToExistingItem = "UPDATE stock_out SET stockoutQty = (stockoutQty + @qty) WHERE stockoutId = @refno";
-                                conn.query(addQuantityToExistingItem);
-                                conn.bind("@qty", 1);
-                                conn.bind("@refno", refno);
-                                conn.cmd().Prepare();
-                                var cf = conn.execute();
-                                if (cf == 1)
+                                // Check if item stock is still good
+                                // itemQty = Datainventory stock // checkStockRepeat = stockout stock
+                                if ((int.Parse(itemQty) - int.Parse(checkStockRepeat)) == 0)
                                 {
-                                    loadData(); // Display to ListView
-                                    entrySearch.Text = "";
+                                    MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                                 }
-                                conn.Close(); 
+                                else
+                                {
+                                    conn.Open();
+                                    string addQuantityToExistingItem = "UPDATE stock_out SET stockoutQty = (stockoutQty + @qty) WHERE stockoutId = @refno";
+                                    conn.query(addQuantityToExistingItem);
+                                    conn.bind("@qty", 1);
+                                    conn.bind("@refno", refno);
+                                    conn.cmd().Prepare();
+                                    var cf = conn.execute();
+                                    if (cf == 1)
+                                    {
+                                        loadData(); // Display to ListView
+                                        entrySearch.Text = "";
+                                    }
+                                    conn.Close();
+                            }
+                                
                         }
                             else
                             { // if not exist then insert

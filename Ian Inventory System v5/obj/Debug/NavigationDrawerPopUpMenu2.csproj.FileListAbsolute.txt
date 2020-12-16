@@ -287,3 +287,6 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_sales_inventory.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overviews.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overviews.baml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\inventory (more latest)\ianwpfinventory\Ian Inventory System v5\bin\Debug\NavigationDrawerPopUpMenu2.exe.config
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\inventory (more latest)\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.exe
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\inventory (more latest)\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.pdb
