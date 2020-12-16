@@ -180,5 +180,38 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            conn.Close();
+            try
+            {
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT category_name FROM category WHERE category_name LIKE '%" + entrySearch.Text + "%' ORDER BY category_name ASC";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("datainventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewCategory.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+
+                adapter.Dispose(); // Dispose Adapter
+                                   // Close Connection
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -8,27 +8,21 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="580" d:DesignWidth="813">
-   
+
     <Grid Background="#F5F6FA">
-        <Rectangle RadiusX="10" RadiusY="10" Fill="White">
-            <Rectangle.Effect>
-                <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
-            </Rectangle.Effect>
-        </Rectangle>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20*" />
                 <RowDefinition Height="130*" />
             </Grid.RowDefinitions>
 
+            <!-- Header -->
             <Grid Grid.Column="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="600*" />
                         <ColumnDefinition Width="200*" />
                     </Grid.ColumnDefinitions>
-
-                    
                     
                     <!-- Left Side -->
                     <Grid Grid.Column="0">
@@ -64,6 +58,7 @@
                 </Grid>
             </Grid>
 
+            <!-- Body -->
             <Grid Grid.Row="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -72,26 +67,36 @@
                     </Grid.ColumnDefinitions>
 
                     <!-- ListView -->
-                    <Grid Grid.Column="0">
-                        <ListView x:Name="listViewInventory" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" Margin="10" >
-                            <ListView.View>
-                                <GridView AllowsColumnReorder="False">
-                                    <GridView.Columns>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="Product #" Width="200"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="300" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="100"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodBrand }" Header="Brand" Width="250"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodSRP }" Header="SRP" Width="100" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodRP }" Header="Retail Price" Width="120"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodVAT }" Header="VAT" Width="100"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodCategory }" Header="Category" Width="200"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding prodDOA }" Header="Date of Arrival" Width="200"/>
-                                    </GridView.Columns>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                    <Grid Grid.Column="0" Margin="10">
+                        <Rectangle RadiusX="10" RadiusY="10" Fill="White" >
+                            <Rectangle.Effect>
+                                <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+
+                        <Grid Margin="5">
+                            <ListView x:Name="listViewInventory" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" Margin="10" >
+                                <ListView.View>
+                                    <GridView AllowsColumnReorder="False">
+                                        <GridView.Columns>
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodNo }" Header="Product #" Width="200"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodItem }" Header="Item" Width="300" />
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodQty }" Header="Qty" Width="100"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodBrand }" Header="Brand" Width="250"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodSRP }" Header="SRP" Width="100" />
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodRP }" Header="Retail Price" Width="120"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodVAT }" Header="VAT" Width="100"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodCategory }" Header="Category" Width="200"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding prodDOA }" Header="Date of Arrival" Width="200"/>
+                                        </GridView.Columns>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                        </Grid>
                     </Grid>
 
+                    <!-- Filter -->
                     <Grid Grid.Column="1">
                         <Grid Margin="5">
                             <StackPanel>

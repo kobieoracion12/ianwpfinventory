@@ -43,7 +43,7 @@
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE" Opacity="0.2"/>
             </Grid.Effect>
             <StackPanel>
-                <Grid Height="100" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                <Grid Height="50" Background="Transparent" RenderTransformOrigin="0.5,0.5">
                     <Grid.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -78,6 +78,12 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Store" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Storage Stocks" VerticalAlignment="Center"  Margin="10 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="posSettings" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Receipt" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="POS Settings" VerticalAlignment="Center"  Margin="10 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="categoryButton" Height="60">

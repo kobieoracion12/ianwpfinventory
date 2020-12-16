@@ -30,9 +30,24 @@
                 
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal" Canvas.Right="10" Margin="25">
-                        <Button x:Name="addButton" Content="Add" HorizontalAlignment="Center" Background="#54b971" BorderBrush="#54b971" Margin="0 0 8 0" Click="addButton_Click"/>
-                        <Button x:Name="editButton" Content="Edit" HorizontalAlignment="Center" Background="#5c9ef4" BorderBrush="#5c9ef4" Margin="0 0 8 0" Click="editButton_Click"/>
-                        <Button x:Name="removeButton" Content="Remove" HorizontalAlignment="Center" Background="#D6332E" BorderBrush="#D6332E" Margin="0 0 8 0" Click="removeButton_Click"/>
+                        <Button x:Name="addButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#54b971">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <TextBlock Text="Add" FontWeight="SemiBold" FontSize="12" Foreground="#54b971" TextAlignment="Left" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="editButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#5c9ef4">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <TextBlock Text="Edit" FontWeight="SemiBold" FontSize="12" Foreground="#5c9ef4" TextAlignment="Left" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="removeButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#D6332E">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <TextBlock Text="Delete" FontWeight="SemiBold" FontSize="12" Foreground="#D6332E" TextAlignment="Left" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
                     </StackPanel>
                 </Viewbox>
             </Grid>
@@ -59,7 +74,7 @@
                                 <Viewbox Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
                                     <StackPanel Orientation="Vertical">
                                         <Label Content="Search Category" FontWeight="Black" FontSize="6" Margin="0 0 0 0"/>
-                                        <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="12" MinWidth="290" Background="White" Margin="10 0 0 0"/>
+                                        <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="12" MinWidth="290" Background="White" Margin="10 0 0 0" TextChanged="entrySearch_TextChanged"/>
                                     </StackPanel>
                                 </Viewbox>
                                  

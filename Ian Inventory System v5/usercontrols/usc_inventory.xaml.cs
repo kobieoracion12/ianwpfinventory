@@ -30,7 +30,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public usc_inventory()
         {
             InitializeComponent();
-            usc_parent_overview upo = new usc_parent_overview();
+            usc_parent_overviews upo = new usc_parent_overviews();
             mainSubColumn.Children.Add(upo);
         }
 
@@ -57,7 +57,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "stStocks":
-                    usc = new usc_parent_overview();
+                    usc = new usc_parent_overviews();
                     mainSubColumn.Children.Add(usc);
                     break;
                 case "stAddItem":

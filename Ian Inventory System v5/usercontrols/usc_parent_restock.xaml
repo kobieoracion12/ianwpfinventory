@@ -63,10 +63,10 @@
 
                         <Grid Grid.Column="0" >
                             <Grid>
-                                <Viewbox Stretch="Uniform">
-                                    <StackPanel Orientation="Vertical">
+                                <Viewbox Stretch="Uniform" VerticalAlignment="Top">
+                                    <StackPanel Orientation="Vertical" > 
                                         <Label Content="Item Description" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
-                                        <TextBox x:Name="restockItem" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
+                                        <TextBox x:Name="restockItem" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False" Width="360"/>
                                         
                                         <Label Content="Brand" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
                                         <TextBox x:Name="restockBrand" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
@@ -87,23 +87,19 @@
 
                         <Grid Grid.Column="1">
                             <Grid>
-                                <Viewbox Stretch="Uniform">
-                                    <StackPanel Orientation="Vertical">
+                                <Viewbox Stretch="Uniform" VerticalAlignment="Top">
+                                    <StackPanel Orientation="Vertical" >
                                         <Label Content="Value Added Tax (VAT)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" />
-                                        <TextBox x:Name="restockVAT" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
+                                        <TextBox x:Name="restockVAT" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False" Width="362"/>
                                         
                                         <Label Content="Retail Price (RP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
                                         <TextBox x:Name="restockRP" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
 
+                                        <Label Content="Category" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
+                                        <TextBox x:Name="restockCategory" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False"/>
+
                                         <Label Content="Date of Arrival" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
                                         <DatePicker x:Name="restockDOA" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" HorizontalAlignment="Stretch" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEnabled="False" />
-
-                                        <Label Content="Expiration Date" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>
-                                        <StackPanel Orientation="Horizontal">
-                                            <DatePicker x:Name="restockEXPD" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="370"  Margin="25 0 25 0" Background="White" IsEnabled="False" Visibility="Hidden"/>
-                                        </StackPanel>
-
-                                        
                                     </StackPanel>
                                 </Viewbox>
                             </Grid>

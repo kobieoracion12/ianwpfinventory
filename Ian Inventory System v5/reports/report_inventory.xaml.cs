@@ -26,10 +26,17 @@ namespace NavigationDrawerPopUpMenu2.reports
         Database conn = new Database();
         usc_parent_overview usc_overview;
         string query = "";
+        private usc_parent_overviews usc_parent_overviews;
+
         public report_inventory(usc_parent_overview usc_overview)
         {
             InitializeComponent();
             this.usc_overview = usc_overview;
+        }
+
+        public report_inventory(usc_parent_overviews usc_parent_overviews)
+        {
+            this.usc_parent_overviews = usc_parent_overviews;
         }
 
         public void printPreview()

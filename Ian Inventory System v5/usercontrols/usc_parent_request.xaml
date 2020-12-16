@@ -18,6 +18,7 @@
             <RowDefinition Height="130*" />
         </Grid.RowDefinitions>
 
+        <!-- Listview -->
         <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
             <Grid Margin="10">
                 <Rectangle RadiusX="10" RadiusY="10" Fill="White" >
@@ -26,12 +27,14 @@
                     </Rectangle.Effect>
                 </Rectangle>
 
+                <!-- ListView -->
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50*" />
                         <RowDefinition Height="420*" />
                     </Grid.RowDefinitions>
 
+                    <!-- Listview Header -->
                     <Grid Grid.Column="0">
                         <Grid>
                             <Viewbox Stretch="Uniform"  HorizontalAlignment="Left">
@@ -51,6 +54,7 @@
                         </Grid>
                     </Grid>
                     
+                    <!-- Listview Main-->
                     <Grid Grid.Row="1"> 
                         <ListView x:Name="lv_browse" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" Margin="10" >
                             <ListView.View>
@@ -68,6 +72,7 @@
             </Grid>
         </Grid>
 
+        <!-- Textboxes -->
         <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="2">
             <Grid Grid.ColumnSpan="2">
                 <Viewbox Stretch="Uniform" Grid.ColumnSpan="2">
@@ -109,10 +114,10 @@
                                 <TextBox x:Name="itemVAT" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
-                            <!-- Date of Arrival -->
+                            <!-- VAT -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <TextBlock Text="Date of Arrival" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <DatePicker x:Name="itemDOA" FontSize="8" Height="20" BorderThickness="1" FontFamily="Microsoft Tai Le" Background="White" Padding="2 0 0 0" Width="190" VerticalAlignment="Center" />
+                                <TextBlock Text="Product Category" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
+                                <TextBox x:Name="itemCategory" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Padding="2 0 0 0" Height="20" Width="190" VerticalAlignment="Center" />
                             </StackPanel>
 
                             <!-- Buttons-->

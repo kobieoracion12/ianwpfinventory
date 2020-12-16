@@ -34,7 +34,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             if (e.Key == Key.Return)
             {
                 string search = entrySearch.Text;
-                string scan = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodDOA FROM datainventory WHERE prodNo= '" + search + "'";
+                string scan = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodCategory, prodVAT, prodDOA FROM datainventory WHERE prodNo= '" + search + "'";
                 conn.query(scan);
                 try
                 {
@@ -42,14 +42,15 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     MySqlDataReader reader = conn.read();
                     if (reader.Read())
                     {
-                        string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6) };
+                        string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7) };
                         restockItem.Text = row[0];
                         restockBrand.Text = row[1];
                         onrestockQty.Text = row[2];
                         restockSRP.Text = row[3];
                         restockRP.Text = row[4];
-                        restockVAT.Text = row[5];
-                        restockDOA.Text = row[6];
+                        restockCategory.Text = row[5];
+                        restockVAT.Text = row[6];
+                        restockDOA.Text = row[7];
 
                         restockQty.Focus();
                     }
@@ -105,10 +106,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         restockQty.Clear();
                         restockSRP.Clear();
                         restockRP.Clear();
+                        restockCategory.Clear();
                         restockVAT.Clear();
                         onrestockQty.Clear();
                         restockDOA.Text = "";
-                        restockEXPD.Text = "";
                     }
                     conn.Close();
                 }

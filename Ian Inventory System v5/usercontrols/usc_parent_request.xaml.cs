@@ -118,7 +118,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 if (itemNo.Text.Length > 0)
                 {
                     string search = itemNo.Text;
-                    string query = "SELECT itemNo, itemName, itemBrand, itemRP, itemSRP, itemVAT, itemDOA FROM cashierinventory WHERE itemNo = '" + search + "'";
+                    string query = "SELECT itemNo, itemName, itemBrand, itemRP, itemSRP, itemVAT, itemCategory FROM cashierinventory WHERE itemNo = '" + search + "'";
                     conn.query(query); //CMD 
                     conn.Open();
                     MySqlDataReader dr = conn.read();
@@ -130,7 +130,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         itemRP.Text = dr.GetValue(3).ToString();
                         itemSRP.Text = dr.GetValue(4).ToString();
                         itemVAT.Text = dr.GetValue(5).ToString();
-                        itemDOA.Text = dr.GetValue(6).ToString();
+                        itemCategory.Text = dr.GetValue(6).ToString();
                         dr.Close();
                         dr.Dispose(); // Dispose
                     }
@@ -199,7 +199,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             itemSRP.Clear();
             itemRP.Clear();
             itemVAT.Clear();
-            itemDOA.Text = "";
+            itemCategory.Clear();
             fetchData();
         }
     }

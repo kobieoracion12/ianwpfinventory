@@ -29,6 +29,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             InitializeComponent();
             checkBarcode.Focus();
             cbBrand();
+            cbCategory();
         }
 
         // Checks if the Item Already Exist in the Database
@@ -75,8 +76,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             addSRP.Clear();
             addQty.Clear();
             addVAT.Clear();
+            addCategory.Text = "";
             addBrand.Text = "";
-            addEXPD.Text = "";
         }
 
         // Submit Button
@@ -136,6 +137,33 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 while (drd.Read())
                 {
                     addBrand.Items.Add(drd.GetString(0).ToString());
+                }
+
+                drd.Close();
+                drd.Dispose();
+                con.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+
+        }
+
+        // Fills the Brand ComboBox with exisiting Category Data from Database
+        public void cbCategory()
+        {
+            con.Open();
+            try
+            {
+                string query = "SELECT category_name FROM category";
+                con.query(query);
+                con.execute();
+                MySqlDataReader drd = con.read();
+
+                while (drd.Read())
+                {
+                    addCategory.Items.Add(drd.GetString(0).ToString());
                 }
 
                 drd.Close();

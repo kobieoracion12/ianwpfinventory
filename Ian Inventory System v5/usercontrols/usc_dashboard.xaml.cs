@@ -225,8 +225,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                 if (dr.Read())
                 {
-                    tb_profitSales.Text = "₱ " + dr.GetValue(0).ToString();
-                    if (tb_profitSales.Text == "₱ .00")
+                    tb_profitSales.Text = dr.GetValue(0).ToString();
+                    if (tb_profitSales.Text == "")
                     {
                         tb_profitSales.Text = "₱ 0.00";
                     }
@@ -262,7 +262,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 if (dr.Read())
                 {
                     tb_overallSales.Text = "₱ " + dr.GetValue(0).ToString();
-                    if (tb_overallSales.Text == "₱ .00")
+                    if (tb_overallSales.Text == "₱")
                     {
                         tb_overallSales.Text = "₱ 0.00";
                     }

@@ -22,7 +22,13 @@
 
         <!-- Navigation Bar -->
         <Grid Grid.Column="1" Grid.RowSpan="2">
-            <Grid Background="White">
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#4CA8A5" Offset="0"/>
+                        <GradientStop Color="#45D5D5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50*" />
                     <RowDefinition Height="385*" />
@@ -33,7 +39,7 @@
                 <Grid Grid.Row="0">
                     <Grid>
                         <Viewbox Stretch="Uniform">
-                            <TextBlock Text="Manage Inventory" FontWeight="Bold" FontSize="10" Foreground="Black" Margin="20" TextAlignment="Center"/>
+                            <TextBlock Text="Manage Inventory" FontWeight="Bold" FontSize="10" Foreground="#FFFFFF" Margin="20" TextAlignment="Center"/>
                         </Viewbox>
                     </Grid>
                 </Grid>
@@ -43,7 +49,7 @@
                     <Grid>
                         <Viewbox Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Center">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <ListView x:Name="ListViewMenu" Foreground="#343841" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged_1">
+                                <ListView x:Name="ListViewMenu" Foreground="#FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged_1">
                                     <!-- Overview -->
                                     <ListViewItem x:Name="stStocks" Height="35" HorizontalAlignment="Center">
                                         <StackPanel Orientation="Horizontal" Width="70">
@@ -88,7 +94,7 @@
                                         </StackPanel>
                                     </ListViewItem>
 
-                                    
+
                                 </ListView>
                             </StackPanel>
                         </Viewbox>
