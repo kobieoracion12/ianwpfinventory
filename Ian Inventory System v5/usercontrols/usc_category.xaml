@@ -30,19 +30,19 @@
                 
                 <Viewbox Stretch="Uniform" HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal" Canvas.Right="10" Margin="25">
-                        <Button x:Name="addButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#54b971">
+                        <Button x:Name="addButton" Click="addButton_Click" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#54b971">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <TextBlock Text="Add" FontWeight="SemiBold" FontSize="12" Foreground="#54b971" TextAlignment="Left" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
 
-                        <Button x:Name="editButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#5c9ef4">
+                        <Button x:Name="editButton" Click="editButton_Click" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#5c9ef4">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <TextBlock Text="Edit" FontWeight="SemiBold" FontSize="12" Foreground="#5c9ef4" TextAlignment="Left" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
 
-                        <Button x:Name="removeButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#D6332E">
+                        <Button x:Name="removeButton" Click="removeButton_Click" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#D6332E">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <TextBlock Text="Delete" FontWeight="SemiBold" FontSize="12" Foreground="#D6332E" TextAlignment="Left" VerticalAlignment="Center"/>
                             </StackPanel>
@@ -84,7 +84,7 @@
                         </Grid>
                         
                         <Grid Grid.Row="1">
-                            <ListView x:Name="listViewCategory" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" FontSize="20">
+                            <ListView x:Name="listViewCategory" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" FontSize="20" SelectionChanged="listViewCategory_SelectionChanged">
                                 <ListView.View>
                                     <GridView AllowsColumnReorder="False">
                                         <GridView.Columns>

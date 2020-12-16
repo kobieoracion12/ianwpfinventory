@@ -33,7 +33,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         }
 
         // Fetch Data from database
-        public void fetchCategory()
+        public void fetchCategoryForOtherForm()
         {
             try
             {
@@ -48,7 +48,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("datainventory");
+                DataTable dt = new DataTable("category");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewCategory.ItemsSource = dt.DefaultView;
@@ -65,19 +65,35 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Copy the id of product when click in lv_browse cell
-        private void listViewCategory_SelectedIndexChanged(object sender, EventArgs e)
+        public void fetchCategory()
         {
             try
             {
-                // Get the product id
-                string prodCtg = listViewCategory.SelectedItems[0].ToString();
-                // Append ID and Product name
-                itemCtg.Text = prodCtg;
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT DISTINCT category_name FROM category ORDER BY category_name ASC";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("category");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewCategory.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+
+                adapter.Dispose(); // Dispose Adapter
+                // Close Connection
+                conn.Close();
+
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -118,8 +134,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Add Button
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            win_add_category addCateg = new win_add_category(this);
-            addCateg.ShowDialog();
+            win_add_category addCategoryWin = new win_add_category(this);
+            addCategoryWin.ShowDialog();
         }
 
         // Edit Button
@@ -157,7 +173,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void deleteCategory()
         {
             // Delete sql statement
-            string sql = "DELETE FROM category WHERE cId = @cId";
+            string sql = "DELETE FROM category WHERE category_name = @cId";
             conn.query(sql); // Command Database
 
             try
@@ -212,6 +228,20 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        // Pass Data to TxtBox
+        private void listViewCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                // Get the product id
+                string category = listViewCategory.SelectedItems[1].ToString();
+                //itemCtg.Text = name;
+                MessageBox.Show(category);
+            }
+            catch (Exception ex)
+            { return; }
         }
     }
 }

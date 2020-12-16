@@ -23,20 +23,14 @@ namespace NavigationDrawerPopUpMenu2.windows
     public partial class win_edit_category : Window
     {
         Database conn = new Database();
-        UserControlInventory usc_categ;
         string cName = "";
-        private usc_category usc_category;
+        usc_category usc_categ;
 
-        public win_edit_category(UserControlInventory usc_categ)
+        public win_edit_category(usc_category a)
         {
             InitializeComponent();
-            this.usc_categ = usc_categ;
+            this.usc_categ = a;
             editCateg.Text = returnCategory();
-        }
-
-        public win_edit_category(usc_category usc_category)
-        {
-            this.usc_category = usc_category;
         }
 
         private void editCategoryBtn_Click(object sender, RoutedEventArgs e)
@@ -48,14 +42,14 @@ namespace NavigationDrawerPopUpMenu2.windows
             else
             {
                 editCategory();
-                usc_categ.catchData();
+                usc_categ.fetchCategoryForOtherForm();
             }
         }
 
 
         private String returnCategory()
         {
-            string query = "SELECT * FROM category WHERE cID = '"+ usc_categ.tbPrdId.Text + "'";
+            string query = "SELECT * FROM category WHERE category_name = '"+ usc_categ.itemCtg.Text + "'";
             conn.query(query);
             try
             {
@@ -84,7 +78,7 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         private void editCategory()
         {
-            string query = "UPDATE category SET category_name = @category WHERE cId = '"+ usc_categ.tbPrdId.Text +"' ";
+            string query = "UPDATE category SET category_name = @category WHERE category_name = '" + usc_categ.itemCtg.Text + "' ";
             conn.query(query);
             try
             {

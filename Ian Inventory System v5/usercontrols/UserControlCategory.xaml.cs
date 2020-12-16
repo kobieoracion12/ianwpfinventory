@@ -86,8 +86,8 @@ namespace NavigationDrawerPopUpMenu2
         // Add Button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            win_add_category addCateg = new win_add_category(this);
-            addCateg.ShowDialog();
+            /*win_add_category addCateg = new win_add_category(this);
+            addCateg.ShowDialog();*/
         }
 
         // Refresh Button
@@ -106,8 +106,9 @@ namespace NavigationDrawerPopUpMenu2
             }
             else
             {   // If not empty then proceed to edit window
+                /*
                 win_edit_category win_edit_category = new win_edit_category(this); // pass the parameter to the next window
-                win_edit_category.ShowDialog(); // Open Edit Window}
+                win_edit_category.ShowDialog(); // Open Edit Window} */
             }
         }
 

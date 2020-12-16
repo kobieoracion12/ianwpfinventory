@@ -23,20 +23,12 @@ namespace NavigationDrawerPopUpMenu2.windows
     public partial class win_add_category : Window
     {
         Database conn = new Database();
+        usc_category usc_categ;
 
-        // UserControl Category
-        UserControlInventory usc_category;
-        private usc_category usc_category1;
-
-        public win_add_category(UserControlInventory usc_category)
+        public win_add_category(usc_category usc_categ)
         {
             InitializeComponent();
-            this.usc_category = usc_category;
-        }
-
-        public win_add_category(usc_category usc_category1)
-        {
-            this.usc_category1 = usc_category1;
+            this.usc_categ = usc_categ;
         }
 
         // Add Category
@@ -50,7 +42,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             {
                 addCategories();
                 addCateg.Text = "";
-                usc_category.catchData();
+                usc_categ.fetchCategory();
             }
             
         }
