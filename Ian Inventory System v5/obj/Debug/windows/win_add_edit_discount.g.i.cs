@@ -111,12 +111,6 @@ namespace NavigationDrawerPopUpMenu2.windows {
             return;
             case 3:
             this.addDiscount = ((System.Windows.Controls.Button)(target));
-            
-            #line 26 "..\..\..\windows\win_add_edit_discount.xaml"
-            this.addDiscount.Click += new System.Windows.RoutedEventHandler(this.addDiscount_Click);
-            
-            #line default
-            #line hidden
             return;
             case 4:
             this.viewDisc = ((System.Windows.Controls.Button)(target));

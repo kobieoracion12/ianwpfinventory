@@ -46,11 +46,11 @@ namespace NavigationDrawerPopUpMenu2
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
-                case "ItemHome":
+                case "dashboardHome":
                     usc = new usc_dashboard();
                     GridMain.Children.Add(usc);
                     break;
-                case "ItemCreate":
+                case "salesInventory":
                     usc = new usc_sales_inventory();
                     GridMain.Children.Add(usc);
                     break;
@@ -61,8 +61,16 @@ namespace NavigationDrawerPopUpMenu2
                 case "posSettings":
 
                     break;
-                case "checkOut":
-                    usc = new UserControlCheckout();
+                case "categoryButton":
+                    usc = new usc_category();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "stockOutButton":
+                    usc = new usc_stockout();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "stockReturnButton":
+                    usc = new usc_stockreturn();
                     GridMain.Children.Add(usc);
                     break;
                 case "logoutButton":
@@ -70,26 +78,6 @@ namespace NavigationDrawerPopUpMenu2
                     window_userLogin userLogin = new window_userLogin();
                     userLogin.Show();
                     this.Close();
-                    break;
-                case "brandButton":
-                    usc = new UserControlBrand();
-                    GridMain.Children.Add(usc);
-                    break;
-                case "categoryButton":
-                    usc = new usc_category();
-                    GridMain.Children.Add(usc);
-                    break;
-                case "stockOutButton":
-                    usc = new UserControlCheckout();
-                    GridMain.Children.Add(usc);
-                    break;
-                case "stockReturnButton":
-                    usc = new usc_stockreturn();
-                    GridMain.Children.Add(usc);
-                    break;
-                default:
-                    usc = new UserControlDashboard();
-                    GridMain.Children.Add(usc);
                     break;
             }
 

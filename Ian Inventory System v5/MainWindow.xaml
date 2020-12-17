@@ -43,7 +43,7 @@
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE" Opacity="0.2"/>
             </Grid.Effect>
             <StackPanel>
-                <Grid Height="50" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                <Grid Height="100" Background="Transparent" RenderTransformOrigin="0.5,0.5">
                     <Grid.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -61,14 +61,14 @@
 
                 </Grid>
                 <ListView x:Name="ListViewMenu" Foreground="#FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
-                    <ListViewItem x:Name="ItemHome" Height="60">
+                    <ListViewItem x:Name="dashboardHome" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Home" Height="25" Width="25" Margin="10">
                             </materialDesign:PackIcon>
                             <TextBlock Text="Home" VerticalAlignment="Center" Margin="10 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="ItemCreate" Height="60">
+                    <ListViewItem x:Name="salesInventory" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Coin" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Sales Inventory" VerticalAlignment="Center" Margin="10 10"/>
@@ -90,12 +90,6 @@
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Tag" Height="25" Width="25" Margin="10"/>
                             <TextBlock Text="Category" VerticalAlignment="Center"  Margin="10 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="brandButton" Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Barley" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Brand" VerticalAlignment="Center"  Margin="10 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="stockOutButton" Height="60">
