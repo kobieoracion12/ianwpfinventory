@@ -138,31 +138,10 @@
                                 </StackPanel>
                             </Button>
 
-                            <!-- Request Stocks -->
-                            <Button x:Name="reqStock" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="reqStock_Click">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Request Stock" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
-
                             <!-- Price Check -->
                             <Button x:Name="priceCheck" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="priceCheck_Click">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="[F7]Price Check" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
-
-                            <!-- Check Voucher -->
-                            <Button x:Name="checkVoucher" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Check Voucher" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </Button>
-
-                            <!-- Tax Settings -->
-                            <Button x:Name="taxSettings" Margin="5 5 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <TextBlock Text="Tax Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
 
@@ -172,14 +151,13 @@
                                     <TextBlock Text="[F12]Settings" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
+                            
+                            <!-- Logout -->
                             <Button Click="logoutButton_Click" x:Name="logoutButton" Margin="5 20 5 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <TextBlock Text="Logout" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Button>
-                            <!-- Logout -->
-
-
                         </StackPanel>
                     </Viewbox>
 

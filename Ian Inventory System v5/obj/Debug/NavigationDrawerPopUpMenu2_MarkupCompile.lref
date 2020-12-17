@@ -23,6 +23,7 @@ FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invent
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_parent_restock.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_sales.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_sales_inventory.xaml;;
+FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_stockout.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_stockreturn.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlBrand.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlCheckout.xaml;;
@@ -54,5 +55,4 @@ FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invent
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_req_stock.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_settings.xaml;;
 FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_view_all_products.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_stockout.xaml;;
 
