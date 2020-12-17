@@ -225,7 +225,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                 if (dr.Read())
                 {
-                    tb_profitSales.Text = dr.GetValue(0).ToString();
+                    tb_profitSales.Text = "₱ " + dr.GetValue(0).ToString();
                     if (tb_profitSales.Text == "")
                     {
                         tb_profitSales.Text = "₱ 0.00";

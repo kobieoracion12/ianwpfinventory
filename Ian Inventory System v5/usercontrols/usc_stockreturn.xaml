@@ -64,6 +64,7 @@
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridView.Columns>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutId }" Header="#" Width="50"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding stockoutTransNo }" Header="Trans #" Width="200"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="300" />
                                         <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="100" />
@@ -86,13 +87,13 @@
                             <!--Transaction Number -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Transaction Number" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 0 0 0"/>
-                                <TextBox x:Name="itemTransNo" Text="{Binding ElementName=lv_browse, Path=SelectedItem.stockoutTransNo}" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" TextChanged="itemTransNo_TextChanged" IsEnabled="False"/>
+                                <TextBox x:Name="itemTransNo"  BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" IsEnabled="False" />
                             </StackPanel>
                             
                             <!--Item Number -->
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Text="Item Number" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                <TextBox x:Name="itemNo" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" IsEnabled="False"/>
+                                <TextBox x:Name="itemNo"  BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" IsEnabled="False"/>
                             </StackPanel>
 
                             <!--Item Description -->
@@ -135,9 +136,11 @@
                                 </Button>
                             </StackPanel>
 
-                            <TextBlock x:Name="curQty" Width="50" TextAlignment="Center"/>
-                            <TextBlock x:Name="remQty" Width="50" TextAlignment="Center"/>
-
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="curQty" Width="50" TextAlignment="Center" Visibility="Hidden"/>
+                                <TextBlock x:Name="remQty" Width="50" TextAlignment="Center" Visibility="Hidden"/>
+                                <TextBox x:Name="stockid" Text="{Binding ElementName=lv_browse, Path=SelectedItem.stockoutId}" Width="50" TextAlignment="Center" Visibility="Hidden" TextChanged="stockid_TextChanged"/>
+                            </StackPanel>
                         </StackPanel>
                     </Canvas>
                 </Viewbox>

@@ -36,7 +36,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT stockoutTransNo, stockoutItem, stockoutQty, stockoutDate, stockoutStatus FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutDate DESC";
+                string query = "SELECT stockoutTransNo, stockoutItem, stockoutQty, stockoutDate, stockoutId, stockoutStatus FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutDate DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -164,18 +164,34 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Populate textbox according to the trans #
-        private void itemTransNo_TextChanged(object sender, TextChangedEventArgs e)
+        // Clear Function
+        public void Clear()
+        {
+            itemo.Clear();
+            itemTransNo.Clear();
+            itemName.Clear();
+            itemNo.Clear();
+            itemQty.Clear();
+            itemReduce.Clear();
+            curQty.Text = "";
+            itemDOP.Text = "";
+        }
+
+        // Return Item Button
+        public int toRefund, toStock;
+        
+        // Populate Textboxes
+        private void stockid_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
                 conn.Close();
-                if (itemTransNo.Text.Length > 0)
+                if (stockid.Text.Length > 0)
                 {
                     itemReduce.IsEnabled = true;
                     itemReduce.Focus();
-                    string searchTrans = itemTransNo.Text;
-                    string query = "SELECT stockoutTransNo, stockoutNo, stockoutItem, stockoutQty, stockoutDate FROM stock_out WHERE stockoutTransNo = '" + searchTrans + "'";
+                    string searchId = stockid.Text;
+                    string query = "SELECT stockoutTransNo, stockoutNo, stockoutItem, stockoutQty, stockoutDate FROM stock_out WHERE stockoutId = '" + searchId + "'";
                     conn.query(query); //CMD 
                     conn.Open();
                     MySqlDataReader dr = conn.read();
@@ -204,21 +220,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Clear Function
-        public void Clear()
-        {
-            itemo.Clear();
-            itemTransNo.Clear();
-            itemName.Clear();
-            itemNo.Clear();
-            itemQty.Clear();
-            itemReduce.Clear();
-            curQty.Text = "";
-            itemDOP.Text = "";
-        }
-
-        // Return Item Button
-        public int toRefund, toStock;
+        // Add Button
         private void addItem_Click(object sender, RoutedEventArgs e)
         {
             int current, deduct;
