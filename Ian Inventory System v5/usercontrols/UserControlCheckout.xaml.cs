@@ -309,8 +309,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             if (tbPrdName.Text != String.Empty)
             {
+                /*
                 win_changequantity_stockout changeQtyWindow = new win_changequantity_stockout(this, orderNo.Text);
-                changeQtyWindow.ShowDialog();
+                changeQtyWindow.ShowDialog();*/
             }
             else
             {
@@ -435,9 +436,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                         //MessageBox.Show(prd.salesItem);
                     }
+                    /*
                     report_stockout rptstockout = new report_stockout(this);
                     rptstockout.printPreview();
                     rptstockout.ShowDialog();
+                    */
 
                     conn.Open();
                     loadData(); // Update UI

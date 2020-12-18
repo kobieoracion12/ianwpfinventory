@@ -38,7 +38,7 @@
                             <Label Content="Enter Entry:"/>
                             <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center" >
                                 <StackPanel Orientation="Horizontal" >
-                                    <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="50" MinWidth="800" Margin="20 25 20 0" Background="White" KeyDown="entrySearch_KeyDown" PreviewTextInput="entrySearch_PreviewTextInput"/>
+                                    <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="50" MinWidth="800" Margin="20 25 20 0" Background="White" KeyDown="entrySearch_KeyDown" PreviewTextInput="TextBox_OnPreviewTextInput"/>
                                 </StackPanel>
                             </Viewbox>
                         </Grid>
@@ -124,10 +124,10 @@
                     <Grid>
                         <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
                             <StackPanel Orientation="Horizontal" Margin="20">
-                                <Button x:Name="changeQtyBtn" Content="Quantity" Background="#5c9ef4" Margin="0 0 8 0" Click="changeQtyBtn_Click" IsEnabled="False"/>
-                                <Button x:Name="removeStockOutBtn" Content="Remove" Background="#D6332E" BorderBrush="#D6332E" Margin="0 0 8 0" Click="removeStockOutBtn_Click" IsEnabled="False"/>
-                                <Button x:Name="clearStockOutBtn" Content="Clear" Background="#EC6464" BorderBrush="#EC6464" Margin="0 0 8 0" Click="clearStockOutBtn_Click" IsEnabled="False"/>
-                                <Button x:Name="saveStockOutBtn" Content="Save" Background="#54b971" BorderBrush="#54b971" Margin="0 0 8 0" Click="saveStockOutBtn_Click" IsEnabled="False"/>
+                                <Button x:Name="changeQtyBtn" Content="Quantity" Background="#5c9ef4" Margin="0 0 8 0" Click="changeQtyBtn_Click_1"/>
+                                <Button x:Name="removeStockOutBtn" Content="Remove" Background="#D6332E" BorderBrush="#D6332E" Margin="0 0 8 0" Click="removeStockOutBtn_Click" />
+                                <Button x:Name="clearStockOutBtn" Content="Clear" Background="#EC6464" BorderBrush="#EC6464" Margin="0 0 8 0" Click="clearStockOutBtn_Click" />
+                                <Button x:Name="saveStockOutBtn" Content="Save" Background="#54b971" BorderBrush="#54b971" Margin="0 0 8 0" Click="saveStockOutBtn_Click" />
                             </StackPanel>
                         </Viewbox>
                     </Grid>

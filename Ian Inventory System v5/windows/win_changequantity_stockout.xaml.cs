@@ -23,10 +23,10 @@ namespace NavigationDrawerPopUpMenu2.windows
     public partial class win_changequantity_stockout : Window
     {
         Database conn = new Database();
-        UserControlCheckout usc_stockout;
+        usc_stockout usc_stockout;
         string prodQty = "";
         string transNo = "";
-        public win_changequantity_stockout(UserControlCheckout usc_stockout, string trans)
+        public win_changequantity_stockout(usc_stockout usc_stockout, string trans)
         {
             InitializeComponent();
             this.usc_stockout = usc_stockout;

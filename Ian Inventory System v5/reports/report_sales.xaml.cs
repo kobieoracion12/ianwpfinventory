@@ -23,6 +23,7 @@ namespace NavigationDrawerPopUpMenu2.reports
     /// </summary>
     public partial class report_sales : Window
     {
+        Store store = new Store();
         Database conn = new Database();
         usc_sales_inventory usc_sales;
         string reportToPrint;
@@ -77,6 +78,12 @@ namespace NavigationDrawerPopUpMenu2.reports
                     MySqlDataAdapter da = conn.DataAdapter(query);
                     da.Fill(ds.Tables["dtSold"]);
                     conn.Close();
+
+                    ReportParameter pStore = new ReportParameter("pStore", store.storeName(conn));
+                    ReportParameter pAddress = new ReportParameter("pAddress", store.storeAddress(conn));
+
+                    ReportViewerSales.LocalReport.SetParameters(pStore);
+                    ReportViewerSales.LocalReport.SetParameters(pAddress);
 
                     rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtSold"]);
                     this.ReportViewerSales.LocalReport.DataSources.Add(rptDataSource);

@@ -24,9 +24,10 @@ namespace NavigationDrawerPopUpMenu2.reports
     /// </summary>
     public partial class report_stockout : Window
     {
+        Store store = new Store();
         Database conn = new Database();
-        UserControlCheckout usc_stockout;
-        public report_stockout(UserControlCheckout usc_stockout)
+        usc_stockout usc_stockout;
+        public report_stockout(usc_stockout usc_stockout)
         {
             InitializeComponent();
             this.usc_stockout = usc_stockout;
@@ -48,6 +49,12 @@ namespace NavigationDrawerPopUpMenu2.reports
                 MySqlDataAdapter da = conn.DataAdapter(query);
                 da.Fill(ds.Tables["dtStockout"]);
                 conn.Close();
+
+                ReportParameter pStore = new ReportParameter("pStore", store.storeName(conn));
+                ReportParameter pAddress = new ReportParameter("pAddress", store.storeAddress(conn));
+
+                ReportViewerStockOut.LocalReport.SetParameters(pStore);
+                ReportViewerStockOut.LocalReport.SetParameters(pAddress);
 
                 rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtStockout"]);
                 this.ReportViewerStockOut.LocalReport.DataSources.Add(rptDataSource);

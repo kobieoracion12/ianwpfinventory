@@ -23,12 +23,26 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     public partial class usc_stockout : UserControl
     {
         Database conn = new Database();
-        Stockout stock = new Stockout();
         List<Stock_Out> stockOut = new List<Stock_Out>();
-        
+        string stockoutTransNo = "";
+        string stockoutNo = "";
+        string stockoutItem = "";
+        string stockoutQty = "";
+        string stockoutPrice = "";
+        string stockoutDate = "";
+        string stockoutStatus = "";
+        string checkStockRepeat = "";
         public usc_stockout()
         {
             InitializeComponent();
+        }
+
+        // When UserControl Loads
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            transGenerator();
+            ClearUnsavedDate();
+            loadDataForRecord();
         }
 
         // Delete All Unsaved Data
@@ -53,42 +67,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Transaction # Generator
-        public string transGenerator()
-        {
-            Random random = new Random();
-            string r = "";
-            int i;
-            for (i = 1; i < 13; i++)
-            {
-                r += random.Next(0, 9).ToString();
-                string query = "SELECT COUNT(1) FROM datasalesinventory WHERE salesTransNo = @order";
-                conn.query(query);
-                try
-                {
-                    conn.Open();
-                    conn.bind("@order", r);
-                    conn.cmd().Prepare();
-                    var check = conn.execute();
-                    if (check == 1)
-                    {
-                        transGenerator();
-                    }
-                    else
-                    {
-                        orderNo.Text = Convert.ToString(r);
-                    }
-                    conn.Close();
-                }
-                catch (Exception x)
-                {
-                    conn.Close();
-                    MessageBox.Show(x.Message);
-                }
-            }
-            return r;
-        }
-
         // Load Data
         public void loadData()
         {
@@ -111,6 +89,36 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 adapter.Update(dt);
                 adapter.Dispose();
 
+
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show(ex.Message, "Load Data", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public void loadDataForRecord()
+        {
+            try
+            {
+                conn.Open();
+                // Query Statement
+                string query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out'";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("stock_out");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listViewRecords.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+                adapter.Dispose();
+                conn.Close();
 
             }
             catch (Exception ex)
@@ -151,100 +159,89 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Fetch Previous Records from Database
-        public void fetchRecords()
+        // Transaction # Generator
+        public string transGenerator()
         {
-            try
+            Random random = new Random();
+            string r = "";
+            int i;
+            for (i = 1; i < 13; i++)
             {
-                conn.Open();
-                // Query Statement
-                string query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out'";
-                // Mysql Command
+                r += random.Next(0, 9).ToString();
+                string query = "SELECT COUNT(1) FROM datasalesinventory WHERE salesTransNo = @order";
                 conn.query(query);
-                // Execute
-                conn.execute();
-                // Adapter
-                MySqlDataAdapter adapter = conn.adapter();
-                //  Datatable
-                DataTable dt = new DataTable("stock_out");
-                // Fill the datatable
-                adapter.Fill(dt);
-                listViewRecords.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-                adapter.Dispose();
-                conn.Close();
-
+                try
+                {
+                    conn.Open();
+                    conn.bind("@order", r);
+                    conn.cmd().Prepare();
+                    var check = conn.execute();
+                    if (check == 1)
+                    {
+                        transGenerator();
+                    }
+                    else
+                    {
+                        orderNo.Text = Convert.ToString(r);
+                    }
+                    conn.Close();
+                }
+                catch (Exception x)
+                {
+                    conn.Close();
+                    MessageBox.Show(x.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show(ex.Message, "Load Data", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+            return r;
         }
 
-        // When UserControl Loads
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            transGenerator();
-            ClearUnsavedDate();
-            fetchRecords();
-            entrySearch.Focus();
-        }
-
-        // Barcode Scanner Function
+        // Barcode Scan
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
-            changeQtyBtn.IsEnabled = true;
-            removeStockOutBtn.IsEnabled = true;
-            clearStockOutBtn.IsEnabled = true;
-            saveStockOutBtn.IsEnabled = true;
-
             if (e.Key == Key.Return)
             {
-                bool itemFound = false;
+                
+                saveStockOutBtn.IsEnabled = true;
                 string itemQty = "";
                 string search = entrySearch.Text;
                 string query = "SELECT * FROM datainventory WHERE prodNo= '" + search + "'";
                 conn.query(query); //CMD 
                 try
                 {
-
+                    bool isItemFound = false;
                     conn.Open();
                     MySqlDataReader dr = conn.read();
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
+                            isItemFound = true;
                             itemQty = dr["prodQty"].ToString();
-                            stock.stockoutTransNo = orderNo.Text;
-                            stock.stockoutNo = dr["prodNo"].ToString();
-                            stock.stockoutItem = dr["prodItem"].ToString();
-                            stock.stockoutQty = dr["prodQty"].ToString();
-                            stock.stockoutPrice = dr["prodRP"].ToString();
-                            stock.stockoutDate = DateTime.Now.ToString();
-                            stock.stockoutStatus = "Stock Out Pending";
-                            itemFound = true;
+                            stockoutTransNo = orderNo.Text;
+                            stockoutNo = dr["prodNo"].ToString();
+                            stockoutItem = dr["prodItem"].ToString();
+                            stockoutQty = dr["prodQty"].ToString();
+                            stockoutPrice = dr["prodRP"].ToString();
+                            stockoutDate = DateTime.Now.ToString();
+                            stockoutStatus = "Stock Out Pending";
                         }
                     }
                     else
                     {
-                        itemFound = false;
+                        isItemFound = false;
                     }
 
                     dr.Close();
                     dr.Dispose();
                     conn.Close();
 
-                    // Check If Item Found
-                    if (!itemFound)
+                    if (!isItemFound)
                     {
                         MessageBox.Show("No item found", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        entrySearch.Clear();
-                        entrySearch.Focus();
                     }
                     else
                     {
-                        // ITEM FOUND
+
                         // Check Item Quantity If Have Stock
                         if (int.Parse(itemQty) < 1)
                         {
@@ -254,7 +251,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         { // Add to the stockout table
                             string refno = "";
                             bool doesExist = false;
-                            string check = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutItem = '" + stock.stockoutItem + "'";
+                            string check = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutItem = '" + stockoutItem + "'";
                             conn.query(check);
                             conn.Open();
                             MySqlDataReader reader = conn.read();
@@ -264,7 +261,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                 {
                                     doesExist = true;
                                     refno = reader["stockoutId"].ToString();
-                                    stock.checkStockRepeat = reader["stockoutQty"].ToString(); // Stock Out Stock
+                                    checkStockRepeat = reader["stockoutQty"].ToString(); // Stock Out Stock
                                 }
                             }
                             else
@@ -280,7 +277,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             {
                                 // Check if item stock is still good
                                 // itemQty = Datainventory stock // checkStockRepeat = stockout stock
-                                if ((int.Parse(itemQty) - int.Parse(stock.checkStockRepeat)) == 0)
+                                if ((int.Parse(itemQty) - int.Parse(checkStockRepeat)) == 0)
                                 {
                                     MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                                 }
@@ -300,7 +297,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                     }
                                     conn.Close();
                                 }
-
                             }
                             else
                             { // if not exist then insert
@@ -308,12 +304,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                 conn.query(query2);
                                 conn.Open();
                                 conn.bind("@stockoutTransNo", orderNo.Text);
-                                conn.bind("@stockoutNo", stock.stockoutNo);
-                                conn.bind("@stockoutItem", stock.stockoutItem);
+                                conn.bind("@stockoutNo", stockoutNo);
+                                conn.bind("@stockoutItem", stockoutItem);
                                 conn.bind("@stockoutQty", 1);
-                                conn.bind("@stockoutPrice", stock.stockoutPrice);
-                                conn.bind("@stockoutDate", DateTime.Parse(stock.stockoutDate));
-                                conn.bind("@stockoutStatus", stock.stockoutStatus);
+                                conn.bind("@stockoutPrice", stockoutPrice);
+                                conn.bind("@stockoutDate", DateTime.Parse(stockoutDate));
+                                conn.bind("@stockoutStatus", stockoutStatus);
                                 conn.cmd().Prepare();
                                 var cf = conn.execute();
                                 if (cf == 1)
@@ -326,8 +322,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             }
                         }
                     }
-
-
                 }
                 catch (Exception ex)
                 {
@@ -338,7 +332,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         }
 
         // Validate Barcode Textbox Only Numbers
-        private void entrySearch_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var addDisc = sender as TextBox;
             // Use SelectionStart property to find the caret position.
@@ -369,21 +363,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Change Quantity
-        private void changeQtyBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (tbPrdName.Text != String.Empty)
-            {
-                //win_changequantity_stockout changeQtyWindow = new win_changequantity_stockout(this, orderNo.Text);
-                //changeQtyWindow.ShowDialog();
-            }
-            else
-            {
-                changeQtyBtn.IsEnabled = false;
-                MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
-
         // Remove Item from ListView
         private void removeStockOutBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -408,6 +387,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     MessageBox.Show("Failed Removing Item, " + ex.Message, "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
+
         }
 
         // Remove ALL ITEM from ListView
@@ -450,8 +430,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             string stockoutStatus = dr["stockoutStatus"].ToString();
 
                             stockOut.Add(new Stock_Out { stockoutTransNo = stockoutTransNo, stockoutNo = stockoutNo, stockoutItem = stockoutItem, stockoutQty = stockoutQty, stockoutPrice = stockoutPrice, stockoutId = stockoutId, stockoutStatus = stockoutStatus });
-                            fetchRecords();
-                            entrySearch.Focus();
                         }
                     }
                     else
@@ -482,22 +460,47 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                         //MessageBox.Show(prd.salesItem);
                     }
-                    //report_stockout rptstockout = new report_stockout(this);
-                    //rptstockout.printPreview();
-                    //rptstockout.ShowDialog();
-
+                    
+                    report_stockout rptstockout = new report_stockout(this);
+                    rptstockout.printPreview();
+                    rptstockout.ShowDialog();
+                    transGenerator(); // Generate a new Trans#
+                    stockOut.Clear(); // Clear ListView
                     conn.Open();
                     loadData(); // Update UI
                     conn.Close();
-                    transGenerator(); // Generate a new Trans#
-                    stockOut.Clear(); // Clear ListView
+                    loadDataForRecord();
                     MessageBox.Show("Your changes has been saved", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Saving Failed \n" + ex.Message, "Stock Out", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
+            }
+        }
+
+        // View All Products
+        private void viewProdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            win_view_all_products viewlist = new win_view_all_products();
+            viewlist.ShowDialog();
+        }
+
+        // Change Quantity
+
+        private void changeQtyBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (tbPrdName.Text != String.Empty)
+            {
+                win_changequantity_stockout changeQtyWindow = new win_changequantity_stockout(this, orderNo.Text);
+                changeQtyWindow.ShowDialog();
+            }
+            else
+            {
+                changeQtyBtn.IsEnabled = false;
+                MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }
