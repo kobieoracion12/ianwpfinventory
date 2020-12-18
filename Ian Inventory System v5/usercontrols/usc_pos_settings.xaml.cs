@@ -49,25 +49,53 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Add Discount method
         private void addDiscount()
         {
             try
             {
-                string query = "INSERT INTO discount(discount_name, discount_percent) VALUES(@discount_name, @discount_percent)";
+                bool doesExist = false;
+                string query = "SELECT * FROM discount WHERE discount_name = @discount_name";
                 conn.query(query);
                 conn.Open();
                 conn.bind("@discount_name", discountName.Text);
-                conn.bind("@discount_percent", discountValue.Text);
                 conn.cmd().Prepare();
-                var success = conn.execute();
-                if (success > 0)
+                MySqlDataReader dr = conn.read();
+                if (dr.HasRows)
                 {
-                    MessageBox.Show("A new discount has been added", "Add Discount", MessageBoxButton.OK, MessageBoxImage.Information);
+                    doesExist = true;
+                }
+                else
+                {
+                    doesExist = false;
                 }
 
-                discountName.Text = "";
-                discountValue.Text = "";
+                dr.Close();
+                dr.Dispose();
                 conn.Close();
+
+                if (doesExist)
+                {
+                    MessageBox.Show("Discount name is already taken", "Add Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    string addDiscountQuery = "INSERT INTO discount(discount_name, discount_percent) VALUES(@discount_name, @discount_percent)";
+                    conn.query(addDiscountQuery);
+                    conn.Open();
+                    conn.bind("@discount_name", discountName.Text);
+                    conn.bind("@discount_percent", discountValue.Text);
+                    conn.cmd().Prepare();
+                    var success = conn.execute();
+                    if (success > 0)
+                    {
+                        MessageBox.Show("A new discount has been added", "Add Discount", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+
+                    discountName.Text = "";
+                    discountValue.Text = "";
+                    conn.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -76,6 +104,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Load Discount
         public void loadDiscount()
         {
             try
@@ -109,6 +138,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Prevent User to type letters/Char
         private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var discountValue = sender as TextBox;
@@ -166,6 +196,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Remove Discount Method
         private void removeDiscount()
         {
             string query = "DELETE FROM discount WHERE discount_name = @discount_name";
