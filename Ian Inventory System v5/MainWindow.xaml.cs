@@ -59,7 +59,8 @@ namespace NavigationDrawerPopUpMenu2
                     GridMain.Children.Add(usc);
                     break;
                 case "posSettings":
-
+                    usc = new usc_pos_settings();
+                    GridMain.Children.Add(usc);
                     break;
                 case "categoryButton":
                     usc = new usc_category();
