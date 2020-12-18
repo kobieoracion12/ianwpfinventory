@@ -76,7 +76,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                 if (doesExist)
                 {
-                    MessageBox.Show("Discount name is already taken", "Add Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Discount name is already exist", "Add Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 else
                 {

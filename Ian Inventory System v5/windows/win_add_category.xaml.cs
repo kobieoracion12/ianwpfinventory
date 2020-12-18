@@ -49,20 +49,47 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         private void addCategories()
         {
-            string query = "INSERT INTO category(category_name) VALUES(@category)";
-            conn.query(query);
             try
             {
+                bool doesExist = false;
+                string query = "SELECT * FROM category WHERE category_name = @categ";
+                conn.query(query);
                 conn.Open();
-                conn.bind("@category", addCateg.Text);
-                conn.execute();
+                conn.bind("@categ", addCateg.Text);
+                conn.cmd().Prepare();
+                MySqlDataReader dr = conn.read();
+                if (dr.HasRows)
+                {
+                    doesExist = true;
+                }
+                else
+                {
+                    doesExist = false;
+                }
+
+                dr.Close();
+                dr.Dispose();
                 conn.Close();
-                MessageBox.Show("Category added", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                //
+                if (doesExist)
+                {
+                    MessageBox.Show("Category name is already exist", "Add Category Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else
+                {
+                    string query2 = "INSERT INTO category(category_name) VALUES(@category)";
+                    conn.query(query2);
+                    conn.Open();
+                    conn.bind("@category", addCateg.Text);
+                    conn.execute();
+                    conn.Close();
+                    MessageBox.Show("Category added", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             catch (Exception ex)
             {
                 conn.Close();
-                MessageBox.Show("Unable to add category, Try again later", "Add Category Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Unable to add category, Try again later\n" + ex.Message, "Add Category Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
