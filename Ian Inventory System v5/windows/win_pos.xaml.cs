@@ -724,16 +724,8 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Discount
         private void discountItem_Click(object sender, RoutedEventArgs e)
         {
-            if (tbPrdName.Text != String.Empty)
-            {
-                addDiscount addDiscWindow = new addDiscount(salesItem, this);
-                addDiscWindow.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-
+            addDiscount addDiscWindow = new addDiscount(this);
+            addDiscWindow.ShowDialog();
         }
 
         // Shortcut Keys

@@ -37,11 +37,12 @@
                 <!-- Listview -->
                 <Grid Grid.Row="0" Grid.RowSpan="2">
                     <Grid>
-                        <ListView x:Name="listViewCategory" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" FontSize="20">
+                        <ListView x:Name="listViewDiscount" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" FontSize="20">
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridView.Columns>
-                                        <GridViewColumn DisplayMemberBinding="{Binding discountName }" Header="Discounts" Width="200"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding discount_name }" Header="Discount Name" Width="200"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding discount_percent}" Header="Percent" Width="200"/>
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
@@ -54,11 +55,6 @@
                     <Grid>
                         <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
                             <StackPanel Orientation="Horizontal" Canvas.Right="10" Margin="10">
-                                <Button x:Name="addButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#54b971">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                        <TextBlock Text="Add" FontWeight="SemiBold" FontSize="12" Foreground="#54b971" TextAlignment="Left" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
 
                                 <Button x:Name="editButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#5c9ef4">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -97,19 +93,19 @@
                             <StackPanel Orientation="Vertical" Margin="10">
                                 <!--Item Number -->
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <TextBlock Text="Category" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 0 0 0"/>
-                                    <TextBox x:Name="discountName" Text="{Binding ElementName=lv_browse, Path=SelectedItem.itemNo}" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" TextChanged="itemNo_TextChanged"/>
+                                    <TextBlock Text="Discount Name" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 0 0 0"/>
+                                    <TextBox x:Name="discountName" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" />
                                 </StackPanel>
 
                                 <!--Item Number -->
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <TextBlock Text="Discount (%)" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 5 0 0"/>
-                                    <TextBox x:Name="discountValue" Text="{Binding ElementName=lv_browse, Path=SelectedItem.itemNo}" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" TextChanged="itemNo_TextChanged"/>
+                                    <TextBlock Text="Discount Percent(%)" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 5 0 0"/>
+                                    <TextBox x:Name="discountValue" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" PreviewTextInput="TextBox_OnPreviewTextInput" />
                                 </StackPanel>
 
                                 <!-- Buttons-->
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <Button x:Name="addItem" Margin="0 10 5 0" Height="15" Background="#29CC97" BorderBrush="#29CC97" Click="addItem_Click">
+                                    <Button x:Name="addItem" Margin="0 10 5 0" Height="15" Background="#29CC97" BorderBrush="#29CC97" Click="addDiscount_Click">
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                             <TextBlock Text="Submit" FontWeight="SemiBold" FontSize="5" Foreground="#FFFFFF" TextAlignment="Center" VerticalAlignment="Center"/>
                                         </StackPanel>

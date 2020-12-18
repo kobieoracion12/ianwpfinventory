@@ -22,14 +22,15 @@ namespace NavigationDrawerPopUpMenu2.windows
     public partial class addDiscount : Window
     {
         Database conn = new Database();
-        string salesItem;
-        string prodTotal;
+        string discount_percent = "";
+        string totalDue = "";
         win_pos win_pos;
-        public addDiscount(string sales_item, win_pos pos)
+        public addDiscount(win_pos pos)
         {
             InitializeComponent();
-            salesItem = sales_item;
             win_pos = pos;
+            discountContent();
+            totalDue = win_pos.pay_total.Text;
         }
 
         /*
@@ -123,6 +124,33 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         }
 
+        private String getDiscountPercent()
+        {
+            
+            try
+            {
+                string query = "SELECT * FROM discount WHERE discount_name = '"+ sortDiscount.Text +"'";
+                conn.query(query);
+                conn.Open();
+                MySqlDataReader drd = conn.read();
+
+                while (drd.Read())
+                {
+                    discount_percent = drd["discount_percent"].ToString();
+                }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
+
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+            return discount_percent;
+        }
+
         // Exit
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {   // Close using escape
@@ -150,6 +178,53 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             win_add_edit_discount plusIcon = new win_add_edit_discount();
             plusIcon.ShowDialog();
+        }
+
+        private double calculateDiscount()
+        {
+            double dc = 0;
+            if (sortDiscount.Text == "Select")
+            {
+                discount_percent = "0";
+                // Do The Calculation
+                double discount = double.Parse(discount_percent) / 100;
+                double originalTotal = double.Parse(totalDue);
+
+                // Multiply the original price by the decimal(discount)
+                double multiplyPriceByDecimalDiscount = (originalTotal * discount);
+
+                // Subtract the discount from the original price:
+                double subtractDiscountToOrigPrice = (originalTotal - multiplyPriceByDecimalDiscount);
+                // Answer - subtractDiscountToOrigPrice
+                double discountedPrice = subtractDiscountToOrigPrice;
+
+                dc = discountedPrice;
+            }
+            else
+            {
+                // Do The Calculation
+                double discount = double.Parse(getDiscountPercent()) / 100;
+                double originalTotal = double.Parse(totalDue);
+
+                // Multiply the original price by the decimal(discount)
+                double multiplyPriceByDecimalDiscount = (originalTotal * discount);
+
+                // Subtract the discount from the original price:
+                double subtractDiscountToOrigPrice = (originalTotal - multiplyPriceByDecimalDiscount);
+                // Answer - subtractDiscountToOrigPrice
+                double discountedPrice = subtractDiscountToOrigPrice;
+
+                dc = discountedPrice;
+            }
+            return dc;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Update the Total Due UI
+            String format = String.Format("{0:0.00}", calculateDiscount().ToString());
+            win_pos.pay_total.Text = format;
+            this.Close();
         }
     }
 }
