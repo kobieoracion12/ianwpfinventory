@@ -92,7 +92,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             try
             {
                 // GET THE TOTAL SALES     
-                string query = "SELECT SUM(salesTotal) as total_due FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus=@status GROUP BY salesTransNo";
+                string query = "SELECT SUM(salesTotal + salesVAT) as total_due FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus=@status GROUP BY salesTransNo";
                 conn.query(query);
 
                 conn.bind("@transno", orderNo.Text);
@@ -267,7 +267,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 holdOrder.IsEnabled = false;
                 conn.Close();
                 string search = entrySearch.Text;
-                string query = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodBought FROM datainventory WHERE prodNo= '" + search + "'";
+                string query = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodBought FROM datainventory WHERE prodNo= '" + search + "'";
                 conn.query(query); //CMD 
                 conn.Open();
                 MySqlDataReader dr = conn.read();
@@ -278,7 +278,9 @@ namespace NavigationDrawerPopUpMenu2.windows
                     coStocks.Text = dr.GetValue(2).ToString();
                     coSRP.Text = dr.GetValue(3).ToString();
                     coRP.Text = dr.GetValue(4).ToString();
-                    coCurrent.Text = dr.GetValue(5).ToString();
+                    vatItem.Text = dr.GetValue(5).ToString();
+                    coCurrent.Text = dr.GetValue(6).ToString();
+
 
                     stocksck.productQty = Convert.ToInt32(dr.GetValue(2));
                     checkQty = Convert.ToInt32(stocksck.productQty);
@@ -323,15 +325,20 @@ namespace NavigationDrawerPopUpMenu2.windows
                 int cur = Convert.ToInt32(coCurrent.Text); // Current Stocks
                 int stk = Convert.ToInt32(coStocks.Text); // Stocks
                 int toit = Convert.ToInt32(totalItems.Text); // Total Items
+                double vi = Convert.ToDouble(vatItem.Text); // VAT Per Item
+
                 int sub = rp * qty;
 
                 checkout.rmstocks = stk - qty; // Remaining Stocks Based on How Many Are Bought
-                checkout.total += checkout.vat + sub; // Subtotal
+                checkout.vat = Convert.ToInt32(vi) * qty;
+                checkout.total += Convert.ToInt32(vi) + sub; // Subtotal
                 checkout.bought = cur + qty; // For Ranking
+
                 totalItems.Text = Convert.ToString(toit + qty); // Shows the Total Items (Count Individual Items in Listview)
                 coRemStocks.Text = Convert.ToString(checkout.rmstocks); // Shows the Remaining Item Upon Buy
                 coSubtotal.Text = Convert.ToString(sub); // (Price * Qunatity)
                 pay_subtotal.Text = Convert.ToString(checkout.subtotal + sub); // Subtotal + (Price * Quantity)
+                pay_tax.Text = Convert.ToString(vi);
                 coCurrentNew.Text = Convert.ToString(checkout.bought);
 
                 // Adds the data to the datasalesinventory
@@ -396,18 +403,19 @@ namespace NavigationDrawerPopUpMenu2.windows
                         }
                         else
                         { // if not exist then insert
-                            string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesQty, salesTotal, salesDate, salesStatus) VALUES (@no, @a, @b, @c, @d, @e, @f, @g, @h, @status)";
+                            string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesVAT, salesQty, salesTotal, salesDate, salesStatus) VALUES (@no, @barcode, @name, @brand, @srp, @rp, @vat, @qty, @subtotal, @date, @status)";
                             conn.query(query2);
 
                             conn.bind("@no", orderNo.Text);
-                            conn.bind("@a", entrySearch.Text);
-                            conn.bind("@b", coItem.Text);
-                            conn.bind("@c", coBrand.Text);
-                            conn.bind("@d", coSRP.Text);
-                            conn.bind("@e", coRP.Text);
-                            conn.bind("@f", coQty.Text);
-                            conn.bind("@g", coSubtotal.Text);
-                            conn.bind("@h", Convert.ToDateTime(transTime.Text));
+                            conn.bind("@barcode", entrySearch.Text);
+                            conn.bind("@name", coItem.Text);
+                            conn.bind("@brand", coBrand.Text);
+                            conn.bind("@srp", coSRP.Text);
+                            conn.bind("@rp", coRP.Text);
+                            conn.bind("@vat", vatItem.Text);
+                            conn.bind("@qty", coQty.Text);
+                            conn.bind("@subtotal", coSubtotal.Text);
+                            conn.bind("@date", Convert.ToDateTime(transTime.Text));
                             conn.bind("@status", "Pending");
                             conn.cmd().Prepare();
                             var cf = conn.execute();

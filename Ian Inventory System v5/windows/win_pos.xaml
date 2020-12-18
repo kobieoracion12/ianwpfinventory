@@ -261,6 +261,7 @@
                                 <Canvas Width="150" Height="80">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
                                         <TextBlock Text="Total Items" FontWeight="Regular" Margin="10 3 10 5" FontSize="15" TextAlignment="Left"/>
+                                        <TextBlock Text="VAT" FontWeight="Regular" Margin="10 3 10 5" FontSize="15" TextAlignment="Left"/>
                                         <TextBlock Text="Discount Items" FontWeight="Regular" Margin="10 3 10 5" FontSize="15" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
@@ -272,8 +273,9 @@
                             <Viewbox Stretch="Uniform" Margin="5" VerticalAlignment="Top">
                                 <Canvas Width="100" Height="80">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                        <TextBlock x:Name="totalItems" Text="0" FontWeight="Regular" FontSize="15" TextAlignment="Left"/>
-                                        <TextBlock x:Name="discountItems" Text="0" FontWeight="Regular" Margin="0 3 10 5" FontSize="15" TextAlignment="Left"/>
+                                        <TextBlock x:Name="totalItems" Text="0" FontWeight="Regular" Margin="0 0 10 5" FontSize="15" TextAlignment="Left"/>
+                                        <TextBlock x:Name="vatItem" Text="0" FontWeight="Regular" Margin="0 3 10 5" FontSize="15" TextAlignment="Left"/>
+                                        <TextBlock x:Name="discountItems" Text="0" FontWeight="Regular" Margin="0 0 10 5" FontSize="15" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
                             </Viewbox>
@@ -302,7 +304,7 @@
                                 <Canvas Width="120" Height="150">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
                                         <TextBlock x:Name="pay_subtotal" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
-                                        <TextBlock x:Name="oay_tax" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
+                                        <TextBlock x:Name="pay_tax" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
                             </Viewbox>

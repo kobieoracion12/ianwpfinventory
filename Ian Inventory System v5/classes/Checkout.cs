@@ -12,14 +12,14 @@ namespace NavigationDrawerPopUpMenu2.classes
         public int rmstocks = 0;
         public int stocks = 0;
         public int subtotal = 0;
-        public int vat = 0;
+        public double vat = 0;
         public int total = 0;
         public int due = 0;
         public int paid = 0;
         public int tax = 0;
         public int bought = 0;
         public int items = 0;
-        public int paytotal = 0;
+        public double paytotal = 0;
         public string payMethod = "";
     }
 

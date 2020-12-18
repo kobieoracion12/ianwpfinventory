@@ -244,7 +244,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 int sub = rp * qty;
 
                 checkout.rmstocks = stk - qty;
-                checkout.total += checkout.vat + sub;
+                checkout.total += checkout.tax + sub;
                 checkout.bought = cur + qty;
 
                 coRemStocks.Text = Convert.ToString(checkout.rmstocks);
