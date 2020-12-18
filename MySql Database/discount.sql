@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2020 at 04:19 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Dec 18, 2020 at 09:55 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,34 +25,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `discountinformation`
+-- Table structure for table `discount`
 --
 
-CREATE TABLE `discountinformation` (
-  `discountId` int(11) NOT NULL,
-  `discountName` varchar(249) NOT NULL,
-  `discountAmount` double NOT NULL
+CREATE TABLE `discount` (
+  `discId` int(11) NOT NULL,
+  `discount_name` varchar(250) NOT NULL,
+  `discount_percent` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `discount`
+--
+
+INSERT INTO `discount` (`discId`, `discount_name`, `discount_percent`) VALUES
+(4, 'Lucky Fifty', 50),
+(8, 'PWD', 20);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `discountinformation`
+-- Indexes for table `discount`
 --
-ALTER TABLE `discountinformation`
-  ADD UNIQUE KEY `discountId` (`discountId`);
+ALTER TABLE `discount`
+  ADD PRIMARY KEY (`discId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `discountinformation`
+-- AUTO_INCREMENT for table `discount`
 --
-ALTER TABLE `discountinformation`
-  MODIFY `discountId` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `discount`
+  MODIFY `discId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
