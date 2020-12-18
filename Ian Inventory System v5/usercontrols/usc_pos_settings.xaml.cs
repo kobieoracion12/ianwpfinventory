@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using NavigationDrawerPopUpMenu2.classes;
+using NavigationDrawerPopUpMenu2.windows;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -118,6 +119,74 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             double val;
             // If parsing is successful, set Handled to false
             e.Handled = !double.TryParse(fullText, out val);
+        }
+
+        // pass data listview to textbox
+        private void listViewDiscount_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                // Get the product id
+                string discountName = listViewDiscount.SelectedItems[1].ToString();
+                // Append ID and Product name
+                tbDiscountName.Text = discountName;
+
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
+
+        // Edit Discount
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbDiscountName.Text == "")
+            {
+                MessageBox.Show("No selected discount", "Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else {
+                win_edit_discount editDiscWin = new win_edit_discount(this);
+                editDiscWin.ShowDialog();
+            }
+            
+        }
+
+        // Remove Discount
+        private void removeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbDiscountName.Text == "")
+            {
+                MessageBox.Show("No selected discount", "Remove Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                removeDiscount();
+                loadDiscount();
+            }
+        }
+
+        private void removeDiscount()
+        {
+            string query = "DELETE FROM discount WHERE discount_name = @discount_name";
+            try
+            {
+                conn.query(query);
+                conn.Open();
+                conn.bind("@discount_name", tbDiscountName.Text);
+                conn.cmd().Prepare();
+                var success = conn.execute();
+                if (success > 0)
+                {
+                    MessageBox.Show("Discount has been successfully removed", "Remove Discount", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                MessageBox.Show("Removing discount failed, Please try again later", "Remove Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

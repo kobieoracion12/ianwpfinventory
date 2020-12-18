@@ -262,6 +262,9 @@
     <Compile Include="windows\win_edit_category.xaml.cs">
       <DependentUpon>win_edit_category.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_edit_discount.xaml.cs">
+      <DependentUpon>win_edit_discount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\win_pos.xaml.cs">
       <DependentUpon>win_pos.xaml</DependentUpon>
     </Compile>
@@ -484,6 +487,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\win_edit_category.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\win_edit_discount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -37,7 +37,7 @@
                 <!-- Listview -->
                 <Grid Grid.Row="0" Grid.RowSpan="2">
                     <Grid>
-                        <ListView x:Name="listViewDiscount" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" FontSize="20">
+                        <ListView x:Name="listViewDiscount" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" FontSize="20" SelectionChanged="listViewDiscount_SelectionChanged">
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridView.Columns>
@@ -56,13 +56,13 @@
                         <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
                             <StackPanel Orientation="Horizontal" Canvas.Right="10" Margin="10">
 
-                                <Button x:Name="editButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#5c9ef4">
+                                <Button x:Name="editButton" Margin="0 0 8 0" Height="30" Width="100" Background="White" BorderBrush="#5c9ef4" Click="editButton_Click">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                         <TextBlock Text="Edit" FontWeight="SemiBold" FontSize="12" Foreground="#5c9ef4" TextAlignment="Left" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </Button>
 
-                                <Button x:Name="removeButton" Height="30" Width="100" Background="White" BorderBrush="#D6332E">
+                                <Button x:Name="removeButton" Height="30" Width="100" Background="White" BorderBrush="#D6332E" Click="removeButton_Click">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                         <TextBlock Text="Delete" FontWeight="SemiBold" FontSize="12" Foreground="#D6332E" TextAlignment="Left" VerticalAlignment="Center"/>
                                     </StackPanel>
@@ -86,6 +86,10 @@
                         <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                     </Rectangle.Effect>
                 </Rectangle>
+
+                <StackPanel>
+                    <TextBox Text="{Binding ElementName=listViewDiscount, Path=SelectedItem.discount_name}" x:Name="tbDiscountName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Margin="10 10 50 5" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
+                </StackPanel>
 
                 <Grid x:Name="mainGrid" Margin="20">
                     <Grid>
@@ -117,11 +121,7 @@
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
-
-
-
                             </StackPanel>
-
                         </Viewbox>
                     </Grid>
                 </Grid>
