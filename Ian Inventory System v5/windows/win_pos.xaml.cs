@@ -31,6 +31,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         public static int prdID;
         string checkStockRepeat = "";
         int checkQty = 0;
+        bool isItemFound = false;
 
         List<Invoice> settleProducts = new List<Invoice>();
         public win_pos(window_userLogin frmLogin)
@@ -273,6 +274,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 MySqlDataReader dr = conn.read();
                 if (dr.Read())
                 {
+                    isItemFound = true; // Check if item is found
                     coItem.Text = dr.GetValue(0).ToString();
                     coBrand.Text = dr.GetValue(1).ToString();
                     coStocks.Text = dr.GetValue(2).ToString();
@@ -293,14 +295,14 @@ namespace NavigationDrawerPopUpMenu2.windows
                     }
                     else
                     {
-                        MessageBox.Show("Item Out of Stock!");
+                        MessageBox.Show("Item is out of stock", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                         clearPartial();
                         return;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Item not Found");
+                    isItemFound = false;
                     clearPartial();
                 }
             }
@@ -309,135 +311,186 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Computes Recieved Data from Barcode
         public void Compute()
         {
-            // Math Goes Here....
-            if (coRP.Text.Length > 0)
+            // Check if item is found
+            if (!isItemFound)
             {
-                // Enabled all the buttons
-                cashButton.IsEnabled = true;
-                voidEntry.IsEnabled = true;
-                voucherButton.IsEnabled = true;
-                othersButton.IsEnabled = true;
-                //holdOrder.IsEnabled = true;
-
-                // Here goes the math shits
-                int rp = Convert.ToInt32(coRP.Text); // Retail Price
-                int qty = Convert.ToInt32(coQty.Text); // Quantity
-                int cur = Convert.ToInt32(coCurrent.Text); // Current Stocks
-                int stk = Convert.ToInt32(coStocks.Text); // Stocks
-                int toit = Convert.ToInt32(totalItems.Text); // Total Items
-                double vi = Convert.ToDouble(vatItem.Text); // VAT Per Item
-
-                int sub = rp * qty;
-
-                checkout.rmstocks = stk - qty; // Remaining Stocks Based on How Many Are Bought
-                checkout.vat = Convert.ToInt32(vi) * qty;
-                checkout.total += Convert.ToInt32(vi) + sub; // Subtotal
-                checkout.bought = cur + qty; // For Ranking
-
-                totalItems.Text = Convert.ToString(toit + qty); // Shows the Total Items (Count Individual Items in Listview)
-                coRemStocks.Text = Convert.ToString(checkout.rmstocks); // Shows the Remaining Item Upon Buy
-                coSubtotal.Text = Convert.ToString(sub); // (Price * Qunatity)
-                pay_subtotal.Text = Convert.ToString(checkout.subtotal + sub); // Subtotal + (Price * Quantity)
-                pay_tax.Text = Convert.ToString(vi);
-                coCurrentNew.Text = Convert.ToString(checkout.bought);
-
-                // Adds the data to the datasalesinventory
-                if (coSubtotal.Text.Length > 0)
+                MessageBox.Show("No item found", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                // IF ITEM FOUND IN THE DATABASE
+                // Math Goes Here....
+                if (coRP.Text.Length > 0)
                 {
-                    // Insert Scanned Data to Database (datasalesinventory)
-                    try
+                    // Enabled all the buttons
+                    cashButton.IsEnabled = true;
+                    voidEntry.IsEnabled = true;
+                    voucherButton.IsEnabled = true;
+                    othersButton.IsEnabled = true;
+                    //holdOrder.IsEnabled = true;
+
+                    // Here goes the math shits
+                    int rp = Convert.ToInt32(coRP.Text); // Retail Price
+                    int qty = Convert.ToInt32(coQty.Text); // Quantity
+                    int cur = Convert.ToInt32(coCurrent.Text); // Current Stocks
+                    int stk = Convert.ToInt32(coStocks.Text); // Stocks
+                    int toit = Convert.ToInt32(totalItems.Text); // Total Items
+                    double vi = Convert.ToDouble(vatItem.Text); // VAT Per Item
+
+                    int sub = rp * qty;
+
+                    checkout.rmstocks = stk - qty; // Remaining Stocks Based on How Many Are Bought
+                    checkout.vat = Convert.ToInt32(vi) * qty;
+                    checkout.total += Convert.ToInt32(vi) + sub; // Subtotal
+                    checkout.bought = cur + qty; // For Ranking
+
+                    totalItems.Text = Convert.ToString(toit + qty); // Shows the Total Items (Count Individual Items in Listview)
+                    coRemStocks.Text = Convert.ToString(checkout.rmstocks); // Shows the Remaining Item Upon Buy
+                    coSubtotal.Text = Convert.ToString(sub); // (Price * Qunatity)
+                    pay_subtotal.Text = Convert.ToString(checkout.subtotal + sub); // Subtotal + (Price * Quantity)
+                    pay_tax.Text = Convert.ToString(vi);
+                    coCurrentNew.Text = Convert.ToString(checkout.bought);
+
+                    // Adds the data to the datasalesinventory
+                    if (coSubtotal.Text.Length > 0)
                     {
-                        string refno = "";
-                        bool doesExist = false;
-                        string check = "SELECT * FROM datasalesinventory WHERE salesTransNo = '"+orderNo.Text+ "' AND salesItem = '"+ coItem.Text + "'";
-                        conn.query(check);
-                        MySqlDataReader reader = conn.read();
-                        if (reader.HasRows)
+                        // Insert Scanned Data to Database (datasalesinventory)
+                        try
                         {
-                            while (reader.Read())
+                            string refno = "";
+                            bool doesExist = false;
+                            string check = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesItem = '" + coItem.Text + "'";
+                            conn.query(check);
+                            MySqlDataReader reader = conn.read();
+                            if (reader.HasRows)
                             {
-                                doesExist = true;
-                                refno = reader["refNo"].ToString();
-                                checkStockRepeat = reader["salesQty"].ToString(); // Datasalesinventory Stock
-                            }
-                        }
-                        else
-                        {
-                            doesExist = false;
-                        }
-
-                        reader.Close();
-                        reader.Dispose();
-                        // If Item exist
-                        if (doesExist == true)
-                        {
-
-                            // Check if item stock is still good
-                            // checkQty = Datainventory stock // checkStockRepeat = datasalesinventory stock
-                            if ((checkQty - int.Parse(checkStockRepeat)) == 0)
-                            {
-                                MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                while (reader.Read())
+                                {
+                                    doesExist = true;
+                                    refno = reader["refNo"].ToString();
+                                    checkStockRepeat = reader["salesQty"].ToString(); // Datasalesinventory Stock
+                                }
                             }
                             else
                             {
-                                string addQuantityToExistingItem = "UPDATE datasalesinventory SET salesQty = (salesQty + @qty) WHERE refNo = @refno";
-                                conn.query(addQuantityToExistingItem);
-                                conn.bind("@qty", 1);
-                                conn.bind("@refno", refno);
-                                conn.cmd().Prepare();
-                                var cf = conn.execute();
-                                if (cf == 1)
+                                doesExist = false;
+                            }
+
+                            reader.Close();
+                            reader.Dispose();
+
+                            try
+                            {
+                                /////
+                                // If Item exist
+                                if (doesExist == true)
                                 {
-                                    string updTotal = "UPDATE datasalesinventory SET salesTotal = (salesRP * salesQty) WHERE salesTransNo = '" + orderNo.Text + "' AND refNo = '" + refno + "' ";
-                                    conn.query(updTotal);
-                                    conn.execute();
-                                    // Adds Scanned Item to the Listview
-                                    //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
-                                    clearPartial();
-                                    loadData(); // Display to ListView 
-                                    checkout.paytotal = int.Parse(sumOfSalesTotal());
-                                    pay_total.Text = Convert.ToString(checkout.paytotal);
+                                    // Check if item stock is still good
+                                    // checkQty = Datainventory stock // checkStockRepeat = datasalesinventory stock
+                                    if ((checkQty - int.Parse(checkStockRepeat)) == 0)
+                                    {
+                                        MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    }
+                                    else
+                                    {
+                                        string addQuantityToExistingItem = "UPDATE datasalesinventory SET salesQty = (salesQty + @qty) WHERE refNo = @refno";
+                                        conn.query(addQuantityToExistingItem);
+                                        conn.bind("@qty", 1);
+                                        conn.bind("@refno", refno);
+                                        conn.cmd().Prepare();
+                                        var cf = conn.execute();
+                                        if (cf == 1)
+                                        {
+                                            string updTotal = "UPDATE datasalesinventory SET salesTotal = (salesRP * salesQty), salesVAT = (salesVAT + '" + double.Parse(vatItem.Text) + "') WHERE salesTransNo = '" + orderNo.Text + "' AND refNo = '" + refno + "' ";
+                                            conn.query(updTotal);
+                                            conn.execute();
+                                            // Adds Scanned Item to the Listview
+                                            //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
+                                            clearPartial();
+                                            loadData(); // Display to ListView 
+                                            checkout.paytotal = double.Parse(sumOfSalesTotal());
+                                            pay_total.Text = Convert.ToString(checkout.paytotal);
+                                            pay_tax.Text = sumOfTotalVat(); // Total Vat
+                                        }
+                                    }
+
+                                }
+                                else
+                                { // if not exist then insert
+                                    string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesVAT, salesQty, salesTotal, salesDate, salesStatus) VALUES (@no, @barcode, @name, @brand, @srp, @rp, @vat, @qty, @subtotal, @date, @status)";
+                                    conn.query(query2);
+
+                                    conn.bind("@no", orderNo.Text);
+                                    conn.bind("@barcode", entrySearch.Text);
+                                    conn.bind("@name", coItem.Text);
+                                    conn.bind("@brand", coBrand.Text);
+                                    conn.bind("@srp", coSRP.Text);
+                                    conn.bind("@rp", coRP.Text);
+                                    conn.bind("@vat", double.Parse(vatItem.Text));
+                                    conn.bind("@qty", coQty.Text);
+                                    conn.bind("@subtotal", coSubtotal.Text);
+                                    conn.bind("@date", Convert.ToDateTime(transTime.Text));
+                                    conn.bind("@status", "Pending");
+                                    conn.cmd().Prepare();
+                                    var cf = conn.execute();
+                                    if (cf == 1)
+                                    {
+                                        // Adds Scanned Item to the Listview
+                                        //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
+                                        clearPartial();
+                                        loadData(); // Display to ListView 
+                                        pay_total.Text = Convert.ToString(sumOfSalesTotal());
+                                        pay_tax.Text = sumOfTotalVat(); // Total Vat
+                                    }
                                 }
                             }
-                            
-                        }
-                        else
-                        { // if not exist then insert
-                            string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesVAT, salesQty, salesTotal, salesDate, salesStatus) VALUES (@no, @barcode, @name, @brand, @srp, @rp, @vat, @qty, @subtotal, @date, @status)";
-                            conn.query(query2);
-
-                            conn.bind("@no", orderNo.Text);
-                            conn.bind("@barcode", entrySearch.Text);
-                            conn.bind("@name", coItem.Text);
-                            conn.bind("@brand", coBrand.Text);
-                            conn.bind("@srp", coSRP.Text);
-                            conn.bind("@rp", coRP.Text);
-                            conn.bind("@vat", vatItem.Text);
-                            conn.bind("@qty", coQty.Text);
-                            conn.bind("@subtotal", coSubtotal.Text);
-                            conn.bind("@date", Convert.ToDateTime(transTime.Text));
-                            conn.bind("@status", "Pending");
-                            conn.cmd().Prepare();
-                            var cf = conn.execute();
-                            if (cf == 1)
+                            catch (Exception ex)
                             {
-                                // Adds Scanned Item to the Listview
-                                //listViewinVoice.Items.Add(new invoiceClass.gg { salesItem = coItem.Text, salesRP = rp.ToString(), salesQty = qty.ToString(), salesTotal = sub.ToString() });
-                                clearPartial();
-                                loadData(); // Display to ListView 
-                                pay_total.Text = Convert.ToString(sumOfSalesTotal());
-
+                                conn.Close();
+                                MessageBox.Show("Something went wrong\n" + ex.Message, "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                             }
+                            /////
                         }
-                    }
-                    catch (Exception x)
-                    {
-                        conn.Close();
-                        MessageBox.Show(x.Message);
-                        clearPartial();
+                        catch (Exception x)
+                        {
+                            conn.Close();
+                            MessageBox.Show(x.Message, "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            clearPartial();
+                        }
                     }
                 }
             }
+        }
+
+        private String sumOfTotalVat()
+        {
+            string total = "";
+            try
+            {
+                // GET THE TOTAL SALES     
+                string query = "SELECT SUM(salesVAT) as total_vat FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus=@status GROUP BY salesTransNo";
+                conn.query(query);
+
+                conn.bind("@transno", orderNo.Text);
+                conn.bind("@status", "Pending");
+                conn.cmd().Prepare();
+                MySqlDataReader dr = conn.read();
+                if (dr.HasRows)
+                {
+                    if (dr.Read())
+                    {
+                        total = dr["total_vat"].ToString(); // TOTAL SUM OF SALESTOTAL
+                    }
+                }
+
+                dr.Close();
+                dr.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message + ", Try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            return total;
         }
 
         // Void Button
@@ -717,10 +770,6 @@ namespace NavigationDrawerPopUpMenu2.windows
             
         }
 
-        private void reqStock_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         // Discount
         private void discountItem_Click(object sender, RoutedEventArgs e)
         {

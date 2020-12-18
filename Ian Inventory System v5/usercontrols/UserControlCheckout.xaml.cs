@@ -194,7 +194,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     }
                     else
                     {
-                        MessageBox.Show("No item found, Try again later", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("No item found", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
 
                     dr.Close();
@@ -255,9 +255,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                         entrySearch.Text = "";
                                     }
                                     conn.Close();
+                                }     
                             }
-                                
-                        }
                             else
                             { // if not exist then insert
                                 string query2 = "INSERT INTO stock_out (stockoutTransNo, stockoutNo, stockoutItem, stockoutQty, stockoutPrice, stockoutDate, stockoutStatus) VALUES (@stockoutTransNo, @stockoutNo, @stockoutItem, @stockoutQty, @stockoutPrice, @stockoutDate, @stockoutStatus)";
@@ -277,7 +276,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                     // Adds Scanned Item to the Listview
                                     loadData(); // Display to ListView 
                                     entrySearch.Text = "";
-                            }
+                                }
                                 conn.Close();
                             }
                     }

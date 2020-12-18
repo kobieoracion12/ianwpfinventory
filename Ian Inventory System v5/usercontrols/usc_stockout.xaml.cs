@@ -201,6 +201,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
             if (e.Key == Key.Return)
             {
+                bool itemFound = false;
                 string itemQty = "";
                 string search = entrySearch.Text;
                 string query = "SELECT * FROM datainventory WHERE prodNo= '" + search + "'";
@@ -222,95 +223,107 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             stock.stockoutPrice = dr["prodRP"].ToString();
                             stock.stockoutDate = DateTime.Now.ToString();
                             stock.stockoutStatus = "Stock Out Pending";
+                            itemFound = true;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("No item found, Try again later", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        itemFound = false;
                     }
 
                     dr.Close();
                     dr.Dispose();
                     conn.Close();
 
-                    // Check Item Quantity If Have Stock
-                    if (int.Parse(itemQty) < 1)
+                    // Check If Item Found
+                    if (!itemFound)
                     {
-                        MessageBox.Show("Item is out of stock", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("No item found", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        entrySearch.Clear();
+                        entrySearch.Focus();
                     }
                     else
-                    { // Add to the stockout table
-                        string refno = "";
-                        bool doesExist = false;
-                        string check = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutItem = '" + stock.stockoutItem + "'";
-                        conn.query(check);
-                        conn.Open();
-                        MySqlDataReader reader = conn.read();
-                        if (reader.HasRows)
+                    {
+                        // ITEM FOUND
+                        // Check Item Quantity If Have Stock
+                        if (int.Parse(itemQty) < 1)
                         {
-                            while (reader.Read())
-                            {
-                                doesExist = true;
-                                refno = reader["stockoutId"].ToString();
-                                stock.checkStockRepeat = reader["stockoutQty"].ToString(); // Stock Out Stock
-                            }
+                            MessageBox.Show("Item is out of stock", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                         else
-                        {
-                            doesExist = false;
-                        }
-
-                        reader.Close();
-                        reader.Dispose();
-                        conn.Close();
-                        // If Item exist
-                        if (doesExist == true)
-                        {
-                            // Check if item stock is still good
-                            // itemQty = Datainventory stock // checkStockRepeat = stockout stock
-                            if ((int.Parse(itemQty) - int.Parse(stock.checkStockRepeat)) == 0)
+                        { // Add to the stockout table
+                            string refno = "";
+                            bool doesExist = false;
+                            string check = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutItem = '" + stock.stockoutItem + "'";
+                            conn.query(check);
+                            conn.Open();
+                            MySqlDataReader reader = conn.read();
+                            if (reader.HasRows)
                             {
-                                MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                while (reader.Read())
+                                {
+                                    doesExist = true;
+                                    refno = reader["stockoutId"].ToString();
+                                    stock.checkStockRepeat = reader["stockoutQty"].ToString(); // Stock Out Stock
+                                }
                             }
                             else
                             {
+                                doesExist = false;
+                            }
+
+                            reader.Close();
+                            reader.Dispose();
+                            conn.Close();
+                            // If Item exist
+                            if (doesExist == true)
+                            {
+                                // Check if item stock is still good
+                                // itemQty = Datainventory stock // checkStockRepeat = stockout stock
+                                if ((int.Parse(itemQty) - int.Parse(stock.checkStockRepeat)) == 0)
+                                {
+                                    MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                }
+                                else
+                                {
+                                    conn.Open();
+                                    string addQuantityToExistingItem = "UPDATE stock_out SET stockoutQty = (stockoutQty + @qty) WHERE stockoutId = @refno";
+                                    conn.query(addQuantityToExistingItem);
+                                    conn.bind("@qty", 1);
+                                    conn.bind("@refno", refno);
+                                    conn.cmd().Prepare();
+                                    var cf = conn.execute();
+                                    if (cf == 1)
+                                    {
+                                        loadData(); // Display to ListView
+                                        entrySearch.Text = "";
+                                    }
+                                    conn.Close();
+                                }
+
+                            }
+                            else
+                            { // if not exist then insert
+                                string query2 = "INSERT INTO stock_out (stockoutTransNo, stockoutNo, stockoutItem, stockoutQty, stockoutPrice, stockoutDate, stockoutStatus) VALUES (@stockoutTransNo, @stockoutNo, @stockoutItem, @stockoutQty, @stockoutPrice, @stockoutDate, @stockoutStatus)";
+                                conn.query(query2);
                                 conn.Open();
-                                string addQuantityToExistingItem = "UPDATE stock_out SET stockoutQty = (stockoutQty + @qty) WHERE stockoutId = @refno";
-                                conn.query(addQuantityToExistingItem);
-                                conn.bind("@qty", 1);
-                                conn.bind("@refno", refno);
+                                conn.bind("@stockoutTransNo", orderNo.Text);
+                                conn.bind("@stockoutNo", stock.stockoutNo);
+                                conn.bind("@stockoutItem", stock.stockoutItem);
+                                conn.bind("@stockoutQty", 1);
+                                conn.bind("@stockoutPrice", stock.stockoutPrice);
+                                conn.bind("@stockoutDate", DateTime.Parse(stock.stockoutDate));
+                                conn.bind("@stockoutStatus", stock.stockoutStatus);
                                 conn.cmd().Prepare();
                                 var cf = conn.execute();
                                 if (cf == 1)
                                 {
-                                    loadData(); // Display to ListView
+                                    // Adds Scanned Item to the Listview
+                                    loadData(); // Display to ListView 
                                     entrySearch.Text = "";
                                 }
                                 conn.Close();
                             }
-
-                        }
-                        else
-                        { // if not exist then insert
-                            string query2 = "INSERT INTO stock_out (stockoutTransNo, stockoutNo, stockoutItem, stockoutQty, stockoutPrice, stockoutDate, stockoutStatus) VALUES (@stockoutTransNo, @stockoutNo, @stockoutItem, @stockoutQty, @stockoutPrice, @stockoutDate, @stockoutStatus)";
-                            conn.query(query2);
-                            conn.Open();
-                            conn.bind("@stockoutTransNo", orderNo.Text);
-                            conn.bind("@stockoutNo", stock.stockoutNo);
-                            conn.bind("@stockoutItem", stock.stockoutItem);
-                            conn.bind("@stockoutQty", 1);
-                            conn.bind("@stockoutPrice", stock.stockoutPrice);
-                            conn.bind("@stockoutDate", DateTime.Parse(stock.stockoutDate));
-                            conn.bind("@stockoutStatus", stock.stockoutStatus);
-                            conn.cmd().Prepare();
-                            var cf = conn.execute();
-                            if (cf == 1)
-                            {
-                                // Adds Scanned Item to the Listview
-                                loadData(); // Display to ListView 
-                                entrySearch.Text = "";
-                            }
-                            conn.Close();
                         }
                     }
 
