@@ -27,6 +27,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         }
 
         Database conn = new Database();
+        Login login = new Login();
 
         public void Login()
         {

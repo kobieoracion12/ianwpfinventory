@@ -102,7 +102,7 @@
                         <!-- Listview Contents -->
                         <Grid Margin="10">
                             <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical">
                                     <TextBlock Text="Order Records" TextAlignment="Left" FontSize="18" FontFamily="Segoe UI Semibold" Margin="10"/>
                                 </StackPanel>
                                 <ListView x:Name="listViewRecords" FontSize="15" SelectionMode="Single" Margin="10">

@@ -754,3 +754,5 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_edit_discount.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_settings.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\windows\win_edit_discount.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_accounts.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_accounts.baml

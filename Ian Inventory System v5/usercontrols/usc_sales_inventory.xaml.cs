@@ -34,6 +34,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             InitializeComponent();
             catchData();
             cbBrand();
+            getLastDate();
         }
 
         // ListView Data
@@ -97,9 +98,32 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         }
 
-        public void cbCategory()
+        // Fill the DatePicker with the first date available in database
+        public void getLastDate()
         {
+            try
+            {
+                conn.Open();
+                string lastDate = "SELECT salesDate FROM datasalesinventory ORDER BY salesDate ASC LIMIT 1";
+                conn.query(lastDate);
+                conn.execute();
+                MySqlDataReader drd = conn.read();
 
+                while (drd.Read())
+                {
+                    string[] row = { drd.GetString(0) };
+                    sortCalendarFrom.Text = row[0];
+                }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
+
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
         }
 
         // Sort by Date FROM - Date TO 

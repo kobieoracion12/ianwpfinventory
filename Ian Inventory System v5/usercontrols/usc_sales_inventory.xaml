@@ -52,7 +52,7 @@
                                     <!-- Date of Arrival (From) -->
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <TextBlock Text="Date of Arrival (From)" HorizontalAlignment="Center" Foreground="#FFFFFF" FontWeight="Bold" FontSize="10" Margin="0 0 0 5"/>
-                                        <DatePicker x:Name="sortCalendarFrom" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:yyyy MM, dd}'}" FontSize="12" BorderThickness="1" Padding="10 0 0 0" FontFamily="Microsoft Tai Le" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#45D5D5" Background="White"/>
+                                        <DatePicker x:Name="sortCalendarFrom" FontSize="12" BorderThickness="1" Padding="10 0 0 0" FontFamily="Microsoft Tai Le" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#45D5D5" Background="White"/>
                                     </StackPanel>
 
                                     <!-- Date of Arrival (To) -->
