@@ -242,6 +242,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     if (!isItemFound)
                     {
                         MessageBox.Show("No item found", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        entrySearch.Text = "";
                     }
                     else
                     {
@@ -250,6 +251,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         if (int.Parse(itemQty) < 1)
                         {
                             MessageBox.Show("Item is out of stock", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            entrySearch.Text = "";
                         }
                         else
                         { // Add to the stockout table
