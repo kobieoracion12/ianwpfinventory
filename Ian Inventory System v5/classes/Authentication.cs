@@ -193,6 +193,46 @@ namespace NavigationDrawerPopUpMenu2.classes
             return passwordCorrect;
         }
 
+        public Boolean checkUserPasswordByAccNo(string accNo)
+        {
+            Boolean passwordCorrect = false;
+            string pass = "";
+            string query = "SELECT * FROM usersinventory WHERE acc_no=@accNo";
+            conn.query(query);
+            conn.bind("@accNo", accNo);
+
+            try
+            {
+                conn.Open();
+                MySqlDataReader read = conn.read();
+                if (read.Read())
+                {
+                    pass = read["usersPass"].ToString();
+                }
+                read.Close();
+                read.Dispose();
+                conn.Close();
+
+                // Check if users password is equal to db pass
+                var checkPwd = BCrypt.Net.BCrypt.Verify(this.password, pass);
+                if (checkPwd)
+                {
+                    passwordCorrect = true;
+                }
+                else
+                {
+                    passwordCorrect = false;
+                }
+
+            }
+            catch (Exception)
+            {
+                conn.Close();
+            }
+            // Return Boolean
+            return passwordCorrect;
+        }
+
         public String getFullName(string accNo)
         {
 

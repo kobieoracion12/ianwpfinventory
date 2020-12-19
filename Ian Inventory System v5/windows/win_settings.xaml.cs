@@ -23,7 +23,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         Checkout checkout = new Checkout();
         Settings setting = new Settings();
         win_pos win_pos;
-
+        Authentication auth; 
         public win_settings(win_pos winPOS)
         {
             InitializeComponent();
@@ -69,35 +69,58 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             Close();
         }
-        
+
         // Save Button
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            setting.posUser = settingUser.Text;
-            setting.posNewPass = settingCurrentPass.Password;
-            setting.posCurPass = settingConfirmPass.Password;
-
-            string sql = setting.savePosInfo;
-            conn.query(sql);
-            conn.Close();
-            try
+            if (settingOldPass.Password == "" || settingNewPass.Password == "" || settingConfirmPass.Password == "")
             {
-                conn.Open();
-                conn.bind("@no", setting.strId);
-                conn.bind("@name", setting.posUser);
-                conn.bind("@pass", setting.posNewPass);
-
-                conn.cmd().Prepare();
-                conn.execute();
-
-                MessageBox.Show("Successfully Updated");
-
-                conn.Close();
+                MessageBox.Show("One or more fields are empty", "Change Password", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            catch (Exception ex)
+            else if (settingConfirmPass.Password != settingNewPass.Password)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Password does not match", "Change Password", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            else
+            {
+                auth = new Authentication(st_cashier_name.Text, settingOldPass.Password);
+                try
+                {
+                    // Check User Pass if Correct
+                    if (auth.checkUserPasswordByAccNo(st_acc_no.Text))
+                    {
+                            var hashedPwd = BCrypt.Net.BCrypt.HashPassword(settingNewPass.Password);
+                            string sql = "UPDATE usersinventory SET usersName = @name, usersPass = @pass WHERE acc_no = @no";
+                            conn.query(sql);
+
+                            conn.Open();
+                            conn.bind("@name", settingUser.Text);
+                            conn.bind("@pass", hashedPwd);
+                            conn.bind("@no", st_acc_no.Text);
+
+                            conn.cmd().Prepare();
+                            var succes = conn.execute();
+                            if (succes > 0)
+                            {
+                                MessageBox.Show("Your password has been changed", "Change Password", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                            conn.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Your old password is wrong", "Change Password", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Something went wrong changing your password", "Change Password", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
+
+        private void save()
+        {
+            
         }
 
         // Password Validation
