@@ -36,7 +36,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT stockoutTransNo, stockoutItem, stockoutQty, stockoutDate, stockoutId, stockoutStatus FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutDate DESC";
+                string query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutDate DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -223,38 +223,84 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Add Button
         private void addItem_Click(object sender, RoutedEventArgs e)
         {
-            int current, deduct;
-            current = int.Parse(itemQty.Text);
-            deduct = int.Parse(itemReduce.Text);
-
-            toStock = (deduct + current);
-            toRefund = (current - deduct);
-
-            conn.Open();
-            // Update datainventory Quantity
-            string toAdd = "UPDATE datainventory SET prodQty = @Qty WHERE prodNo = @no";
-            conn.query(toAdd);
+            
             try
             {
-                conn.bind("@Qty", toStock);
-                conn.bind("@no", itemNo.Text);
-
-                var check = conn.execute();
-                if (check == 1)
+                if (int.Parse(itemReduce.Text) > int.Parse(itemQty.Text))
                 {
-                    MessageBox.Show("Refund Success!");
-                    
-                    reduceStocks();
-                    fetchData();
-                    conn.Close();
-                    Clear();
-
+                    MessageBox.Show("Unable to proceed, your input is too large", "Stock Return", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
-            }
-            catch (Exception x)
+                else if (int.Parse(itemQty.Text) == int.Parse(itemReduce.Text))
+                {
+                    ////
+                    string query = "UPDATE datainventory SET prodQty = (prodQty + @prodQty) WHERE prodNo = @prodNo";
+                    conn.query(query);
+                    conn.Open();
+                    conn.bind("@prodQty", itemReduce.Text);
+                    conn.bind("@prodNo", itemNo.Text);
+                    conn.cmd().Prepare();
+                    var success = conn.execute();
+                    if (success > 0)
+                    {
+                        MessageBox.Show(itemReduce.Text + " has been returned to the database", "Stock Return", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    conn.Close();
+
+                    ////
+                    // Delete this stock out item record
+                    string removeRecord = "DELETE FROM stock_out WHERE stockoutTransNo = @transno AND stockoutNo = @prodno";
+                    conn.query(removeRecord);
+                    conn.Open();
+                    conn.bind("@transno", itemTransNo.Text);
+                    conn.bind("@prodno", itemNo.Text);
+                    conn.cmd().Prepare();
+                    conn.execute();
+                   
+                    conn.Close();
+
+                    fetchData();
+                    Clear();
+                }
+                else
+                {
+                    ////
+                    string query = "UPDATE datainventory SET prodQty = (prodQty + @prodQty) WHERE prodNo = @prodNo";
+                    conn.query(query);
+                    conn.Open();
+                    conn.bind("@prodQty", itemReduce.Text);
+                    conn.bind("@prodNo", itemNo.Text);
+                    conn.cmd().Prepare();
+                    var success = conn.execute();
+                    if (success > 0)
+                    {
+                        MessageBox.Show(itemReduce.Text + " has been returned to the database", "Stock Return", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    conn.Close();
+                    ////
+
+                    ////
+                    string reduceFromStockout = "UPDATE stock_out SET stockoutQty = (stockoutQty - @stockoutQty) WHERE stockoutTransNo = @transno AND stockoutNo = @stockoutNo";
+                    conn.query(reduceFromStockout);
+                    conn.Open();
+                    conn.bind("@transno", itemTransNo.Text);
+                    conn.bind("@stockoutQty", itemReduce.Text);
+                    conn.bind("@stockoutNo", itemNo.Text);
+                    conn.cmd().Prepare();
+                    conn.execute();
+                    conn.Close();
+                    ////
+
+
+                    fetchData();
+                    Clear();
+                }
+               
+
+            } catch (Exception)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show("Failed to return item, try again later", "Stock Return", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+                    
         }
     }
 }

@@ -43,6 +43,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             transGenerator();
             ClearUnsavedDate();
             loadDataForRecord();
+            changeQtyBtn.IsEnabled = false;
+            removeStockOutBtn.IsEnabled = false;
+            clearStockOutBtn.IsEnabled = false;
+            saveStockOutBtn.IsEnabled = false;
         }
 
         // Delete All Unsaved Data
@@ -104,7 +108,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out'";
+                string query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutDate DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -200,7 +204,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             if (e.Key == Key.Return)
             {
-                
+                clearStockOutBtn.IsEnabled = true;
                 saveStockOutBtn.IsEnabled = true;
                 string itemQty = "";
                 string search = entrySearch.Text;
@@ -350,6 +354,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             try
             {
                 changeQtyBtn.IsEnabled = true;
+                removeStockOutBtn.IsEnabled = true;
                 // GET THE SELECTED ITEM
                 string selectedItem = listViewinVoice.SelectedItems[1].ToString();
                 if (selectedItem != null)
@@ -369,6 +374,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             if (tbPrdName.Text.Equals(""))
             {
                 MessageBox.Show("No Selected Item", "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                removeStockOutBtn.IsEnabled = false;
             }
             else
             {
@@ -380,6 +386,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     conn.execute();
                     loadData();
                     conn.Close();
+                    clearStockOutBtn.IsEnabled = false;
                 }
                 catch (Exception ex)
                 {

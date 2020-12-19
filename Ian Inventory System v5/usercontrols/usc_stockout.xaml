@@ -54,6 +54,18 @@
                             </Rectangle.Effect>
                         </Rectangle>
 
+                        <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" Margin="10, 50, 10, 10" SelectionChanged="listViewinVoice_SelectionChanged">
+                            <ListView.View>
+                                <GridView AllowsColumnReorder="False">
+                                    <GridView.Columns>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="250" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="100"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutPrice }" Header="Price" Width="100" />
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
                         <!-- Listview Contents -->
                         <Grid Margin="10">
                             <StackPanel Orientation="Vertical">
@@ -63,17 +75,6 @@
                                     <TextBox Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.stockoutItem}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
                                 </StackPanel>
 
-                                <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" Margin="10" SelectionChanged="listViewinVoice_SelectionChanged">
-                                    <ListView.View>
-                                        <GridView AllowsColumnReorder="False">
-                                            <GridView.Columns>
-                                                <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="250" />
-                                                <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="100"/>
-                                                <GridViewColumn DisplayMemberBinding="{Binding stockoutPrice }" Header="Price" Width="100" />
-                                            </GridView.Columns>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -99,22 +100,26 @@
                             </Rectangle.Effect>
                         </Rectangle>
 
+
+                        <ListView x:Name="listViewRecords" FontSize="15" SelectionMode="Single" Margin="10, 50, 10, 10">
+                            <ListView.View>
+                                <GridView AllowsColumnReorder="False">
+                                    <GridView.Columns>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutTransNo }" Header="ST#" Width="120" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="280" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="80"/>
+                                    </GridView.Columns>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+
                         <!-- Listview Contents -->
                         <Grid Margin="10">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Text="Order Records" TextAlignment="Left" FontSize="18" FontFamily="Segoe UI Semibold" Margin="10"/>
                                 </StackPanel>
-                                <ListView x:Name="listViewRecords" FontSize="15" SelectionMode="Single" Margin="10">
-                                    <ListView.View>
-                                        <GridView AllowsColumnReorder="False">
-                                            <GridView.Columns>
-                                                <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="350" />
-                                                <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="100"/>
-                                            </GridView.Columns>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
+                                
                             </StackPanel>
                         </Grid>
                     </Grid>
