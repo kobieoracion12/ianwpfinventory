@@ -127,6 +127,7 @@
     <Compile Include="classes\LocalReportExtension.cs" />
     <Compile Include="classes\Product.cs" />
     <Compile Include="classes\Sales.cs" />
+    <Compile Include="classes\Settings.cs" />
     <Compile Include="classes\Stock Out.cs" />
     <Compile Include="classes\Stockout.cs" />
     <Compile Include="classes\StockReturn.cs" />
@@ -186,6 +187,9 @@
     </Compile>
     <Compile Include="usercontrols\usc_sales_inventory.xaml.cs">
       <DependentUpon>usc_sales_inventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\usc_settings.xaml.cs">
+      <DependentUpon>usc_settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\usc_stockout.xaml.cs">
       <DependentUpon>usc_stockout.xaml</DependentUpon>
@@ -387,6 +391,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\usc_sales_inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

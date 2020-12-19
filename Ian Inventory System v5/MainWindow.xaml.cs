@@ -74,6 +74,10 @@ namespace NavigationDrawerPopUpMenu2
                     usc = new usc_stockreturn();
                     GridMain.Children.Add(usc);
                     break;
+                case "settingsButton":
+                    usc = new usc_settings();
+                    GridMain.Children.Add(usc);
+                    break;
                 case "logoutButton":
                     MessageBox.Show("Logout Success!", "Logout", MessageBoxButton.OK, MessageBoxImage.Information);
                     window_userLogin userLogin = new window_userLogin();
