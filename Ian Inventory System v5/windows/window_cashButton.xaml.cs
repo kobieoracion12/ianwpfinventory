@@ -41,8 +41,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             if (e.Key == Key.Return)
             {
-                
-                if (int.Parse(cashAmount.Text) < int.Parse(total(paytotal)))
+                if (int.Parse(cashAmount.Text) < double.Parse(total(paytotal)))
                 {
                     MessageBox.Show("Insufficient Payment", "Cash", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
