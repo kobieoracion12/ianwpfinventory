@@ -37,7 +37,7 @@ namespace NavigationDrawerPopUpMenu2.reports
         public void printPreview()
         {
 
-            string doaFrom, doaTo, brand;
+            string doaFrom, doaTo, brand, category;
             // Init selected dates from calendar
             DateTime? selectedDateFrom = usc_overview.sortDOAfrom.SelectedDate;
             DateTime? selectedDateTo = usc_overview.sortDOAto.SelectedDate;
@@ -49,9 +49,14 @@ namespace NavigationDrawerPopUpMenu2.reports
                 doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
 
                 brand = usc_overview.sortBrand.Text;
+                category = usc_overview.sortCategory.Text;
                 if (brand == "Select")
                 {
                     brand = null;
+                }
+                else if (category == "Select")
+                {
+                    category = null;
                 }
                 ReportDataSource rptDataSource;
                 try
@@ -66,11 +71,11 @@ namespace NavigationDrawerPopUpMenu2.reports
 
                     if (usc_overview.filter == "Select")
                     {
-                        query = "SELECT * FROM datainventory";
+                        query = "SELECT * FROM datainventory ORDER BY prodItem ASC";
                     }
                     else if (usc_overview.filter == "Sort")
                     {
-                        query = "SELECT * FROM datainventory WHERE prodBrand LIKE '%" + brand + "%' AND prodDOA BETWEEN '" + doaFrom + "' AND '" + doaTo + "' "; // Sort base on the query
+                        query = "SELECT * FROM datainventory WHERE prodBrand LIKE '%" + brand + "%' AND prodCategory LIKE '%" + category + "%' AND prodDOA BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY prodItem ASC "; // Sort base on the query
                     }
 
                     MySqlDataAdapter da = conn.DataAdapter(query);
