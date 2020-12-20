@@ -14,7 +14,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         public int subtotal = 0;
         public double vat = 0;
         public int total = 0;
-        public int due = 0;
+        public double due = 0;
         public int paid = 0;
         public int tax = 0;
         public int bought = 0;

@@ -260,9 +260,8 @@
                             <Viewbox Stretch="Uniform" Margin="5" VerticalAlignment="Top">
                                 <Canvas Width="150" Height="80">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                        <TextBlock Text="Total Items" FontWeight="Regular" Margin="10 3 10 5" FontSize="15" TextAlignment="Left"/>
-                                        <TextBlock Text="VAT" FontWeight="Regular" Margin="10 3 10 5" FontSize="15" TextAlignment="Left"/>
-                                        <TextBlock Text="Discount Items" FontWeight="Regular" Margin="10 3 10 5" FontSize="15" TextAlignment="Left"/>
+                                        <TextBlock Text="Sub Total" FontWeight="SemiBold" FontSize="20" Margin="0 3 10 5" TextAlignment="Left"/>
+                                        <TextBlock Text="VAT" FontWeight="SemiBold" Margin="0 3 10 5" FontSize="20" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
                             </Viewbox>
@@ -273,9 +272,8 @@
                             <Viewbox Stretch="Uniform" Margin="5" VerticalAlignment="Top">
                                 <Canvas Width="100" Height="80">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                        <TextBlock x:Name="totalItems" Text="0" FontWeight="Regular" Margin="0 0 10 5" FontSize="15" TextAlignment="Left"/>
-                                        <TextBlock x:Name="vatItem" Text="0" FontWeight="Regular" Margin="0 3 10 5" FontSize="15" TextAlignment="Left"/>
-                                        <TextBlock x:Name="discountItems" Text="0" FontWeight="Regular" Margin="0 0 10 5" FontSize="15" TextAlignment="Left"/>
+                                        <TextBlock x:Name="pay_subtotal" Text="0.00" FontWeight="Regular" FontSize="20" Margin="0 0 10 5" TextAlignment="Left"/>
+                                        <TextBlock x:Name="vatItem" Text="0.00" FontWeight="Regular" Margin="0 3 10 5" FontSize="20" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
                             </Viewbox>
@@ -289,8 +287,7 @@
                             <Viewbox Stretch="Uniform" Margin="5" VerticalAlignment="Top">
                                 <Canvas Width="120" Height="150">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                        <TextBlock Text="Sub Total" FontWeight="SemiBold" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
-                                        <TextBlock Text="Total Tax" FontWeight="SemiBold" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
+                                        <TextBlock Text="Total Tax" FontWeight="SemiBold" FontSize="35" Margin="0 3 10 5" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
                             </Viewbox>
@@ -303,8 +300,7 @@
                             <Viewbox Stretch="Uniform" Margin="5" VerticalAlignment="Top">
                                 <Canvas Width="120" Height="150">
                                     <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                        <TextBlock x:Name="pay_subtotal" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
-                                        <TextBlock x:Name="pay_tax" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
+                                        <TextBlock x:Name="pay_tax" Text="0.00" FontWeight="Regular" FontSize="35" Margin="0 3 10 5" TextAlignment="Left"/>
                                     </StackPanel>
                                 </Canvas>
                             </Viewbox>
@@ -314,13 +310,13 @@
                     <!-- Balance -->
                     <Grid Grid.Row="2" Grid.Column="1">
                         <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                            <TextBlock Text="Total Due" Margin="10" FontWeight="Bold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left"/>
+                            <TextBlock Text="Total Due" Margin="10" FontWeight="Bold" FontSize="20" Foreground="#2C9CDB" TextAlignment="Left"/>
                         </Viewbox>
                     </Grid>
 
                     <Grid Grid.Row="2" Grid.Column="2">
                         <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                            <TextBlock x:Name="pay_total" Text="0.00" Margin="10" FontWeight="Bold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left"/>
+                            <TextBlock x:Name="pay_total" Text="0.00" Margin="10" FontWeight="Bold" FontSize="20" Foreground="#2C9CDB" TextAlignment="Left"/>
                         </Viewbox>
                     </Grid>
                 </Grid>
@@ -386,7 +382,10 @@
                                 <Viewbox Stretch="Uniform" Margin="5">
                                     <Canvas Width="120" Height="150">
                                         <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                            <TextBlock Text="Cash" FontWeight="Regular" Margin="0 3 10 5" FontSize="25" TextAlignment="Left"/>
+                                            <TextBlock Text="Cash" FontWeight="Regular" Margin="0 3 10 5" FontSize="35" TextAlignment="Left"/>
+                                            <TextBlock Text="Discount" FontWeight="SemiBold" FontSize="35" Margin="0 3 10 5" TextAlignment="Left"/>
+                                            <TextBlock Text="Total Paid" FontWeight="SemiBold" Margin="0 3 10 5" FontSize="35" TextAlignment="Left"/>
+
                                         </StackPanel>
                                     </Canvas>
                                 </Viewbox>
@@ -399,9 +398,6 @@
                                 <Viewbox Stretch="Uniform" Margin="5" >
                                     <Canvas Width="120" Height="150">
                                         <StackPanel Orientation="Vertical" Margin="5 0 10 5">
-                                            <TextBlock Text="" FontWeight="SemiBold" Margin="0 3 10 5" FontSize="25" TextAlignment="Left"/>
-                                            <TextBlock Text="Discount" FontWeight="SemiBold" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
-                                            <TextBlock Text="Total Paid" FontWeight="SemiBold" Margin="0 3 10 5" FontSize="25" TextAlignment="Left"/>
                                         </StackPanel>
                                     </Canvas>
                                 </Viewbox>
@@ -413,9 +409,9 @@
                                 <Viewbox Stretch="Uniform" Margin="5" >
                                     <Canvas Width="120" Height="150">
                                         <StackPanel Orientation="Vertical" Margin="0 0 10 5">
-                                            <TextBlock x:Name="pay_paid" Text="0.00" FontWeight="SemiBold" Margin="0 3 10 5" FontSize="25" TextAlignment="Left"/>
-                                            <TextBlock x:Name="pay_discount" Text="0.00" FontWeight="Regular" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
-                                            <TextBlock x:Name="pay_pay" Text="0.00" FontWeight="SemiBold" FontSize="25" Margin="0 3 10 5" TextAlignment="Left"/>
+                                            <TextBlock x:Name="pay_paid" Text="0.00" FontWeight="Regular" Margin="0 3 10 5" FontSize="35" TextAlignment="Left"/>
+                                            <TextBlock x:Name="pay_discount" Text="0" FontWeight="Regular" FontSize="35" Margin="0 3 10 5" TextAlignment="Left"/>
+                                            <TextBlock x:Name="pay_pay" Text="0.00" FontWeight="SemiBold" FontSize="35" Margin="0 3 10 5" TextAlignment="Left"/>
                                         </StackPanel>
                                     </Canvas>
                                 </Viewbox>
@@ -425,13 +421,13 @@
                         <!-- Balance -->
                         <Grid Grid.Row="2" Grid.Column="2">
                             <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                                <TextBlock Text="Balance" Margin="10" FontWeight="Bold" FontSize="12" Foreground="#E86845" TextAlignment="Left"/>
+                                <TextBlock Text="Balance" Margin="10" FontWeight="Bold" FontSize="20" Foreground="#E86845" TextAlignment="Left"/>
                             </Viewbox>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.Column="3">
                             <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                                <TextBlock  x:Name="pay_due" Text="0.00" Margin="10" FontWeight="Bold" FontSize="12" Foreground="#E86845"  TextAlignment="Left"/>
+                                <TextBlock  x:Name="pay_due" Text="0.00" Margin="10" FontWeight="Bold" FontSize="20" Foreground="#E86845"  TextAlignment="Left"/>
                             </Viewbox>
                         </Grid>
                     </Grid>
@@ -463,20 +459,13 @@
                 <!-- Buttons -->
                 <Grid Grid.Row="1">
                     <Grid Margin="10">
-                        <Viewbox Stretch="Uniform">
+                        <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
                             <Canvas Width="300" Height="50">
-                                <StackPanel Orientation="Horizontal" Margin="5 10 5 5" Canvas.Left="22">
+                                <StackPanel Orientation="Horizontal" Margin="5 10 5 5" Canvas.Left="70">
                                     <Button x:Name="cashButton" Margin="0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False" Click="cashButton_Click">
                                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                             <TextBlock Text="Cash" FontWeight="SemiBold" FontSize="8" Foreground="Black" />
                                             <TextBlock Text="[F4]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
-                                        </StackPanel>
-                                    </Button>
-
-                                    <Button x:Name="voucherButton" Margin="5 0 0 0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False">
-                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                            <TextBlock Text="Voucher" Foreground="Black" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="[F5]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                     </Button>
 

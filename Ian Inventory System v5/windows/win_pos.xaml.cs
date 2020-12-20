@@ -232,12 +232,13 @@ namespace NavigationDrawerPopUpMenu2.windows
             coCurrent.Clear();
             coCurrentNew.Clear();
 
-            totalItems.Text = "0";
             pay_discount.Text = "0";
             pay_subtotal.Text = "₱ 0.00";
             pay_total.Text = "₱ 0.00";
             pay_paid.Text = "₱ 0.00";
             pay_due.Text = "₱ 0.00";
+            pay_tax.Text = "0";
+            vatItem.Text = "0";
             transTime.Text = DateTime.Now.ToLongTimeString();
 
             checkout.rmstocks = 0;
@@ -343,7 +344,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 int qty = Convert.ToInt32(coQty.Text); // Quantity
                 int cur = Convert.ToInt32(coCurrent.Text); // Current Stocks
                 int stk = Convert.ToInt32(coStocks.Text); // Stocks
-                int toit = Convert.ToInt32(totalItems.Text); // Total Items
                 double vi = Convert.ToDouble(vatItem.Text); // VAT Per Item
 
                 int sub = rp * qty;
@@ -353,7 +353,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 checkout.total += Convert.ToInt32(vi) + sub; // Subtotal
                 checkout.bought = cur + qty; // For Ranking
 
-                totalItems.Text = Convert.ToString(toit + qty); // Shows the Total Items (Count Individual Items in Listview)
                 coRemStocks.Text = Convert.ToString(checkout.rmstocks); // Shows the Remaining Item Upon Buy
                 coSubtotal.Text = Convert.ToString(sub); // (Price * Qunatity)
                 pay_subtotal.Text = Convert.ToString(checkout.subtotal + sub); // Subtotal + (Price * Quantity)
@@ -640,7 +639,8 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             else
             {
-                checkout.due = checkout.paid - Convert.ToInt32(sumOfSalesTotal());
+                double total = double.Parse(pay_total.Text);
+                checkout.due = (checkout.paid - total);
                 pay_due.Text = Convert.ToString(checkout.due);
             }
 
@@ -759,14 +759,11 @@ namespace NavigationDrawerPopUpMenu2.windows
                     { 
                         pay_total.Text = "0.00";
                         pay_subtotal.Text = "0.00";
-                        totalItems.Text = "0";
                     }
                     else
                     {
                         pay_total.Text = sumOfSalesTotal(); // Update the Total
                         pay_subtotal.Text = sumOfSalesTotal(); // Update the Subtotal
-                        int totalItem = int.Parse(totalItems.Text) - 1;
-                        totalItems.Text = totalItem.ToString(); // Update the Total Item
                         clearPartial();
                         conn.Close();
                     }

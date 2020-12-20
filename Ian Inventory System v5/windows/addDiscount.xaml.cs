@@ -228,6 +228,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 String format = String.Format("{0:0.00}", calculateDiscount().ToString());
                 win_pos.pay_total.Text = format;
                 win_pos.discount = getDiscountPercent();
+                win_pos.pay_discount.Text = getDiscountPercent() + "%";
                 this.Close();
             }
         }
