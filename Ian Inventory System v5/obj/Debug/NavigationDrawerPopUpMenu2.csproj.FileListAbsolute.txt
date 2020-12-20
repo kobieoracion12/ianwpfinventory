@@ -804,7 +804,6 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VER
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_dashboard.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_inventory.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_add_item.g.cs
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overview.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overviews.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_request.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_restock.g.cs
@@ -867,7 +866,6 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VER
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_dashboard.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_inventory.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_add_item.baml
-E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overview.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overviews.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_request.baml
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_restock.baml
@@ -915,3 +913,5 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VER
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.baml
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.g.cs
+E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.baml
