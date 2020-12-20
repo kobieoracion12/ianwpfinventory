@@ -181,7 +181,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             usc_inventory ui = new usc_inventory();
-            usc_parent_overview upo = new usc_parent_overview();
+            usc_parent_overviews upo = new usc_parent_overviews();
             ui.mainSubColumn.Children.Add(upo);
         }
     }

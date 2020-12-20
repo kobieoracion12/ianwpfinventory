@@ -171,9 +171,6 @@
     <Compile Include="usercontrols\usc_parent_add_item.xaml.cs">
       <DependentUpon>usc_parent_add_item.xaml</DependentUpon>
     </Compile>
-    <Compile Include="usercontrols\usc_parent_overview.xaml.cs">
-      <DependentUpon>usc_parent_overview.xaml</DependentUpon>
-    </Compile>
     <Compile Include="usercontrols\usc_parent_overviews.xaml.cs">
       <DependentUpon>usc_parent_overviews.xaml</DependentUpon>
     </Compile>
@@ -200,6 +197,9 @@
     </Compile>
     <Compile Include="usercontrols\usc_stockreturn.xaml.cs">
       <DependentUpon>usc_stockreturn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\usc_user_overview.xaml.cs">
+      <DependentUpon>usc_user_overview.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\UserControlBrand.xaml.cs">
       <DependentUpon>UserControlBrand.xaml</DependentUpon>
@@ -374,10 +374,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="usercontrols\usc_parent_overview.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="usercontrols\usc_parent_overviews.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -411,6 +407,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\usc_stockreturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_user_overview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

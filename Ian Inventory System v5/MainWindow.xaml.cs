@@ -50,6 +50,10 @@ namespace NavigationDrawerPopUpMenu2
                     usc = new usc_dashboard();
                     GridMain.Children.Add(usc);
                     break;
+                case "manageUsers":
+                    usc = new usc_accounts();
+                    GridMain.Children.Add(usc);
+                    break;
                 case "salesInventory":
                     usc = new usc_sales_inventory();
                     GridMain.Children.Add(usc);

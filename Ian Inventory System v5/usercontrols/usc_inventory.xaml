@@ -112,8 +112,6 @@
                     <DropShadowEffect RenderingBias="Quality" Color="#FF838383" Opacity="0.2"/>
                 </Rectangle.Effect>
             </Rectangle>
-
-
         </Grid>
 
     </Grid>

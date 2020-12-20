@@ -43,7 +43,6 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_dashboard.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_inventory.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_add_item.g.cs
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overview.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_request.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_restock.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_sales.g.cs
@@ -95,7 +94,6 @@ C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Invento
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_dashboard.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_inventory.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_add_item.baml
-C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_overview.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_request.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_parent_restock.baml
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_sales.baml
@@ -915,3 +913,5 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VER
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.baml

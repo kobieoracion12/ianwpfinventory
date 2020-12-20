@@ -4,9 +4,90 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.usercontrols"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1080">
-    <Grid>
-            
+
+    <Grid Background="#F5F6FA">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="850*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Navigation Bar -->
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#4CA8A5" Offset="0"/>
+                        <GradientStop Color="#45D5D5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="385*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- Navigation Header -->
+                <Grid Grid.Row="0">
+                    <Grid>
+                        <Viewbox Stretch="Uniform">
+                            <TextBlock Text="Manage Accounts" FontWeight="Bold" FontSize="10" Foreground="#FFFFFF" Margin="20" TextAlignment="Center"/>
+                        </Viewbox>
+                    </Grid>
+                </Grid>
+
+                <!-- Navigation Buttons -->
+                <Grid Grid.Row="1">
+                    <Grid>
+                        <Viewbox Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Center" >
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <ListView x:Name="ListViewMenu" Foreground="#FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
+                                    <!-- Overview -->
+                                    <ListViewItem x:Name="accManage" Height="35" HorizontalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="Account" Width="12" />
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Accounts" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Account Manager" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListViewItem>
+
+                                    <!-- Add Stocks-->
+                                    <ListViewItem x:Name="accAdd" Height="35" HorizontalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="AccountPlus" Width="12"/>
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Add Users" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Add/Manage Users" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListViewItem>
+
+                                </ListView>
+                            </StackPanel>
+                        </Viewbox>
+                    </Grid>
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+
+        <!-- Main Grid -->
+        <Grid x:Name="mainSubColumn" Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Margin="10">
+            <Grid>
+                <!-- Children USC Goes Here.... -->
+            </Grid>
+        </Grid>
+
     </Grid>
 </UserControl>
