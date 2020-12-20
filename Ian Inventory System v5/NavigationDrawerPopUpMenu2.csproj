@@ -198,6 +198,9 @@
     <Compile Include="usercontrols\usc_stockreturn.xaml.cs">
       <DependentUpon>usc_stockreturn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_user_add.xaml.cs">
+      <DependentUpon>usc_user_add.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_user_overview.xaml.cs">
       <DependentUpon>usc_user_overview.xaml</DependentUpon>
     </Compile>
@@ -407,6 +410,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\usc_stockreturn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_user_add.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

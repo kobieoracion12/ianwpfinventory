@@ -44,7 +44,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     mainSubColumn.Children.Add(usc);
                     break;
                 case "accAdd":
-                    usc = new usc_parent_add_item();
+                    usc = new usc_user_add();
                     mainSubColumn.Children.Add(usc);
                     break;
 
