@@ -50,7 +50,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         checker.Text = row[0];
                         if (checker.Text == search)
                         {
-                            var ans = MessageBox.Show("Item Already Exist");
+                            var ans = MessageBox.Show("Item Already Exist", "Add Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                             Clear();
                             con.Close();
                         }
@@ -61,7 +61,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception x)
                 {
-                    MessageBox.Show(x.Message);
+                    MessageBox.Show(x.Message, "Add Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
         }
@@ -85,30 +85,31 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             if (checkBarcode.Text == "" || addItem.Text == "" || addBrand.Text == "" || addQty.Text == "" || addSRP.Text == "" || addRP.Text == "" || addVAT.Text == "" || addDOA.Text == "")
             {
-                MessageBox.Show("Please Complete the Form");
+                MessageBox.Show("Please Complete the Form", "Add Item", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
                 try
                 {
                     con.Open();
-                    string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVat, prodDOA, prodEXPD) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pv, @pdoa);";
+                    string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodDOA, prodCategory) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pv, @pdoa, @categ)";
                     con.query(itemInsert);
 
                     con.bind("@pn", checkBarcode.Text);
                     con.bind("@pi", addItem.Text);
                     con.bind("@pb", addBrand.Text);
                     con.bind("@py", addQty.Text);
-                    con.bind("@pp", addSRP.Text);
+                    con.bind("@pp", addSRP.Text); 
                     con.bind("@pq", addRP.Text);
                     con.bind("@pv", addVAT.Text);
                     con.bind("@pdoa", DateTime.Now);
+                    con.bind("@categ", addCategory.Text);
 
                     con.cmd().Prepare();
                     int a = con.execute();
                     if (a == 1)
                     {
-                        MessageBox.Show("Data added Sucessfully");
+                        MessageBox.Show("A new item has been added to the database", "Add Item", MessageBoxButton.OK, MessageBoxImage.Information);
                         cbBrand();
                         checkBarcode.Focus();
                         Clear();
@@ -117,7 +118,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Add Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
         }
@@ -145,7 +146,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show(x.Message, "Brands", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
         }
@@ -172,7 +173,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.Message);
+                MessageBox.Show(x.Message, "Category", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
         }
