@@ -76,7 +76,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             conn.Open();
             try
             {
-                string query = "SELECT DISTINCT prodBrand FROM datainventory";
+                string query = "SELECT DISTINCT prodBrand FROM datainventory ORDER BY prodBrand ASC";
                 conn.query(query);
                 conn.execute();
                 MySqlDataReader drd = conn.read();
@@ -103,7 +103,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             conn.Open();
             try
             {
-                string query = "SELECT category_name FROM category";
+                string query = "SELECT category_name FROM category ORDER BY category_name ASC";
                 conn.query(query);
                 conn.execute();
                 MySqlDataReader drd = conn.read();
@@ -256,7 +256,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 try
                 {
                     conn.Open(); // Open Connection
-                    string query = "SELECT * FROM datainventory WHERE prodBrand LIKE '%" + brand + "%' AND prodCategory LIKE '%" + category + "%' AND prodDOA BETWEEN '" + doaFrom + "' AND '" + doaTo + "' "; // Sort base on the query
+                    string query = "SELECT * FROM datainventory WHERE prodBrand LIKE '%" + brand + "%' AND prodCategory LIKE '%" + category + "%' AND prodDOA BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY prodItem ASC "; // Sort base on the query
                     conn.query(query);  // Command Database
                     conn.execute(); // Execute Non Query
                     MySqlDataAdapter adapter = conn.adapter(); // adapter
