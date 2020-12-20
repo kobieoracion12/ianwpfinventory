@@ -913,5 +913,10 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VER
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.g.cs
 C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.baml
+<<<<<<< HEAD
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_add.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_add.baml
+=======
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.g.cs
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_overview.baml
+>>>>>>> 9de0a9d1b6b2d5d68aa1ee01d9e289dd95aa63d7
