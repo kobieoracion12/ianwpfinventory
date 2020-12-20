@@ -51,32 +51,29 @@ namespace NavigationDrawerPopUpMenu2.classes
             bool isTrue = false;
             try
             {
-                DataTable table = new DataTable();
-
-                MySqlDataAdapter adapter = conn.adapter();
-
-                string query = "SELECT COUNT(1) FROM usersinventory WHERE usersName = @username";
+                conn.Open();
+                string query = "SELECT * FROM usersinventory WHERE usersName = @username AND userStatus = @status";
                 conn.query(query);
                 conn.bind("@username", this.username);
-                adapter.SelectCommand = conn.cmd();
-
-                adapter.Fill(table);
-
-                if (table.Rows.Count > 0) // Users Found
+                conn.bind("@status", "Active");
+                conn.cmd().Prepare();
+                MySqlDataReader dr = conn.read();
+                if (dr.HasRows)
                 {
                     isTrue = true;
                 }
                 else
-                { // No Users Found
+                {
                     isTrue = false;
                 }
-
-                adapter.Dispose(); // Dispose Adapter
+                conn.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                conn.Close();
                 isTrue = false;
+                MessageBox.Show("Something went wrong when trying to login, try again later\n" +ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                
             }
             return isTrue;
 
@@ -317,11 +314,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                 {
                     MessageBox.Show("Timein/Timeout Saved", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                else
-                {
-                    MessageBox.Show("Something went wrong", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
+               
                 conn.Close();
 
             }

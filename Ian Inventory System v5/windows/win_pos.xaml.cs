@@ -252,11 +252,9 @@ namespace NavigationDrawerPopUpMenu2.windows
             checkout.total = 0;
 
             cashButton.IsEnabled = false;
-            voucherButton.IsEnabled = false;
             othersButton.IsEnabled = false;
             voidEntry.IsEnabled = false;
             entrySearch.IsReadOnly = false;
-            voucherButton.IsEnabled = false;
             othersButton.IsEnabled = false;
             holdOrder.IsEnabled = false;
             endSale.IsEnabled = false;
@@ -335,7 +333,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 // Enabled all the buttons
                 cashButton.IsEnabled = true;
                 voidEntry.IsEnabled = true;
-                voucherButton.IsEnabled = true;
                 othersButton.IsEnabled = true;
                 //holdOrder.IsEnabled = true;
 
@@ -663,7 +660,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 voidEntry.IsEnabled = false;
                 holdOrder.IsEnabled = false;
                 othersButton.IsEnabled = false;
-                voucherButton.IsEnabled = false;
                 endSale.IsEnabled = true;
                 conn.Close(); // Close Connection
 

@@ -1,4 +1,5 @@
-﻿using NavigationDrawerPopUpMenu2.usercontrols;
+﻿using NavigationDrawerPopUpMenu2.classes;
+using NavigationDrawerPopUpMenu2.usercontrols;
 using NavigationDrawerPopUpMenu2.windows;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,16 @@ namespace NavigationDrawerPopUpMenu2
 {
     public partial class MainWindow : Window
     {
-
-        public MainWindow()
+        string accNo = "";
+        DateTime timeIn;
+        public MainWindow(string acc_no, DateTime timeIn)
         {
             InitializeComponent();
+            accNo = acc_no;
+            this.timeIn = timeIn;
             usc_dashboard usd = new usc_dashboard();
             GridMain.Children.Add(usd);
+
         }
         
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -84,11 +89,15 @@ namespace NavigationDrawerPopUpMenu2
                     break;
                 case "logoutButton":
                     MessageBox.Show("Logout Success!", "Logout", MessageBoxButton.OK, MessageBoxImage.Information);
-                    window_userLogin userLogin = new window_userLogin();
-                    userLogin.Show();
-                    this.Close();
+                    Authentication auth = new Authentication("", ""); // Call Auth Class
+                    window_userLogin userLogin = new window_userLogin(); // Call UserLogin Window
+                    auth.addTimeInOut(timeIn, accNo); 
+                    userLogin.Show(); // Show Login After Logout
+                    this.Close(); // Close this window
                     break;
             }
+
+
 
         }
     }

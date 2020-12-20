@@ -20,6 +20,11 @@ namespace NavigationDrawerPopUpMenu2.windows
 {
     public partial class window_userLogin : Window
     {
+        public DateTime userTimeIn = DateTime.Now;
+        public string userTimeOut = "";
+        public string acc_no = "";
+        MainWindow logoutControl;
+
         public window_userLogin()
         {
             InitializeComponent();
@@ -36,6 +41,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             // Call Auth Class
             Authentication auth = new Authentication(username, pwd);
 
+            acc_no = auth.getAccNo(username);
             if (auth.isEmpty())
             {
                 MessageBox.Show("Fields cannot be empty", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -58,7 +64,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                             }
                             else if (userPrev.Equals("Users"))
                             { // Go to Users Dashboard
-                                MainWindow usersDashbord = new MainWindow();
+                                MainWindow usersDashbord = new MainWindow(acc_no, userTimeIn);
                                 usersDashbord.Show(); // Show Dashboard
                                 this.Close(); // Close Login
                             }
@@ -97,6 +103,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             Login();
+            userTimeIn = DateTime.Now; // Set a DateTime
         }
 
         
