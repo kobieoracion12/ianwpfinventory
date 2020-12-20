@@ -221,11 +221,15 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Update the Total Due UI
-            String format = String.Format("{0:0.00}", calculateDiscount().ToString());
-            win_pos.pay_total.Text = format;
-            win_pos.discount = getDiscountPercent();
-            this.Close();
+            var ans = MessageBox.Show("Do you want to apply this "+ getDiscountPercent()+"%" + " discount?", "Apply Discount", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (ans == MessageBoxResult.Yes)
+            {
+                // Update the Total Due UI
+                String format = String.Format("{0:0.00}", calculateDiscount().ToString());
+                win_pos.pay_total.Text = format;
+                win_pos.discount = getDiscountPercent();
+                this.Close();
+            }
         }
     }
 }
