@@ -22,6 +22,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     public partial class usc_parent_restock : UserControl
     {
         Database conn = new Database();
+        bool found = false;
         public usc_parent_restock()
         {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     MySqlDataReader reader = conn.read();
                     if (reader.Read())
                     {
+                        found = true;
                         string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7) };
                         restockItem.Text = row[0];
                         restockBrand.Text = row[1];
@@ -51,23 +53,24 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         restockCategory.Text = row[5];
                         restockVAT.Text = row[6];
                         restockDOA.Text = row[7];
-
                         restockQty.Focus();
                     }
                     else
-
                     {
-                        MessageBox.Show("Item not Found");
+                        found = false;
+                        MessageBox.Show("Item not found", "Restock", MessageBoxButton.OK, MessageBoxImage.Warning);
                         entrySearch.Text = "";
                     }
 
                     reader.Close();
                     reader.Dispose();
                     conn.Close();
+                    ////
+
                 }
                 catch (Exception x)
                 {
-                    MessageBox.Show(x.Message);
+                    MessageBox.Show(x.Message, "Restock", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             else
@@ -79,26 +82,27 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Submit Button
         private void submitBrand_Click(object sender, RoutedEventArgs e)
         {
-            try
+            // If item NOT found
+            if (!found)
             {
-                int current = int.Parse(onrestockQty.Text);
-                int toRestock = int.Parse(restockQty.Text);
-
-                int toRestockTotal = (current + toRestock);
-
-                string restock = "UPDATE datainventory SET prodQty = @Qty WHERE prodNo = @No";
+                MessageBox.Show("Item not found", "Restock", MessageBoxButton.OK, MessageBoxImage.Warning);
+                entrySearch.Text = "";
+            }
+            else
+            {
+                string restock = "UPDATE datainventory SET prodQty = (prodQty + @Qty) WHERE prodNo = @No";
                 conn.query(restock);
 
                 try
                 {
                     conn.Open();
                     conn.bind("@No", entrySearch.Text);
-                    conn.bind("@Qty", toRestockTotal);
+                    conn.bind("@Qty", restockQty.Text);
 
                     var check = conn.execute();
                     if (check == 1)
                     {
-                        MessageBox.Show("Data Updated!");
+                        MessageBox.Show("Data Updated!", "Restock", MessageBoxButton.OK, MessageBoxImage.Information);
                         entrySearch.Clear();
                         entrySearch.Focus();
                         restockItem.Clear();
@@ -115,14 +119,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception x)
                 {
-                    MessageBox.Show(x.Message);
+                    MessageBox.Show(x.Message, "Restock", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
 
+
+            }
         }
 
         // Cancel Button
