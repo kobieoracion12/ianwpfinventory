@@ -1,67 +1,4 @@
 ﻿
-<<<<<<< HEAD
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\App.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\admin\admin_create.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\admin\admin_usercontrols\admin_businessInfo.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\admin\admin_usercontrols\admin_personalInfo.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\admin\admin_usercontrols\admin_addUsers.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\admin\admin_usercontrols\admin_dashboard.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\admin\admin_window.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\main Menu.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\MainWindow.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\reports\report_inventory.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\reports\report_sales.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\reports\report_stockout.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\styleLibrary.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\customStyle.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_accounts.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_category.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_dashboard.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_inventory.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_parent_add_item.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_parent_overviews.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_parent_request.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_parent_restock.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_pos_settings.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_sales.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_sales_inventory.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_settings.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_stockout.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_stockreturn.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_user_overview.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlBrand.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlCheckout.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlDashboard.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlCategory.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlSales.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlSalesInv.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\UserControlStockInv.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\addDiscount.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_addItem.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_cashButton.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_change_quantity.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_editItem.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_restockItem.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\window_userLogin.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_addItem.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_add_brand.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_add_category.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_add_edit_discount.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_changequantity_stockout.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_checkout.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_checkoutBG.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_edit_brand.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_edit_category.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_edit_discount.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_pos.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_price Check.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_receipt.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_refund.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_req_stock.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_settings.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\windows\win_view_all_products.xaml;;
-FC:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\usercontrols\usc_user_add.xaml;;
-=======
 FE:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\App.xaml;;
 FE:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\admin\admin_create.xaml;;
 FE:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\admin\admin_usercontrols\admin_businessInfo.xaml;;
@@ -122,5 +59,4 @@ FE:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VE
 FE:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\windows\win_req_stock.xaml;;
 FE:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\windows\win_settings.xaml;;
 FE:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LASTEST VERSION\ianwpfinventory\Ian Inventory System v5\windows\win_view_all_products.xaml;;
->>>>>>> 9de0a9d1b6b2d5d68aa1ee01d9e289dd95aa63d7
 

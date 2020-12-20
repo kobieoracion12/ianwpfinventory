@@ -26,12 +26,14 @@ namespace NavigationDrawerPopUpMenu2.windows
         Checkout checkout = new Checkout();
         StocksCheck stocksck = new StocksCheck();
         Authentication auth;
+        public static string discount = "0";
         string transNo;
         string salesItem;
         public static int prdID;
         string checkStockRepeat = "";
         int checkQty = 0;
         bool isItemFound = false;
+        string productCategory = "";
 
         List<Invoice> settleProducts = new List<Invoice>();
         public win_pos(window_userLogin frmLogin)
@@ -268,7 +270,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 holdOrder.IsEnabled = false;
                 conn.Close();
                 string search = entrySearch.Text;
-                string query = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodBought FROM datainventory WHERE prodNo= '" + search + "'";
+                string query = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodBought, prodCategory FROM datainventory WHERE prodNo= '" + search + "'";
                 conn.query(query); //CMD 
                 conn.Open();
                 MySqlDataReader dr = conn.read();
@@ -284,6 +286,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                         coRP.Text = dr.GetValue(4).ToString();
                         vatItem.Text = dr.GetValue(5).ToString();
                         coCurrent.Text = dr.GetValue(6).ToString();
+                        productCategory = dr["prodCategory"].ToString();
 
 
                         stocksck.productQty = Convert.ToInt32(dr.GetValue(2));
@@ -423,7 +426,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                             }
                             else
                             { // if not exist then insert
-                                string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesVAT, salesQty, salesTotal, salesDate, salesStatus) VALUES (@no, @barcode, @name, @brand, @srp, @rp, @vat, @qty, @subtotal, @date, @status)";
+                                string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesVAT, salesQty, salesTotal, salesDate, salesStatus, salesCategory) VALUES (@no, @barcode, @name, @brand, @srp, @rp, @vat, @qty, @subtotal, @date, @status, @categ)";
                                 conn.query(query2);
 
                                 conn.bind("@no", orderNo.Text);
@@ -437,6 +440,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                                 conn.bind("@subtotal", coSubtotal.Text);
                                 conn.bind("@date", Convert.ToDateTime(transTime.Text));
                                 conn.bind("@status", "Pending");
+                                conn.bind("@categ", productCategory);
                                 conn.cmd().Prepare();
                                 var cf = conn.execute();
                                 if (cf == 1)
@@ -547,14 +551,13 @@ namespace NavigationDrawerPopUpMenu2.windows
                     {
                         while (reader.Read())
                         {
-                            string[] row = { reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetString(8), reader.GetString(9), reader.GetString(10) };
-                            string sales_transno = row[0]; // Trans No
-                            string sales_no = row[2]; // Sales No
-                            string sales_item = row[3]; // Sales Item
-                            string sales_rp = row[6]; // Sales RP
-                            string sales_qty = row[7]; // Sales Qty
-                            string sales_total = row[8]; // Sales Total
-                            string sales_status = row[10];  // Sales Status
+                            string sales_transno = reader["salesTransNo"].ToString(); // Trans No
+                            string sales_no = reader["salesNo"].ToString(); // Sales No
+                            string sales_item = reader["salesItem"].ToString(); // Sales Item
+                            string sales_rp = reader["salesRP"].ToString(); // Sales RP
+                            string sales_qty = reader["salesQty"].ToString(); // Sales Qty
+                            string sales_total = reader["salesTotal"].ToString(); // Sales Total
+                            string sales_status = reader["salesStatus"].ToString();  // Sales Status
                                                             // Add Objects/Element to ListView Settle to get the Invoice Products
                             settleProducts.Add(new Invoice { salesTransno = sales_transno, salesNo = sales_no, salesItem = sales_item, salesRP = sales_rp, salesQty = sales_qty, salesTotal = sales_total, salesStatus = sales_status });
                         }
@@ -596,6 +599,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                     loadData(); // Update the ListView UI # Listview must be cleared
                     conn.Close();
                     clearAll();
+                    pay_tax.Text = "0.00";
+                    vatItem.Text = "0";
 
                 }
                 catch (Exception ex)

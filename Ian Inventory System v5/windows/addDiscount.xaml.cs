@@ -25,6 +25,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         string discount_percent = "";
         string totalDue = "";
         win_pos win_pos;
+        double dc = 0;
         public addDiscount(win_pos pos)
         {
             InitializeComponent();
@@ -182,7 +183,6 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         private double calculateDiscount()
         {
-            double dc = 0;
             if (sortDiscount.Text == "Select")
             {
                 discount_percent = "0";
@@ -224,6 +224,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             // Update the Total Due UI
             String format = String.Format("{0:0.00}", calculateDiscount().ToString());
             win_pos.pay_total.Text = format;
+            win_pos.discount = getDiscountPercent();
             this.Close();
         }
     }
