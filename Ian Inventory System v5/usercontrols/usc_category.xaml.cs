@@ -65,6 +65,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Fetch Categories
         public void fetchCategory()
         {
             try
@@ -100,34 +101,37 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Fills the second listView with the selected category
         private void itemCtg_TextChanged(object sender, TextChangedEventArgs e)
         {
-            conn.Close();
-            try
+            if (itemCtg.Text.Length > 0)
             {
-                // Open Connection
-                conn.Open();
-                // Query Statement
-                string query = "SELECT prodNo, prodItem, prodBrand, prodCategory FROM datainventory WHERE prodCategory LIKE '%" + itemCtg.Text + "%' ORDER BY prodItem ASC";
-                // Mysql Command
-                conn.query(query);
-                // Execute
-                conn.execute();
-                // Adapter
-                MySqlDataAdapter adapter = conn.adapter();
-                //  Datatable
-                DataTable dt = new DataTable("datainventory");
-                // Fill the datatable
-                adapter.Fill(dt);
-                listViewBrowse.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-
-                adapter.Dispose(); // Dispose Adapter
-                                   // Close Connection
                 conn.Close();
+                try
+                {
+                    // Open Connection
+                    conn.Open();
+                    // Query Statement
+                    string query = "SELECT prodNo, prodItem, prodBrand, prodCategory FROM datainventory WHERE prodCategory LIKE '%" + itemCtg.Text + "%' ORDER BY prodItem ASC";
+                    // Mysql Command
+                    conn.query(query);
+                    // Execute
+                    conn.execute();
+                    // Adapter
+                    MySqlDataAdapter adapter = conn.adapter();
+                    //  Datatable
+                    DataTable dt = new DataTable("datainventory");
+                    // Fill the datatable
+                    adapter.Fill(dt);
+                    listViewBrowse.ItemsSource = dt.DefaultView;
+                    adapter.Update(dt);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                    adapter.Dispose(); // Dispose Adapter
+                                       // Close Connection
+                    conn.Close();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -197,6 +201,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Search Function
         private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             conn.Close();

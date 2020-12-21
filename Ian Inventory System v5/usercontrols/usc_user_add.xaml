@@ -156,7 +156,7 @@
 
                                     <!-- Account Created -->
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <TextBlock Text="Last Name" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
+                                        <TextBlock Text="Account Created" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
                                         <DatePicker x:Name="accCreated" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:dddd, MMMM dd, yyyy}'}" BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" IsEnabled="False"/>
                                     </StackPanel>
 

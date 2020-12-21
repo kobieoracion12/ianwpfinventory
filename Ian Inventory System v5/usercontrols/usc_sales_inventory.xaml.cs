@@ -26,6 +26,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     public partial class usc_sales_inventory : UserControl
     {
         Database conn = new Database();
+        Sales sales = new Sales();
         List<Sales> mySales = new List<Sales>();
         string reportSales = "Select";
 
@@ -34,6 +35,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             InitializeComponent();
             catchData();
             cbBrand();
+            cbCategory();
             getLastDate();
         }
 
@@ -73,10 +75,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Fills the Brand ComboBox with exisiting Brand Data from Database
         public void cbBrand()
         {
-            conn.Open();
+            conn.Close();
             try
             {
-                string query = "SELECT DISTINCT salesBrand FROM datasalesinventory";
+                conn.Open();
+                string query = "SELECT DISTINCT salesBrand FROM datasalesinventory ORDER BY salesBrand ASC";
                 conn.query(query);
                 conn.execute();
                 MySqlDataReader drd = conn.read();
@@ -89,13 +92,39 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 drd.Close();
                 drd.Dispose();
                 conn.Close();
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        // Fills the Category ComboBox with existing Category
+        public void cbCategory()
+        {
+            conn.Close();
+            try
+            {
+                conn.Open();
+                string query = "SELECT DISTINCT salesCategory FROM datasalesinventory ORDER BY salesCategory ASC";
+                conn.query(query);
+                conn.execute();
+                MySqlDataReader drd = conn.read();
+
+                while (drd.Read())
+                {
+                    sortCategory.Items.Add(drd.GetString(0).ToString());
+                }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
 
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
             }
-
         }
 
         // Fill the DatePicker with the first date available in database
@@ -128,30 +157,39 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
         // Sort by Date FROM - Date TO 
         // Sort by Date Between Date From and Date To and Brand
+        public string doaFrom, doaTo, brand, category, status;
         public void sortByDate()
         {
-            string formattedFrom, formattedTo, brandSort, statusSort;
-
             // Init selected dates from calendar
             DateTime? selectedDateFrom = sortCalendarFrom.SelectedDate;
             DateTime? selectedDateTo = sortCalendarTo.SelectedDate;
 
             if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
             {
-                brandSort = sortBrand.Text;
-                statusSort = sortStatus.Text;
-                if (brandSort == "Select")
-                {
-                    brandSort = null;
-                }
                 // Making a format and getting the value of datepicker to string
-                formattedFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-                formattedTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+
+                brand = sortBrand.Text;
+                category = sortCategory.Text;
+                status = sortStatus.Text;
+                if (brand == "Select")
+                {
+                    brand = null;
+                }
+                if (category == "Select")
+                {
+                    category = null;
+                }
+                if (status == "Select")
+                {
+                    status = null;
+                }
 
                 try
                 {
                     conn.Open(); // Open Connection
-                    string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesStatus LIKE '%" + statusSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
+                    string query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brand + "%' AND salesCategory LIKE '%" + category + "%' AND salesStatus LIKE '%" + status + "%' AND salesDate BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY salesItem ASC "; // Sort base on the query
                     conn.query(query);  // Command Database
                     conn.execute(); // Execute Non Query
                     MySqlDataAdapter adapter = conn.adapter(); // adapter
@@ -168,7 +206,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     MessageBox.Show(x.Message);
                 }
             }
-
         }
 
         // Filter Button
@@ -218,6 +255,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             catchData();
             reportSales = "Select";
+            sortBrand.Text = "Select";
+            sortCategory.Text = "Select";
+            sortStatus.Text = "Select";
+            brand = null;
+            category = null;
+            status = null;
         }
 
         // Export Button

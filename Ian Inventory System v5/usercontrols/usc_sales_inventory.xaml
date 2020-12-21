@@ -71,12 +71,20 @@
 
                                     <!-- Stock Status -->
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <TextBlock Text="Stock Status" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFFFFF" FontSize="10" Margin="0 10 0 5"/>
-                                        <ComboBox x:Name="sortStatus" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#45D5D5" Background="White">
+                                        <TextBlock Text="Category" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFFFFF" FontSize="10" Margin="0 10 0 5"/>
+                                        <ComboBox x:Name="sortCategory" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#45D5D5" Background="White" IsEditable="True">
                                             <ComboBoxItem Content="Select" IsSelected="True" />
-                                            <ComboBoxItem Content="On Stock" />
-                                            <ComboBoxItem Content="Running of Stock" />
-                                            <ComboBoxItem Content="Out of Stock" />
+                                        </ComboBox>
+                                    </StackPanel>
+
+                                    <!-- Stock Status -->
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <TextBlock Text="Status" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#FFFFFF" FontSize="10" Margin="0 10 0 5"/>
+                                        <ComboBox x:Name="sortStatus" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" FontSize="10" Height="25" Width="130" VerticalAlignment="Center" BorderBrush="#45D5D5" Background="White" IsEditable="True">
+                                            <ComboBoxItem Content="Select" IsSelected="True" />
+                                            <ComboBoxItem Content="Sold" />
+                                            <ComboBoxItem Content="Cancelled" />
+                                            <ComboBoxItem Content="Pending" />
                                         </ComboBox>
                                     </StackPanel>
 

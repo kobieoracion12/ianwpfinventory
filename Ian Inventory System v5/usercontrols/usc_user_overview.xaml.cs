@@ -300,5 +300,40 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show(x.Message);
             }
         }
+
+        // Search Function
+        private void entrySearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string search = entrySearch.Text;
+            conn.Close();
+            try
+            {
+                // Open Connection
+                conn.Open();
+                // Query Statement
+                string query = "SELECT acc_no, usersName FROM usersinventory WHERE acc_no LIKE '%" + search + "%' OR usersName LIKE '%" + search + "%' ORDER BY usersName ASC";
+                // Mysql Command
+                conn.query(query);
+                // Execute
+                conn.execute();
+                // Adapter
+                MySqlDataAdapter adapter = conn.adapter();
+                //  Datatable
+                DataTable dt = new DataTable("usersinventory");
+                // Fill the datatable
+                adapter.Fill(dt);
+                listviewAccounts.ItemsSource = dt.DefaultView;
+                adapter.Update(dt);
+
+                adapter.Dispose(); // Dispose Adapter
+                                   // Close Connection
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

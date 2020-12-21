@@ -27,7 +27,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             InitializeComponent();
             catchData();
-            catchUser();
         }
 
         // Fetch Store Details
@@ -51,36 +50,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     storeTIN.Text = row[3];
                     storeSerial.Text = row[4];
                     storeMIN.Text = row[5];
-                }
-
-                reader.Close();
-                reader.Dispose();
-                conn.Close(); // Close Connection
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        // Fetch User Information
-        public void catchUser()
-        {
-            string sql = setting.catchUser;
-            conn.query(sql);
-
-            try
-            {
-                conn.Open(); // Open Connection
-                MySqlDataReader reader = conn.read(); // Execute
-
-                // Append the data to be edited in the textbox
-                if (reader.Read())
-                {
-                    string[] row = { reader.GetString(0), reader.GetString(1) };
-                    userId.Text = row[0];
-                    settingUser.Text = row[1];
                 }
 
                 reader.Close();

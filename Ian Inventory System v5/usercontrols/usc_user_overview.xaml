@@ -37,7 +37,7 @@
                                         <Viewbox Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Stretch">
                                             <StackPanel Orientation="Vertical">
                                                 <Label Content="Search Accounts" FontWeight="Black" FontSize="6" Margin="0 0 0 0"/>
-                                                <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="12" MinWidth="290" Background="White" Margin="10 0 0 0" />
+                                                <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="12" MinWidth="290" Background="White" Margin="10 0 0 0" TextChanged="entrySearch_TextChanged"/>
                                             </StackPanel>
                                         </Viewbox>
 

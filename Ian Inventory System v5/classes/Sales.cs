@@ -23,9 +23,6 @@ namespace NavigationDrawerPopUpMenu2.classes
 
         Database conn = new Database();
         usc_sales usc = new usc_sales();
-        
-
-
 
     }
 }
