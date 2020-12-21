@@ -77,7 +77,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                             }
                             else
                             {   // IF Something Went Wrong // Error
-                                MessageBox.Show("Something went wrong, Please try again later", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show("Something went wrong.", "Notice", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
                         catch (Exception x)
@@ -93,7 +93,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 }
                 else
                 {   // No user 
-                    MessageBox.Show("Invalid Username or Password", "Notice", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("You're account is pending/deactivated", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
         }
@@ -106,8 +106,6 @@ namespace NavigationDrawerPopUpMenu2.windows
             userTimeIn = DateTime.Now; // Set a DateTime
         }
 
-        
-
         // Exit Program
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -117,6 +115,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
         }
 
+        // Enter Key
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)

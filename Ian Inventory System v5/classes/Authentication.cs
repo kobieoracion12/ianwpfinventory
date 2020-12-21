@@ -88,7 +88,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                 // Add User
                 // Check if user is taken
                 // IF NO ERROR 
-                string query = "INSERT INTO usersinventory (acc_no, usersName, usersPass, usersPrevileges) VALUES (@acc_no, @username, @password, @privilege)";
+                string query = "INSERT INTO usersinventory (acc_no, usersName, usersPass, usersPrevileges, userStatus) VALUES (@acc_no, @username, @password, @privilege, @status)";
                 // Hash/Encrypt Password
                 var hashedPwd = BCrypt.Net.BCrypt.HashPassword(this.password);
                 conn.query(query);
@@ -97,6 +97,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                 conn.bind("@username", this.username);
                 conn.bind("@password", hashedPwd);
                 conn.bind("@privilege", privilege);
+                conn.bind("@status", "Pending");
                 conn.cmd().Prepare();
                 // INSERT NEW USER
                 var check = conn.execute();
@@ -118,7 +119,6 @@ namespace NavigationDrawerPopUpMenu2.classes
                 conn.Close();
             }
         }
-
 
         // Get User Previlages
         public String getUserPrevilages()

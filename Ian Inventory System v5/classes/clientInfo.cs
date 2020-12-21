@@ -14,6 +14,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         public long acc_number = 0;
         public string first_name = "";
         public string last_name = "";
+        public string user_status = "";
         public string buss_name = "";
         public string buss_branch = "";
         public string buss_type = "";
@@ -41,7 +42,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                 conn.bind("@province", buss_province);
                 conn.bind("@country", buss_country);
                 conn.bind("@zipcode", buss_zipcode.ToString());
-                conn.bind("@date", DateTime.Now.ToString());
+                conn.bind("@date", DateTime.Now);
                 conn.cmd().Prepare();
                 var check = conn.execute();
                 if (check == 1)

@@ -81,11 +81,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         dr.Close();
                         dr.Dispose(); // Dispose
                     }
-                    else
-                    {
-                        MessageBox.Show("Error!");
-                        return;
-                    }
                     conn.Close();
                 }
             }
@@ -115,14 +110,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     dr.Close();
                     dr.Dispose(); // Dispose
                 }
-                else
-                {
-                    MessageBox.Show("Error!");
-                    return;
-                }
                 conn.Close();
-
-
             }
             catch (Exception x)
             {
@@ -170,8 +158,26 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         deacButton.IsEnabled = true;
                         delButton.IsEnabled = true;
                         break;
+                    case null:
+                        saveButton.IsEnabled = true;
+                        actButton.IsEnabled = true;
+                        deacButton.IsEnabled = true;
+                        delButton.IsEnabled = true;
+                        break;
                 }
             }
+        }
+
+        // Clear Function
+        public void Clear()
+        {
+            accNumber.Clear();
+            userFirst.Clear();
+            userLast.Clear();
+            accUser.Clear();
+            accStatus.Clear();
+            accPriv.Text = "";
+            userCreated.Text = "";
         }
 
         // Activate Button
@@ -230,6 +236,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 {
                     MessageBox.Show("Information Updated!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     fetchData();
+                    Clear();
                 }
                 conn.Close();
             }
