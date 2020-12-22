@@ -204,8 +204,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             if (e.Key == Key.Return)
             {
-                clearStockOutBtn.IsEnabled = true;
-                saveStockOutBtn.IsEnabled = true;
                 string itemQty = "";
                 string search = entrySearch.Text;
                 string query = "SELECT * FROM datainventory WHERE prodNo= '" + search + "'";
@@ -255,6 +253,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         }
                         else
                         { // Add to the stockout table
+                            clearStockOutBtn.IsEnabled = true;
+                            saveStockOutBtn.IsEnabled = true;
                             string refno = "";
                             bool doesExist = false;
                             string check = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutItem = '" + stockoutItem + "'";
@@ -388,7 +388,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     conn.execute();
                     loadData();
                     conn.Close();
-                    clearStockOutBtn.IsEnabled = false;
+                    //clearStockOutBtn.IsEnabled = false;
                 }
                 catch (Exception ex)
                 {
@@ -421,6 +421,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 try
                 {
+                    bool haveItem = false;
                     string sql = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutStatus = 'Stock Out Pending'";
                     conn.query(sql);
                     conn.Open();
@@ -429,6 +430,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     {
                         while (dr.Read())
                         {
+                            haveItem = true;
                             string stockoutTransNo = dr["stockoutTransNo"].ToString();
                             string stockoutNo = dr["stockoutNo"].ToString();
                             string stockoutItem = dr["stockoutItem"].ToString();
@@ -443,6 +445,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     }
                     else
                     {
+                        haveItem = false;
+                        clearStockOutBtn.IsEnabled = false;
+                        saveStockOutBtn.IsEnabled = false;
                         MessageBox.Show("Saving Failed: No Data Found", "Stock Out", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
 
@@ -451,35 +456,40 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     dr.Dispose();
                     // End of Query
 
-                    // Second Query to SUBTRACT/UPDATE THE STOCKS
-                    foreach (Stock_Out prd in stockOut)
+                    if (haveItem)
                     {
-                        conn.Open();
-                        string updateStockQuery = "UPDATE datainventory SET prodQty = prodQty - '" + int.Parse(prd.stockoutQty) + "' WHERE prodNo = '" + prd.stockoutNo + "'";
-                        conn.query(updateStockQuery);
-                        conn.execute();
-                        conn.Close();
+                        // Second Query to SUBTRACT/UPDATE THE STOCKS
+                        foreach (Stock_Out prd in stockOut)
+                        {
+                            conn.Open();
+                            string updateStockQuery = "UPDATE datainventory SET prodQty = prodQty - '" + int.Parse(prd.stockoutQty) + "' WHERE prodNo = '" + prd.stockoutNo + "'";
+                            conn.query(updateStockQuery);
+                            conn.execute();
+                            conn.Close();
 
-                        conn.Open();
-                        // Now Update the Status to SOLD
-                        string updateStatus = "UPDATE stock_out SET stockoutStatus = 'Stock Out' WHERE stockoutNo = '" + prd.stockoutNo + "' AND stockoutTransNo = '" + orderNo.Text + "'";
-                        conn.query(updateStatus);
-                        conn.execute();
-                        conn.Close();
+                            conn.Open();
+                            // Now Update the Status to SOLD
+                            string updateStatus = "UPDATE stock_out SET stockoutStatus = 'Stock Out' WHERE stockoutNo = '" + prd.stockoutNo + "' AND stockoutTransNo = '" + orderNo.Text + "'";
+                            conn.query(updateStatus);
+                            conn.execute();
+                            conn.Close();
 
-                        //MessageBox.Show(prd.salesItem);
+                            //MessageBox.Show(prd.salesItem);
+                        }
+
+                        report_stockout rptstockout = new report_stockout(this);
+                        rptstockout.printPreview();
+                        rptstockout.ShowDialog();
+                        transGenerator(); // Generate a new Trans#
+                        stockOut.Clear(); // Clear ListView
+                        conn.Open();
+                        loadData(); // Update UI
+                        conn.Close();
+                        loadDataForRecord();
+                        MessageBox.Show("Your changes has been saved", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
+
                     
-                    report_stockout rptstockout = new report_stockout(this);
-                    rptstockout.printPreview();
-                    rptstockout.ShowDialog();
-                    transGenerator(); // Generate a new Trans#
-                    stockOut.Clear(); // Clear ListView
-                    conn.Open();
-                    loadData(); // Update UI
-                    conn.Close();
-                    loadDataForRecord();
-                    MessageBox.Show("Your changes has been saved", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     
 
                 }

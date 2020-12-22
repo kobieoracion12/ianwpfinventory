@@ -348,8 +348,9 @@ namespace NavigationDrawerPopUpMenu2.windows
                 {
                     MessageBox.Show("No item found", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                     isItemFound = false;
+                    dr.Close();
+                    dr.Dispose(); // Dispose
                     clearPartial();
-
                 }
                 
             }

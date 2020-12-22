@@ -117,7 +117,7 @@
                                     <!-- Branch -->
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <TextBlock Text="Branch (If Applicable)" HorizontalAlignment="Left" FontWeight="Bold" FontSize="5" Margin="5 10 0 0"/>
-                                        <TextBox x:Name="accBranch"  BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" />
+                                        <TextBox x:Name="accBranch" Text=""  BorderThickness="1" Padding="2 0 0 0" FontFamily="Microsoft Tai Le" FontSize="8" Background="White" Height="20" Width="190" VerticalAlignment="Center" />
                                     </StackPanel>
 
                                     <!-- Business Type -->

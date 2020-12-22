@@ -89,12 +89,17 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
             auth = new Authentication(username, password);
 
-            if (accNumber.Text == "" || lastName.Text == "" || firstName.Text == "" || userName.Text == "" || passWord.Password == "" || accPrivilege.Text == "" || accBussName.Text == "" || accBranch.Text == "" || accBussType.Text == "" || accTown.Text == "" || accProvince.Text == "" || accCountry.Text == "" || accZipcode.Text == "" || accCreated.Text == "")
+            if (accNumber.Text == "" || lastName.Text == "" || firstName.Text == "" || userName.Text == "" || passWord.Password == "" || accPrivilege.Text == "" || accBussName.Text == "" || accBussType.Text == "" || accTown.Text == "" || accProvince.Text == "" || accCountry.Text == "" || accZipcode.Text == "" || accCreated.Text == "")
             {
                 MessageBox.Show("Please Complete the Form", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
+                if (accBranch.Text == "")
+                {
+                    accBranch.Text = "N/A";
+                }
+                  
                 auth.addUser(accPrivilege.Text, accNumber.Text);
 
                 clientInfo.acc_number = Convert.ToInt64(accNumber.Text);

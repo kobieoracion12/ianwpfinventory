@@ -88,17 +88,18 @@ namespace NavigationDrawerPopUpMenu2
                     GridMain.Children.Add(usc);
                     break;
                 case "logoutButton":
-                    MessageBox.Show("Logout Success!", "Logout", MessageBoxButton.OK, MessageBoxImage.Information);
-                    Authentication auth = new Authentication("", ""); // Call Auth Class
-                    window_userLogin userLogin = new window_userLogin(); // Call UserLogin Window
-                    auth.addTimeInOut(timeIn, accNo); 
-                    userLogin.Show(); // Show Login After Logout
-                    this.Close(); // Close this window
+                    var ans = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (ans == MessageBoxResult.Yes)
+                    {
+                        MessageBox.Show("Logout Success!", "Logout", MessageBoxButton.OK, MessageBoxImage.Information);
+                        window_userLogin userLogin = new window_userLogin(); // Call UserLogin Window
+                        /* Authentication auth = new Authentication("", ""); // Call Auth Class
+                         auth.addTimeInOut(timeIn, accNo); */
+                        userLogin.Show(); // Show Login After Logout
+                        this.Close(); // Close this window
+                    }
                     break;
             }
-
-
-
         }
     }
 }

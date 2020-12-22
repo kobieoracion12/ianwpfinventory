@@ -130,7 +130,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             try
             {
                 con.Open();
-                string query = "SELECT DISTINCT prodBrand FROM datainventory";
+                string query = "SELECT DISTINCT prodBrand FROM datainventory ORDER BY prodBrand ASC";
                 con.query(query);
                 con.execute();
                 MySqlDataReader drd = con.read();
@@ -157,7 +157,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             con.Open();
             try
             {
-                string query = "SELECT category_name FROM category";
+                string query = "SELECT category_name FROM category ORDER BY category_name ASC";
                 con.query(query);
                 con.execute();
                 MySqlDataReader drd = con.read();
