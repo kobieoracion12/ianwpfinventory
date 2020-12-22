@@ -37,47 +37,56 @@ namespace NavigationDrawerPopUpMenu2.reports
         // Print Preview
         public void printPreview()
         {
-            string formattedFrom, formattedTo, brandSort, statusSort;
+            string doaFrom, doaTo, brand, category, status;
             string query = "";
-
             // Init selected dates from calendar
             DateTime? selectedDateFrom = usc_sales.sortCalendarFrom.SelectedDate;
             DateTime? selectedDateTo = usc_sales.sortCalendarTo.SelectedDate;
 
             if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
             {
-                brandSort = usc_sales.sortBrand.Text;
-                statusSort = usc_sales.sortStatus.Text;
-                if (brandSort == "Select")
-                {
-                    brandSort = null;
-                }
                 // Making a format and getting the value of datepicker to string
-                formattedFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-                formattedTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                usc_sales.doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                usc_sales.doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+
+                brand = usc_sales.sortBrand.Text;
+                category = usc_sales.sortCategory.Text;
+                status = usc_sales.sortStatus.Text;
+                if (brand == "Select")
+                {
+                    brand = null;
+                }
+                if (category == "Select")
+                {
+                    category = null;
+                }
+                if (status == "Select")
+                {
+                    status = null;
+                }
 
                 ReportDataSource rptDataSource;
 
                 try
                 {
-
                     this.ReportViewerSales.LocalReport.DataSources.Clear();
                     ReportViewerSales.LocalReport.ReportEmbeddedResource = "NavigationDrawerPopUpMenu2.ReportSale.rdlc";
                     DataSet1 ds = new DataSet1();
 
-                    conn.Open();
+                    conn.Open(); // Open Connection
                     if (reportToPrint == "Select")
                     {
-                        query = "SELECT * FROM datasalesinventory";
+                        query = "SELECT * FROM datasalesinventory ORDER BY refNo DESC";
                     }
                     else if (reportToPrint == "Sort")
                     {
-                         query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brandSort + "%' AND salesStatus LIKE '%" + statusSort + "%' AND salesDate BETWEEN '" + formattedFrom + "' AND '" + formattedTo + "' "; // Sort base on the query
+                        query = "SELECT * FROM datasalesinventory WHERE salesBrand LIKE '%" + brand + "%' AND salesCategory LIKE '%" + category + "%' AND salesStatus LIKE '%" + status + "%' AND salesDate BETWEEN '" + usc_sales.doaFrom + "' AND '" + usc_sales.doaTo + "' ORDER BY salesItem ASC "; // Sort base on the query
                     }
 
                     MySqlDataAdapter da = conn.DataAdapter(query);
                     da.Fill(ds.Tables["dtSold"]);
                     conn.Close();
+
 
                     ReportParameter pStore = new ReportParameter("pStore", store.storeName(conn));
                     ReportParameter pAddress = new ReportParameter("pAddress", store.storeAddress(conn));
@@ -91,12 +100,11 @@ namespace NavigationDrawerPopUpMenu2.reports
 
                     ReportViewerSales.ZoomMode = ZoomMode.Percent;
                     ReportViewerSales.ZoomPercent = 100;
-
                 }
                 catch (Exception x)
                 {
                     conn.Close();
-                    MessageBox.Show("Print Preview, "+x.Message, "Preview Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(x.Message + ", Something went wrong", "Sales Report", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
         }
