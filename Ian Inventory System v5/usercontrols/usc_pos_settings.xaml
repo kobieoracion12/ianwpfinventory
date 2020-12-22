@@ -92,6 +92,7 @@
                 </StackPanel>
 
                 <Grid x:Name="mainGrid" Margin="20">
+                    <TextBlock Text="Manage Discount" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" Margin="20"/>
                     <Grid>
                         <Viewbox Stretch="Uniform">
                             <StackPanel Orientation="Vertical" Margin="10">

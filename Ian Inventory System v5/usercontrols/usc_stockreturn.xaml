@@ -79,7 +79,9 @@
             </Grid>
         </Grid>
 
+        
         <Grid Grid.Column="2" Grid.Row="0" Grid.RowSpan="2">
+            <TextBlock Text="Stock Return" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20" Margin="30"/>
             <Grid Grid.ColumnSpan="2">
                 <Viewbox Stretch="Uniform" Grid.ColumnSpan="2">
                     <Canvas Width="210" Height="290" >
