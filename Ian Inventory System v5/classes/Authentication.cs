@@ -259,7 +259,7 @@ namespace NavigationDrawerPopUpMenu2.classes
                 conn.Close();
             }
 
-            return firstName + "" + lastName;
+            return firstName + " " + lastName;
         }
 
         public String getAccNo(string usn)

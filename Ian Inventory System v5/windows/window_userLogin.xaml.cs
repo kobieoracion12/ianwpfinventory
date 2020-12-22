@@ -93,7 +93,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 }
                 else
                 {   // No user 
-                    MessageBox.Show("You're account is pending/deactivated", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    MessageBox.Show("Your account is pending/deactivated", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
         }

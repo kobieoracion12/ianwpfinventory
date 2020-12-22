@@ -115,7 +115,41 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message + ", Try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Error: " + ex.Message + ", Try again later", "Total", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            return total;
+        }
+
+        public String sumOfSalesTotals()
+        {
+            string total = "";
+            try
+            {
+                conn.Open();
+                // GET THE TOTAL SALES     
+                string query = "SELECT SUM(salesTotal) as totals FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus=@status GROUP BY salesTransNo";
+                conn.query(query);
+
+                conn.bind("@transno", orderNo.Text);
+                conn.bind("@status", "Pending");
+                conn.cmd().Prepare();
+                MySqlDataReader dr = conn.read();
+                if (dr.HasRows)
+                {
+                    if (dr.Read())
+                    {
+                        total = dr["totals"].ToString(); // TOTAL SUM OF SALESTOTAL
+                    }
+                }
+
+                dr.Close();
+                dr.Dispose();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show("Error: " + ex.Message + ", Try again later", "Total", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             return total;
         }
@@ -233,10 +267,10 @@ namespace NavigationDrawerPopUpMenu2.windows
             coCurrentNew.Clear();
 
             pay_discount.Text = "0";
-            pay_subtotal.Text = "₱ 0.00";
-            pay_total.Text = "₱ 0.00";
-            pay_paid.Text = "₱ 0.00";
-            pay_due.Text = "₱ 0.00";
+            pay_subtotal.Text = "0.00";
+            pay_total.Text = "0.00";
+            pay_paid.Text = "0.00";
+            pay_due.Text = "0.00";
             pay_tax.Text = "0";
             vatItem.Text = "0";
             transTime.Text = DateTime.Now.ToLongTimeString();
@@ -247,7 +281,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             checkout.total = 0;
             checkout.paid = 0;
             checkout.due = 0;
-            cashAmount.Text = "₱ 0.00";
+            cashAmount.Text = "0.00";
 
             checkout.total = 0;
 
@@ -488,13 +522,13 @@ namespace NavigationDrawerPopUpMenu2.windows
                         total = dr["total_vat"].ToString(); // TOTAL SUM OF SALESTOTAL
                     }
                 }
-
                 dr.Close();
                 dr.Dispose();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message + ", Try again later", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
+                MessageBox.Show("Error: " + ex.Message + ", Try again later", "VAT", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             return total;
         }
@@ -598,6 +632,9 @@ namespace NavigationDrawerPopUpMenu2.windows
                     pay_tax.Text = "0.00";
                     vatItem.Text = "0";
 
+                    discountItem.IsEnabled = true;
+                    removeItem.IsEnabled = true;
+
                 }
                 catch (Exception ex)
                 {
@@ -667,6 +704,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                 win_receipt rcpt = new win_receipt(this);
                 rcpt.loadReport();
                 rcpt.ReportViewerDemo.LocalReport.Print();
+                discountItem.IsEnabled = false;
+                removeItem.IsEnabled = false;
                 //rcpt.ShowDialog();
                 // End of Receipt
             }
@@ -755,11 +794,13 @@ namespace NavigationDrawerPopUpMenu2.windows
                     { 
                         pay_total.Text = "0.00";
                         pay_subtotal.Text = "0.00";
+                        vatItem.Text = "0.00";
                     }
                     else
                     {
                         pay_total.Text = sumOfSalesTotal(); // Update the Total
                         pay_subtotal.Text = sumOfSalesTotal(); // Update the Subtotal
+                        //pay_tax.Text = sumOfTotalVat(); // Update Total Vat
                         clearPartial();
                         conn.Close();
                     }

@@ -72,6 +72,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 ReportParameter pChange = new ReportParameter("pChange", win_pos.pay_due.Text);
                 ReportParameter pTax = new ReportParameter("pTax", win_pos.pay_tax.Text);
                 ReportParameter pDiscount = new ReportParameter("pDiscount", win_pos.discount);
+                ReportParameter pVatable = new ReportParameter("pVatable", win_pos.sumOfSalesTotals());
 
                 // Set Parameters
                 ReportViewerDemo.LocalReport.SetParameters(pStoreName);
@@ -87,6 +88,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 ReportViewerDemo.LocalReport.SetParameters(pChange);
                 ReportViewerDemo.LocalReport.SetParameters(pTax);
                 ReportViewerDemo.LocalReport.SetParameters(pDiscount);
+                ReportViewerDemo.LocalReport.SetParameters(pVatable);
 
                 rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtSold"]);
                 this.ReportViewerDemo.LocalReport.DataSources.Add(rptDataSource);

@@ -90,13 +90,14 @@ namespace NavigationDrawerPopUpMenu2.windows
                         conn.execute();
                         conn.Close();
 
-                        MessageBox.Show("Quantity Changed", "Quantiy", MessageBoxButton.OK, MessageBoxImage.Information);
+                        //MessageBox.Show("Quantity Changed", "Quantiy", MessageBoxButton.OK, MessageBoxImage.Information);
                         win_pos.tbPrdName.Text = ""; //
                         win_pos.holdOrder.IsEnabled = false;
                         this.Close(); // Close
                         win_pos.loadData();
                         win_pos.pay_total.Text = win_pos.sumOfSalesTotal(); // Update UI Total
                         win_pos.entrySearch.Focus();
+                        win_pos.holdOrder.IsEnabled = false;
                     }
 
                 }

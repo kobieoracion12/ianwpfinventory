@@ -9,7 +9,7 @@
               <Width>0.21651in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.94589in</Width>
+              <Width>1.11842in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.43785in</Width>
@@ -261,7 +261,7 @@
         <Top>2.43435in</Top>
         <Left>0.02296in</Left>
         <Height>0.5in</Height>
-        <Width>1.60025in</Width>
+        <Width>1.77278in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -371,8 +371,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>3.51224in</Top>
-        <Left>0.00418in</Left>
+        <Top>3.66121in</Top>
+        <Left>0.00836in</Left>
         <Height>0.1424in</Height>
         <Width>1.78738in</Width>
         <ZIndex>4</ZIndex>
@@ -407,7 +407,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>3.68242in</Top>
+        <Top>3.80361in</Top>
         <Left>0.00836in</Left>
         <Height>0.17089in</Height>
         <Width>0.79745in</Width>
@@ -443,8 +443,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pCash</rd:DefaultName>
-        <Top>3.68242in</Top>
-        <Left>0.79745in</Left>
+        <Top>3.80361in</Top>
+        <Left>0.80581in</Left>
         <Height>0.17089in</Height>
         <Width>0.99829in</Width>
         <ZIndex>6</ZIndex>
@@ -475,7 +475,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox24</rd:DefaultName>
-        <Top>3.8672in</Top>
+        <Top>3.98838in</Top>
         <Left>0.00836in</Left>
         <Height>0.21704in</Height>
         <Width>0.79745in</Width>
@@ -511,8 +511,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pChange</rd:DefaultName>
-        <Top>3.8672in</Top>
-        <Left>0.79745in</Left>
+        <Top>3.98838in</Top>
+        <Left>0.80581in</Left>
         <Height>0.21704in</Height>
         <Width>0.99829in</Width>
         <ZIndex>8</ZIndex>
@@ -523,7 +523,7 @@
         </Style>
       </Textbox>
       <Line Name="Line4">
-        <Top>4.11202in</Top>
+        <Top>4.20542in</Top>
         <Left>0.00418in</Left>
         <Height>0in</Height>
         <Width>1.79574in</Width>
@@ -559,7 +559,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox32</rd:DefaultName>
-        <Top>4.11202in</Top>
+        <Top>4.26098in</Top>
+        <Left>0.00836in</Left>
         <Height>0.29435in</Height>
         <Width>1.79574in</Width>
         <ZIndex>10</ZIndex>
@@ -594,7 +595,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox33</rd:DefaultName>
-        <Top>4.40637in</Top>
+        <Top>4.55533in</Top>
+        <Left>0.00836in</Left>
         <Height>0.18491in</Height>
         <Width>1.79574in</Width>
         <ZIndex>11</ZIndex>
@@ -989,7 +991,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Total Tax</Value>
+                <Value>VAT</Value>
                 <Style>
                   <FontFamily>Merchant Copy Doublesize</FontFamily>
                   <FontSize>5pt</FontSize>
@@ -1002,9 +1004,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>3.12879in</Top>
-        <Left>0.00836in</Left>
-        <Height>0.17089in</Height>
+        <Top>3.2858in</Top>
+        <Left>0.02296in</Left>
+        <Height>0.14896in</Height>
         <Width>0.77867in</Width>
         <ZIndex>23</ZIndex>
         <Style>
@@ -1038,9 +1040,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pCash</rd:DefaultName>
-        <Top>3.12879in</Top>
-        <Left>0.80999in</Left>
-        <Height>0.17089in</Height>
+        <Top>3.2858in</Top>
+        <Left>0.80581in</Left>
+        <Height>0.14896in</Height>
         <Width>0.99829in</Width>
         <ZIndex>24</ZIndex>
         <Style>
@@ -1070,7 +1072,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>3.29968in</Top>
+        <Top>3.43476in</Top>
         <Left>0.02296in</Left>
         <Height>0.17089in</Height>
         <Width>0.77867in</Width>
@@ -1113,10 +1115,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pCash</rd:DefaultName>
-        <Top>3.31357in</Top>
-        <Left>0.80581in</Left>
+        <Top>3.43476in</Top>
+        <Left>0.81835in</Left>
         <Height>0.17089in</Height>
-        <Width>0.99829in</Width>
+        <Width>0.98575in</Width>
         <ZIndex>26</ZIndex>
         <Style>
           <Border>
@@ -1124,8 +1126,76 @@
           </Border>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox26">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>VATABLE</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox22</rd:DefaultName>
+        <Top>3.11491in</Top>
+        <Left>0.02296in</Left>
+        <Height>0.17089in</Height>
+        <Width>0.77867in</Width>
+        <ZIndex>27</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>5pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="pCash4">
+        <CanGrow>true</CanGrow>
+        <CanShrink>true</CanShrink>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!pVatable.Value</Value>
+                <Style>
+                  <FontFamily>Merchant Copy Doublesize</FontFamily>
+                  <FontSize>5pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>pCash</rd:DefaultName>
+        <Top>3.11491in</Top>
+        <Left>0.80163in</Left>
+        <Height>0.17089in</Height>
+        <Width>0.99829in</Width>
+        <ZIndex>28</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>4.77941in</Height>
+    <Height>5.53426in</Height>
     <Style />
   </Body>
   <Width>1.91299in</Width>
@@ -1252,6 +1322,10 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="pDiscount">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="pVatable">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
