@@ -220,13 +220,23 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
+        // Clear
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
+        }
+
         // Add Button
         private void addItem_Click(object sender, RoutedEventArgs e)
         {
             
             try
             {
-                if (int.Parse(itemReduce.Text) > int.Parse(itemQty.Text))
+                if (itemTransNo.Text == "" || itemNo.Text == "" || itemName.Text == "" || itemQty.Text == "" || itemReduce.Text == "" || itemDOP.Text == "")
+                {
+                    MessageBox.Show("Fields cannot be empty", "Stock Return", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (int.Parse(itemReduce.Text) > int.Parse(itemQty.Text))
                 {
                     MessageBox.Show("Unable to proceed, your input is too large", "Stock Return", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
@@ -255,7 +265,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     conn.bind("@prodno", itemNo.Text);
                     conn.cmd().Prepare();
                     conn.execute();
-                   
+
                     conn.Close();
 
                     fetchData();

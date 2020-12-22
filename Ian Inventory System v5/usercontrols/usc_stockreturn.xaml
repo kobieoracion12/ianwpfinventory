@@ -129,9 +129,9 @@
                                     </StackPanel>
                                 </Button>
 
-                                <Button x:Name="addIem" Margin="0 10 0 0" Height="15" Background="#E86845" BorderBrush="#FFFF6C6C">
+                                <Button x:Name="addIem" Margin="0 10 0 0" Height="15" Background="#E86845" BorderBrush="#FFFF6C6C" Click="Clear_Click">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                        <TextBlock Text="Cancel" FontWeight="SemiBold" FontSize="5" Foreground="#FFFFFF" TextAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Clear" FontWeight="SemiBold" FontSize="5" Foreground="#FFFFFF" TextAlignment="Center" VerticalAlignment="Center" />
                                     </StackPanel>
                                 </Button>
                             </StackPanel>

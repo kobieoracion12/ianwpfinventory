@@ -219,5 +219,16 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show("Removing discount failed, Please try again later", "Remove Discount", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        public void Clear()
+        {
+            discountName.Clear();
+            discountValue.Clear();
+        }
+
+        private void clearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
+        }
     }
 }
