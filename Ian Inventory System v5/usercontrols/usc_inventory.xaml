@@ -66,7 +66,7 @@
                                         <StackPanel Orientation="Horizontal" Width="70">
                                             <materialDesign:PackIcon Kind="CartPlus" Width="12"/>
                                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Text="Add Stocks" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Add Item" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
                                                 <TextBlock Text="Add/Manage Stocks" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
                                             </StackPanel>
                                         </StackPanel>
