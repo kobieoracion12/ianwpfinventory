@@ -42,6 +42,12 @@
                                         </StackPanel>
                                     </Button>
 
+                                    <Button x:Name="itemQuantity" Margin="0 10 20 10" Height="30" Width="130" Background="White" BorderBrush="#2C9CDB" Click="itemQuantity_Click">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <TextBlock Text="Quantity" FontWeight="SemiBold" FontSize="12" Foreground="#2C9CDB" TextAlignment="Left" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Button>
+
                                     <TextBlock x:Name="slcNo" Visibility="Hidden" Width="100" Text="{Binding ElementName=lv_browse, Path=SelectedItem.salesNo}"/>
                                     <TextBlock x:Name="slcQty" Visibility="Hidden" Width="50" Text="{Binding ElementName=lv_browse, Path=SelectedItem.salesQty}"/>
                                     <TextBox x:Name="curQty" Width="50" Visibility="Hidden"/>

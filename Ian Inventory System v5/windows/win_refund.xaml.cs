@@ -20,6 +20,7 @@ namespace NavigationDrawerPopUpMenu2.windows
     public partial class win_refund : Window
     {
         Database conn = new Database();
+        Refund refunds = new Refund();
         public win_refund()
         {
             InitializeComponent();
@@ -58,6 +59,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
+                conn.Close();
             }
         }
 
@@ -91,6 +93,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
+                conn.Close();
             }
         }
         
@@ -170,20 +173,24 @@ namespace NavigationDrawerPopUpMenu2.windows
                         catch (Exception x)
                         {
                             MessageBox.Show(x.Message);
+                            conn.Close();
                         }
                     }
                 }
                 else
                 {
                     MessageBox.Show("Item not Found");
+                    conn.Close();
                 }
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
+                conn.Close();
             }
         }
 
+        // Update Function
         public void updateStock()
         {
             conn.Close();
@@ -207,12 +214,21 @@ namespace NavigationDrawerPopUpMenu2.windows
                 else
                 {
                     MessageBox.Show("updatestock error");
+                    conn.Close();
                 }
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
+                conn.Close();
             }
+        }
+
+        // Quantity Button
+        private void itemQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            win_change_qty wcq = new win_change_qty(refNo.Text, slcNo.Text);
+            wcq.ShowDialog();
         }
     }
 }

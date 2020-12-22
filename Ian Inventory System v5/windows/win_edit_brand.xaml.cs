@@ -88,7 +88,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 conn.Close();
                 MessageBox.Show("Brand name has been changed", "Edit Brand Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 conn.Close();
                 MessageBox.Show("Unable to edit brand, Try again later", "Edit Brand Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
