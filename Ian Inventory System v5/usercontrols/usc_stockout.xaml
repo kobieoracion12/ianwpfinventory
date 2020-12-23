@@ -58,9 +58,9 @@
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridView.Columns>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockinNo }" Header="Product #" Width="150" />
                                         <GridViewColumn DisplayMemberBinding="{Binding stockinItem }" Header="Item" Width="250" />
                                         <GridViewColumn DisplayMemberBinding="{Binding stockinQty }" Header="Qty" Width="100"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockinPrice }" Header="Price" Width="100" />
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
@@ -100,27 +100,73 @@
                             </Rectangle.Effect>
                         </Rectangle>
 
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5*" />
+                                <RowDefinition Height="5*" />
+                                <RowDefinition Height="31*" />
+                            </Grid.RowDefinitions>
 
-                        <ListView x:Name="listViewRecords" FontSize="15" SelectionMode="Single" Margin="10, 50, 10, 10">
-                            <ListView.View>
-                                <GridView AllowsColumnReorder="False">
-                                    <GridView.Columns>
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockinRefNo }" Header="SI#" Width="120" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockinItem }" Header="Item" Width="280" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockinQty }" Header="Qty" Width="80"/>
-                                    </GridView.Columns>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                            <!-- Header -->
+                            <Grid Grid.Row="0">
+                                <Grid>
+                                    <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
+                                        <TextBlock Text="Stockin History" FontSize="10" FontFamily="Segoe UI Semibold" Margin="10"/>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
 
-                        <!-- Listview Contents -->
-                        <Grid Margin="10">
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="Stock In History" TextAlignment="Left" FontSize="18" FontFamily="Segoe UI Semibold" Margin="10"/>
-                                </StackPanel>
-                                
-                            </StackPanel>
+                            <!-- Sort -->
+                            <Grid Grid.Row="1">
+                                <Grid>
+                                    <Viewbox Stretch="Uniform">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <!-- Date of Arrival (From) -->
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20 5 5 5">
+                                                <TextBlock Text="Date of Arrival (From)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
+                                                <DatePicker x:Name="sortDOAfrom" FontSize="12" Text="Select" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" Height="25" Width="130" VerticalAlignment="Center" Foreground="Black" BorderBrush="#b2b2b2"/>
+                                            </StackPanel>
+
+                                            <!-- Date of Arrival (To) -->
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10 5 5 5">
+                                                <TextBlock Text="Date of Arrival (To)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
+                                                <DatePicker x:Name="sortDOAto" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:yyyy MM, dd}'}" FontSize="12" BorderThickness="1" Padding="10 0 0 0" FontFamily="Microsoft Tai Le" Height="25" Width="130" VerticalAlignment="Center" Foreground="Black" BorderBrush="#b2b2b2"/>
+                                            </StackPanel>
+
+                                            <!-- Filter -->
+                                            <Button x:Name="sortButton" Margin="5 10 5 10" Height="20" Width="70" Background="White" BorderBrush="#b2b2b2" Click="sortButton_Click">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <TextBlock Text="Filter" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Button>
+
+                                            <!-- Filter -->
+                                            <Button x:Name="refreshButton" Margin="5 10 5 10" Height="20" Background="White" BorderBrush="#b2b2b2" Click="refreshButton_Click">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <TextBlock Text="Refresh" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Button>
+                                        </StackPanel>
+                                    </Viewbox>
+                                </Grid>
+                            </Grid>
+
+                            <!-- Listview -->
+                            <Grid Grid.Row="2">
+                                <Grid>
+                                    <ListView x:Name="listViewRecords" FontSize="15" SelectionMode="Single" Margin="10">
+                                        <ListView.View>
+                                            <GridView AllowsColumnReorder="False">
+                                                <GridView.Columns>
+                                                    <GridViewColumn DisplayMemberBinding="{Binding stockinRefNo }" Header="SI#" Width="120" />
+                                                    <GridViewColumn DisplayMemberBinding="{Binding stockinItem }" Header="Item" Width="280" />
+                                                    <GridViewColumn DisplayMemberBinding="{Binding stockinQty }" Header="Qty" Width="80"/>
+                                                </GridView.Columns>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -139,6 +185,6 @@
                 </Grid>
             </Grid>
         </Grid>
-        
+
     </Grid>
 </UserControl>

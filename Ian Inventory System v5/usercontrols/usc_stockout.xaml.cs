@@ -35,6 +35,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         public usc_stockout()
         {
             InitializeComponent();
+            getLastDate();
         }
 
         // When UserControl Loads
@@ -68,6 +69,34 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 conn.Close();
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        // Fill the DatePicker with the first date available in database
+        public void getLastDate()
+        {
+            try
+            {
+                conn.Open();
+                string lastDate = "SELECT stockinDate FROM stock_in ORDER BY stockinDate ASC LIMIT 1";
+                conn.query(lastDate);
+                conn.execute();
+                MySqlDataReader drd = conn.read();
+
+                while (drd.Read())
+                {
+                    string[] row = { drd.GetString(0) };
+                    sortDOAfrom.Text = row[0];
+                }
+
+                drd.Close();
+                drd.Dispose();
+                conn.Close();
+
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
             }
         }
 
@@ -491,7 +520,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         }
 
         // Change Quantity
-
         private void changeQtyBtn_Click_1(object sender, RoutedEventArgs e)
         {
             if (tbPrdName.Text != String.Empty)
@@ -504,6 +532,49 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 changeQtyBtn.IsEnabled = false;
                 MessageBox.Show("No Product Selected", "Notice", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        // Sort Date
+        private void sortButton_Click(object sender, RoutedEventArgs e)
+        {
+            string doaFrom, doaTo;
+            // Init selected dates from calendar
+            DateTime? selectedDateFrom = sortDOAfrom.SelectedDate;
+            DateTime? selectedDateTo = sortDOAto.SelectedDate;
+
+            if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
+            {
+                // Making a format and getting the value of datepicker to string
+                doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+
+                try
+                {
+                    conn.Open(); // Open Connection
+                    string query = "SELECT * FROM stock_in WHERE stockinDate BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY stockinDate DESC "; // Sort base on the query
+                    conn.query(query);  // Command Database
+                    conn.execute(); // Execute Non Query
+                    MySqlDataAdapter adapter = conn.adapter(); // adapter
+                    DataTable dt = new DataTable("stock_in"); // Make a datatable reference
+                    adapter.Fill(dt);  // Fill the datatable with data
+                    listViewRecords.ItemsSource = dt.DefaultView;
+                    adapter.Update(dt);
+
+                    adapter.Dispose(); // Dispose Adapter
+                    conn.Close(); // Close Connection
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                    conn.Close();
+                }
+            }
+        }
+
+        // Refresh Button
+        private void refreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            loadDataForRecord();
         }
     }
 }
