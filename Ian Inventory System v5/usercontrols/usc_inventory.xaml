@@ -72,17 +72,6 @@
                                         </StackPanel>
                                     </ListViewItem>
 
-                                    <!-- Restock Item -->
-                                    <ListViewItem x:Name="stRestock" Height="35" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal" Width="70">
-                                            <materialDesign:PackIcon Kind="CartOutline" Width="12"/>
-                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Text="Restock Items" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
-                                                <TextBlock Text="Restock/Manage Items" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListViewItem>
-
                                     <!-- Stock Request -->
                                     <ListViewItem x:Name="stItemReq" Height="35" HorizontalAlignment="Center">
                                         <StackPanel Orientation="Horizontal" Width="70">
