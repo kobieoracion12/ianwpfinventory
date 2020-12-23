@@ -4,17 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace NavigationDrawerPopUpMenu2.classes
 {
     class Database
     {
+        
         // CONFIG
         private const string DB_SERVER = "127.0.0.1";
         private const string DB_PORT = "3306";
         private const string DB_USER = "root";
         private const string DB_PASS = "";
         private const string DB_NAME = "iantestinventory";
+        private static string connString = ConfigurationManager.ConnectionStrings["NavigationDrawerPopUpMenu2.Properties.Settings.iantestinventoryConnectionString"].ConnectionString;
 
         // MYSQL
         private MySqlConnection conn;
@@ -25,7 +28,8 @@ namespace NavigationDrawerPopUpMenu2.classes
         public Database()
         {
             // Init Connection
-            this.conn = new MySqlConnection($"datasource = {DB_SERVER}; port = {DB_PORT}; username = {DB_USER}; password = {DB_PASS}; database = {DB_NAME};Convert Zero Datetime=True");
+            this.conn = new MySqlConnection(connString);
+            //this.conn = new MySqlConnection($"datasource = {DB_SERVER}; port = {DB_PORT}; username = {DB_USER}; password = {DB_PASS}; database = {DB_NAME};Convert Zero Datetime=True");
         }
 
         // Query a SQL Statement

@@ -26,8 +26,8 @@ namespace NavigationDrawerPopUpMenu2.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=ianinventory;password=kobieoracion123;persistsecurityinf" +
-            "o=True;database=iantestinventory")]
+        [global::System.Configuration.DefaultSettingValueAttribute("datasource=localhost;port=3306;username=root;password=;database=iantestinventory;" +
+            "Convert Zero Datetime=True")]
         public string iantestinventoryConnectionString {
             get {
                 return ((string)(this["iantestinventoryConnectionString"]));
