@@ -24,6 +24,8 @@ namespace NavigationDrawerPopUpMenu2.windows
         public win_refund()
         {
             InitializeComponent();
+            itemQuantity.IsEnabled = false;
+            itemRefund.IsEnabled = false;
             fetchData();
             searchTrans.Focus();
         }
@@ -112,6 +114,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
         }
 
+        
         // Selection Change Event Handler 
         private void lv_browse_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -131,7 +134,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 MessageBox.Show(x.Message);
             }
         }
-
+        
         // Refund Button
         private void itemRefund_Click(object sender, RoutedEventArgs e)
         {
@@ -227,8 +230,15 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Quantity Button
         private void itemQuantity_Click(object sender, RoutedEventArgs e)
         {
-            win_change_qty wcq = new win_change_qty(refNo.Text, slcNo.Text);
+            win_change_qty wcq = new win_change_qty(refNo.Text, slcNo.Text, this);
             wcq.ShowDialog();
+        }
+
+        // ListView
+        private void lv_browse_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            itemQuantity.IsEnabled = true;
+            itemRefund.IsEnabled = true;
         }
     }
 }

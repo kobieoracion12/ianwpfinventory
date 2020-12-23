@@ -48,6 +48,8 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Window Loads
         private void WindowPOS_Loaded(object sender, RoutedEventArgs e)
         {
+            // Discount Disabled 
+            discountItem.IsEnabled = false;
             // Display Time In
             timeIn.Text = DateTime.Now.ToLongTimeString();
             // Display Account Number
@@ -366,6 +368,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             if (coRP.Text.Length > 0)
             {
                 // Enabled all the buttons
+                discountItem.IsEnabled = true;
                 cashButton.IsEnabled = true;
                 voidEntry.IsEnabled = true;
                 othersButton.IsEnabled = true;
@@ -796,6 +799,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                         pay_total.Text = "0.00";
                         pay_subtotal.Text = "0.00";
                         vatItem.Text = "0.00";
+                        discountItem.IsEnabled = false;
                     }
                     else
                     {
@@ -805,6 +809,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                         clearPartial();
                         conn.Close();
                     }
+                    
 
                 }
                 catch (Exception ex)

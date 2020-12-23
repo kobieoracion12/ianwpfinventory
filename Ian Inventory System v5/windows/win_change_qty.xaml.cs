@@ -22,28 +22,31 @@ namespace NavigationDrawerPopUpMenu2.windows
         Database conn = new Database();
         Refund refunds = new Refund();
 
+        string datasalesinventoryQty = "";
         public string data { get; set; }
         public string data2 { get; set; }
 
-        public win_change_qty(string data, string data2)
+        win_refund win_refund;
+        public win_change_qty(string data, string data2, win_refund win_refund)
         {
             InitializeComponent();
-            editQuantity.Focus();
-
+            //editQuantity.Focus();
             this.data = data;
             this.data2 = data2;
 
             selectedId.Text = data;
             prodNumber.Text = data2;
+
+            this.win_refund = win_refund;
         }
 
         // Accepts Only Numbers
         private void editQuantity_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            var entrySearch = sender as TextBox;
+            var editQuantity = sender as TextBox;
             // Use SelectionStart property to find the caret position.
             // Insert the previewed text into the existing text in the textbox.
-            var fullText = entrySearch.Text.Insert(entrySearch.SelectionStart, e.Text);
+            var fullText = editQuantity.Text.Insert(editQuantity.SelectionStart, e.Text);
 
             double val;
             // If parsing is successful, set Handled to false
@@ -54,10 +57,18 @@ namespace NavigationDrawerPopUpMenu2.windows
         public void fetchInventory()
         {
             
-            
         }
 
         public int userQty, datasales, salesRefund, datainventory, dataBack;
+
+        // Shortcut
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+                confirmButton_Click(sender, e);
+            else if (e.Key == Key.Escape)
+                this.Close();
+        }
 
         // Update Inventory
         public void dataRefund()
@@ -71,66 +82,80 @@ namespace NavigationDrawerPopUpMenu2.windows
             conn.Close();
             try
             {
-                userQty = int.Parse(editQuantity.Text);
-                datasales = int.Parse(currentQty.Text);
-
-                salesRefund = datasales - userQty;
-
-                string salesquery = "UPDATE datasalesinventory SET salesQty = @qty WHERE refNo = @no";
-                conn.query(salesquery);
-                try
+                if (currentQty.Text == "")
                 {
-                    conn.Open();
-                    conn.bind("@qty", salesRefund);
-                    conn.bind("@no", selectedId);
-                    var check = conn.execute();
-                    if (check == 1)
-                    {
-                        conn.Close();
-                        try
-                        {
-                            datainventory = int.Parse(inventoryQty.Text);
-
-                            dataBack = datainventory - salesRefund;
-
-                            string dataquery = "UPDATE datainventory SET prodQty = @qty WHERE prodNo = @no";
-                            conn.query(dataquery);
-                            try
-                            {
-                                conn.Open();
-                                conn.bind("@qty", dataBack);
-                                conn.bind("@no", prodNumber);
-                                var checkk = conn.execute();
-                                if (checkk == 1)
-                                {
-                                    MessageBox.Show("Data Refunded");
-                                    conn.Close();
-                                    Close();
-                                }
-                            }
-                            catch (Exception x)
-                            {
-                                MessageBox.Show(x.Message);
-                                conn.Close();
-                            }
-                        }
-                        catch (Exception x)
-                        {
-                            MessageBox.Show(x.Message);
-                            conn.Close();
-                        }
-                    }
+                    MessageBox.Show("Fields cannot be empty", "Refund", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
-                catch (Exception x)
+                else if (int.Parse(currentQty.Text) > int.Parse(datasalesinventoryQty))
                 {
-                    MessageBox.Show(x.Message);
+                    MessageBox.Show("Your input is too large, "+ datasalesinventoryQty + " is the max", "Refund", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (int.Parse(currentQty.Text) == int.Parse(datasalesinventoryQty))
+                {
+                    string query = "UPDATE datainventory SET prodQty = (prodQty + @prodQty) WHERE prodNo = @prodNo";
+                    conn.query(query);
+                    conn.Open();
+                    conn.bind("@prodQty", currentQty.Text);
+                    conn.bind("@prodNo", data2);
+                    conn.cmd().Prepare();
+                    var success = conn.execute();
+                    if (success > 0)
+                    {
+                        MessageBox.Show(currentQty.Text + " has been returned to the database", "Refund", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                     conn.Close();
+
+                    ////
+                    // Delete this stock out item record
+                    string removeRecord = "DELETE FROM datasalesinventory WHERE refNo = @refno";
+                    conn.query(removeRecord);
+                    conn.Open();
+                    conn.bind("@refno", data);
+                    conn.bind("@prodno", data2);
+                    conn.cmd().Prepare();
+                    conn.execute();
+                    conn.Close();
+                    this.Close();
+                    win_refund.fetchData();
+                    win_refund.itemQuantity.IsEnabled = false;
+                    win_refund.itemRefund.IsEnabled = false;
+                }
+                else
+                {
+                    // Add data to datainventory
+                    string query = "UPDATE datainventory SET prodQty = (prodQty + @prodQty) WHERE prodNo = @prodNo";
+                    conn.query(query);
+                    conn.Open();
+                    conn.bind("@prodQty", currentQty.Text);
+                    conn.bind("@prodNo", data2);
+                    conn.cmd().Prepare();
+                    var success = conn.execute();
+                    if (success > 0)
+                    {
+                        MessageBox.Show(currentQty.Text + " has been returned to the database", "Refund", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    conn.Close();
+
+                    ////
+                    string reduceFromStockout = "UPDATE datasalesinventory SET salesQty = (salesQty - @salesQty) WHERE refno = @refno";
+                    conn.query(reduceFromStockout);
+                    conn.Open();
+                    conn.bind("@refno", data);
+                    conn.bind("@salesQty", currentQty.Text);
+                    conn.cmd().Prepare();
+                    conn.execute();
+                    conn.Close();
+                    ////
+
+                    this.Close();
+                    win_refund.fetchData();
+                    win_refund.itemQuantity.IsEnabled = false;
+                    win_refund.itemRefund.IsEnabled = false;
                 }
             }
-            catch (Exception x)
+            catch (Exception)
             {
-                MessageBox.Show(x.Message);
-                conn.Close();
+                MessageBox.Show("Something went wrong returning your item, try again later");
             }
         }
 
@@ -149,6 +174,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     MySqlDataReader dr = conn.read();
                     if (dr.Read())
                     {
+                        datasalesinventoryQty = dr.GetValue(0).ToString();
                         currentQty.Text = dr.GetValue(0).ToString();
                         dr.Close();
                         dr.Dispose(); 

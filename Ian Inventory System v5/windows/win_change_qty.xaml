@@ -6,26 +6,27 @@
         xmlns:local="clr-namespace:NavigationDrawerPopUpMenu2.windows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Change Quantity" Height="500" Width="400" ResizeMode="NoResize">
+        KeyDown="Window_KeyDown"
+        Title="Change Quantity" Height="160" Width="400" ResizeMode="NoResize">
     
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 100 10 0">
-            <Label Content="selected Id" />
-            <TextBox TextAlignment="Center" x:Name="selectedId" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Height="30" Margin="10 0 10 10" TextChanged="selectedId_TextChanged"  />
-            <Label Content="datasales qty" />
-            <TextBox TextAlignment="Center" x:Name="currentQty" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Height="30" Margin="10 0 10 10" TextChanged="currentQty_TextChanged"/>
-            <Label Content="datainventory Qty" />
-            <TextBox TextAlignment="Center" x:Name="inventoryQty" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Height="30" Margin="10 0 10 10" />
-            <Label Content="selected prod#" />
-            <TextBox TextAlignment="Center" x:Name="prodNumber" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Height="30" Margin="10 0 10 10" />
+            <Label Visibility="Hidden" Content="selected Id" />
+            <TextBox Visibility="Hidden" TextAlignment="Center" x:Name="selectedId" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Height="30" Margin="10 0 10 10" TextChanged="selectedId_TextChanged"  />
+            
+            <Label Content="datainventory Qty" Visibility="Hidden" />
+            <TextBox TextAlignment="Center" x:Name="inventoryQty" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Height="30" Margin="10 0 10 10"  Visibility="Hidden" />
+            <Label Visibility="Hidden" Content="selected prod#" />
+            <TextBox Visibility="Hidden" TextAlignment="Center" x:Name="prodNumber" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Height="30" Margin="10 0 10 10" />
         </StackPanel>
         <StackPanel Orientation="Vertical">
-        <Label Content="Quantity" Margin="5 0 0 0"/>
-        <Viewbox HorizontalAlignment="Left">
-            <TextBox TextAlignment="Center" x:Name="editQuantity" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Margin="10 0 10 10" PreviewTextInput="editQuantity_PreviewTextInput"/>
-        </Viewbox>
+            <Label Content="Quantity to Return" Margin="5 0 0 0" />
+            <Viewbox HorizontalAlignment="Left">
+                
+                <TextBox TextAlignment="Center" x:Name="currentQty" BorderThickness="1" BorderBrush="#BFC2C9" FontFamily="Microsoft Tai Le" Padding="2" FontSize="13" Width="300" Height="30" Margin="10 0 10 10" TextChanged="currentQty_TextChanged"/>
+            </Viewbox>
         </StackPanel>
 
-        <Button x:Name="confirmButton" VerticalAlignment="Bottom" Content="Confirm [Enter] " Margin="15 70 15 0" Click="confirmButton_Click" Background="#54b971" />
+        <Button x:Name="confirmButton" VerticalAlignment="Bottom" Content="Confirm [Enter] " Margin="15 0 15 15" Click="confirmButton_Click" Background="#54b971" />
     </Grid>
 </Window>

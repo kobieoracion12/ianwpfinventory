@@ -57,7 +57,7 @@
                         </Grid>
                         
                         <Grid Grid.Row="1">
-                            <ListView x:Name="lv_browse" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" Margin="10" >
+                            <ListView x:Name="lv_browse" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" Margin="10" SelectionChanged="lv_browse_SelectionChanged">
                                 <ListView.View>
                                     <GridView AllowsColumnReorder="False">
                                         <GridView.Columns>
