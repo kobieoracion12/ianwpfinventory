@@ -228,10 +228,15 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             else
             {
-                auth.addTimeInOut(DateTime.Parse(timeIn.Text) , accNo.Text); 
-                window_userLogin posLogin = new window_userLogin();
-                posLogin.Show();
-                this.Close();
+                var ans = MessageBox.Show("Are you sure you want to logout?", "Logout", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (ans == MessageBoxResult.Yes)
+                {
+                    MessageBox.Show("Logout Success!", "Logout", MessageBoxButton.OK, MessageBoxImage.Information);
+                    window_userLogin userLogin = new window_userLogin();
+                    userLogin.Show(); // Show Login After Logout
+                    this.Close(); // Close this window
+                    //auth.addTimeInOut(DateTime.Parse(timeIn.Text) , accNo.Text); 
+                }
             }
             
         }
