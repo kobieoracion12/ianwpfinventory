@@ -150,8 +150,8 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             catch (Exception ex)
             {
-                conn.Close();
                 MessageBox.Show("Error: " + ex.Message + ", Try again later", "Total", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
             }
             return total;
         }
@@ -314,7 +314,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     if (dr.Read())
                     {
                         isItemFound = true; // Check if item is found
-                        coItem.Text = dr.GetValue(0).ToString();
+                        coItem.Text = dr.GetValue(0).ToString(); 
                         coBrand.Text = dr.GetValue(1).ToString();
                         coStocks.Text = dr.GetValue(2).ToString();
                         coSRP.Text = dr.GetValue(3).ToString();
@@ -337,6 +337,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                         {
                             MessageBox.Show("Item is out of stock", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                             clearPartial();
+                            conn.Close();
                             return;
                         }
                     }
@@ -344,6 +345,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     {
                         isItemFound = false;
                         clearPartial();
+                        conn.Close();
                     }
                 }
                 else
@@ -353,6 +355,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     dr.Close();
                     dr.Dispose(); // Dispose
                     clearPartial();
+                    conn.Close();
                 }
                 
             }
@@ -493,7 +496,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                             conn.Close();
                             MessageBox.Show("Something went wrong\n" + ex.Message, "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
-                        /////
                     }
                     catch (Exception x)
                     {
@@ -512,7 +514,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             try
             {
                 // GET THE TOTAL SALES     
-                string query = "SELECT SUM(salesVAT) as total_vat FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus=@status GROUP BY salesTransNo";
+                string query = "SELECT SUM(salesVAT) as total_vat FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus = @status GROUP BY salesTransNo";
                 conn.query(query);
 
                 conn.bind("@transno", orderNo.Text);
@@ -528,11 +530,12 @@ namespace NavigationDrawerPopUpMenu2.windows
                 }
                 dr.Close();
                 dr.Dispose();
+                conn.Close();
             }
             catch (Exception ex)
             {
-                conn.Close();
                 MessageBox.Show("Error: " + ex.Message + ", Try again later", "VAT", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
             }
             return total;
         }
@@ -784,10 +787,12 @@ namespace NavigationDrawerPopUpMenu2.windows
             if (tbPrdName.Text.Equals(""))
             {
                 MessageBox.Show("No Selected Item", "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
             }
             else
             {
                 string query = "DELETE FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesItem = '" + tbPrdName.Text + "'";
+                conn.Open();
                 conn.query(query);
                 try
                 {
@@ -798,24 +803,28 @@ namespace NavigationDrawerPopUpMenu2.windows
                     { 
                         pay_total.Text = "0.00";
                         pay_subtotal.Text = "0.00";
+                        pay_tax.Text = "0.00";
                         vatItem.Text = "0.00";
                         discountItem.IsEnabled = false;
+                        endSale.IsEnabled = false;
+                        cashButton.IsEnabled = false;
+                        othersButton.IsEnabled = false;
+                        conn.Close();
                     }
                     else
                     {
                         pay_total.Text = sumOfSalesTotal(); // Update the Total
                         pay_subtotal.Text = sumOfSalesTotal(); // Update the Subtotal
-                        //pay_tax.Text = sumOfTotalVat(); // Update Total Vat
+                        pay_tax.Text = sumOfTotalVat(); // Update Total Vat
                         clearPartial();
                         conn.Close();
                     }
-                    
-
                 }
                 catch (Exception ex)
                 {
                     
                     MessageBox.Show("Failed Removing Item, " + ex.Message, "Remove Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    conn.Close();
                 }
             }
             
