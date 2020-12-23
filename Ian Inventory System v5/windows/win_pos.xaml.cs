@@ -771,7 +771,8 @@ namespace NavigationDrawerPopUpMenu2.windows
         private void addItem_Click(object sender, RoutedEventArgs e)
         {
             win_add_item wai = new win_add_item(this);
-            wai.Show();
+            wai.ShowDialog();
+            
         }
 
         // Settings Button
