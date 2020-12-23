@@ -58,9 +58,9 @@
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridView.Columns>
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="250" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="100"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutPrice }" Header="Price" Width="100" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockinItem }" Header="Item" Width="250" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockinQty }" Header="Qty" Width="100"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockinPrice }" Header="Price" Width="100" />
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
@@ -70,9 +70,9 @@
                         <Grid Margin="10">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Stock Out #:" TextAlignment="Left" FontSize="18" FontFamily="Segoe UI Semibold" Margin="10"/>
+                                    <TextBlock Text="Stock In #:" TextAlignment="Left" FontSize="18" FontFamily="Segoe UI Semibold" Margin="10"/>
                                     <TextBlock x:Name="orderNo" Text="00000000000" TextAlignment="Left" FontSize="18" FontFamily="Segoe UI Semibold" Margin="0 10 10 10"/>
-                                    <TextBox Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.stockoutItem}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
+                                    <TextBox Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.stockinItem}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="300" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
                                 </StackPanel>
 
                             </StackPanel>
@@ -105,9 +105,9 @@
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridView.Columns>
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutTransNo }" Header="ST#" Width="120" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="280" />
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="80"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockinRefNo }" Header="SI#" Width="120" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockinItem }" Header="Item" Width="280" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockinQty }" Header="Qty" Width="80"/>
                                     </GridView.Columns>
                                 </GridView>
                             </ListView.View>
@@ -117,7 +117,7 @@
                         <Grid Margin="10">
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock Text="Stock Out Records" TextAlignment="Left" FontSize="18" FontFamily="Segoe UI Semibold" Margin="10"/>
+                                    <TextBlock Text="Stock In History" TextAlignment="Left" FontSize="18" FontFamily="Segoe UI Semibold" Margin="10"/>
                                 </StackPanel>
                                 
                             </StackPanel>

@@ -57,18 +57,11 @@ namespace NavigationDrawerPopUpMenu2.windows
                     dr.Dispose();
                     conn.Close();
 
-                    // Check if Database Stock is Less Than users quantity
-                    if (int.Parse(prodQty) < int.Parse(txtQtyChange.Text))
-                    {
-                        MessageBox.Show("Unable to proceed, You only have " + prodQty + " stocks in your database", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
-                    else
-                    {
                         /* SALES QUANTITY
                        * SET A NEW TOTAL QUANTITY
                        */
                         conn.Open();
-                        string query = "UPDATE stock_out SET stockoutQty = @salesQty  WHERE stockoutTransNo = @salesTransNo AND stockoutItem = @salesItem";
+                        string query = "UPDATE stock_in SET stockinQty = @salesQty WHERE stockinRefNo = @salesTransNo AND stockinItem = @salesItem";
                         conn.query(query);
                         conn.bind("@salesQty", txtQtyChange.Text.Trim());
                         conn.bind("@salesTransNo", transNo);
@@ -82,7 +75,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                         conn.Close();
                         this.Close();
 
-                    }
+                    
                 }
             }
             catch (Exception ex)
