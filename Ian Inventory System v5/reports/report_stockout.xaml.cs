@@ -45,9 +45,9 @@ namespace NavigationDrawerPopUpMenu2.reports
                 DataSet1 ds = new DataSet1();
 
                 conn.Open();
-                string query = "SELECT * FROM stock_out WHERE stockoutTransNo='" + usc_stockout.orderNo.Text + "' AND stockoutStatus = 'Stock Out'";
+                string query = "SELECT * FROM stock_in WHERE stockinRefNo='" + usc_stockout.orderNo.Text + "' AND stockinStatus = 'Stock In'";
                 MySqlDataAdapter da = conn.DataAdapter(query);
-                da.Fill(ds.Tables["dtStockout"]);
+                da.Fill(ds.Tables["dtStockin"]);
                 conn.Close();
 
                 ReportParameter pStore = new ReportParameter("pStore", store.storeName(conn));
@@ -56,7 +56,7 @@ namespace NavigationDrawerPopUpMenu2.reports
                 ReportViewerStockOut.LocalReport.SetParameters(pStore);
                 ReportViewerStockOut.LocalReport.SetParameters(pAddress);
 
-                rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtStockout"]);
+                rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtStockin"]);
                 this.ReportViewerStockOut.LocalReport.DataSources.Add(rptDataSource);
                 ReportViewerStockOut.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
 

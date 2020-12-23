@@ -56,7 +56,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 conn.Open();
                 // Query Statement
-                string query = "DELETE FROM stock_out WHERE stockoutStatus = 'Stock Out Pending'";
+                string query = "DELETE FROM stock_in WHERE stockinStatus = 'Stock In Pending'";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -78,7 +78,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
 
                 // Query Statement
-                string query = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutStatus = 'Stock Out Pending'";
+                string query = "SELECT * FROM stock_in WHERE stockinRefNo = '" + orderNo.Text + "' AND stockinStatus = 'Stock In Pending'";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -86,7 +86,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("stock_out");
+                DataTable dt = new DataTable("stock_in");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewinVoice.ItemsSource = dt.DefaultView;
@@ -108,7 +108,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutDate DESC";
+                string query = "SELECT * FROM stock_in WHERE stockinStatus = 'Stock In' ORDER BY stockinDate DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -116,7 +116,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("stock_out");
+                DataTable dt = new DataTable("stock_in");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewRecords.ItemsSource = dt.DefaultView;
@@ -139,7 +139,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutStatus = 'Stock Out Pending'";
+                string query = "SELECT * FROM stock_in WHERE stockinRefNo = '" + orderNo.Text + "' AND stockinStatus = 'Stock In Pending'";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -147,7 +147,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("stock_out");
+                DataTable dt = new DataTable("stock_in");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewinVoice.ItemsSource = dt.DefaultView;
@@ -172,7 +172,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             for (i = 1; i < 13; i++)
             {
                 r += random.Next(0, 9).ToString();
-                string query = "SELECT COUNT(1) FROM datasalesinventory WHERE salesTransNo = @order";
+                string query = "SELECT COUNT(1) FROM stock_in WHERE stockinRefNo = @order";
                 conn.query(query);
                 try
                 {
@@ -225,7 +225,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             stockoutQty = dr["prodQty"].ToString();
                             stockoutPrice = dr["prodRP"].ToString();
                             stockoutDate = DateTime.Now.ToString();
-                            stockoutStatus = "Stock Out Pending";
+                            stockoutStatus = "Stock In Pending";
                         }
                     }
                     else
@@ -244,20 +244,12 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     }
                     else
                     {
-
-                        // Check Item Quantity If Have Stock
-                        if (int.Parse(itemQty) < 1)
-                        {
-                            MessageBox.Show("Item is out of stock", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
-                            entrySearch.Text = "";
-                        }
-                        else
-                        { // Add to the stockout table
+                            // Add to the stockout table
                             clearStockOutBtn.IsEnabled = true;
                             saveStockOutBtn.IsEnabled = true;
                             string refno = "";
                             bool doesExist = false;
-                            string check = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutItem = '" + stockoutItem + "'";
+                            string check = "SELECT * FROM stock_in WHERE stockinRefNo = '" + orderNo.Text + "' AND stockinItem = '" + stockoutItem + "'";
                             conn.query(check);
                             conn.Open();
                             MySqlDataReader reader = conn.read();
@@ -266,8 +258,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                 while (reader.Read())
                                 {
                                     doesExist = true;
-                                    refno = reader["stockoutId"].ToString();
-                                    checkStockRepeat = reader["stockoutQty"].ToString(); // Stock Out Stock
+                                    refno = reader["stockinId"].ToString();
+                                    checkStockRepeat = reader["stockinQty"].ToString(); // Stock Out Stock
                                 }
                             }
                             else
@@ -281,16 +273,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             // If Item exist
                             if (doesExist == true)
                             {
-                                // Check if item stock is still good
-                                // itemQty = Datainventory stock // checkStockRepeat = stockout stock
-                                if ((int.Parse(itemQty) - int.Parse(checkStockRepeat)) == 0)
-                                {
-                                    MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
-                                }
-                                else
-                                {
                                     conn.Open();
-                                    string addQuantityToExistingItem = "UPDATE stock_out SET stockoutQty = (stockoutQty + @qty) WHERE stockoutId = @refno";
+                                    string addQuantityToExistingItem = "UPDATE stock_in SET stockinQty = (stockinQty + @qty) WHERE stockinId = @refno";
                                     conn.query(addQuantityToExistingItem);
                                     conn.bind("@qty", 1);
                                     conn.bind("@refno", refno);
@@ -302,11 +286,10 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                         entrySearch.Text = "";
                                     }
                                     conn.Close();
-                                }
                             }
                             else
                             { // if not exist then insert
-                                string query2 = "INSERT INTO stock_out (stockoutTransNo, stockoutNo, stockoutItem, stockoutQty, stockoutPrice, stockoutDate, stockoutStatus) VALUES (@stockoutTransNo, @stockoutNo, @stockoutItem, @stockoutQty, @stockoutPrice, @stockoutDate, @stockoutStatus)";
+                                string query2 = "INSERT INTO stock_in (stockinRefNo, stockinPcode, stockinItem, stockinQty, stockinPrice, stockinDate, stockinStatus) VALUES (@stockoutTransNo, @stockoutNo, @stockoutItem, @stockoutQty, @stockoutPrice, @stockoutDate, @stockoutStatus)";
                                 conn.query(query2);
                                 conn.Open();
                                 conn.bind("@stockoutTransNo", orderNo.Text);
@@ -326,7 +309,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                                 }
                                 conn.Close();
                             }
-                        }
+                        
                     }
                 }
                 catch (Exception ex)
@@ -380,7 +363,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             else
             {
-                string query = "DELETE FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutItem = '" + tbPrdName.Text + "'";
+                string query = "DELETE FROM stock_in WHERE stockinRefNo = '" + orderNo.Text + "' AND stockinItem = '" + tbPrdName.Text + "'";
                 conn.query(query);
                 try
                 {
@@ -402,7 +385,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Remove ALL ITEM from ListView
         private void clearStockOutBtn_Click(object sender, RoutedEventArgs e)
         {
-            var ans = MessageBox.Show("Clear All?", "End Transaction", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var ans = MessageBox.Show("Clear All?", "Clear", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (ans == MessageBoxResult.Yes)
             {
                 ClearUnsavedDate();
@@ -422,7 +405,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 try
                 {
                     bool haveItem = false;
-                    string sql = "SELECT * FROM stock_out WHERE stockoutTransNo = '" + orderNo.Text + "' AND stockoutStatus = 'Stock Out Pending'";
+                    string sql = "SELECT * FROM stock_in WHERE stockinRefNo = '" + orderNo.Text + "' AND stockinStatus = 'Stock In Pending'";
                     conn.query(sql);
                     conn.Open();
                     MySqlDataReader dr = conn.read();
@@ -431,14 +414,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         while (dr.Read())
                         {
                             haveItem = true;
-                            string stockoutTransNo = dr["stockoutTransNo"].ToString();
-                            string stockoutNo = dr["stockoutNo"].ToString();
-                            string stockoutItem = dr["stockoutItem"].ToString();
-                            string stockoutQty = dr["stockoutQty"].ToString();
-                            string stockoutPrice = dr["stockoutPrice"].ToString();
-                            string stockoutDate = dr["stockoutDate"].ToString();
-                            string stockoutId = dr["stockoutId"].ToString();
-                            string stockoutStatus = dr["stockoutStatus"].ToString();
+                            string stockoutTransNo = dr["stockinRefNo"].ToString();
+                            string stockoutNo = dr["stockinPcode"].ToString();
+                            string stockoutItem = dr["stockinItem"].ToString();
+                            string stockoutQty = dr["stockinQty"].ToString();
+                            string stockoutPrice = dr["stockinPrice"].ToString();
+                            string stockoutDate = dr["stockinDate"].ToString();
+                            string stockoutId = dr["stockinId"].ToString();
+                            string stockoutStatus = dr["stockinStatus"].ToString();
 
                             stockOut.Add(new Stock_Out { stockoutTransNo = stockoutTransNo, stockoutNo = stockoutNo, stockoutItem = stockoutItem, stockoutQty = stockoutQty, stockoutPrice = stockoutPrice, stockoutId = stockoutId, stockoutStatus = stockoutStatus });
                         }
@@ -462,14 +445,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         foreach (Stock_Out prd in stockOut)
                         {
                             conn.Open();
-                            string updateStockQuery = "UPDATE datainventory SET prodQty = prodQty - '" + int.Parse(prd.stockoutQty) + "' WHERE prodNo = '" + prd.stockoutNo + "'";
+                            string updateStockQuery = "UPDATE datainventory SET prodQty = prodQty + '" + int.Parse(prd.stockoutQty) + "' WHERE prodNo = '" + prd.stockoutNo + "'";
                             conn.query(updateStockQuery);
                             conn.execute();
                             conn.Close();
 
                             conn.Open();
                             // Now Update the Status to SOLD
-                            string updateStatus = "UPDATE stock_out SET stockoutStatus = 'Stock Out' WHERE stockoutNo = '" + prd.stockoutNo + "' AND stockoutTransNo = '" + orderNo.Text + "'";
+                            string updateStatus = "UPDATE stock_in SET stockinStatus = 'Stock In' WHERE stockinPcode = '" + prd.stockoutNo + "' AND stockinRefNo = '" + orderNo.Text + "'";
                             conn.query(updateStatus);
                             conn.execute();
                             conn.Close();

@@ -34,7 +34,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Stock out #</Value>
+                              <Value>Stock In #</Value>
                               <Style>
                                 <FontSize>12pt</FontSize>
                               </Style>
@@ -202,14 +202,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="stockoutTransNo">
+                    <Textbox Name="stockinRefNo">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!stockoutTransNo.Value</Value>
+                              <Value>=Fields!stockinRefNo.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -218,7 +218,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>stockoutTransNo</rd:DefaultName>
+                      <rd:DefaultName>stockinRefNo</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -234,14 +234,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="stockoutNo">
+                    <Textbox Name="stockinPcode">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!stockoutNo.Value</Value>
+                              <Value>=Fields!stockinPcode.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -250,7 +250,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>stockoutNo</rd:DefaultName>
+                      <rd:DefaultName>stockinPcode</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -266,14 +266,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="stockoutItem">
+                    <Textbox Name="stockinItem">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!stockoutItem.Value</Value>
+                              <Value>=Fields!stockinItem.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -282,7 +282,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>stockoutItem</rd:DefaultName>
+                      <rd:DefaultName>stockinItem</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -298,14 +298,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="stockoutQty">
+                    <Textbox Name="stockinQty">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!stockoutQty.Value</Value>
+                              <Value>=Fields!stockinQty.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -314,7 +314,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>stockoutQty</rd:DefaultName>
+                      <rd:DefaultName>stockinQty</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -330,14 +330,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="stockoutPrice">
+                    <Textbox Name="stockinPrice">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!stockoutPrice.Value</Value>
+                              <Value>=Fields!stockinPrice.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -346,7 +346,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>stockoutPrice</rd:DefaultName>
+                      <rd:DefaultName>stockinPrice</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -523,35 +523,39 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="stockoutNo">
-          <DataField>stockoutNo</DataField>
+        <Field Name="stockinPcode">
+          <DataField>stockinPcode</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="stockoutItem">
-          <DataField>stockoutItem</DataField>
+        <Field Name="stockinItem">
+          <DataField>stockinItem</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="stockoutQty">
-          <DataField>stockoutQty</DataField>
+        <Field Name="stockinQty">
+          <DataField>stockinQty</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="stockoutPrice">
-          <DataField>stockoutPrice</DataField>
+        <Field Name="stockinPrice">
+          <DataField>stockinPrice</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="stockoutId">
-          <DataField>stockoutId</DataField>
+        <Field Name="stockinId">
+          <DataField>stockinId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="stockoutTransNo">
-          <DataField>stockoutTransNo</DataField>
+        <Field Name="stockinStatus">
+          <DataField>stockinStatus</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="stockinRefNo">
+          <DataField>stockinRefNo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet1</rd:DataSetName>
-        <rd:SchemaPath>E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\inv\ianwpfinventory\Ian Inventory System v5\DataSet1.xsd</rd:SchemaPath>
-        <rd:TableName>dtStockout</rd:TableName>
+        <rd:SchemaPath>E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LATEST VERSION V5\ianwpfinventory\Ian Inventory System v5\DataSet1.xsd</rd:SchemaPath>
+        <rd:TableName>dtStockin</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
         <rd:TableAdapterName />

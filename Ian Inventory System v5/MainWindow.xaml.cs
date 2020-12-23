@@ -75,7 +75,7 @@ namespace NavigationDrawerPopUpMenu2
                     usc = new usc_category();
                     GridMain.Children.Add(usc);
                     break;
-                case "stockOutButton":
+                case "stockInButton":
                     usc = new usc_stockout();
                     GridMain.Children.Add(usc);
                     break;

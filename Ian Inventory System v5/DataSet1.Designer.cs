@@ -26,7 +26,7 @@ namespace NavigationDrawerPopUpMenu2 {
         
         private dtSoldDataTable tabledtSold;
         
-        private dtStockoutDataTable tabledtStockout;
+        private dtStockinDataTable tabledtStockin;
         
         private dtInventoryDataTable tabledtInventory;
         
@@ -61,8 +61,8 @@ namespace NavigationDrawerPopUpMenu2 {
                 if ((ds.Tables["dtSold"] != null)) {
                     base.Tables.Add(new dtSoldDataTable(ds.Tables["dtSold"]));
                 }
-                if ((ds.Tables["dtStockout"] != null)) {
-                    base.Tables.Add(new dtStockoutDataTable(ds.Tables["dtStockout"]));
+                if ((ds.Tables["dtStockin"] != null)) {
+                    base.Tables.Add(new dtStockinDataTable(ds.Tables["dtStockin"]));
                 }
                 if ((ds.Tables["dtInventory"] != null)) {
                     base.Tables.Add(new dtInventoryDataTable(ds.Tables["dtInventory"]));
@@ -99,9 +99,9 @@ namespace NavigationDrawerPopUpMenu2 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public dtStockoutDataTable dtStockout {
+        public dtStockinDataTable dtStockin {
             get {
-                return this.tabledtStockout;
+                return this.tabledtStockin;
             }
         }
         
@@ -185,8 +185,8 @@ namespace NavigationDrawerPopUpMenu2 {
                 if ((ds.Tables["dtSold"] != null)) {
                     base.Tables.Add(new dtSoldDataTable(ds.Tables["dtSold"]));
                 }
-                if ((ds.Tables["dtStockout"] != null)) {
-                    base.Tables.Add(new dtStockoutDataTable(ds.Tables["dtStockout"]));
+                if ((ds.Tables["dtStockin"] != null)) {
+                    base.Tables.Add(new dtStockinDataTable(ds.Tables["dtStockin"]));
                 }
                 if ((ds.Tables["dtInventory"] != null)) {
                     base.Tables.Add(new dtInventoryDataTable(ds.Tables["dtInventory"]));
@@ -230,10 +230,10 @@ namespace NavigationDrawerPopUpMenu2 {
                     this.tabledtSold.InitVars();
                 }
             }
-            this.tabledtStockout = ((dtStockoutDataTable)(base.Tables["dtStockout"]));
+            this.tabledtStockin = ((dtStockinDataTable)(base.Tables["dtStockin"]));
             if ((initTable == true)) {
-                if ((this.tabledtStockout != null)) {
-                    this.tabledtStockout.InitVars();
+                if ((this.tabledtStockin != null)) {
+                    this.tabledtStockin.InitVars();
                 }
             }
             this.tabledtInventory = ((dtInventoryDataTable)(base.Tables["dtInventory"]));
@@ -254,8 +254,8 @@ namespace NavigationDrawerPopUpMenu2 {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tabledtSold = new dtSoldDataTable();
             base.Tables.Add(this.tabledtSold);
-            this.tabledtStockout = new dtStockoutDataTable();
-            base.Tables.Add(this.tabledtStockout);
+            this.tabledtStockin = new dtStockinDataTable();
+            base.Tables.Add(this.tabledtStockin);
             this.tabledtInventory = new dtInventoryDataTable();
             base.Tables.Add(this.tabledtInventory);
         }
@@ -268,7 +268,7 @@ namespace NavigationDrawerPopUpMenu2 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializedtStockout() {
+        private bool ShouldSerializedtStockin() {
             return false;
         }
         
@@ -337,7 +337,7 @@ namespace NavigationDrawerPopUpMenu2 {
         public delegate void dtSoldRowChangeEventHandler(object sender, dtSoldRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void dtStockoutRowChangeEventHandler(object sender, dtStockoutRowChangeEvent e);
+        public delegate void dtStockinRowChangeEventHandler(object sender, dtStockinRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void dtInventoryRowChangeEventHandler(object sender, dtInventoryRowChangeEvent e);
@@ -706,26 +706,26 @@ namespace NavigationDrawerPopUpMenu2 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class dtStockoutDataTable : global::System.Data.TypedTableBase<dtStockoutRow> {
+        public partial class dtStockinDataTable : global::System.Data.TypedTableBase<dtStockinRow> {
             
-            private global::System.Data.DataColumn columnstockoutNo;
+            private global::System.Data.DataColumn columnstockinPcode;
             
-            private global::System.Data.DataColumn columnstockoutItem;
+            private global::System.Data.DataColumn columnstockinItem;
             
-            private global::System.Data.DataColumn columnstockoutQty;
+            private global::System.Data.DataColumn columnstockinQty;
             
-            private global::System.Data.DataColumn columnstockoutPrice;
+            private global::System.Data.DataColumn columnstockinPrice;
             
-            private global::System.Data.DataColumn columnstockoutId;
+            private global::System.Data.DataColumn columnstockinId;
             
-            private global::System.Data.DataColumn _columnstockoutStatus_;
+            private global::System.Data.DataColumn columnstockinStatus;
             
-            private global::System.Data.DataColumn columnstockoutTransNo;
+            private global::System.Data.DataColumn columnstockinRefNo;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtStockoutDataTable() {
-                this.TableName = "dtStockout";
+            public dtStockinDataTable() {
+                this.TableName = "dtStockin";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -733,7 +733,7 @@ namespace NavigationDrawerPopUpMenu2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal dtStockoutDataTable(global::System.Data.DataTable table) {
+            internal dtStockinDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -750,64 +750,64 @@ namespace NavigationDrawerPopUpMenu2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected dtStockoutDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected dtStockinDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn stockoutNoColumn {
+            public global::System.Data.DataColumn stockinPcodeColumn {
                 get {
-                    return this.columnstockoutNo;
+                    return this.columnstockinPcode;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn stockoutItemColumn {
+            public global::System.Data.DataColumn stockinItemColumn {
                 get {
-                    return this.columnstockoutItem;
+                    return this.columnstockinItem;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn stockoutQtyColumn {
+            public global::System.Data.DataColumn stockinQtyColumn {
                 get {
-                    return this.columnstockoutQty;
+                    return this.columnstockinQty;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn stockoutPriceColumn {
+            public global::System.Data.DataColumn stockinPriceColumn {
                 get {
-                    return this.columnstockoutPrice;
+                    return this.columnstockinPrice;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn stockoutIdColumn {
+            public global::System.Data.DataColumn stockinIdColumn {
                 get {
-                    return this.columnstockoutId;
+                    return this.columnstockinId;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn _stockoutStatus_Column {
+            public global::System.Data.DataColumn stockinStatusColumn {
                 get {
-                    return this._columnstockoutStatus_;
+                    return this.columnstockinStatus;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn stockoutTransNoColumn {
+            public global::System.Data.DataColumn stockinRefNoColumn {
                 get {
-                    return this.columnstockoutTransNo;
+                    return this.columnstockinRefNo;
                 }
             }
             
@@ -822,51 +822,51 @@ namespace NavigationDrawerPopUpMenu2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtStockoutRow this[int index] {
+            public dtStockinRow this[int index] {
                 get {
-                    return ((dtStockoutRow)(this.Rows[index]));
+                    return ((dtStockinRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event dtStockoutRowChangeEventHandler dtStockoutRowChanging;
+            public event dtStockinRowChangeEventHandler dtStockinRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event dtStockoutRowChangeEventHandler dtStockoutRowChanged;
+            public event dtStockinRowChangeEventHandler dtStockinRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event dtStockoutRowChangeEventHandler dtStockoutRowDeleting;
+            public event dtStockinRowChangeEventHandler dtStockinRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event dtStockoutRowChangeEventHandler dtStockoutRowDeleted;
+            public event dtStockinRowChangeEventHandler dtStockinRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AdddtStockoutRow(dtStockoutRow row) {
+            public void AdddtStockinRow(dtStockinRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtStockoutRow AdddtStockoutRow(string stockoutNo, string stockoutItem, string stockoutQty, string stockoutPrice, string stockoutId, string _stockoutStatus_, string stockoutTransNo) {
-                dtStockoutRow rowdtStockoutRow = ((dtStockoutRow)(this.NewRow()));
+            public dtStockinRow AdddtStockinRow(string stockinPcode, string stockinItem, string stockinQty, string stockinPrice, string stockinId, string stockinStatus, string stockinRefNo) {
+                dtStockinRow rowdtStockinRow = ((dtStockinRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        stockoutNo,
-                        stockoutItem,
-                        stockoutQty,
-                        stockoutPrice,
-                        stockoutId,
-                        _stockoutStatus_,
-                        stockoutTransNo};
-                rowdtStockoutRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowdtStockoutRow);
-                return rowdtStockoutRow;
+                        stockinPcode,
+                        stockinItem,
+                        stockinQty,
+                        stockinPrice,
+                        stockinId,
+                        stockinStatus,
+                        stockinRefNo};
+                rowdtStockinRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdtStockinRow);
+                return rowdtStockinRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                dtStockoutDataTable cln = ((dtStockoutDataTable)(base.Clone()));
+                dtStockinDataTable cln = ((dtStockinDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -874,66 +874,64 @@ namespace NavigationDrawerPopUpMenu2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new dtStockoutDataTable();
+                return new dtStockinDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnstockoutNo = base.Columns["stockoutNo"];
-                this.columnstockoutItem = base.Columns["stockoutItem"];
-                this.columnstockoutQty = base.Columns["stockoutQty"];
-                this.columnstockoutPrice = base.Columns["stockoutPrice"];
-                this.columnstockoutId = base.Columns["stockoutId"];
-                this._columnstockoutStatus_ = base.Columns["stockoutStatus\t"];
-                this.columnstockoutTransNo = base.Columns["stockoutTransNo"];
+                this.columnstockinPcode = base.Columns["stockinPcode"];
+                this.columnstockinItem = base.Columns["stockinItem"];
+                this.columnstockinQty = base.Columns["stockinQty"];
+                this.columnstockinPrice = base.Columns["stockinPrice"];
+                this.columnstockinId = base.Columns["stockinId"];
+                this.columnstockinStatus = base.Columns["stockinStatus"];
+                this.columnstockinRefNo = base.Columns["stockinRefNo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnstockoutNo = new global::System.Data.DataColumn("stockoutNo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstockoutNo);
-                this.columnstockoutItem = new global::System.Data.DataColumn("stockoutItem", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstockoutItem);
-                this.columnstockoutQty = new global::System.Data.DataColumn("stockoutQty", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstockoutQty);
-                this.columnstockoutPrice = new global::System.Data.DataColumn("stockoutPrice", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstockoutPrice);
-                this.columnstockoutId = new global::System.Data.DataColumn("stockoutId", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstockoutId);
-                this._columnstockoutStatus_ = new global::System.Data.DataColumn("stockoutStatus\t", typeof(string), null, global::System.Data.MappingType.Element);
-                this._columnstockoutStatus_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnstockoutStatus_");
-                this._columnstockoutStatus_.ExtendedProperties.Add("Generator_UserColumnName", "stockoutStatus\t");
-                base.Columns.Add(this._columnstockoutStatus_);
-                this.columnstockoutTransNo = new global::System.Data.DataColumn("stockoutTransNo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstockoutTransNo);
+                this.columnstockinPcode = new global::System.Data.DataColumn("stockinPcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockinPcode);
+                this.columnstockinItem = new global::System.Data.DataColumn("stockinItem", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockinItem);
+                this.columnstockinQty = new global::System.Data.DataColumn("stockinQty", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockinQty);
+                this.columnstockinPrice = new global::System.Data.DataColumn("stockinPrice", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockinPrice);
+                this.columnstockinId = new global::System.Data.DataColumn("stockinId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockinId);
+                this.columnstockinStatus = new global::System.Data.DataColumn("stockinStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockinStatus);
+                this.columnstockinRefNo = new global::System.Data.DataColumn("stockinRefNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstockinRefNo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtStockoutRow NewdtStockoutRow() {
-                return ((dtStockoutRow)(this.NewRow()));
+            public dtStockinRow NewdtStockinRow() {
+                return ((dtStockinRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new dtStockoutRow(builder);
+                return new dtStockinRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(dtStockoutRow);
+                return typeof(dtStockinRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.dtStockoutRowChanged != null)) {
-                    this.dtStockoutRowChanged(this, new dtStockoutRowChangeEvent(((dtStockoutRow)(e.Row)), e.Action));
+                if ((this.dtStockinRowChanged != null)) {
+                    this.dtStockinRowChanged(this, new dtStockinRowChangeEvent(((dtStockinRow)(e.Row)), e.Action));
                 }
             }
             
@@ -941,8 +939,8 @@ namespace NavigationDrawerPopUpMenu2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.dtStockoutRowChanging != null)) {
-                    this.dtStockoutRowChanging(this, new dtStockoutRowChangeEvent(((dtStockoutRow)(e.Row)), e.Action));
+                if ((this.dtStockinRowChanging != null)) {
+                    this.dtStockinRowChanging(this, new dtStockinRowChangeEvent(((dtStockinRow)(e.Row)), e.Action));
                 }
             }
             
@@ -950,8 +948,8 @@ namespace NavigationDrawerPopUpMenu2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.dtStockoutRowDeleted != null)) {
-                    this.dtStockoutRowDeleted(this, new dtStockoutRowChangeEvent(((dtStockoutRow)(e.Row)), e.Action));
+                if ((this.dtStockinRowDeleted != null)) {
+                    this.dtStockinRowDeleted(this, new dtStockinRowChangeEvent(((dtStockinRow)(e.Row)), e.Action));
                 }
             }
             
@@ -959,14 +957,14 @@ namespace NavigationDrawerPopUpMenu2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.dtStockoutRowDeleting != null)) {
-                    this.dtStockoutRowDeleting(this, new dtStockoutRowChangeEvent(((dtStockoutRow)(e.Row)), e.Action));
+                if ((this.dtStockinRowDeleting != null)) {
+                    this.dtStockinRowDeleting(this, new dtStockinRowChangeEvent(((dtStockinRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemovedtStockoutRow(dtStockoutRow row) {
+            public void RemovedtStockinRow(dtStockinRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -993,7 +991,7 @@ namespace NavigationDrawerPopUpMenu2 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "dtStockoutDataTable";
+                attribute2.FixedValue = "dtStockinDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1621,211 +1619,211 @@ namespace NavigationDrawerPopUpMenu2 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class dtStockoutRow : global::System.Data.DataRow {
+        public partial class dtStockinRow : global::System.Data.DataRow {
             
-            private dtStockoutDataTable tabledtStockout;
+            private dtStockinDataTable tabledtStockin;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal dtStockoutRow(global::System.Data.DataRowBuilder rb) : 
+            internal dtStockinRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tabledtStockout = ((dtStockoutDataTable)(this.Table));
+                this.tabledtStockin = ((dtStockinDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string stockoutNo {
+            public string stockinPcode {
                 get {
                     try {
-                        return ((string)(this[this.tabledtStockout.stockoutNoColumn]));
+                        return ((string)(this[this.tabledtStockin.stockinPcodeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stockoutNo\' in table \'dtStockout\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'stockinPcode\' in table \'dtStockin\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtStockout.stockoutNoColumn] = value;
+                    this[this.tabledtStockin.stockinPcodeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string stockoutItem {
+            public string stockinItem {
                 get {
                     try {
-                        return ((string)(this[this.tabledtStockout.stockoutItemColumn]));
+                        return ((string)(this[this.tabledtStockin.stockinItemColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stockoutItem\' in table \'dtStockout\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'stockinItem\' in table \'dtStockin\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtStockout.stockoutItemColumn] = value;
+                    this[this.tabledtStockin.stockinItemColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string stockoutQty {
+            public string stockinQty {
                 get {
                     try {
-                        return ((string)(this[this.tabledtStockout.stockoutQtyColumn]));
+                        return ((string)(this[this.tabledtStockin.stockinQtyColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stockoutQty\' in table \'dtStockout\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'stockinQty\' in table \'dtStockin\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtStockout.stockoutQtyColumn] = value;
+                    this[this.tabledtStockin.stockinQtyColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string stockoutPrice {
+            public string stockinPrice {
                 get {
                     try {
-                        return ((string)(this[this.tabledtStockout.stockoutPriceColumn]));
+                        return ((string)(this[this.tabledtStockin.stockinPriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stockoutPrice\' in table \'dtStockout\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'stockinPrice\' in table \'dtStockin\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtStockout.stockoutPriceColumn] = value;
+                    this[this.tabledtStockin.stockinPriceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string stockoutId {
+            public string stockinId {
                 get {
                     try {
-                        return ((string)(this[this.tabledtStockout.stockoutIdColumn]));
+                        return ((string)(this[this.tabledtStockin.stockinIdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stockoutId\' in table \'dtStockout\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'stockinId\' in table \'dtStockin\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtStockout.stockoutIdColumn] = value;
+                    this[this.tabledtStockin.stockinIdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string _stockoutStatus_ {
+            public string stockinStatus {
                 get {
                     try {
-                        return ((string)(this[this.tabledtStockout._stockoutStatus_Column]));
+                        return ((string)(this[this.tabledtStockin.stockinStatusColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stockoutStatus\t\' in table \'dtStockout\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'stockinStatus\' in table \'dtStockin\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtStockout._stockoutStatus_Column] = value;
+                    this[this.tabledtStockin.stockinStatusColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string stockoutTransNo {
+            public string stockinRefNo {
                 get {
                     try {
-                        return ((string)(this[this.tabledtStockout.stockoutTransNoColumn]));
+                        return ((string)(this[this.tabledtStockin.stockinRefNoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'stockoutTransNo\' in table \'dtStockout\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'stockinRefNo\' in table \'dtStockin\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtStockout.stockoutTransNoColumn] = value;
+                    this[this.tabledtStockin.stockinRefNoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsstockoutNoNull() {
-                return this.IsNull(this.tabledtStockout.stockoutNoColumn);
+            public bool IsstockinPcodeNull() {
+                return this.IsNull(this.tabledtStockin.stockinPcodeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetstockoutNoNull() {
-                this[this.tabledtStockout.stockoutNoColumn] = global::System.Convert.DBNull;
+            public void SetstockinPcodeNull() {
+                this[this.tabledtStockin.stockinPcodeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsstockoutItemNull() {
-                return this.IsNull(this.tabledtStockout.stockoutItemColumn);
+            public bool IsstockinItemNull() {
+                return this.IsNull(this.tabledtStockin.stockinItemColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetstockoutItemNull() {
-                this[this.tabledtStockout.stockoutItemColumn] = global::System.Convert.DBNull;
+            public void SetstockinItemNull() {
+                this[this.tabledtStockin.stockinItemColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsstockoutQtyNull() {
-                return this.IsNull(this.tabledtStockout.stockoutQtyColumn);
+            public bool IsstockinQtyNull() {
+                return this.IsNull(this.tabledtStockin.stockinQtyColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetstockoutQtyNull() {
-                this[this.tabledtStockout.stockoutQtyColumn] = global::System.Convert.DBNull;
+            public void SetstockinQtyNull() {
+                this[this.tabledtStockin.stockinQtyColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsstockoutPriceNull() {
-                return this.IsNull(this.tabledtStockout.stockoutPriceColumn);
+            public bool IsstockinPriceNull() {
+                return this.IsNull(this.tabledtStockin.stockinPriceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetstockoutPriceNull() {
-                this[this.tabledtStockout.stockoutPriceColumn] = global::System.Convert.DBNull;
+            public void SetstockinPriceNull() {
+                this[this.tabledtStockin.stockinPriceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsstockoutIdNull() {
-                return this.IsNull(this.tabledtStockout.stockoutIdColumn);
+            public bool IsstockinIdNull() {
+                return this.IsNull(this.tabledtStockin.stockinIdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetstockoutIdNull() {
-                this[this.tabledtStockout.stockoutIdColumn] = global::System.Convert.DBNull;
+            public void SetstockinIdNull() {
+                this[this.tabledtStockin.stockinIdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Is_stockoutStatus_Null() {
-                return this.IsNull(this.tabledtStockout._stockoutStatus_Column);
+            public bool IsstockinStatusNull() {
+                return this.IsNull(this.tabledtStockin.stockinStatusColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Set_stockoutStatus_Null() {
-                this[this.tabledtStockout._stockoutStatus_Column] = global::System.Convert.DBNull;
+            public void SetstockinStatusNull() {
+                this[this.tabledtStockin.stockinStatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsstockoutTransNoNull() {
-                return this.IsNull(this.tabledtStockout.stockoutTransNoColumn);
+            public bool IsstockinRefNoNull() {
+                return this.IsNull(this.tabledtStockin.stockinRefNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetstockoutTransNoNull() {
-                this[this.tabledtStockout.stockoutTransNoColumn] = global::System.Convert.DBNull;
+            public void SetstockinRefNoNull() {
+                this[this.tabledtStockin.stockinRefNoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2050,22 +2048,22 @@ namespace NavigationDrawerPopUpMenu2 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class dtStockoutRowChangeEvent : global::System.EventArgs {
+        public class dtStockinRowChangeEvent : global::System.EventArgs {
             
-            private dtStockoutRow eventRow;
+            private dtStockinRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtStockoutRowChangeEvent(dtStockoutRow row, global::System.Data.DataRowAction action) {
+            public dtStockinRowChangeEvent(dtStockinRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtStockoutRow Row {
+            public dtStockinRow Row {
                 get {
                     return this.eventRow;
                 }
