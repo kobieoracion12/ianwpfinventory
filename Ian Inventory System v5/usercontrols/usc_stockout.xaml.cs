@@ -32,6 +32,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         string stockoutDate = "";
         string stockoutStatus = "";
         string checkStockRepeat = "";
+        string reportToPrint = "Select";
         public usc_stockout()
         {
             InitializeComponent();
@@ -538,6 +539,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void sortButton_Click(object sender, RoutedEventArgs e)
         {
             string doaFrom, doaTo;
+            reportToPrint = "Sort";
             // Init selected dates from calendar
             DateTime? selectedDateFrom = sortDOAfrom.SelectedDate;
             DateTime? selectedDateTo = sortDOAto.SelectedDate;
@@ -574,7 +576,15 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Refresh Button
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
+            reportToPrint = "Select";
             loadDataForRecord();
+        }
+
+        private void exportButton_Click(object sender, RoutedEventArgs e)
+        {
+            report_stockinhistory rptstockout = new report_stockinhistory(this, reportToPrint);
+            rptstockout.printPreview();
+            rptstockout.ShowDialog();
         }
     }
 }

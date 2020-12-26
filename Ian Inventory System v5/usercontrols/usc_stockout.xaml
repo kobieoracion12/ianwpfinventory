@@ -58,7 +58,7 @@
                             <ListView.View>
                                 <GridView AllowsColumnReorder="False">
                                     <GridView.Columns>
-                                        <GridViewColumn DisplayMemberBinding="{Binding stockinNo }" Header="Product #" Width="150" />
+                                        <GridViewColumn DisplayMemberBinding="{Binding stockinPcode }" Header="Product #" Width="150" />
                                         <GridViewColumn DisplayMemberBinding="{Binding stockinItem }" Header="Item" Width="250" />
                                         <GridViewColumn DisplayMemberBinding="{Binding stockinQty }" Header="Qty" Width="100"/>
                                     </GridView.Columns>
@@ -111,7 +111,7 @@
                             <Grid Grid.Row="0">
                                 <Grid>
                                     <Viewbox Stretch="Uniform" HorizontalAlignment="Left">
-                                        <TextBlock Text="Stockin History" FontSize="10" FontFamily="Segoe UI Semibold" Margin="10"/>
+                                        <TextBlock Text="Stock In History" FontSize="10" FontFamily="Segoe UI Semibold" Margin="10"/>
                                     </Viewbox>
                                 </Grid>
                             </Grid>
@@ -123,14 +123,14 @@
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                             <!-- Date of Arrival (From) -->
                                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20 5 5 5">
-                                                <TextBlock Text="Date of Arrival (From)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
-                                                <DatePicker x:Name="sortDOAfrom" FontSize="12" Text="Select" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" Height="25" Width="130" VerticalAlignment="Center" Foreground="Black" BorderBrush="#b2b2b2"/>
+                                                <TextBlock Text="Date (From)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
+                                                <DatePicker x:Name="sortDOAfrom" FontSize="12" Text="Select" BorderThickness="1" Padding="5" FontFamily="Microsoft Tai Le" Height="25" Width="100" VerticalAlignment="Center" Foreground="Black" BorderBrush="#b2b2b2"/>
                                             </StackPanel>
 
                                             <!-- Date of Arrival (To) -->
                                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10 5 5 5">
-                                                <TextBlock Text="Date of Arrival (To)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
-                                                <DatePicker x:Name="sortDOAto" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:yyyy MM, dd}'}" FontSize="12" BorderThickness="1" Padding="10 0 0 0" FontFamily="Microsoft Tai Le" Height="25" Width="130" VerticalAlignment="Center" Foreground="Black" BorderBrush="#b2b2b2"/>
+                                                <TextBlock Text="Date (To)" HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
+                                                <DatePicker x:Name="sortDOAto" Text="{Binding Source={x:Static sys:DateTime.Today}, StringFormat='{}{0:yyyy MM, dd}'}" FontSize="12" BorderThickness="1" Padding="10 0 0 0" FontFamily="Microsoft Tai Le" Height="25" Width="100" VerticalAlignment="Center" Foreground="Black" BorderBrush="#b2b2b2"/>
                                             </StackPanel>
 
                                             <!-- Filter -->
@@ -146,6 +146,14 @@
                                                     <TextBlock Text="Refresh" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
                                                 </StackPanel>
                                             </Button>
+
+                                            <!-- Export -->
+                                            <Button x:Name="exportButton" Margin="5 10 5 10" Height="20" Background="White" BorderBrush="#b2b2b2" Click="exportButton_Click">
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                    <TextBlock Text="Export" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </Button>
+                                            
                                         </StackPanel>
                                     </Viewbox>
                                 </Grid>
@@ -161,6 +169,7 @@
                                                     <GridViewColumn DisplayMemberBinding="{Binding stockinRefNo }" Header="SI#" Width="120" />
                                                     <GridViewColumn DisplayMemberBinding="{Binding stockinItem }" Header="Item" Width="280" />
                                                     <GridViewColumn DisplayMemberBinding="{Binding stockinQty }" Header="Qty" Width="80"/>
+                                                    <GridViewColumn DisplayMemberBinding="{Binding stockinDate }" Header="Stock in Date" Width="180"/>
                                                 </GridView.Columns>
                                             </GridView>
                                         </ListView.View>

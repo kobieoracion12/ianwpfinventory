@@ -154,6 +154,9 @@
     <Compile Include="reports\report_sales.xaml.cs">
       <DependentUpon>report_sales.xaml</DependentUpon>
     </Compile>
+    <Compile Include="reports\report_stockinhistory.xaml.cs">
+      <DependentUpon>report_stockinhistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="reports\report_stockout.xaml.cs">
       <DependentUpon>report_stockout.xaml</DependentUpon>
     </Compile>
@@ -346,6 +349,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="reports\report_sales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="reports\report_stockinhistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -575,6 +582,7 @@
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Reportinventory.rdlc" />
     <EmbeddedResource Include="ReportSale.rdlc" />
+    <EmbeddedResource Include="Reportstockinhistory.rdlc" />
     <EmbeddedResource Include="Reportstockout.rdlc" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>

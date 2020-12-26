@@ -37,7 +37,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Trans #</Value>
+                              <Value>Transaction #</Value>
                               <Style>
                                 <FontSize>12pt</FontSize>
                               </Style>
@@ -71,7 +71,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Sales No.</Value>
+                              <Value>Barcode</Value>
                               <Style>
                                 <FontSize>12pt</FontSize>
                               </Style>
@@ -207,7 +207,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total</Value>
+                              <Value>Amount</Value>
                               <Style>
                                 <FontSize>12pt</FontSize>
                               </Style>
@@ -466,7 +466,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>1.22792in</Top>
+        <Top>1.49875in</Top>
         <Left>0.11632in</Left>
         <Height>0.69792in</Height>
         <Width>6.27084in</Width>
@@ -495,7 +495,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pStore</rd:DefaultName>
-        <Top>0.22792in</Top>
+        <Top>0.57514in</Top>
         <Left>0.11632in</Left>
         <Height>0.25in</Height>
         <Width>2.44097in</Width>
@@ -527,7 +527,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>pAddress</rd:DefaultName>
-        <Top>0.49181in</Top>
+        <Top>0.83903in</Top>
         <Left>0.11632in</Left>
         <Height>0.25in</Height>
         <Width>2.44097in</Width>
@@ -561,7 +561,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox6</rd:DefaultName>
-        <Top>0.22792in</Top>
+        <Top>0.57514in</Top>
         <Left>4.07466in</Left>
         <Height>0.25in</Height>
         <Width>2.3125in</Width>
@@ -576,8 +576,43 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Sales Record</Value>
+                <Style>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox9</rd:DefaultName>
+        <Top>0.29389in</Top>
+        <Left>0.11632in</Left>
+        <Height>0.28125in</Height>
+        <Width>2.44097in</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2.16667in</Height>
+    <Height>2.44792in</Height>
     <Style />
   </Body>
   <Width>6.53in</Width>

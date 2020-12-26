@@ -394,7 +394,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.85292in</Top>
+        <Top>1.06125in</Top>
         <Left>0.31125in</Left>
         <Height>0.5in</Height>
         <Width>5.6575in</Width>
@@ -423,8 +423,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
-        <Top>0.375in</Top>
-        <Left>1.71875in</Left>
+        <Top>1.90625in</Top>
+        <Left>2.90625in</Left>
         <Height>0.25in</Height>
         <Width>3.0625in</Width>
         <ZIndex>1</ZIndex>
@@ -438,8 +438,43 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Inventory Record</Value>
+                <Style>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox9</rd:DefaultName>
+        <Top>0.38021in</Top>
+        <Left>1.73091in</Left>
+        <Height>0.28125in</Height>
+        <Width>3.03819in</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>2.46875in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>

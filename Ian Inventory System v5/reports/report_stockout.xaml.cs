@@ -68,7 +68,7 @@ namespace NavigationDrawerPopUpMenu2.reports
             catch (Exception ex)
             {
                 conn.Close();
-                MessageBox.Show(ex.Message + ", Try again later", "Receipt Printing Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(ex.Message + ", Try again later", "Stock In Report Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
         }
