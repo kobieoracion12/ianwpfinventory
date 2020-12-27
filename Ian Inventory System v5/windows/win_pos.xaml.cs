@@ -293,10 +293,8 @@ namespace NavigationDrawerPopUpMenu2.windows
             checkout.total = 0;
 
             cashButton.IsEnabled = false;
-            othersButton.IsEnabled = false;
             voidEntry.IsEnabled = false;
             entrySearch.IsReadOnly = false;
-            othersButton.IsEnabled = false;
             holdOrder.IsEnabled = false;
             endSale.IsEnabled = false;
         }
@@ -379,7 +377,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 discountItem.IsEnabled = true;
                 cashButton.IsEnabled = true;
                 voidEntry.IsEnabled = true;
-                othersButton.IsEnabled = true;
                 //holdOrder.IsEnabled = true;
 
                 // Here goes the math shits
@@ -708,7 +705,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                 cashButton.IsEnabled = false;
                 voidEntry.IsEnabled = false;
                 holdOrder.IsEnabled = false;
-                othersButton.IsEnabled = false;
                 endSale.IsEnabled = true;
                 conn.Close(); // Close Connection
 
@@ -814,7 +810,6 @@ namespace NavigationDrawerPopUpMenu2.windows
                         discountItem.IsEnabled = false;
                         endSale.IsEnabled = false;
                         cashButton.IsEnabled = false;
-                        othersButton.IsEnabled = false;
                         conn.Close();
                     }
                     else

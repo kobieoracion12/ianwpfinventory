@@ -461,18 +461,11 @@
                     <Grid Margin="10">
                         <Viewbox Stretch="Uniform" HorizontalAlignment="Center">
                             <Canvas Width="300" Height="50">
-                                <StackPanel Orientation="Horizontal" Margin="5 10 5 5" Canvas.Left="70">
+                                <StackPanel Orientation="Horizontal" Margin="5 10 5 5" Canvas.Left="105">
                                     <Button x:Name="cashButton" Margin="0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False" Click="cashButton_Click">
                                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                                             <TextBlock Text="Cash" FontWeight="SemiBold" FontSize="8" Foreground="Black" />
                                             <TextBlock Text="[F4]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
-                                        </StackPanel>
-                                    </Button>
-
-                                    <Button x:Name="othersButton" Margin="5 0 0 0" Height="25" Width="80" Background="#FCFCFC" BorderBrush="#F7F7F7" IsEnabled="False">
-                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                                            <TextBlock Text="Others" Foreground="Black" FontWeight="SemiBold" FontSize="8" TextAlignment="Center" VerticalAlignment="Center"/>
-                                            <TextBlock Text="[F10]" FontWeight="SemiBold" FontSize="5" Foreground="Black" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>
