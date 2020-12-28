@@ -43,7 +43,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             transGenerator();
-            ClearUnsavedDate();
+            ClearUnsavedData();
             loadDataForRecord();
             changeQtyBtn.IsEnabled = false;
             removeStockOutBtn.IsEnabled = false;
@@ -52,7 +52,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         }
 
         // Delete All Unsaved Data
-        public void ClearUnsavedDate()
+        public void ClearUnsavedData()
         {
             try
             {
@@ -350,19 +350,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
         }
 
-        // Validate Barcode Textbox Only Numbers
-        private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            var addDisc = sender as TextBox;
-            // Use SelectionStart property to find the caret position.
-            // Insert the previewed text into the existing text in the textbox.
-            var fullText = addDisc.Text.Insert(addDisc.SelectionStart, e.Text);
-
-            double val;
-            // If parsing is successful, set Handled to false
-            e.Handled = !double.TryParse(fullText, out val);
-        }
-
         // Passing ListView Data to TextBox
         private void listViewinVoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -418,7 +405,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             var ans = MessageBox.Show("Clear All?", "Clear", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (ans == MessageBoxResult.Yes)
             {
-                ClearUnsavedDate();
+                ClearUnsavedData();
                 conn.Open();
                 loadData();
                 conn.Close();
@@ -590,5 +577,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             rptstockout.printPreview();
             rptstockout.ShowDialog();
         }
+
     }
 }

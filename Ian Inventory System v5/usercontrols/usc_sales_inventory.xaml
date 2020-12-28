@@ -166,7 +166,7 @@
                                         <GridViewColumn DisplayMemberBinding="{Binding salesItem }" Header="Item" Width="300"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding salesBrand }" Header="Brand" Width="250"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding salesCategory }" Header="Category" Width="250"/>
-                                        <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="RP" Width="100"/>
+                                        <GridViewColumn DisplayMemberBinding="{Binding salesRP }" Header="Price List" Width="100"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding salesQty }" Header="Quantity" Width="100"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding salesVAT }" Header="VAT" Width="100"/>
                                         <GridViewColumn DisplayMemberBinding="{Binding salesTotal }" Header="Total" Width="100"/>
