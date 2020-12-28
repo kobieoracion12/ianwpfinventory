@@ -94,8 +94,10 @@ namespace NavigationDrawerPopUpMenu2.windows
                         win_pos.tbPrdName.Text = ""; //
                         win_pos.holdOrder.IsEnabled = false;
                         this.Close(); // Close
-                        win_pos.loadData();
-                        win_pos.pay_total.Text = win_pos.sumOfSalesTotal(); // Update UI Total
+
+                        win_pos.loadDatas();
+                        win_pos.pay_total.Text = win_pos.sumOfSalesTotals(); // Update UI Total
+                        conn.Close();
                         win_pos.entrySearch.Focus();
                         win_pos.holdOrder.IsEnabled = false;
                     }
