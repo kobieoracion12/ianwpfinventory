@@ -63,9 +63,10 @@ namespace NavigationDrawerPopUpMenu2.windows
         // DISPLAY THE ITEMS INTO THE LISTVIEW
         public void loadData()
         {
+            conn.Close();
             try
             {
-
+                conn.Open();
                 // Query Statement
                 string query = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesStatus = 'Pending'";
                 // Mysql Command
@@ -81,7 +82,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 listViewinVoice.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
                 adapter.Dispose();
-
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -93,10 +94,12 @@ namespace NavigationDrawerPopUpMenu2.windows
         // GET AND DISPLAY THE TOTAL SALES/DUE
         public String sumOfSalesTotal()
         {
+            conn.Close();
             string total = "";
             try
             {
                 // GET THE TOTAL SALES     
+                conn.Open();
                 string query = "SELECT SUM(salesTotal + salesVAT) as total_due FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus=@status GROUP BY salesTransNo";
                 conn.query(query);
 
@@ -118,12 +121,14 @@ namespace NavigationDrawerPopUpMenu2.windows
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message + ", Try again later", "Total", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
             }
             return total;
         }
 
         public String sumOfSalesTotals()
         {
+            conn.Close();
             string total = "";
             try
             {
@@ -196,8 +201,10 @@ namespace NavigationDrawerPopUpMenu2.windows
         private void logoutButton_Click(object sender, RoutedEventArgs e)
         {
             bool hasProducts = false;
+            conn.Close();
             try
             {
+                conn.Open();
                 DataTable table = new DataTable();
 
                 MySqlDataAdapter adapter = conn.adapter();
@@ -220,11 +227,13 @@ namespace NavigationDrawerPopUpMenu2.windows
             } catch (Exception ex)
             {
                 MessageBox.Show("Logout Failed, " + ex.Message, "Logout", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
             }
 
             if (hasProducts)
             {
                 MessageBox.Show("Unable to proceed, please clear your transaction", "Logout", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
             }
             else
             {
@@ -235,6 +244,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     window_userLogin userLogin = new window_userLogin();
                     userLogin.Show(); // Show Login After Logout
                     this.Close(); // Close this window
+                    conn.Close();
                     //auth.addTimeInOut(DateTime.Parse(timeIn.Text) , accNo.Text); 
                 }
             }
@@ -302,15 +312,14 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Barcode Scanner Function
         private void entrySearch_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.Key == Key.Return)
             {
-                holdOrder.IsEnabled = false;
                 conn.Close();
+                holdOrder.IsEnabled = false;
+                conn.Open();
                 string search = entrySearch.Text;
                 string query = "SELECT prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodBought, prodCategory FROM datainventory WHERE prodNo= '" + search + "'";
                 conn.query(query); //CMD 
-                conn.Open();
                 MySqlDataReader dr = conn.read();
                 if (dr.HasRows)
                 {
@@ -335,6 +344,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                             dr.Close();
                             dr.Dispose(); // Dispose
                             Compute();
+                            conn.Close();
                         }
                         else
                         {
@@ -405,8 +415,10 @@ namespace NavigationDrawerPopUpMenu2.windows
                     // Insert Scanned Data to Database (datasalesinventory)
                     try
                     {
+                        conn.Close();
                         string refno = "";
                         bool doesExist = false;
+                        conn.Open();
                         string check = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesItem = '" + coItem.Text + "'";
                         conn.query(check);
                         MySqlDataReader reader = conn.read();
@@ -417,15 +429,18 @@ namespace NavigationDrawerPopUpMenu2.windows
                                 doesExist = true;
                                 refno = reader["refNo"].ToString();
                                 checkStockRepeat = reader["salesQty"].ToString(); // Datasalesinventory Stock
+                                conn.Close();
                             }
                         }
                         else
                         {
                             doesExist = false;
+                            conn.Close();
                         }
 
                         reader.Close();
                         reader.Dispose();
+                        conn.Close();
 
                         try
                         {
@@ -438,14 +453,17 @@ namespace NavigationDrawerPopUpMenu2.windows
                                 if ((checkQty - int.Parse(checkStockRepeat)) == 0)
                                 {
                                     MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    conn.Close();
                                 }
                                 else
                                 {
+                                    conn.Close();
                                     string addQuantityToExistingItem = "UPDATE datasalesinventory SET salesQty = (salesQty + @qty) WHERE refNo = @refno";
                                     conn.query(addQuantityToExistingItem);
                                     conn.bind("@qty", 1);
                                     conn.bind("@refno", refno);
                                     conn.cmd().Prepare();
+                                    conn.Open();
                                     var cf = conn.execute();
                                     if (cf == 1)
                                     {
@@ -459,12 +477,15 @@ namespace NavigationDrawerPopUpMenu2.windows
                                         checkout.paytotal = double.Parse(sumOfSalesTotal());
                                         pay_total.Text = Convert.ToString(checkout.paytotal);
                                         pay_tax.Text = sumOfTotalVat(); // Total Vat
+                                        conn.Close();
                                     }
                                 }
 
                             }
                             else
                             { // if not exist then insert
+                                conn.Close();
+                                conn.Open();
                                 string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesVAT, salesQty, salesTotal, salesDate, salesStatus, salesCategory) VALUES (@no, @barcode, @name, @brand, @srp, @rp, @vat, @qty, @subtotal, @date, @status, @categ)";
                                 conn.query(query2);
 
@@ -490,6 +511,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                                     loadData(); // Display to ListView 
                                     pay_total.Text = Convert.ToString(sumOfSalesTotal());
                                     pay_tax.Text = sumOfTotalVat(); // Total Vat
+                                    conn.Close();
                                 }
                             }
                         }
@@ -513,9 +535,11 @@ namespace NavigationDrawerPopUpMenu2.windows
         private String sumOfTotalVat()
         {
             string total = "";
+            conn.Close();
             try
             {
                 // GET THE TOTAL SALES     
+                conn.Open();
                 string query = "SELECT SUM(salesVAT) as total_vat FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus = @status GROUP BY salesTransNo";
                 conn.query(query);
 
@@ -528,6 +552,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     if (dr.Read())
                     {
                         total = dr["total_vat"].ToString(); // TOTAL SUM OF SALESTOTAL
+                        conn.Close();
                     }
                 }
                 dr.Close();
@@ -569,6 +594,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 catch (Exception x)
                 {
                     MessageBox.Show(x.Message);
+                    conn.Close();
                 }
             }
         }
@@ -576,6 +602,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Checkout Button
         private void endSale_Click(object sender, RoutedEventArgs e)
         {
+            conn.Close();
             var ans = MessageBox.Show("Are you sure you want to end transaction?", "End Transaction", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (ans == MessageBoxResult.Yes)
             {
@@ -599,11 +626,13 @@ namespace NavigationDrawerPopUpMenu2.windows
                             string sales_status = reader["salesStatus"].ToString();  // Sales Status
                                                             // Add Objects/Element to ListView Settle to get the Invoice Products
                             settleProducts.Add(new Invoice { salesTransno = sales_transno, salesNo = sales_no, salesItem = sales_item, salesRP = sales_rp, salesQty = sales_qty, salesTotal = sales_total, salesStatus = sales_status });
+                            conn.Close();
                         }
                     }
                     else
                     {
                         MessageBox.Show("No Products", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                        conn.Close();
                     }
 
                     reader.Close();
@@ -643,11 +672,12 @@ namespace NavigationDrawerPopUpMenu2.windows
 
                     discountItem.IsEnabled = true;
                     removeItem.IsEnabled = true;
-
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Transaction Failed: " + ex.Message, "Transaction", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    conn.Close();
                 }
             }
         }
@@ -689,9 +719,10 @@ namespace NavigationDrawerPopUpMenu2.windows
 
             try
             {
+                conn.Close();
                 string payment = "INSERT INTO sales_preview (payment_method, payment_vat, payment_total, payment_paid, payment_due, payment_date) VALUES (@method, @vat, @total, @paid, @due, @date)";
                 conn.query(payment);  // Command DB
-                //conn.Open();
+                conn.Open();
                 conn.bind("@method", checkout.payMethod);
                 conn.bind("@vat", checkout.tax);
                 conn.bind("@total", checkout.total);
@@ -721,6 +752,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             {
                 MessageBox.Show(x.Message);
                 clearPartial();
+                conn.Close();
             }
         }
 
@@ -793,6 +825,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             else
             {
+                conn.Close();
                 string query = "DELETE FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesItem = '" + tbPrdName.Text + "'";
                 conn.Open();
                 conn.query(query);
