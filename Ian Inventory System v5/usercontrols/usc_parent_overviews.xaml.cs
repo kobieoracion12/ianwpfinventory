@@ -18,12 +18,16 @@ using NavigationDrawerPopUpMenu2.windows;
 using NavigationDrawerPopUpMenu2.usercontrols;
 using NavigationDrawerPopUpMenu2.classes;
 using NavigationDrawerPopUpMenu2.reports;
+using Microsoft.Win32;
+using Microsoft.Office.Interop.Excel;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
     public partial class usc_parent_overviews : UserControl
     {
         Database conn = new Database();
+        Inventory inventory = new Inventory();
+        List<Inventory> inv = new List<Inventory>();
         public static int prdID;
         public string filter = "Select";
         public WindowState WindowState { get; private set; }
@@ -53,7 +57,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("datainventory");
+                System.Data.DataTable dt = new System.Data.DataTable("datainventory");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewInventory.ItemsSource = dt.DefaultView;
@@ -323,6 +327,143 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             report_inventory rprtinv = new report_inventory(this);
             rprtinv.printPreview();
             rprtinv.ShowDialog();
+        }
+
+        // Export Data to Excel
+        private void exportDataToExcel()
+         {
+             SaveFileDialog sfd = new SaveFileDialog();
+             sfd.Filter = "Excel WorkBook|*.xls";
+             sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // Save to MyDocuments
+             try
+             {
+                 if (sfd.ShowDialog() == true)
+                 {
+                     Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                     Workbook wb = app.Workbooks.Add(XlSheetType.xlWorksheet);
+                     Worksheet ws = (Worksheet)app.ActiveSheet;
+                     app.Visible = false;
+                     ws.Cells[1, 1] = "Product #";
+                     ws.Cells[1, 2] = "Item";
+                     ws.Cells[1, 3] = "Qty";
+                     ws.Cells[1, 4] = "Brand";
+                     ws.Cells[1, 5] = "SRP";
+                     ws.Cells[1, 6] = "Retail Price";
+                     ws.Cells[1, 7] = "VAT";
+                     ws.Cells[1, 8] = "Category";
+                     ws.Cells[1, 9] = "Date of Arrival";
+                     int i = 2;
+
+                     // Start a Query
+                     string sql = "SELECT * FROM datainventory ORDER BY prodItem ASC";
+                     conn.query(sql);
+                     conn.Open();
+                     MySqlDataReader reader = conn.read();
+                     if (reader.HasRows)
+                     {
+                         while (reader.Read())
+                         {
+
+                            long prodNo = Convert.ToInt64(reader["prodNo"]); // Barcode No
+                            string prodItem = reader["prodItem"].ToString();
+                            string prodBrand = reader["prodBrand"].ToString();
+                            int prodQty = Convert.ToInt32(reader["prodQty"]);
+                            double prodSRP = Convert.ToDouble(reader["prodSRP"]);
+                            double prodRP = Convert.ToDouble(reader["prodRP"]);
+                            double prodVAT = Convert.ToDouble(reader["prodVAT"]);
+                            int prodBought = Convert.ToInt32(reader["prodBought"]);
+                            DateTime prodDOA = DateTime.Parse(reader["prodDOA"].ToString());
+                            string prodCategory = reader["prodCategory"].ToString();
+
+
+                            inv.Add(new Inventory { prodNo = prodNo, prodItem = prodItem, prodBrand = prodBrand, prodQty = prodQty, prodSRP = prodSRP, prodRP = prodRP, prodVAT = prodVAT, prodBought  = prodBought, prodDOA = prodDOA, prodCategory = prodCategory });
+                         }
+                     }
+                     else
+                     {
+                         MessageBox.Show("No Rows", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                     }
+
+                     reader.Close();
+                     reader.Dispose();
+                     conn.Close();
+
+                     // End of Query
+
+                     foreach (Inventory item in inv)
+                     {
+                         ws.Cells[i, 1] = item.prodNo.ToString();
+                         ws.Cells[i, 2] = item.prodItem;
+                         ws.Cells[i, 3] = item.prodQty.ToString();
+                         ws.Cells[i, 4] = item.prodBrand;
+                         ws.Cells[i, 5] = item.prodSRP.ToString();
+                         ws.Cells[i, 6] = item.prodRP.ToString();
+                         ws.Cells[i, 7] = item.prodVAT.ToString();
+                         ws.Cells[i, 8] = item.prodCategory;
+                         ws.Cells[i, 9] = item.prodDOA.ToString();
+
+                        i++;
+
+                     } // Closing of Foreach
+
+                     wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                     app.Quit();
+                     inv.Clear(); // Clear All Items
+                     MessageBox.Show("Your data has been successfully exported", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                 } // Closing of IF Statement
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+             }
+         }
+
+         // Delete All From Database
+        private void ClearAllDataFromDatabase()
+         {
+             string sql = "DELETE FROM datainventory";
+             conn.query(sql);
+
+             try
+             {
+                 conn.Open();
+                 conn.cmd().Prepare();
+                 conn.execute();
+                 MessageBox.Show("All data has been removed successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                 conn.Close();
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+             }
+         }
+
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult msg = MessageBox.Show("Do you want to export all the data before clearing them all?", "Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                // If Yes then Delete the Data
+                exportDataToExcel();
+                ClearAllDataFromDatabase();
+                catchData();
+            }
+            else if (msg == MessageBoxResult.No)
+            {
+                MessageBoxResult deleteMsg = MessageBox.Show("This will clear all the data without exporting a file, Are you sure?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (deleteMsg == MessageBoxResult.Yes)
+                {
+                    // Delete the Data
+                    ClearAllDataFromDatabase();
+                    catchData();
+                }
+            }
+            else if (msg == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+            else { return; }
         }
     }
 }

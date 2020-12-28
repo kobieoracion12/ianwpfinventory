@@ -122,6 +122,7 @@
     <Compile Include="classes\clientInfo.cs" />
     <Compile Include="classes\Dashboard.cs" />
     <Compile Include="classes\Database.cs" />
+    <Compile Include="classes\Inventory.cs" />
     <Compile Include="classes\Invoice.cs" />
     <Compile Include="classes\invoiceClass.cs" />
     <Compile Include="classes\LocalReportExtension.cs" />

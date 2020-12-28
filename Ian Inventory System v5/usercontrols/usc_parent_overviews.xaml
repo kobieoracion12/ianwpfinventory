@@ -50,6 +50,12 @@
                                 <Border BorderBrush="#5C9EF4" Width="100" Background="#5C9EF4" BorderThickness="1" CornerRadius="15" Margin="10">
                                     <Button x:Name="printButton" Content="Export" MinWidth="12" FontSize="12" Height="25" Foreground="White" Background="Transparent" BorderBrush="Transparent" Click="printButton_Click"/>
                                 </Border>
+
+                                <!-- Remove All -->
+                                <Border BorderBrush="#BFC2C9" Width="100" Background="#D6332E" BorderThickness="1" CornerRadius="15" Margin="10">
+                                    <Button x:Name="resetButton" Content="Reset" MinWidth="12" FontSize="12" Height="25" Foreground="White" Background="Transparent" BorderBrush="Transparent" Click="resetButton_Click"/>
+                                </Border>
+
                             </StackPanel>
                         </StackPanel>
                     </Viewbox>
@@ -128,7 +134,7 @@
                                     <TextBlock Text="Refresh" FontWeight="SemiBold" FontSize="12" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center" />
                                 </StackPanel>
                             </Button>
-
+                            
                             <TextBox Text="{Binding ElementName=listViewInventory, Path=SelectedItem.prodNo}" x:Name="tbPrdId" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Width="10" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
 
                         </StackPanel>

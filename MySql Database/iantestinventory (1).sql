@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2020 at 03:21 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Dec 28, 2020 at 07:08 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -61,16 +62,6 @@ CREATE TABLE `cashierinventory` (
   `itemStatus` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `cashierinventory`
---
-
-INSERT INTO `cashierinventory` (`itemNo`, `itemName`, `itemBrand`, `itemRP`, `itemSRP`, `itemVAT`, `itemCategory`, `itemDOA`, `itemEXPD`, `cashierName`, `cashierNo`, `itemStatus`) VALUES
-(4801958341100, 'Ajinomoto Seasoning 18 x 11g', 'Ajinomoto', 18, 20, 0, 'Condiment', '2020-12-07', '2020-12-14', 'Kobie Oracion', 2147483647, 'Approved'),
-(4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 41, 45, 0, 'Personal Care', '2020-12-07', '2020-12-08', 'Kobie Oracion', 2147483647, 'Approved'),
-(4902430587907, 'Tide Original Jumbo 12 x 80g', 'Tide', 120, 144, 0, 'Cleaners', '2020-12-07', '2020-12-21', 'Kobie Oracion', 2147483647, 'Pending'),
-(8850006493014, 'Palmolive Sachet Intensive Moisture Shampoo 6 x 15ml', 'Palmolive', 31, 32, 0, 'Personal Care', '2020-12-07', '2020-12-08', 'Kobie Oracion', 2147483647, 'Approved');
-
 -- --------------------------------------------------------
 
 --
@@ -115,7 +106,7 @@ CREATE TABLE `client_information` (
   `firstName` varchar(249) NOT NULL,
   `lastName` varchar(249) NOT NULL,
   `bussName` varchar(249) NOT NULL,
-  `bussBranch` varchar(249) NOT NULL,
+  `bussBranch` varchar(249) NOT NULL DEFAULT 'N/A',
   `bussType` varchar(249) NOT NULL,
   `bussTown` varchar(249) NOT NULL,
   `bussProvince` varchar(249) NOT NULL,
@@ -130,8 +121,11 @@ CREATE TABLE `client_information` (
 
 INSERT INTO `client_information` (`accNo`, `firstName`, `lastName`, `bussName`, `bussBranch`, `bussType`, `bussTown`, `bussProvince`, `bussCountry`, `bussZipcode`, `accCreated`) VALUES
 (4658428402, 'William ', 'Smith', 'Microsoft', 'Microsot Philippines', 'Enterprise', 'Taguig City', 'Makati', 'Philippines', 1224, '0000-00-00 00:00:00'),
+(4832866671, 'John', 'Michael', 'Makati', '', 'Freelance', 'Makati', 'Manila', 'Philippines', 3410, '2020-12-22 07:29:03'),
+(5865668703, 'qweqwewq', 'eqweqwewq', 'eqweqw', 'N/A', 'hfggfhfgh', 'fdfs', '312', '12321', 312312, '2020-12-22 07:41:27'),
 (6560234550, 'Kobie', 'Oracion', 'Kobie Computer Shop', 'Luisiana Branch', 'Computer Cafe', 'Luisiana', 'Laguna', 'Philippines', 4032, '2020-12-02 03:15:55'),
 (6643053270, 'Kobie ', 'Oracion', 'Miras Music Studio INC.', 'Cavinti Branch', 'Music Studio', 'Cavinti', 'Laguna', 'Philippines', 4022, '2020-12-02 03:16:03'),
+(7515145741, 'John', 'Doe', 'N/A', 'N/A', 'N/A', 'Pila', 'Laguna', 'Philippines', 1246, '0000-00-00 00:00:00'),
 (8417643240, 'Robert', 'Miras', 'Team Freelance', 'Cavinti Branch', 'Freelance', 'Cavinti', 'Laguna', 'PH', 3014, '2020-12-02 03:16:10');
 
 -- --------------------------------------------------------
@@ -159,17 +153,19 @@ CREATE TABLE `datainventory` (
 --
 
 INSERT INTO `datainventory` (`prodId`, `prodNo`, `prodItem`, `prodBrand`, `prodQty`, `prodSRP`, `prodRP`, `prodVAT`, `prodBought`, `prodDOA`, `prodCategory`) VALUES
-(1, 48025522, 'Magic Sarap 8g', 'Maggi', 116, 37, 48, 0.04, 15, '2020-11-17', 'Condiment'),
-(2, 14285000051, 'UFC Hot & Spicy Banana Ketchup 320g', 'UFC', 116, 30, 32, 0.3, 0, '2020-11-28', 'Condiment'),
-(3, 14285002789, 'UFC Banana Ketchup 100g', 'UFC', 0, 9, 10, 0.1, 2, '2020-11-28', 'Condiment'),
-(4, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 80, 47, 57, 0.5, 22, '2020-12-05', 'Beverages'),
-(5, 78895710021, 'Lee Kum Kee Sesame Oil 270mL', 'Lee Kum Kee', 6, 168, 175, 1, 0, '2020-11-28', 'Condiment'),
-(6, 748485100401, 'Century Tuna Flakes in Oil 155g', 'Century Tuna', 116, 30, 32, 0.03, 2, '2020-11-28', 'Canned Goods'),
+(87, 700, 'Chicken Nuggets', 'Maggi', 182, 65, 60, 2, 0, '2020-12-20', 'Frozen Foods'),
+(88, 6969, 'Chicken Longganisa', 'Tender Juicy', 82, 18, 21, 2, 0, '2020-12-09', 'Frozen Foods'),
+(1, 48025522, 'Magic Sarap 8g', 'Maggi', 100, 37, 48, 0.04, 15, '2020-11-17', 'Condiment'),
+(2, 14285000051, 'UFC Hot & Spicy Banana Ketchup 320g', 'UFC', 1009, 30, 32, 0.3, 0, '2020-11-28', 'Condiment'),
+(3, 14285002789, 'UFC Banana Ketchup 100g', 'UFC', 51, 9, 10, 0.1, 2, '2020-11-28', 'Condiment'),
+(4, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 75, 47, 57, 0.5, 22, '2020-12-05', 'Beverages'),
+(5, 78895710021, 'Lee Kum Kee Sesame Oil 270mL', 'Lee Kum Kee', 1000, 168, 175, 1, 0, '2020-11-28', 'Condiment'),
+(6, 748485100401, 'Century Tuna Flakes in Oil 155g', 'Century Tuna', 115, 30, 32, 0.03, 2, '2020-11-28', 'Canned Goods'),
 (7, 748485102245, 'Century Tuna Flakes in Oil 95g', 'Century Tuna', 0, 22, 25, 0.02, 1, '2020-11-28', 'Canned Goods'),
-(8, 748485102252, 'Century Tuna Hot & Spicy 95g', 'Century Tuna', 0, 22, 25, 0.02, 2, '2020-11-28', 'Canned Goods'),
+(8, 748485102252, 'Century Tuna Hot & Spicy 95g', 'Century Tuna', 1000, 22, 25, 0.02, 2, '2020-11-28', 'Canned Goods'),
 (9, 748485801803, 'Argentina Corned Beef 100g', 'Argentina', 116, 22, 25, 0.02, 2, '2020-11-28', 'Canned Goods'),
 (10, 750515018402, 'Skyflakes Crackers 25g', 'Monde MY San Corporation', 116, 50, 60, 0.6, 38, '2020-11-17', 'Snacks'),
-(11, 750515018501, 'Skyflakes Crackers 250g', 'M.Y Sans', 116, 59, 69, 0.7, 5, '2020-11-27', 'Snacks'),
+(11, 750515018501, 'Skyflakes Crackers 250g', 'M.Y Sans', 106, 59, 69, 0.7, 5, '2020-11-27', 'Snacks'),
 (12, 4800010781076, 'Cloud 9 Classic 336g', 'Jack n Jill', 122, 64, 80, 0.08, 66, '2020-12-05', 'Sweets'),
 (13, 4800016022180, 'Great Taste White Crema Twin Pack 10 x 25g', 'Universal Robina', 116, 102, 110, 1, 17, '2020-12-05', 'Beverages'),
 (14, 4800016043093, 'Nips White Chocolate', 'Jack n Jill', 116, 24, 26, 0.2, 170, '2020-11-17', 'Sweets'),
@@ -179,9 +175,9 @@ INSERT INTO `datainventory` (`prodId`, `prodNo`, `prodItem`, `prodBrand`, `prodQ
 (18, 4800016555985, 'Payless Xtra Big Kalamansi 130g', 'Payless', 116, 14, 16, 0.1, 1, '2020-11-28', 'Dry Goods'),
 (19, 4800016556807, 'Payless Xtra Big Xtra Hot 130g', 'Payless', 116, 14, 16, 0.1, 1, '2020-11-28', 'Dry Goods'),
 (20, 4800016561269, 'Nissin Ramen Spicy Hot Beef 65g', 'Nissin', 116, 8, 10, 0.1, 1, '2020-11-28', 'Dry Goods'),
-(21, 4800016561436, 'Payless Xtra Big Sweet & Spicy 130g', 'Payless', 116, 14, 16, 0.1, 1, '2020-11-28', 'Dry Goods'),
-(22, 4800016622533, 'V Cut Spicy Barbeque Flavor', 'Jack n Jill', 116, 12, 13, 0.1, 122, '2020-11-17', 'Snacks'),
-(23, 4800016644801, 'Piattos Cheese', 'Jack n Jill', 116, 12, 13, 0.1, 0, '2020-09-12', 'Snacks'),
+(21, 4800016561436, 'Payless Xtra Big Sweet & Spicy 130g', 'Payless', 113, 14, 16, 0.1, 1, '2020-11-28', 'Dry Goods'),
+(22, 4800016622533, 'V Cut Spicy Barbeque Flavor', 'Jack n Jill', 112, 12, 13, 0.1, 122, '2020-11-17', 'Snacks'),
+(23, 4800016644801, 'Piattos Cheese', 'Jack n Jill', 114, 12, 13, 0.1, 0, '2020-09-12', 'Snacks'),
 (24, 4800016671807, 'Piattos Sour Cream & Onion', 'Jack n Jill', 116, 12, 13, 0.1, 0, '2020-02-07', 'Snacks'),
 (25, 4800016961625, 'Chooey Toffee 236.5g', 'Jack n Jill', 115, 40, 43, 0.04, 0, '2020-12-05', 'Sweets'),
 (26, 4800024012395, 'Del Monte Pineapple Tidbits 560g', 'Del Monte', 116, 76, 85, 0.08, 0, '2020-11-28', 'Canned Goods'),
@@ -259,34 +255,75 @@ CREATE TABLE `datasalesinventory` (
   `salesItem` varchar(249) NOT NULL,
   `salesBrand` varchar(249) NOT NULL,
   `salesSRP` int(249) NOT NULL,
-  `salesRP` int(249) NOT NULL,
+  `salesRP` double NOT NULL,
   `salesVAT` double NOT NULL,
   `salesQty` int(249) NOT NULL,
   `salesTotal` int(249) NOT NULL,
   `salesDate` timestamp NOT NULL DEFAULT current_timestamp(),
-  `salesStatus` varchar(10) DEFAULT NULL
+  `salesStatus` varchar(10) DEFAULT NULL,
+  `salesCategory` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `datasalesinventory`
 --
 
-INSERT INTO `datasalesinventory` (`salesTransNo`, `refNo`, `salesNo`, `salesItem`, `salesBrand`, `salesSRP`, `salesRP`, `salesVAT`, `salesQty`, `salesTotal`, `salesDate`, `salesStatus`) VALUES
-(308174376253, 1037, 4800016961625, 'Chooey Toffee 236.5g', 'Jack n Jill', 40, 43, 0, 10, 430, '2020-12-17 03:33:41', 'Sold'),
-(308174376253, 1038, 4800818808760, 'Yakee! Super Asim Gumball 145.6g', 'Columbia Intl Food Product INC.', 25, 28, 0, 2, 56, '2020-12-17 03:33:41', 'Sold'),
-(308174376253, 1039, 4806525660561, 'Peanut Brittle Candy 150g', 'Rackey', 27, 30, 0, 1, 30, '2020-12-17 03:33:41', 'Sold'),
-(308174376253, 1040, 4804888589505, 'Hany Milk Chocolate', 'Annie Candy Manufacturing', 30, 32, 0, 1, 32, '2020-12-17 03:33:41', 'Sold'),
-(308174376253, 1041, 4804888589987, 'Ube Purple Yam Candy 145g', 'Annie Candy Manufacturing', 22, 24, 0, 2, 48, '2020-12-17 03:33:41', 'Sold'),
-(52181386823, 1042, 4806525660561, 'Peanut Brittle Candy 150g', 'Rackey', 27, 30, 0, 1, 30, '2020-12-17 04:22:39', 'Pending'),
-(52181386823, 1043, 4800016306013, 'Maxx Honey Lemon 200g', 'Jack n Jill', 35, 50, 0, 1, 50, '2020-12-17 04:22:39', 'Pending'),
-(683414784304, 1044, 4800818808906, 'Potchi Strawberyy Cream 135g', 'Columbia Intl Food Productions INC.', 35, 50, 0, 5, 250, '2020-12-18 01:37:51', 'Pending'),
-(167083700218, 1045, 4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 45, 41, 0, 2, 82, '2020-12-18 01:39:25', 'Pending'),
-(670787562447, 1046, 4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 45, 41, 0, 1, 41, '2020-12-18 01:41:36', 'Pending'),
-(561410321882, 1047, 4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 45, 41, 0, 1, 41, '2020-12-18 01:44:59', 'Pending'),
-(356740228827, 1048, 4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 45, 41, 0, 1, 41, '2020-12-18 01:48:46', 'Pending'),
-(5375734082, 1049, 4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 45, 41, 0, 6, 246, '2020-12-18 01:53:01', 'Pending'),
-(807506742788, 1050, 4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 45, 41, 0, 10, 410, '2020-12-18 02:09:36', 'Pending'),
-(365245780626, 1051, 4902430495141, 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 45, 41, 0.4, 2, 82, '2020-12-18 02:13:38', 'Pending');
+INSERT INTO `datasalesinventory` (`salesTransNo`, `refNo`, `salesNo`, `salesItem`, `salesBrand`, `salesSRP`, `salesRP`, `salesVAT`, `salesQty`, `salesTotal`, `salesDate`, `salesStatus`, `salesCategory`) VALUES
+(666557210671, 1139, 6969, 'Chicken Longganisa', 'Tender Juicy', 18, 21, 2, 10, 210, '2020-12-22 03:07:32', 'Sold', 'Frozen Foods'),
+(666557210671, 1140, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 4, 600, '2020-12-22 03:07:32', 'Sold', 'Frozen Foods'),
+(821422321585, 1141, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-25 03:11:30', 'Sold', 'Frozen Foods'),
+(848324618400, 1143, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 4, 2, 120, '2020-12-22 04:50:34', 'Pending', 'Frozen Foods'),
+(20337406871, 1144, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-22 05:06:27', 'Pending', 'Frozen Foods'),
+(665428536302, 1145, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-22 05:11:11', 'Pending', 'Frozen Foods'),
+(665428536302, 1146, 6969, 'Chicken Longganisa', 'Tender Juicy', 18, 21, 6, 3, 63, '2020-12-22 05:11:11', 'Pending', 'Frozen Foods'),
+(554231013045, 1150, 6969, 'Chicken Longganisa', 'Tender Juicy', 18, 21, 2, 1, 21, '2020-12-23 03:14:30', 'Pending', 'Frozen Foods'),
+(37015656021, 1153, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-23 03:16:27', 'Pending', 'Frozen Foods'),
+(151726238887, 1155, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 4, 2, 120, '2020-12-23 03:17:50', 'Pending', 'Frozen Foods'),
+(280182183653, 1157, 6969, 'Chicken Longganisa', 'Tender Juicy', 18, 21, 2, 1, 21, '2020-12-23 03:18:38', 'Pending', 'Frozen Foods'),
+(280182183653, 1158, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-23 03:18:38', 'Pending', 'Frozen Foods'),
+(378181476645, 1161, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:09:01', 'Pending', 'Frozen Foods'),
+(604553087051, 1162, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:20:21', 'Pending', 'Frozen Foods'),
+(702522258838, 1163, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:33:22', 'Pending', 'Frozen Foods'),
+(120332772214, 1164, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:34:47', 'Pending', 'Frozen Foods'),
+(887202873436, 1165, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:37:27', 'Pending', 'Frozen Foods'),
+(121040223314, 1166, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:41:04', 'Pending', 'Frozen Foods'),
+(178238626220, 1167, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:46:27', 'Pending', 'Frozen Foods'),
+(355230163264, 1168, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:47:29', 'Pending', 'Frozen Foods'),
+(208442045631, 1170, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:51:48', 'Pending', 'Frozen Foods'),
+(783461770848, 1171, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:54:46', 'Pending', 'Frozen Foods'),
+(582667771711, 1172, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:56:09', 'Pending', 'Frozen Foods'),
+(830116683663, 1173, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:57:21', 'Pending', 'Frozen Foods'),
+(372187354006, 1174, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:57:51', 'Pending', 'Frozen Foods'),
+(612503157324, 1175, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 03:59:51', 'Pending', 'Frozen Foods'),
+(612447547774, 1176, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 1, 60, '2020-12-28 04:17:56', 'Pending', 'Frozen Foods'),
+(765510821131, 1177, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 8, 20, 1200, '2020-12-28 04:25:54', 'Pending', 'Frozen Foods'),
+(17810726058, 1178, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 8, 2, 120, '2020-12-28 04:37:18', 'Pending', 'Frozen Foods'),
+(162225736046, 1179, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 4, 3, 180, '2020-12-28 04:40:32', 'Pending', 'Frozen Foods'),
+(248627044862, 1180, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 2, 120, '2020-12-28 04:41:17', 'Pending', 'Frozen Foods'),
+(300357624563, 1181, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 4, 2, 120, '2020-12-28 04:48:46', 'Pending', 'Frozen Foods'),
+(384051646067, 1184, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 4, 5, 300, '2020-12-28 04:52:34', 'Pending', 'Frozen Foods'),
+(384051646067, 1185, 6969, 'Chicken Longganisa', 'Tender Juicy', 18, 21, 2, 1, 21, '2020-12-28 04:52:34', 'Pending', 'Frozen Foods'),
+(13885144534, 1186, 700, 'Chicken Nuggets', 'Maggi', 65, 60, 2, 5, 300, '2020-12-28 04:53:34', 'Pending', 'Frozen Foods');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `discount`
+--
+
+CREATE TABLE `discount` (
+  `discId` int(11) NOT NULL,
+  `discount_name` varchar(250) NOT NULL,
+  `discount_percent` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `discount`
+--
+
+INSERT INTO `discount` (`discId`, `discount_name`, `discount_percent`) VALUES
+(4, 'Lucky Fifty', 50),
+(8, 'PWD', 20);
 
 -- --------------------------------------------------------
 
@@ -392,7 +429,61 @@ INSERT INTO `sales_preview` (`refNo`, `payment_method`, `payment_vat`, `payment_
 (81, 'Cash', 0, 30, 0, -30, '2020-12-12 07:56:56'),
 (82, 'Cash', 0, 24, 30, 6, '2020-12-12 08:07:38'),
 (83, 'Cash', 0, 24, 20, -4, '2020-12-12 08:07:55'),
-(84, 'Cash', 0, 209, 1000, 404, '2020-12-17 03:34:56');
+(84, 'Cash', 0, 209, 1000, 404, '2020-12-17 03:34:56'),
+(85, 'Cash', 0, 62, 100, 38, '2020-12-20 05:55:05'),
+(86, 'Cash', 0, 62, 1000, 398, '2020-12-20 05:57:25'),
+(87, 'Cash', 0, 62, 100, 38, '2020-12-20 05:58:04'),
+(88, 'Cash', 0, 248, 300, 52, '2020-12-20 05:59:09'),
+(89, 'Cash', 0, 62, 100, 38, '2020-12-20 05:59:53'),
+(90, 'Cash', 0, 62, 1000, 458, '2020-12-20 06:04:07'),
+(91, 'Cash', 0, 248, 300, 52, '2020-12-20 06:08:17'),
+(92, 'Cash', 0, 62, 70, 8, '2020-12-20 06:12:48'),
+(93, 'Cash', 0, 124, 200, 76, '2020-12-20 06:13:15'),
+(94, 'Cash', 0, 62, 100, 38, '2020-12-20 06:36:50'),
+(95, 'Cash', 0, 62, 50, -12, '2020-12-20 06:50:37'),
+(96, 'Cash', 0, 62, 50, -12, '2020-12-20 06:52:59'),
+(97, 'Cash', 0, 62, 100, 38, '2020-12-20 06:57:39'),
+(98, 'Cash', 0, 62, 100, -38, '2020-12-20 07:52:12'),
+(99, 'Cash', 0, 192, 200, 8, '2020-12-22 00:55:14'),
+(100, 'Cash', 0, 96, 100, 22, '2020-12-22 01:09:38'),
+(101, 'Cash', 0, 239, 1500, 121, '2020-12-22 02:56:46'),
+(102, 'Cash', 0, 278, 300, 22, '2020-12-22 03:00:07'),
+(103, 'Cash', 0, 62, 100, 0, '2020-12-22 03:03:38'),
+(104, 'Cash', 0, 85, 1000, 186, '2020-12-22 03:08:19'),
+(105, 'Cash', 0, 62, 100, 38, '2020-12-22 03:11:51'),
+(106, 'Cash', 0, 62, 100, 38, '2020-12-22 04:15:48');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stock_in`
+--
+
+CREATE TABLE `stock_in` (
+  `stockinRefNo` bigint(20) NOT NULL,
+  `stockinPcode` bigint(20) NOT NULL,
+  `stockinItem` varchar(250) NOT NULL,
+  `stockinQty` int(11) NOT NULL,
+  `stockinPrice` int(11) NOT NULL,
+  `stockinDate` datetime NOT NULL,
+  `stockinId` bigint(20) NOT NULL,
+  `stockinStatus` varchar(100) NOT NULL DEFAULT 'Stock In Pending',
+  `stockinBy` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stock_in`
+--
+
+INSERT INTO `stock_in` (`stockinRefNo`, `stockinPcode`, `stockinItem`, `stockinQty`, `stockinPrice`, `stockinDate`, `stockinId`, `stockinStatus`, `stockinBy`) VALUES
+(503735031713, 700, 'Chicken Nuggets', 10, 60, '2020-12-23 14:10:37', 5, 'Stock In', NULL),
+(503735031713, 6969, 'Chicken Longganisa', 10, 21, '2020-12-23 14:10:41', 6, 'Stock In', NULL),
+(578415653666, 6969, 'Chicken Longganisa', 10, 21, '2020-12-23 14:15:33', 10, 'Stock In', NULL),
+(578415653666, 700, 'Chicken Nuggets', 10, 60, '2020-12-23 14:15:36', 11, 'Stock In', NULL),
+(512443887552, 6969, 'Chicken Longganisa', 2, 21, '2020-12-26 21:26:04', 14, 'Stock In', NULL),
+(512443887552, 700, 'Chicken Nuggets', 2, 60, '2020-12-26 21:26:07', 15, 'Stock In', NULL),
+(801067503604, 54028367911, 'Yakult Probiotic Drink 5 x 80mL', 5, 57, '2020-12-26 22:29:14', 16, 'Stock In', NULL),
+(801067503604, 748485801803, 'Argentina Corned Beef 100g', 3, 25, '2020-12-26 22:29:19', 17, 'Stock In', NULL);
 
 -- --------------------------------------------------------
 
@@ -416,13 +507,26 @@ CREATE TABLE `stock_out` (
 --
 
 INSERT INTO `stock_out` (`stockoutTransNo`, `stockoutNo`, `stockoutItem`, `stockoutQty`, `stockoutPrice`, `stockoutDate`, `stockoutId`, `stockoutStatus`) VALUES
-(124589730289, '054028367911', 'Yakult Probiotic Drink 5 x 80mL', 60, 2400, '2020-12-13 17:35:24', 1, 'Stock Out'),
-(159686247859, '78895710021', 'Lee Kum Kee Sesame Oil 270mL', 2, 1160, '2020-12-13 17:35:24', 2, 'Stock Out'),
-(865249753259, '748485100401', 'Century Tuna Flakes in Oil 155g', 10, 300, '2020-12-13 17:35:24', 3, 'Pending'),
-(12221261451, '8853428003458', 'Calcium Carbonate Calcimate 100 x 12.5g', 10, 300, '2020-12-15 19:16:17', 4, 'Stock Out'),
-(334783036145, '4806525660561', 'Peanut Brittle Candy 150g', 2, 30, '2020-12-17 11:16:08', 5, 'Stock Out'),
-(334783036145, '4800818808760', 'Yakee! Super Asim Gumball 145.6g', 1, 28, '2020-12-17 11:16:15', 6, 'Stock Out'),
-(334783036145, '4800016961625', 'Chooey Toffee 236.5g', 1, 43, '2020-12-17 11:16:22', 7, 'Stock Out');
+(612380520747, '14285000051', 'UFC Hot & Spicy Banana Ketchup 320g', 1, 32, '2020-12-18 18:41:10', 35, 'Stock Out'),
+(721246382272, '14285000051', 'UFC Hot & Spicy Banana Ketchup 320g', 1, 32, '2020-12-18 18:43:55', 36, 'Stock Out'),
+(213160430020, '78895710021', 'Lee Kum Kee Sesame Oil 270mL', 1, 175, '2020-12-18 18:45:57', 38, 'Stock Out'),
+(132704564648, '54028367911', 'Yakult Probiotic Drink 5 x 80mL', 1, 57, '2020-12-18 18:46:31', 39, 'Stock Out'),
+(683046155223, '14285000051', 'UFC Hot & Spicy Banana Ketchup 320g', 2, 32, '2020-12-18 18:53:01', 41, 'Stock Out'),
+(683046155223, '54028367911', 'Yakult Probiotic Drink 5 x 80mL', 1, 57, '2020-12-18 18:53:12', 42, 'Stock Out'),
+(482516814638, '750515018501', 'Skyflakes Crackers 250g', 10, 69, '2020-12-18 18:54:10', 43, 'Stock Out'),
+(764683487447, '14285000051', 'UFC Hot & Spicy Banana Ketchup 320g', 100, 32, '2020-12-18 18:54:41', 44, 'Stock Out'),
+(764683487447, '48025522', 'Magic Sarap 8g', 1, 48, '2020-12-18 18:54:45', 45, 'Stock Out'),
+(764683487447, '14285002789', 'UFC Banana Ketchup 100g', 49, 10, '2020-12-18 18:55:09', 46, 'Stock Out'),
+(86768124643, '748485801803', 'Argentina Corned Beef 100g', 3, 25, '2020-12-19 21:01:20', 47, 'Stock Out'),
+(765101611724, '54028367911', 'Yakult Probiotic Drink 5 x 80mL', 7, 57, '2020-12-19 21:03:26', 48, 'Stock Out'),
+(556341500800, '54028367911', 'Yakult Probiotic Drink 5 x 80mL', 1, 57, '2020-12-19 21:03:47', 49, 'Stock Out'),
+(524734350155, '748485100401', 'Century Tuna Flakes in Oil 155g', 1, 32, '2020-12-19 21:03:59', 50, 'Stock Out'),
+(712371822716, '4800016622533', 'V Cut Spicy Barbeque Flavor', 4, 13, '2020-12-19 21:04:08', 51, 'Stock Out'),
+(7716385074, '4800016561436', 'Payless Xtra Big Sweet & Spicy 130g', 3, 16, '2020-12-19 21:04:36', 52, 'Stock Out'),
+(58002370288, '4800016644801', 'Piattos Cheese', 1, 13, '2020-12-19 21:06:59', 53, 'Stock Out'),
+(272745056545, '4800016644801', 'Piattos Cheese', 1, 13, '2020-12-19 21:07:07', 54, 'Stock Out'),
+(567335624432, '48025522', 'Magic Sarap 8g', 1, 48, '2020-12-19 22:11:17', 66, 'Stock Out'),
+(785566566875, '6969', 'Chicken Longganisa', 1, 21, '2020-12-22 14:49:18', 74, 'Stock Out');
 
 -- --------------------------------------------------------
 
@@ -444,7 +548,7 @@ CREATE TABLE `store` (
 --
 
 INSERT INTO `store` (`store_id`, `store_name`, `store_address`, `store_tin`, `store_serial_number`, `store_min`) VALUES
-(1, 'MIRAS COMPUTER CAFE AND STORE', '34 A MABINI ST. POBLACION CAVINTI, LAGUNA', '000-000-000', 'WTF000001', '000000001');
+(1, 'MIRAS COMPUTER CAFE AND STORE', '34 A MABINI ST. POBLACION CAVINTI, LAGUNA', '111-111-111', 'WTF000001', '000000001');
 
 -- --------------------------------------------------------
 
@@ -458,18 +562,22 @@ CREATE TABLE `usersinventory` (
   `usersPass` text NOT NULL,
   `usersPrevileges` varchar(10) NOT NULL,
   `usersTimein` datetime DEFAULT NULL,
-  `usersTimeout` datetime DEFAULT NULL
+  `usersTimeout` datetime DEFAULT NULL,
+  `userStatus` varchar(50) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `usersinventory`
 --
 
-INSERT INTO `usersinventory` (`acc_no`, `usersName`, `usersPass`, `usersPrevileges`, `usersTimein`, `usersTimeout`) VALUES
-(4658428402, 'WilliamSmith03', '$2a$10$ImB14cTHutNDFOiCdizfnO2fy7BHaNirnLwAVatcc181xx/7QHSfi', 'Cashier', NULL, NULL),
-(6560234550, 'admin', '$2a$10$tihqjhR7FWrfOijOCCBDl.0uXzlOkT2WrnDKQSk0s6XJ1QxelvTHq', 'Admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6643053270, 'cashier', '$2a$10$KeqVWq/Z8PK9k78pxHR55OVQgbzVCra71vSgixOss6hvciqOboZ.K', 'Cashier', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(8417643240, 'user', '$2a$10$xjyzdSJIt6cfi39A.1cDx..QNWJwl9oH5F8UjQLhG/Hh.uw6cR3p.', 'Users', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `usersinventory` (`acc_no`, `usersName`, `usersPass`, `usersPrevileges`, `usersTimein`, `usersTimeout`, `userStatus`) VALUES
+(4658428402, 'WilliamSmith03', '$2a$10$ImB14cTHutNDFOiCdizfnO2fy7BHaNirnLwAVatcc181xx/7QHSfi', 'Cashier', NULL, NULL, 'Pending'),
+(4832866671, 'jm', '$2a$10$tVLCnwuY6y3UCJZYxkmWLOI4oFMBk3b7ygclSL6AlcDE7wabgLXrO', 'Users', NULL, NULL, 'Pending'),
+(5865668703, '123', '$2a$10$c3QFprth1/3ViUT/bzW/UeK0c24MBLOKJ5OVmcs39p2UMi14aHwAq', 'Users', NULL, NULL, 'Pending'),
+(6560234550, 'admin', '$2a$10$tihqjhR7FWrfOijOCCBDl.0uXzlOkT2WrnDKQSk0s6XJ1QxelvTHq', 'Admin', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'Deactivated'),
+(6643053270, 'cashier', '$2a$10$P/ytFenrx2On8ePAarONcercsV7u3MCYM6z1bO2wEkq.VzKNd4n5K', 'Cashier', '2020-12-23 18:02:46', '2020-12-23 18:02:47', 'Active'),
+(7515145741, 'john', '$2a$10$APCKGRSeCiwANOtJd62y/uf5JNsBcNUn5porYsI4XO87MSDCvQWbS', 'Users', '2020-12-20 18:18:01', '2020-12-20 18:18:25', 'Active'),
+(8417643240, 'user', '$2a$10$xjyzdSJIt6cfi39A.1cDx..QNWJwl9oH5F8UjQLhG/Hh.uw6cR3p.', 'Users', '2020-12-22 14:48:56', '2020-12-22 14:49:29', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -513,10 +621,22 @@ ALTER TABLE `datasalesinventory`
   ADD UNIQUE KEY `refNo` (`refNo`);
 
 --
+-- Indexes for table `discount`
+--
+ALTER TABLE `discount`
+  ADD PRIMARY KEY (`discId`);
+
+--
 -- Indexes for table `sales_preview`
 --
 ALTER TABLE `sales_preview`
   ADD UNIQUE KEY `salesReference` (`refNo`);
+
+--
+-- Indexes for table `stock_in`
+--
+ALTER TABLE `stock_in`
+  ADD PRIMARY KEY (`stockinId`);
 
 --
 -- Indexes for table `stock_out`
@@ -550,31 +670,43 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `cId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `datainventory`
 --
 ALTER TABLE `datainventory`
-  MODIFY `prodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `prodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `datasalesinventory`
 --
 ALTER TABLE `datasalesinventory`
-  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1052;
+  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1187;
+
+--
+-- AUTO_INCREMENT for table `discount`
+--
+ALTER TABLE `discount`
+  MODIFY `discId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sales_preview`
 --
 ALTER TABLE `sales_preview`
-  MODIFY `refNo` int(249) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `refNo` int(249) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+
+--
+-- AUTO_INCREMENT for table `stock_in`
+--
+ALTER TABLE `stock_in`
+  MODIFY `stockinId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `stock_out`
 --
 ALTER TABLE `stock_out`
-  MODIFY `stockoutId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `stockoutId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `store`
