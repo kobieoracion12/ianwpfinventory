@@ -43,32 +43,34 @@ namespace NavigationDrawerPopUpMenu2.reports
             DateTime? selectedDateFrom = usc_sales.sortCalendarFrom.SelectedDate;
             DateTime? selectedDateTo = usc_sales.sortCalendarTo.SelectedDate;
 
-            if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
+            try
             {
-                // Making a format and getting the value of datepicker to string
-                usc_sales.doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-                usc_sales.doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
 
-                brand = usc_sales.sortBrand.Text;
-                category = usc_sales.sortCategory.Text;
-                status = usc_sales.sortStatus.Text;
-                if (brand == "Select")
+                if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
                 {
-                    brand = null;
-                }
-                if (category == "Select")
-                {
-                    category = null;
-                }
-                if (status == "Select")
-                {
-                    status = null;
-                }
+                    // Making a format and getting the value of datepicker to string
+                    usc_sales.doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                    usc_sales.doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
 
-                ReportDataSource rptDataSource;
+                    brand = usc_sales.sortBrand.Text;
+                    category = usc_sales.sortCategory.Text;
+                    status = usc_sales.sortStatus.Text;
+                    if (brand == "Select")
+                    {
+                        brand = null;
+                    }
+                    if (category == "Select")
+                    {
+                        category = null;
+                    }
+                    if (status == "Select")
+                    {
+                        status = null;
+                    }
 
-                try
-                {
+                    ReportDataSource rptDataSource;
+
+
                     this.ReportViewerSales.LocalReport.DataSources.Clear();
                     ReportViewerSales.LocalReport.ReportEmbeddedResource = "NavigationDrawerPopUpMenu2.ReportSale.rdlc";
                     DataSet1 ds = new DataSet1();
@@ -101,12 +103,13 @@ namespace NavigationDrawerPopUpMenu2.reports
                     ReportViewerSales.ZoomMode = ZoomMode.Percent;
                     ReportViewerSales.ZoomPercent = 100;
                 }
-                catch (Exception x)
-                {
-                    conn.Close();
-                    MessageBox.Show(x.Message + ", Something went wrong", "Sales Report", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+            }
+            catch (Exception x)
+            {
+                conn.Close();
+                MessageBox.Show(x.Message + ", Something went wrong", "Sales Report", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             }
         }
     }
-}
+

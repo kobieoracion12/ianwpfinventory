@@ -543,34 +543,37 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             // Init selected dates from calendar
             DateTime? selectedDateFrom = sortDOAfrom.SelectedDate;
             DateTime? selectedDateTo = sortDOAto.SelectedDate;
-
-            if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
+            try
             {
-                // Making a format and getting the value of datepicker to string
-                doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-                doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-
-                try
+                if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
                 {
-                    conn.Open(); // Open Connection
-                    string query = "SELECT * FROM stock_in WHERE stockinDate BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY stockinDate DESC "; // Sort base on the query
-                    conn.query(query);  // Command Database
-                    conn.execute(); // Execute Non Query
-                    MySqlDataAdapter adapter = conn.adapter(); // adapter
-                    DataTable dt = new DataTable("stock_in"); // Make a datatable reference
-                    adapter.Fill(dt);  // Fill the datatable with data
-                    listViewRecords.ItemsSource = dt.DefaultView;
-                    adapter.Update(dt);
+                    // Making a format and getting the value of datepicker to string
+                    doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                    doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
 
-                    adapter.Dispose(); // Dispose Adapter
-                    conn.Close(); // Close Connection
-                }
-                catch (Exception x)
-                {
-                    MessageBox.Show(x.Message);
-                    conn.Close();
+                    if (doaFrom != null || doaTo != null)
+                    {
+                        conn.Open(); // Open Connection
+                        string query = "SELECT * FROM stock_in WHERE stockinDate BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY stockinDate DESC "; // Sort base on the query
+                        conn.query(query);  // Command Database
+                        conn.execute(); // Execute Non Query
+                        MySqlDataAdapter adapter = conn.adapter(); // adapter
+                        DataTable dt = new DataTable("stock_in"); // Make a datatable reference
+                        adapter.Fill(dt);  // Fill the datatable with data
+                        listViewRecords.ItemsSource = dt.DefaultView;
+                        adapter.Update(dt);
+
+                        adapter.Dispose(); // Dispose Adapter
+                        conn.Close(); // Close Connection
+                    }
                 }
             }
+            catch (Exception x)
+            {
+                MessageBox.Show("Something went wrong, " + x.Message, "Try again", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
+            }
+
         }
 
         // Refresh Button

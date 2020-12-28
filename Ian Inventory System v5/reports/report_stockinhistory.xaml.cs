@@ -41,16 +41,16 @@ namespace NavigationDrawerPopUpMenu2.reports
             // Init selected dates from calendar
             DateTime? selectedDateFrom = usc_stockout.sortDOAfrom.SelectedDate;
             DateTime? selectedDateTo = usc_stockout.sortDOAto.SelectedDate;
-
-            if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
+            try
             {
-                // Making a format and getting the value of datepicker to string
-                doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-                doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
-
-                ReportDataSource rptDataSource;
-                try
+                if (selectedDateFrom.HasValue || selectedDateTo.HasValue)
                 {
+                    // Making a format and getting the value of datepicker to string
+                    doaFrom = selectedDateFrom.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+                    doaTo = selectedDateTo.Value.ToString("yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);
+
+                    ReportDataSource rptDataSource;
+
                     this.ReportViewerStockInHistory.LocalReport.DataSources.Clear();
                     ReportViewerStockInHistory.LocalReport.ReportEmbeddedResource = "NavigationDrawerPopUpMenu2.Reportstockinhistory.rdlc";
                     DataSet1 ds = new DataSet1();
@@ -75,7 +75,7 @@ namespace NavigationDrawerPopUpMenu2.reports
 
                     ReportViewerStockInHistory.ZoomMode = ZoomMode.Percent;
                     ReportViewerStockInHistory.ZoomPercent = 100;
-
+                }
                 }
                 catch (Exception x)
                 {
@@ -85,4 +85,4 @@ namespace NavigationDrawerPopUpMenu2.reports
             }
         }
     }
-}
+
