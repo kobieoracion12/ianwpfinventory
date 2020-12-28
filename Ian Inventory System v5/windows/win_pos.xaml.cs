@@ -89,6 +89,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 MessageBox.Show(ex.Message);
             }
         }
+
         public void loadDatas()
         {
             try
@@ -124,7 +125,10 @@ namespace NavigationDrawerPopUpMenu2.windows
             string total = "";
             try
             {
-                // GET THE TOTAL SALES     
+                conn.Close();
+
+                // GET THE TOTAL SALES    
+                conn.Open(); 
                 string query = "SELECT SUM(salesTotal + salesVAT) as total_due FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus=@status GROUP BY salesTransNo";
                 conn.query(query);
 
@@ -142,16 +146,19 @@ namespace NavigationDrawerPopUpMenu2.windows
 
                 dr.Close();
                 dr.Dispose();
+                conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message + ", Try again later", "Total", MessageBoxButton.OK, MessageBoxImage.Warning);
+                conn.Close();
             }
             return total;
         }
 
         public String sumOfSalesTotals()
         {
+            conn.Close();
             string total = "";
             try
             {
@@ -433,9 +440,11 @@ namespace NavigationDrawerPopUpMenu2.windows
                 // Adds the data to the datasalesinventory
                 if (coSubtotal.Text.Length > 0)
                 {
+                    conn.Close();
                     // Insert Scanned Data to Database (datasalesinventory)
                     try
                     {
+                        conn.Open();
                         string refno = "";
                         bool doesExist = false;
                         string check = "SELECT * FROM datasalesinventory WHERE salesTransNo = '" + orderNo.Text + "' AND salesItem = '" + coItem.Text + "'";
@@ -469,9 +478,12 @@ namespace NavigationDrawerPopUpMenu2.windows
                                 if ((checkQty - int.Parse(checkStockRepeat)) == 0)
                                 {
                                     MessageBox.Show("No stock left in your database", "Scan Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    conn.Close();
                                 }
                                 else
                                 {
+                                    conn.Close();
+                                    conn.Open();
                                     string addQuantityToExistingItem = "UPDATE datasalesinventory SET salesQty = (salesQty + @qty) WHERE refNo = @refno";
                                     conn.query(addQuantityToExistingItem);
                                     conn.bind("@qty", 1);
@@ -496,9 +508,10 @@ namespace NavigationDrawerPopUpMenu2.windows
                             }
                             else
                             { // if not exist then insert
+                                conn.Close();
+                                conn.Open();
                                 string query2 = "INSERT INTO datasalesinventory (salesTransNo, salesNo, salesItem, salesBrand, salesSRP, salesRP, salesVAT, salesQty, salesTotal, salesDate, salesStatus, salesCategory) VALUES (@no, @barcode, @name, @brand, @srp, @rp, @vat, @qty, @subtotal, @date, @status, @categ)";
                                 conn.query(query2);
-
                                 conn.bind("@no", orderNo.Text);
                                 conn.bind("@barcode", entrySearch.Text);
                                 conn.bind("@name", coItem.Text);
@@ -543,10 +556,12 @@ namespace NavigationDrawerPopUpMenu2.windows
 
         private String sumOfTotalVat()
         {
+            conn.Close();
             string total = "";
             try
             {
-                // GET THE TOTAL SALES     
+                // GET THE TOTAL SALES   
+                conn.Open();  
                 string query = "SELECT SUM(salesVAT) as total_vat FROM `datasalesinventory` WHERE salesTransNo = @transno AND salesStatus = @status GROUP BY salesTransNo";
                 conn.query(query);
 
@@ -720,9 +735,10 @@ namespace NavigationDrawerPopUpMenu2.windows
 
             try
             {
+                conn.Close();
+                conn.Open();
                 string payment = "INSERT INTO sales_preview (payment_method, payment_vat, payment_total, payment_paid, payment_due, payment_date) VALUES (@method, @vat, @total, @paid, @due, @date)";
                 conn.query(payment);  // Command DB
-                //conn.Open();
                 conn.bind("@method", checkout.payMethod);
                 conn.bind("@vat", checkout.tax);
                 conn.bind("@total", checkout.total);
@@ -738,7 +754,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 holdOrder.IsEnabled = false;
                 //othersButton.IsEnabled = false;
                 endSale.IsEnabled = true;
-                conn.Close(); // Close Connection
+
 
                 // Generate a Receipt
                 win_receipt rcpt = new win_receipt(this);
@@ -746,6 +762,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 rcpt.ReportViewerDemo.LocalReport.Print();
                 discountItem.IsEnabled = false;
                 removeItem.IsEnabled = false;
+
                 //rcpt.ShowDialog();
                 // End of Receipt
             }
@@ -753,6 +770,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             {
                 MessageBox.Show(x.Message);
                 clearPartial();
+                conn.Close();
             }
         }
 
