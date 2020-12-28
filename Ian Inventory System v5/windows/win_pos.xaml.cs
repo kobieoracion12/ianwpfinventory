@@ -50,6 +50,8 @@ namespace NavigationDrawerPopUpMenu2.windows
         {
             // Discount Disabled 
             discountItem.IsEnabled = false;
+            // Remove Button
+            removeItem.IsEnabled = false;
             // Display Time In
             timeIn.Text = DateTime.Now.ToLongTimeString();
             // Display Account Number
@@ -661,7 +663,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                     foreach (Invoice prd in settleProducts)
                     {
                         conn.Open();
-                        string updateStockQuery = "UPDATE datainventory SET prodQty = prodQty - '" + int.Parse(prd.salesQty) + "' WHERE prodNo = '" + prd.salesNo + "'";
+                        string updateStockQuery = "UPDATE datainventory SET prodQty = prodQty - '" + int.Parse(prd.salesQty) + "', prodBought = prodBought + '"+ int.Parse(prd.salesQty) + "' WHERE prodNo = '" + prd.salesNo + "'";
                         conn.query(updateStockQuery);
                         conn.execute();
                         conn.Close();
@@ -687,8 +689,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                     pay_tax.Text = "0.00";
                     vatItem.Text = "0";
 
-                    discountItem.IsEnabled = true;
-                    removeItem.IsEnabled = true;
+                    discountItem.IsEnabled = false;
+                    removeItem.IsEnabled = false;
 
                 }
                 catch (Exception ex)
@@ -796,12 +798,13 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
         }
 
-        // IF CLICK ON LISTVIEW 
+        // IF CLICK ON LISTVIEW - Pass Data to TextBox to Listview
         private void listViewinVoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 holdOrder.IsEnabled = true;
+                removeItem.IsEnabled = true;
                 transNo = orderNo.Text;     // Transaction Number
                 // Product Item Name
                 salesItem = tbPrdName.Text;
