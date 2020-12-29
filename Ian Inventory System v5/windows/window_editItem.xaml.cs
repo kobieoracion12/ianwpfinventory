@@ -71,6 +71,9 @@ namespace NavigationDrawerPopUpMenu2.windows
                     editProdVAT.Text = row[5];
                     editProdCategory.Text = row[6];
 
+                    double catchVAT = (double.Parse(editProdVAT.Text) * 100);
+                    editProdVAT.Text = Convert.ToString(catchVAT);
+
                     if (editProdCategory.Text == "")
                     {
                         editProdCategory.Text = "Select";
@@ -85,6 +88,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                conn.Close();
             }
         }
 
@@ -130,34 +134,45 @@ namespace NavigationDrawerPopUpMenu2.windows
                 prdCateg = null;
             }
 
-            // Sql Statement
-            string sql = "UPDATE datainventory SET prodItem = @prdItem, prodBrand = @prdBrand, prodSRP = @prdSRP, prodRP = @prdRP, prodVAT = @prdVAT, prodCategory = @prdCateg WHERE prodNo = @prdNo ";
+            double getVAT = (double.Parse(editProdVAT.Text) / 100);
 
-            conn.Close();
-            try
+            if (getVAT > 100 || getVAT < 0)
             {
-                conn.Open();  // Open Connection
+                MessageBox.Show("Choose between 0-100 only", "Error");
+            }
+            else
+            {
+                // Sql Statement
+                string sql = "UPDATE datainventory SET prodItem = @prdItem, prodBrand = @prdBrand, prodSRP = @prdSRP, prodRP = @prdRP, prodVAT = @prdVAT, prodCategory = @prdCateg WHERE prodNo = @prdNo ";
+                conn.Close();
+                try
+                {
+                    conn.Open();  // Open Connection
 
-                conn.query(sql); // Command Database
+                    conn.query(sql); // Command Database
 
-                conn.bind("@prdItem", prdItem); // Bind parameters with values
-                conn.bind("@prdBrand", prdBrand);
-                conn.bind("@prdSRP", prdSRP);
-                conn.bind("@prdRP", prdRP);
-                conn.bind("@prdVAT", prdVAT);
-                conn.bind("@prdCateg", prdCateg);
-                conn.bind("@prdNo", editProdNo.Text);
+                    conn.bind("@prdItem", prdItem); // Bind parameters with values
+                    conn.bind("@prdBrand", prdBrand);
+                    conn.bind("@prdSRP", prdSRP);
+                    conn.bind("@prdRP", prdRP);
+                    conn.bind("@prdVAT", getVAT);
+                    conn.bind("@prdCateg", prdCateg);
+                    conn.bind("@prdNo", editProdNo.Text);
 
-                conn.cmd().Prepare(); // Prepare
-                conn.execute(); // ExecuteNonQuery
+                    conn.cmd().Prepare(); // Prepare
+                    conn.execute(); // ExecuteNonQuery
 
-                MessageBox.Show("Successfully Updated"); // Show Dialog Succes
+                    MessageBox.Show("Successfully Updated"); // Show Dialog Succes
 
-                conn.Close(); // Close Connection
-                Close();
+                    conn.Close(); // Close Connection
+                    Close();
 
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
 

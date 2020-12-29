@@ -92,11 +92,13 @@
                             <Grid>
                                 <Viewbox Stretch="Uniform">
                                     <StackPanel Orientation="Vertical">
-                                        <Label Content="Retail Price (RP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
+                                        <Label Content="Price List" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
                                         <TextBox x:Name="addRP" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" Width="360"/>
 
-                                        <Label Content="Value Added Tax (VAT)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" />
-                                        <TextBox x:Name="addVAT" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <Label Content="Value Added Tax (VAT %)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" />
+                                            <TextBox x:Name="addVAT" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White"/>
+                                        </StackPanel>
 
                                         <Label Content="Product Category" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" />
                                         <ComboBox x:Name="addCategory" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" IsEditable="True"/>

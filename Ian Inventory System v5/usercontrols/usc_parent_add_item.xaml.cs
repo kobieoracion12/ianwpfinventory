@@ -23,7 +23,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     {
         Database con = new Database();
         Checkout checkout = new Checkout();
-
         public usc_parent_add_item()
         {
             InitializeComponent();
@@ -91,34 +90,43 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 try
                 {
-                    con.Open();
-                    string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodDOA, prodCategory) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pv, @pdoa, @categ)";
-                    con.query(itemInsert);
+                    double getVAT = (double.Parse(addVAT.Text) / 100);
 
-                    con.bind("@pn", checkBarcode.Text);
-                    con.bind("@pi", addItem.Text);
-                    con.bind("@pb", addBrand.Text);
-                    con.bind("@py", addQty.Text);
-                    con.bind("@pp", addSRP.Text); 
-                    con.bind("@pq", addRP.Text);
-                    con.bind("@pv", addVAT.Text);
-                    con.bind("@pdoa", DateTime.Now);
-                    con.bind("@categ", addCategory.Text);
-
-                    con.cmd().Prepare();
-                    int a = con.execute();
-                    if (a == 1)
+                    if (getVAT > 100 || getVAT < 0)
                     {
-                        MessageBox.Show("A new item has been added to the database", "Add Item", MessageBoxButton.OK, MessageBoxImage.Information);
-                        cbBrand();
-                        checkBarcode.Focus();
-                        Clear();
+                        MessageBox.Show("Choose between 0-100 only", "Error");
                     }
-                    con.Close();
+                    else
+                    {
+                        con.Open();
+                        string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodDOA, prodCategory) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pv, @pdoa, @categ)";
+                        con.query(itemInsert);
+                        con.bind("@pn", checkBarcode.Text);
+                        con.bind("@pi", addItem.Text);
+                        con.bind("@pb", addBrand.Text);
+                        con.bind("@py", addQty.Text);
+                        con.bind("@pp", addSRP.Text);
+                        con.bind("@pq", addRP.Text);
+                        con.bind("@pv", getVAT);
+                        con.bind("@pdoa", DateTime.Now);
+                        con.bind("@categ", addCategory.Text);
+
+                        con.cmd().Prepare();
+                        int a = con.execute();
+                        if (a == 1)
+                        {
+                            MessageBox.Show("A new item has been added to the database", "Add Item", MessageBoxButton.OK, MessageBoxImage.Information);
+                            cbBrand();
+                            checkBarcode.Focus();
+                            Clear();
+                        }
+                        con.Close();
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Add Item", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    con.Close();
                 }
             }
         }

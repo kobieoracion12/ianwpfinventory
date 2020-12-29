@@ -173,6 +173,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 if (MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     deleteProductItem(); // If Yes then Delete the product
+                    catchData();
+                    tbSearch.Clear();
                 }
             }
         }
