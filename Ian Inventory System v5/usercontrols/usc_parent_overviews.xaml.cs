@@ -170,7 +170,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             else
             {   // Delete the product
-                if (MessageBox.Show("Are you sure you want to delete?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this product?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     deleteProductItem(); // If Yes then Delete the product
                     catchData();
@@ -466,6 +466,15 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 return;
             }
             else { return; }
+        }
+
+        // Shortcut Key
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+                removeButton_Click(sender, e); // Delete Button
+            else if(e.Key == Key.F2)
+                editButton_Click(sender, e);   // Edit Button
         }
     }
 }

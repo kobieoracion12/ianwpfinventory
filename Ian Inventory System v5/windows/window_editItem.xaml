@@ -74,10 +74,10 @@
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical">
-                    <TextBox Padding="2" x:Name="editProdSRP" x:FieldModifier="public" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox Padding="2" x:Name="editProdSRP" x:FieldModifier="public" BorderThickness="1"  FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5" PreviewTextInput="TextBoxSRP_OnPreviewTextInput" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Vertical">
-                    <TextBox Padding="2" x:Name="editProdRP" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>
+                    <TextBox Padding="2" x:Name="editProdRP" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5" PreviewTextInput="TextBox_OnPreviewTextInput" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Vertical">
                     <TextBox Padding="2" x:Name="editProdVAT" x:FieldModifier="public" BorderThickness="1" FontFamily="Microsoft Tai Le" FontSize="20" Background="#FFFFFF" Width="340" Margin="5"/>

@@ -237,5 +237,29 @@ namespace NavigationDrawerPopUpMenu2.windows
                 MessageBox.Show(x.Message);
             }
         }
+
+        // Prevent User to type Letters
+        private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var editProdRP = sender as TextBox;
+            // Use SelectionStart property to find the caret position.
+            // Insert the previewed text into the existing text in the textbox.
+            var fullText = editProdRP.Text.Insert(editProdRP.SelectionStart, e.Text);
+
+            double val;
+            // If parsing is successful, set Handled to false
+            e.Handled = !double.TryParse(fullText, out val);
+        }
+        private void TextBoxSRP_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var editProdSRP = sender as TextBox;
+            // Use SelectionStart property to find the caret position.
+            // Insert the previewed text into the existing text in the textbox.
+            var fullText = editProdSRP.Text.Insert(editProdSRP.SelectionStart, e.Text);
+
+            double val;
+            // If parsing is successful, set Handled to false
+            e.Handled = !double.TryParse(fullText, out val);
+        }
     }
 }

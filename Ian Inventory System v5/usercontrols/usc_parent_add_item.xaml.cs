@@ -193,5 +193,40 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             usc_parent_overviews upo = new usc_parent_overviews();
             ui.mainSubColumn.Children.Add(upo);
         }
+
+        // Prevent User to type Letters
+        private void TextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var addQty = sender as TextBox;
+            // Use SelectionStart property to find the caret position.
+            // Insert the previewed text into the existing text in the textbox.
+            var fullText = addQty.Text.Insert(addQty.SelectionStart, e.Text);
+
+            double val;
+            // If parsing is successful, set Handled to false
+            e.Handled = !double.TryParse(fullText, out val);
+        }
+        private void TextBoxSRP_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var addSRP = sender as TextBox;
+            // Use SelectionStart property to find the caret position.
+            // Insert the previewed text into the existing text in the textbox.
+            var fullText = addSRP.Text.Insert(addSRP.SelectionStart, e.Text);
+
+            double val;
+            // If parsing is successful, set Handled to false
+            e.Handled = !double.TryParse(fullText, out val);
+        }
+        private void TextBoxPrice_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            var addRP = sender as TextBox;
+            // Use SelectionStart property to find the caret position.
+            // Insert the previewed text into the existing text in the textbox.
+            var fullText = addRP.Text.Insert(addRP.SelectionStart, e.Text);
+
+            double val;
+            // If parsing is successful, set Handled to false
+            e.Handled = !double.TryParse(fullText, out val);
+        }
     }
 }

@@ -7,6 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
+             KeyDown="UserControl_KeyDown"
              d:DesignHeight="580" d:DesignWidth="813">
 
     <Grid Background="#F5F6FA">
