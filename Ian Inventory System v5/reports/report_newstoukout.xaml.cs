@@ -20,14 +20,14 @@ using NavigationDrawerPopUpMenu2.usercontrols;
 namespace NavigationDrawerPopUpMenu2.reports
 {
     /// <summary>
-    /// Interaction logic for report_stockout.xaml
+    /// Interaction logic for report_newstoukout.xaml
     /// </summary>
-    public partial class report_stockout : Window
+    public partial class report_newstoukout : Window
     {
         Store store = new Store();
         Database conn = new Database();
-        usc_user_in usc_stockout;
-        public report_stockout(usc_user_in usc_stockout)
+        usc_user_out usc_stockout;
+        public report_newstoukout(usc_user_out usc_stockout)
         {
             InitializeComponent();
             this.usc_stockout = usc_stockout;
@@ -41,13 +41,13 @@ namespace NavigationDrawerPopUpMenu2.reports
             {
 
                 this.ReportViewerStockOut.LocalReport.DataSources.Clear();
-                ReportViewerStockOut.LocalReport.ReportEmbeddedResource = "NavigationDrawerPopUpMenu2.Reportstockout.rdlc";
+                ReportViewerStockOut.LocalReport.ReportEmbeddedResource = "NavigationDrawerPopUpMenu2.ReportStock.rdlc";
                 DataSet1 ds = new DataSet1();
 
                 conn.Open();
-                string query = "SELECT * FROM stock_in WHERE stockinRefNo='" + usc_stockout.orderNo.Text + "' AND stockinStatus = 'Stock In'";
+                string query = "SELECT * FROM stock_out WHERE stockoutTransNo='" + usc_stockout.orderNo.Text + "' AND stockoutStatus = 'Stock Out'";
                 MySqlDataAdapter da = conn.DataAdapter(query);
-                da.Fill(ds.Tables["dtStockin"]);
+                da.Fill(ds.Tables["dtStockOut"]);
                 conn.Close();
 
                 ReportParameter pStore = new ReportParameter("pStore", store.storeName(conn));
@@ -56,7 +56,7 @@ namespace NavigationDrawerPopUpMenu2.reports
                 ReportViewerStockOut.LocalReport.SetParameters(pStore);
                 ReportViewerStockOut.LocalReport.SetParameters(pAddress);
 
-                rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtStockin"]);
+                rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtStockOut"]);
                 this.ReportViewerStockOut.LocalReport.DataSources.Add(rptDataSource);
                 ReportViewerStockOut.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
 

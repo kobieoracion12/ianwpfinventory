@@ -152,6 +152,9 @@
     <Compile Include="reports\report_inventory.xaml.cs">
       <DependentUpon>report_inventory.xaml</DependentUpon>
     </Compile>
+    <Compile Include="reports\report_newstoukout.xaml.cs">
+      <DependentUpon>report_newstoukout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="reports\report_sales.xaml.cs">
       <DependentUpon>report_sales.xaml</DependentUpon>
     </Compile>
@@ -302,6 +305,9 @@
     <Compile Include="windows\win_price Check.xaml.cs">
       <DependentUpon>win_price Check.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\win_qty_stockout.xaml.cs">
+      <DependentUpon>win_qty_stockout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\win_receipt.xaml.cs">
       <DependentUpon>win_receipt.xaml</DependentUpon>
     </Compile>
@@ -358,6 +364,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="reports\report_inventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="reports\report_newstoukout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -569,6 +579,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="windows\win_qty_stockout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\win_receipt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -611,6 +625,7 @@
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Reportinventory.rdlc" />
     <EmbeddedResource Include="ReportSale.rdlc" />
+    <EmbeddedResource Include="ReportStock.rdlc" />
     <EmbeddedResource Include="Reportstockinhistory.rdlc" />
     <EmbeddedResource Include="Reportstockout.rdlc" />
     <None Include="DataSet1.xsc">

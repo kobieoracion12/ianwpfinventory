@@ -42,7 +42,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     break;
 
                 case "stockStockOut":
-                    usc = new usc_user_in();
+                    usc = new usc_user_out();
                     mainSubColumn.Children.Add(usc);
                     break;
             }

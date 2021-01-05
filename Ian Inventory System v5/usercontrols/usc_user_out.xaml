@@ -7,6 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="580" d:DesignWidth="813">
 
     <Grid Background="#F5F6FA">
@@ -28,7 +29,7 @@
                     <Viewbox Stretch="Uniform" Margin="10">
                         <StackPanel Orientation="Vertical">
                             <Label Content="Barcode Entry.." />
-                            <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="40" MinWidth="1100" Margin="20 10 20 0" Background="White"/>
+                            <TextBox x:Name="entrySearch" FontFamily="Microsoft Tai Le" FontSize="40" MinWidth="1100" Margin="20 10 20 0" Background="White" KeyDown="entrySearch_KeyDown" />
                         </StackPanel>
                     </Viewbox>
                 </Grid>
@@ -55,31 +56,31 @@
                             <Viewbox Stretch="Uniform" VerticalAlignment="Top">
                                 <Canvas Width="350" Height="20">
                                     <StackPanel Orientation="Horizontal" Canvas.Right="0">
-                                        <TextBlock Text="Stock In #:" TextAlignment="Left" FontSize="7" FontFamily="Segoe UI Regular" Margin="0 7 5 10"/>
+                                        <TextBlock Text="Stock Out #:" TextAlignment="Left" FontSize="7" FontFamily="Segoe UI Regular" Margin="0 7 5 10"/>
                                         <TextBlock x:Name="orderNo" Text="00000000000" TextAlignment="Left" FontSize="7" FontFamily="Segoe UI Regular" Margin="0 7 10 10"/>
-                                        <TextBox Text="{Binding ElementName=listViewinVoice, Path=SelectedItem.stockinItem}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
+                                        <TextBox Text="{Binding SelectedItem.stockoutItem, ElementName=listViewinVoice}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal" Canvas.Left="0">
-                                        <Button x:Name="saveStockOutBtn" Margin="5 5 5 10" Height="15" Background="White" BorderBrush="#b2b2b2">
+                                        <Button x:Name="saveStockOutBtn" Margin="5 5 5 10" Height="15" Background="White" BorderBrush="#b2b2b2" Click="saveStockOutBtn_Click">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                 <TextBlock Text="Save" FontWeight="SemiBold" FontSize="5" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </Button>
 
-                                        <Button x:Name="changeQtyBtn" Margin="0 5 5 10" Height="15" Background="White" BorderBrush="#b2b2b2">
+                                        <Button x:Name="changeQtyBtn" Margin="0 5 5 10" Height="15" Background="White" BorderBrush="#b2b2b2" Click="changeQtyBtn_Click_1">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                 <TextBlock Text="Quantity" FontWeight="SemiBold" FontSize="5" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </Button>
 
-                                        <Button x:Name="removeStockOutBtn" Margin="0 5 5 10" Height="15" Background="White" BorderBrush="#b2b2b2">
+                                        <Button x:Name="removeStockOutBtn" Margin="0 5 5 10" Height="15" Background="White" BorderBrush="#b2b2b2" Click="removeStockOutBtn_Click">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                 <TextBlock Text="Remove" FontWeight="SemiBold" FontSize="5" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </Button>
 
-                                        <Button x:Name="clearStockOutBtn" Margin="0 5 5 10" Height="15" Background="White" BorderBrush="#b2b2b2">
+                                        <Button x:Name="clearStockOutBtn" Margin="0 5 5 10" Height="15" Background="White" BorderBrush="#b2b2b2" Click="clearStockOutBtn_Click">
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                 <TextBlock Text="Clear" FontWeight="SemiBold" FontSize="5" Foreground="Black" TextAlignment="Left" VerticalAlignment="Center"/>
                                             </StackPanel>
@@ -92,13 +93,13 @@
 
                     <Grid Grid.Row="1">
                         <Grid>
-                            <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" Margin="15 0 15 15">
+                            <ListView x:Name="listViewinVoice" FontSize="15" SelectionMode="Single" Margin="15 0 15 15" SelectionChanged="listViewinVoice_SelectionChanged">
                                 <ListView.View>
                                     <GridView AllowsColumnReorder="False">
                                         <GridView.Columns>
-                                            <GridViewColumn DisplayMemberBinding="{Binding stockinPcode }" Header="Product #" Width="150" />
-                                            <GridViewColumn DisplayMemberBinding="{Binding stockinItem }" Header="Item" Width="250" />
-                                            <GridViewColumn DisplayMemberBinding="{Binding stockinQty }" Header="Qty" Width="100"/>
+                                            <GridViewColumn DisplayMemberBinding="{Binding stockoutNo }" Header="Product #" Width="150" />
+                                            <GridViewColumn DisplayMemberBinding="{Binding stockoutItem }" Header="Item" Width="250" />
+                                            <GridViewColumn DisplayMemberBinding="{Binding stockoutQty }" Header="Qty" Width="100"/>
                                         </GridView.Columns>
                                     </GridView>
                                 </ListView.View>

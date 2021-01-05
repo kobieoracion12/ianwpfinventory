@@ -1,4 +1,6 @@
-﻿using NavigationDrawerPopUpMenu2.classes;
+﻿using MySql.Data.MySqlClient;
+using NavigationDrawerPopUpMenu2.classes;
+using NavigationDrawerPopUpMenu2.usercontrols;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,21 +14,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
-using NavigationDrawerPopUpMenu2.usercontrols;
 
 namespace NavigationDrawerPopUpMenu2.windows
 {
     /// <summary>
-    /// Interaction logic for win_changequantity_stockout.xaml
+    /// Interaction logic for win_qty_stockout.xaml
     /// </summary>
-    public partial class win_changequantity_stockout : Window
+    public partial class win_qty_stockout : Window
     {
         Database conn = new Database();
-        usc_user_in usc_stockout;
+        usc_user_out usc_stockout;
         string prodQty = "";
         string transNo = "";
-        public win_changequantity_stockout(usc_user_in usc_stockout, string trans)
+        public win_qty_stockout(usc_user_out usc_stockout, string trans)
         {
             InitializeComponent();
             this.usc_stockout = usc_stockout;
@@ -57,11 +57,18 @@ namespace NavigationDrawerPopUpMenu2.windows
                     dr.Dispose();
                     conn.Close();
 
-                        /* SALES QUANTITY
-                       * SET A NEW TOTAL QUANTITY
-                       */
+                    /* SALES QUANTITY
+                   * SET A NEW TOTAL QUANTITY
+                   */
+
+                    if (int.Parse(prodQty) < int.Parse(txtQtyChange.Text))
+                    {
+                        MessageBox.Show("Unable to proceed, You only have " + prodQty + " stocks in your database", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
                         conn.Open();
-                        string query = "UPDATE stock_in SET stockinQty = @salesQty WHERE stockinRefNo = @salesTransNo AND stockinItem = @salesItem";
+                        string query = "UPDATE stock_out SET stockoutQty = @salesQty WHERE stockoutTransNo = @salesTransNo AND stockoutItem = @salesItem";
                         conn.query(query);
                         conn.bind("@salesQty", txtQtyChange.Text.Trim());
                         conn.bind("@salesTransNo", transNo);
@@ -74,8 +81,8 @@ namespace NavigationDrawerPopUpMenu2.windows
                         usc_stockout.loadDatas(); // Update UI
                         conn.Close();
                         this.Close();
+                    }
 
-                    
                 }
             }
             catch (Exception ex)
@@ -97,5 +104,8 @@ namespace NavigationDrawerPopUpMenu2.windows
             // If parsing is successful, set Handled to false
             e.Handled = !double.TryParse(fullText, out val);
         }
+
     }
+
 }
+
