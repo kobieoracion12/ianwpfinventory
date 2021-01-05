@@ -660,3 +660,9 @@ E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LATEST VERS
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LATEST VERSION V7\ianwpfinventory\Ian Inventory System v5\obj\Debug\NavigationDrawerPopUpMenu2.csproj.GenerateResource.Cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LATEST VERSION V7\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.cache
 E:\Programming Tuts\Projects Tutorials\C# Projects\Real-Life-Project\LATEST VERSION V7\ianwpfinventory\Ian Inventory System v5\obj\Debug\RdlCompile.compiled
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_stock.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_stock.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_stock_history.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_stock_history.baml
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_in.g.cs
+C:\Users\Kobie\Documents\Visual Studio 2015\Projects\ianwpfinventory\Ian Inventory System v5\obj\Debug\usercontrols\usc_user_in.baml

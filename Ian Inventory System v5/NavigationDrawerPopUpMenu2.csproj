@@ -197,14 +197,26 @@
     <Compile Include="usercontrols\usc_settings.xaml.cs">
       <DependentUpon>usc_settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_stock.xaml.cs">
+      <DependentUpon>usc_stock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_stockout.xaml.cs">
       <DependentUpon>usc_stockout.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\usc_stockreturn.xaml.cs">
       <DependentUpon>usc_stockreturn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_stock_history.xaml.cs">
+      <DependentUpon>usc_stock_history.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_user_add.xaml.cs">
       <DependentUpon>usc_user_add.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\usc_user_in.xaml.cs">
+      <DependentUpon>usc_user_in.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\usc_user_out.xaml.cs">
+      <DependentUpon>usc_user_out.xaml</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\usc_user_overview.xaml.cs">
       <DependentUpon>usc_user_overview.xaml</DependentUpon>
@@ -417,6 +429,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="usercontrols\usc_stock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="usercontrols\usc_stockout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -425,7 +441,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="usercontrols\usc_stock_history.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="usercontrols\usc_user_add.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_user_in.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_user_out.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
