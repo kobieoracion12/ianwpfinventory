@@ -94,17 +94,15 @@
 
                             <!-- Right Navigation -->
                             <Grid Grid.Column="1">
-                                <Grid>
-                                    <Viewbox Stretch="Uniform" VerticalAlignment="Top">
-                                        <Canvas Width="170" Height="20">
-                                            <StackPanel Orientation="Horizontal" Canvas.Right="0">
-                                                <TextBlock Text="Stock Out #:" TextAlignment="Left" FontSize="7" FontFamily="Segoe UI Regular" Margin="0 7 5 10"/>
-                                                <TextBlock x:Name="orderNo" Text="00000000000" TextAlignment="Left" FontSize="7" FontFamily="Segoe UI Regular" Margin="0 7 10 10"/>
-                                                <TextBox Text="{Binding SelectedItem.stockinItem, ElementName=listViewinVoice}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
-                                            </StackPanel>
-                                        </Canvas>
-                                    </Viewbox>
-                                </Grid>
+                                <Viewbox Stretch="Uniform" VerticalAlignment="Center">
+                                    <Canvas Width="170" Height="20">
+                                        <StackPanel Orientation="Horizontal" Canvas.Right="0">
+                                            <TextBlock Text="Stock Out #:" TextAlignment="Left" FontSize="7" FontFamily="Segoe UI Regular" Margin="0 7 5 10"/>
+                                            <TextBlock x:Name="orderNo" Text="00000000000" TextAlignment="Left" FontSize="7" FontFamily="Segoe UI Regular" Margin="0 7 10 10"/>
+                                        </StackPanel>
+                                        <TextBox Text="{Binding SelectedItem.stockinItem, ElementName=listViewinVoice}" x:Name="tbPrdName" FontFamily="Microsoft Tai Le" FontSize="15" Height="30" Background="#edeff3" IsEnabled="False" Visibility="Hidden" />
+                                    </Canvas>
+                                </Viewbox>
                             </Grid>
                         </Grid>
                     </Grid>
