@@ -574,9 +574,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Export Button
         private void exportButton_Click(object sender, RoutedEventArgs e)
         {
-            report_stockinhistory rptstockout = new report_stockinhistory(this, reportToPrint);
+            /*report_stockinhistory rptstockout = new report_stockinhistory(this, reportToPrint);
             rptstockout.printPreview();
-            rptstockout.ShowDialog();
+            rptstockout.ShowDialog();*/
         }
 
     }

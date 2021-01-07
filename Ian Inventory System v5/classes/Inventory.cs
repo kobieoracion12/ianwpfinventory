@@ -17,7 +17,7 @@ namespace NavigationDrawerPopUpMenu2.classes
         public double prodRP { get; set; }
         public double prodVAT { get; set; }
         public int prodBought { get; set; }
-        public DateTime prodDOA { get; set; }
+        public string prodDOA { get; set; }
         public string prodCategory { get; set; }
     }
 }

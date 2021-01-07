@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using MySql.Data.MySqlClient;
+using NavigationDrawerPopUpMenu2.classes;
+using NavigationDrawerPopUpMenu2.usercontrols;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +15,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
-using Microsoft.Reporting.WinForms;
-using NavigationDrawerPopUpMenu2.usercontrols;
-using NavigationDrawerPopUpMenu2.classes;
 
 namespace NavigationDrawerPopUpMenu2.reports
 {
     /// <summary>
-    /// Interaction logic for report_stockinhistory.xaml
+    /// Interaction logic for report_stockouthistory.xaml
     /// </summary>
-    public partial class report_stockinhistory : Window
+    public partial class report_stockouthistory : Window
     {
         Store store = new Store();
         Database conn = new Database();
-        usc_stock_history usc_stockout;
+        usc_stockout_history usc_stockout;
         string query = "";
         string reportToPrint;
-        public report_stockinhistory(usc_stock_history usc_stockout, string report1)
+        public report_stockouthistory(usc_stockout_history usc_stockout, string report1)
         {
             InitializeComponent();
             this.usc_stockout = usc_stockout;
@@ -51,38 +51,40 @@ namespace NavigationDrawerPopUpMenu2.reports
 
                     ReportDataSource rptDataSource;
 
-                    this.ReportViewerStockInHistory.LocalReport.DataSources.Clear();
-                    ReportViewerStockInHistory.LocalReport.ReportEmbeddedResource = "NavigationDrawerPopUpMenu2.Reportstockinhistory.rdlc";
+                    this.ReportViewerStockOutHistory.LocalReport.DataSources.Clear();
+                    ReportViewerStockOutHistory.LocalReport.ReportEmbeddedResource = "NavigationDrawerPopUpMenu2.ReportstockoutHistory.rdlc";
                     DataSet1 ds = new DataSet1();
 
                     conn.Open(); // Open Connection
                     if (reportToPrint == "Select")
                     {
-                        query = "SELECT * FROM stock_in WHERE stockinStatus = 'Stock In' ORDER BY stockinItem ASC";
+                        query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutItem ASC";
                     }
                     else if (reportToPrint == "Sort")
                     {
-                        query = "SELECT * FROM stock_in WHERE stockinDate BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY stockinItem ASC "; // Sort base on the query
+                        query = "SELECT * FROM stock_out WHERE stockoutDate BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY stockoutItem ASC "; // Sort base on the query
                     }
 
                     MySqlDataAdapter da = conn.DataAdapter(query);
-                    da.Fill(ds.Tables["dtStockin"]);
+                    da.Fill(ds.Tables["dtStockOut"]);
                     conn.Close(); // Close Conn
 
-                    rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtStockin"]);
-                    this.ReportViewerStockInHistory.LocalReport.DataSources.Add(rptDataSource);
-                    ReportViewerStockInHistory.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                    ReportParameter pStore = new ReportParameter("pStore", store.storeName(conn));
+                    ReportParameter pAddress = new ReportParameter("pAddress", store.storeAddress(conn));
 
-                    ReportViewerStockInHistory.ZoomMode = ZoomMode.Percent;
-                    ReportViewerStockInHistory.ZoomPercent = 100;
+                    rptDataSource = new ReportDataSource("DataSet1", ds.Tables["dtStockOut"]);
+                    this.ReportViewerStockOutHistory.LocalReport.DataSources.Add(rptDataSource);
+                    ReportViewerStockOutHistory.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+
+                    ReportViewerStockOutHistory.ZoomMode = ZoomMode.Percent;
+                    ReportViewerStockOutHistory.ZoomPercent = 100;
                 }
-                }
-                catch (Exception x)
-                {
-                    conn.Close();
-                    MessageBox.Show(x.Message + ", Try again later", "Stock In Report Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+            }
+            catch (Exception x)
+            {
+                conn.Close();
+                MessageBox.Show(x.Message + ", Try again later", "Stock In Report Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }
-
+}

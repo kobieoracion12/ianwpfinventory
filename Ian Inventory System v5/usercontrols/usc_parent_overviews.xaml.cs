@@ -374,7 +374,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                             double prodRP = Convert.ToDouble(reader["prodRP"]);
                             double prodVAT = Convert.ToDouble(reader["prodVAT"]);
                             int prodBought = Convert.ToInt32(reader["prodBought"]);
-                            DateTime prodDOA = DateTime.Parse(reader["prodDOA"].ToString());
+                            string prodDOA = reader["prodDOA"].ToString();
                             string prodCategory = reader["prodCategory"].ToString();
 
 
@@ -402,7 +402,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                          ws.Cells[i, 6] = item.prodRP.ToString();
                          ws.Cells[i, 7] = item.prodVAT.ToString();
                          ws.Cells[i, 8] = item.prodCategory;
-                         ws.Cells[i, 9] = item.prodDOA.ToString();
+                         ws.Cells[i, 9] = item.prodDOA;
 
                         i++;
 

@@ -23,6 +23,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
     public partial class usc_stock_history : UserControl
     {
         Database conn = new Database();
+        string reportToPrint = "Select";
         public usc_stock_history()
         {
             InitializeComponent();
@@ -121,6 +122,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void sortButton_Click(object sender, RoutedEventArgs e)
         {
             string doaFrom, doaTo, status;
+            reportToPrint = "Sort";
             // Init selected dates from calendar
             DateTime? selectedDateFrom = sortDOAfrom.SelectedDate;
             DateTime? selectedDateTo = sortDOAto.SelectedDate;
@@ -162,6 +164,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void refreshItem_Click(object sender, RoutedEventArgs e)
         {
             loadDataForRecord();
+            reportToPrint = "Select";
             sortStatus.Text = "Select";
         }
 
@@ -207,7 +210,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             else
             {   // Delete the product
-                if (MessageBox.Show("Are you sure you want to delete this product?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this data?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     deleteProductItem(); // If Yes then Delete the product
                     loadDataForRecord();
@@ -231,7 +234,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 conn.execute(); // Execute
 
 
-                MessageBox.Show("Successfully Removed"); // Show Dialog Succes
+                MessageBox.Show("Successfully Removed", "Removed", MessageBoxButton.OK, MessageBoxImage.Information); // Show Dialog Succes
 
                 conn.Close(); // Close Connection
 
@@ -242,6 +245,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 MessageBox.Show(ex.Message);
                 conn.Close();
             }
+        }
+
+        // Export Button
+        private void exportButton_Click(object sender, RoutedEventArgs e)
+        {
+            report_stockinhistory rptstockout = new report_stockinhistory(this, reportToPrint);
+            rptstockout.printPreview();
+            rptstockout.ShowDialog();
         }
     }
 }

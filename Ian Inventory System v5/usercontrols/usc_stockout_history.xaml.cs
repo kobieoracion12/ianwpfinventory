@@ -17,12 +17,17 @@ using System.Data;
 using NavigationDrawerPopUpMenu2.classes;
 using NavigationDrawerPopUpMenu2.windows;
 using NavigationDrawerPopUpMenu2.reports;
+using Microsoft.Win32;
+using Microsoft.Office.Interop.Excel;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
     public partial class usc_stockout_history : UserControl
     {
         Database conn = new Database();
+        Stock_Out stockout = new Stock_Out();
+        List<Stock_Out> myStockout = new List<Stock_Out>();
+        string reportToPrint = "Select";
         public usc_stockout_history()
         {
             InitializeComponent();
@@ -46,7 +51,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("stock_out");
+                System.Data.DataTable dt = new System.Data.DataTable("stock_out");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewRecords.ItemsSource = dt.DefaultView;
@@ -121,6 +126,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void sortButton_Click(object sender, RoutedEventArgs e)
         {
             string doaFrom, doaTo, status;
+            reportToPrint = "Sort";
             // Init selected dates from calendar
             DateTime? selectedDateFrom = sortDOAfrom.SelectedDate;
             DateTime? selectedDateTo = sortDOAto.SelectedDate;
@@ -162,6 +168,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         private void refreshItem_Click(object sender, RoutedEventArgs e)
         {
             loadDataForRecord();
+            reportToPrint = "Select";
             sortStatus.Text = "Select";
         }
 
@@ -208,7 +215,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             else
             {   // Delete the product
-                if (MessageBox.Show("Are you sure you want to delete this product?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this data?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     deleteProductItem(); // If Yes then Delete the product
                     loadDataForRecord();
@@ -232,7 +239,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 conn.execute(); // Execute
 
 
-                MessageBox.Show("Successfully Removed"); // Show Dialog Succes
+                MessageBox.Show("Successfully Removed", "Removed", MessageBoxButton.OK, MessageBoxImage.Information); // Show Dialog Succes
 
                 conn.Close(); // Close Connection
 
@@ -244,5 +251,145 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 conn.Close();
             }
         }
+
+        // Export Button
+        private void exportButton_Click(object sender, RoutedEventArgs e)
+        {
+            report_stockouthistory rptstockout = new report_stockouthistory(this, reportToPrint);
+            rptstockout.printPreview();
+            rptstockout.ShowDialog();
+        }
+
+        // Export Data to Excel
+        private void exportDataToExcel()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel WorkBook|*.xls";
+            sfd.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); // Save to MyDocuments
+            try
+            {
+                if (sfd.ShowDialog() == true)
+                {
+                    Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                    Workbook wb = app.Workbooks.Add(XlSheetType.xlWorksheet);
+                    Worksheet ws = (Worksheet)app.ActiveSheet;
+                    app.Visible = false;
+                    ws.Cells[1, 1] = "Stock out #";
+                    ws.Cells[1, 2] = "Item No";
+                    ws.Cells[1, 3] = "Item";
+                    //ws.Cells[1, 4] = "Date of Purchase";
+                    ws.Cells[1, 4] = "Quantity";
+                    ws.Cells[1, 5] = "Price List";
+                    ws.Cells[1, 6] = "Date";
+                    int i = 2;
+
+                    // Start a Query
+                    string sql = "SELECT * FROM stock_out";
+                    conn.query(sql);
+                    conn.Open();
+                    MySqlDataReader reader = conn.read();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string stockoutTransNo = reader["stockoutTransNo"].ToString();
+                            string stockoutNo = reader["stockoutNo"].ToString();
+                            string stockoutItem = reader["stockoutItem"].ToString();
+                            string stockoutQty = reader["stockoutQty"].ToString();
+                            string stockoutPrice = reader["stockoutPrice"].ToString();
+                            string stockoutDate = reader["stockoutDate"].ToString();
+
+
+                            myStockout.Add(new Stock_Out { stockoutTransNo = stockoutTransNo, stockoutNo = stockoutNo, stockoutItem = stockoutItem, stockoutQty = stockoutQty, stockoutPrice = stockoutPrice, stockoutDate = stockoutDate });
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Rows", "Notice", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+
+                    reader.Close();
+                    reader.Dispose();
+                    conn.Close();
+
+                    // End of Query
+
+
+                    //string das = listViewSales.Items[0].ToString();
+                    foreach (Stock_Out item in myStockout)
+                    {
+                        //ws.Cells[i, 1] = (string)((DataRowView)listViewSales.SelectedItems[0])["refNo"];
+                        ws.Cells[i, 1] = item.stockoutTransNo;
+                        ws.Cells[i, 2] = item.stockoutNo;
+                        ws.Cells[i, 3] = item.stockoutItem;
+                        ws.Cells[i, 4] = item.stockoutQty;
+                        ws.Cells[i, 5] = item.stockoutPrice;
+                        ws.Cells[i, 6] = item.stockoutDate;
+
+                        i++;
+
+                    } // Closing of Foreach
+
+                    wb.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing, true, false, XlSaveAsAccessMode.xlNoChange, XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing);
+                    app.Quit();
+                    myStockout.Clear(); // Clear All Items
+                    MessageBox.Show("Your data has been successfully exported as an excel file", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                } // Closing of IF Statement
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Delete All From Database
+        private void ClearAllDataFromDatabase()
+        {
+            string sql = "DELETE FROM stock_out";
+            conn.query(sql);
+
+            try
+            {
+                conn.Open();
+                conn.cmd().Prepare();
+                conn.execute();
+                MessageBox.Show("All data has been removed successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Reset Button
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult msg = MessageBox.Show("Do you want to export all the data before clearing them all?", "Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                // If Yes then Delete the Data
+                exportDataToExcel();
+                ClearAllDataFromDatabase();
+                loadDataForRecord();
+            }
+            else if (msg == MessageBoxResult.No)
+            {
+                MessageBoxResult deleteMsg = MessageBox.Show("This will clear all the data without exporting a file, Are you sure?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (deleteMsg == MessageBoxResult.Yes)
+                {
+                    // Delete the Data
+                    ClearAllDataFromDatabase();
+                    loadDataForRecord();
+                }
+            }
+            else if (msg == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+            else { return; }
+        }
+
     }
 }
