@@ -20,10 +20,10 @@ using NavigationDrawerPopUpMenu2.reports;
 
 namespace NavigationDrawerPopUpMenu2.usercontrols
 {
-    public partial class usc_stock_history : UserControl
+    public partial class usc_stockout_history : UserControl
     {
         Database conn = new Database();
-        public usc_stock_history()
+        public usc_stockout_history()
         {
             InitializeComponent();
             loadDataForRecord();
@@ -38,7 +38,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM stock_in WHERE stockinStatus = 'Stock In' ORDER BY stockinDate DESC";
+                string query = "SELECT * FROM stock_out WHERE stockoutStatus = 'Stock Out' ORDER BY stockoutDate DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -46,7 +46,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                DataTable dt = new DataTable("stock_in");
+                DataTable dt = new DataTable("stock_out");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewRecords.ItemsSource = dt.DefaultView;
@@ -68,7 +68,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             try
             {
                 conn.Open();
-                string lastDate = "SELECT stockinDate FROM stock_in ORDER BY stockinDate ASC LIMIT 1";
+                string lastDate = "SELECT stockoutDate FROM stock_out ORDER BY stockoutDate ASC LIMIT 1";
                 conn.query(lastDate);
                 conn.execute();
                 MySqlDataReader drd = conn.read();
@@ -96,7 +96,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             conn.Open();
             try
             {
-                string query = "SELECT DISTINCT stockinStatus FROM stock_in ORDER BY stockinStatus ASC";
+                string query = "SELECT DISTINCT stockoutStatus FROM stock_out ORDER BY stockoutStatus ASC";
                 conn.query(query);
                 conn.execute();
                 MySqlDataReader drd = conn.read();
@@ -139,11 +139,11 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 try
                 {
                     conn.Open(); // Open Connection
-                    string query = "SELECT * FROM stock_in WHERE stockinStatus LIKE '%" + status + "%' AND stockinDate BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY stockinItem ASC "; // Sort base on the query
+                    string query = "SELECT * FROM stock_out WHERE stockoutStatus LIKE '%" + status + "%' AND stockoutDate BETWEEN '" + doaFrom + "' AND '" + doaTo + "' ORDER BY stockoutItem ASC "; // Sort base on the query
                     conn.query(query);  // Command Database
                     conn.execute(); // Execute Non Query
                     MySqlDataAdapter adapter = conn.adapter(); // adapter
-                    System.Data.DataTable dt = new System.Data.DataTable("stock_in"); // Make a datatable reference
+                    System.Data.DataTable dt = new System.Data.DataTable("stock_out"); // Make a datatable reference
                     adapter.Fill(dt);  // Fill the datatable with data
                     listViewRecords.ItemsSource = dt.DefaultView;
                     adapter.Update(dt);
@@ -166,7 +166,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         }
 
         // Search Function
-        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbSearch_SelectionChanged(object sender, RoutedEventArgs e)
         {
             conn.Close(); // Close the connection first
             try
@@ -174,7 +174,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Open Connection 
                 conn.Open();
                 // Query Statement
-                string query = "SELECT * FROM stock_in WHERE stockinPcode LIKE '%" + tbSearch.Text + "%' OR stockinItem LIKE '%" + tbSearch.Text + "%' OR stockinPrice LIKE '%" + tbSearch.Text + "%' OR stockinStatus LIKE '%" + tbSearch.Text + "%' ORDER BY stockinItem ASC";
+                string query = "SELECT * FROM stock_out WHERE stockoutTransNo LIKE '%" + tbSearch.Text + "%' OR stockoutNo LIKE '%" + tbSearch.Text + "%' OR stockoutItem LIKE '%" + tbSearch.Text + "%' OR stockoutPrice LIKE '%" + tbSearch.Text + "%' OR stockoutStatus LIKE '%" + tbSearch.Text + "%' ORDER BY stockoutItem ASC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -182,7 +182,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 // Adapter
                 MySqlDataAdapter adapter = conn.adapter();
                 //  Datatable
-                System.Data.DataTable dt = new System.Data.DataTable("datainventory");
+                System.Data.DataTable dt = new System.Data.DataTable("stock_out");
                 // Fill the datatable
                 adapter.Fill(dt);
                 listViewRecords.ItemsSource = dt.DefaultView;
@@ -195,6 +195,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
+                conn.Close();
             }
         }
 
@@ -221,7 +222,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         {
             conn.Close();
             // Delete sql statement
-            string sql = "DELETE FROM stock_in WHERE stockinId = @id";
+            string sql = "DELETE FROM stock_out WHERE stockoutId = @id";
             conn.query(sql); // Command Database
             try
             {

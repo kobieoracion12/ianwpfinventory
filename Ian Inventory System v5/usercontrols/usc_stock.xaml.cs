@@ -31,11 +31,6 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
-                case "stockInventory":
-                    usc = new usc_stock_history();
-                    mainSubColumn.Children.Add(usc);
-                    break;
-
                 case "stockStockin":
                     usc = new usc_user_in();
                     mainSubColumn.Children.Add(usc);
@@ -43,6 +38,16 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
                 case "stockStockOut":
                     usc = new usc_user_out();
+                    mainSubColumn.Children.Add(usc);
+                    break;
+
+                case "stockinInventory":
+                    usc = new usc_stock_history();
+                    mainSubColumn.Children.Add(usc);
+                    break;
+
+                case "stockoutInventory":
+                    usc = new usc_stockout_history();
                     mainSubColumn.Children.Add(usc);
                     break;
             }

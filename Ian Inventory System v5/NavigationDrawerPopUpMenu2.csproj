@@ -206,6 +206,9 @@
     <Compile Include="usercontrols\usc_stockout.xaml.cs">
       <DependentUpon>usc_stockout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="usercontrols\usc_stockout_history.xaml.cs">
+      <DependentUpon>usc_stockout_history.xaml</DependentUpon>
+    </Compile>
     <Compile Include="usercontrols\usc_stockreturn.xaml.cs">
       <DependentUpon>usc_stockreturn.xaml</DependentUpon>
     </Compile>
@@ -444,6 +447,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="usercontrols\usc_stockout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usercontrols\usc_stockout_history.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

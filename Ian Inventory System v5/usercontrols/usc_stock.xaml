@@ -50,17 +50,6 @@
                         <Viewbox Stretch="Uniform" VerticalAlignment="Top" HorizontalAlignment="Center">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <ListView x:Name="ListViewMenu" Foreground="#FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
-                                    <!-- Overview -->
-                                    <ListViewItem x:Name="stockInventory" Height="35" HorizontalAlignment="Center">
-                                        <StackPanel Orientation="Horizontal" Width="70">
-                                            <materialDesign:PackIcon Kind="History" Width="12" />
-                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Text="History" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
-                                                <TextBlock Text="Review Stock History" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </ListViewItem>
-
                                     <!-- Add Stocks-->
                                     <ListViewItem x:Name="stockStockin" Height="35" HorizontalAlignment="Center">
                                         <StackPanel Orientation="Horizontal" Width="70">
@@ -82,6 +71,29 @@
                                             </StackPanel>
                                         </StackPanel>
                                     </ListViewItem>
+
+                                    <!-- Stockin History -->
+                                    <ListViewItem x:Name="stockinInventory" Height="35" HorizontalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="History" Width="12" />
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Stock In History" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Review Stock History" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListViewItem>
+
+                                    <!-- Stockin History -->
+                                    <ListViewItem x:Name="stockoutInventory" Height="35" HorizontalAlignment="Center">
+                                        <StackPanel Orientation="Horizontal" Width="70">
+                                            <materialDesign:PackIcon Kind="History" Width="12" />
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Text="Stockout History" FontWeight="SemiBold" TextAlignment="Left" FontSize="7" Margin="5 0 5 0"/>
+                                                <TextBlock Text="Review Stock History" Foreground="#777A80" FontWeight="Regular" TextAlignment="Left" FontSize="4" Margin="5 0 5 0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </ListViewItem>
+
                                 </ListView>
                             </StackPanel>
                         </Viewbox>
