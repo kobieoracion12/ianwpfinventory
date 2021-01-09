@@ -131,6 +131,7 @@
     <Compile Include="classes\Refund.cs" />
     <Compile Include="classes\Sales.cs" />
     <Compile Include="classes\Settings.cs" />
+    <Compile Include="classes\Stock In.cs" />
     <Compile Include="classes\Stock Out.cs" />
     <Compile Include="classes\Stockout.cs" />
     <Compile Include="classes\StockReturn.cs" />
