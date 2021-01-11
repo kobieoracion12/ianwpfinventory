@@ -155,6 +155,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             catch (Exception)
             {
+                conn.Close();
                 MessageBox.Show("Something went wrong returning your item, try again later");
             }
         }
@@ -184,6 +185,7 @@ namespace NavigationDrawerPopUpMenu2.windows
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
