@@ -56,6 +56,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -81,6 +82,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -106,6 +108,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -130,6 +133,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -160,6 +164,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -216,6 +221,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -308,6 +314,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
             } catch (Exception)
             {
+                conn.Close();
                 MessageBox.Show("Failed to return item, try again later", "Stock Return", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
                     

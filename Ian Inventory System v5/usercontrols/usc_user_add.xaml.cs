@@ -58,6 +58,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception x)
                 {
+                    conn.Close();
                     MessageBox.Show(x.Message);
                 }
             }

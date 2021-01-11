@@ -503,6 +503,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception ex)
                 {
+                    conn.Close();
                     MessageBox.Show("Saving Failed \n" + ex.Message, "Stock Out", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }

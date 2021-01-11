@@ -61,6 +61,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message);
             }
         }
@@ -94,6 +95,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message);
             }
         }
@@ -130,6 +132,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception ex)
                 {
+                    conn.Close();
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -231,6 +234,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message);
             }
         }

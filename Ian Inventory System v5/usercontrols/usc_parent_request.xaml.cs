@@ -49,6 +49,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -80,6 +81,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -103,6 +105,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
 
@@ -139,11 +142,14 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         MessageBox.Show("Error!");
                         return;
                     }
+                    dr.Close();
+                    dr.Dispose();
                     conn.Close();
                 }
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -186,6 +192,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
 
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message);
             }
         }

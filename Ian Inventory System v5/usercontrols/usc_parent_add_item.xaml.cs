@@ -60,6 +60,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception x)
                 {
+                    con.Close();
                     MessageBox.Show(x.Message, "Add Item", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
@@ -154,6 +155,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                con.Close();
                 MessageBox.Show(x.Message, "Brands", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 
@@ -181,6 +183,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                con.Close();
                 MessageBox.Show(x.Message, "Category", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
 

@@ -70,6 +70,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception ex)
             {
+                conn.Close();
                 MessageBox.Show(ex.Message);
             }
         }
@@ -96,6 +97,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
 
@@ -123,6 +125,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
 
@@ -203,6 +206,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             {
                 // Ops, maybe the id doesn't exists ?
                 MessageBox.Show(ex.Message);
+                conn.Close();
             }
         }
 
@@ -230,6 +234,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -276,6 +281,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception x)
                 {
+                    conn.Close();
                     MessageBox.Show(x.Message);
                 }
             }
@@ -319,6 +325,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             catch (Exception x)
             {
+                conn.Close();
                 MessageBox.Show(x.Message);
             }
         }
@@ -416,7 +423,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
              }
              catch (Exception ex)
              {
-                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                conn.Close();
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
              }
          }
 
@@ -437,7 +445,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
              }
              catch (Exception ex)
              {
-                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                conn.Close();
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
              }
          }
 

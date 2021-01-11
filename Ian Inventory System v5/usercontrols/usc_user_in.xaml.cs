@@ -92,7 +92,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 listViewinVoice.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
                 adapter.Dispose();
-
+         
 
             }
             catch (Exception ex)
@@ -466,6 +466,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 }
                 catch (Exception ex)
                 {
+                    conn.Close();
                     MessageBox.Show("Saving Failed \n" + ex.Message, "Stock Out", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
