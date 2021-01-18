@@ -92,9 +92,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             }
             else
             {   // If not empty then proceed to edit window
-                long id = Convert.ToInt64(prdId); // Product Id No. to be pass to other form
-                window_editItem editItemWindow = new window_editItem(id); // pass the parameter to the next window
-                editItemWindow.Show(); // Open Edit Window}
+                //long id = Convert.ToInt64(prdId); // Product Id No. to be pass to other form
+               // window_editItem editItemWindow = new window_editItem(id); // pass the parameter to the next window
+                //editItemWindow.Show(); // Open Edit Window}
             }
         }
 

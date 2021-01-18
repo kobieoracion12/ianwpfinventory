@@ -29,13 +29,13 @@ namespace NavigationDrawerPopUpMenu2.windows
         Database conn = new Database(); // Init Database
 
         // Create a constructor overload to hold and pass the data
-        public window_editItem(long value)
+        public window_editItem(string value)
         {
             InitializeComponent();
             this.Value = value; // Store the passed value to the variable value
         }
 
-        public long Value { get; set; } // Create a variable to store the value
+        public string Value { get; set; } // Create a variable to store the value
 
         // When the window loads
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -50,7 +50,7 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Select Data the Edit
         public void catchData()
         {
-            long prdNo = Convert.ToInt64(editProdNo.Text); // Product Number
+            string prdNo = editProdNo.Text; // Product Number
             string sql = "SELECT prodNo, prodItem, prodBrand, prodSRP, prodRP, prodVAT, prodCategory FROM datainventory WHERE prodNo = '" + prdNo + "'"; // Sql Statement 
             conn.query(sql); // Command Database
             
