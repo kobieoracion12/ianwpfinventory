@@ -344,6 +344,7 @@ namespace NavigationDrawerPopUpMenu2.windows
 
             if (e.Key == Key.Return)
             {
+                pay_discount.Text = "0";
                 holdOrder.IsEnabled = false;
                 conn.Close();
                 string search = entrySearch.Text;

@@ -74,7 +74,7 @@ namespace NavigationDrawerPopUpMenu2.windows
                 // Open Connection
                 conn.Open();
                 // Query Statement
-                string query = "SELECT refNo, salesNo, salesItem, salesQty, salesTotal, salesDate FROM datasalesinventory WHERE salesTransNo = '" + transNumber + "' ORDER BY refNo DESC";
+                string query = "SELECT refNo, salesNo, salesItem, salesQty, salesTotal, salesDate FROM datasalesinventory WHERE salesTransNo LIKE '%" + transNumber + "%' OR salesNo LIKE '%" + searchTrans.Text + "%' OR salesItem LIKE '%" + searchTrans.Text + "%' ORDER BY refNo DESC";
                 // Mysql Command
                 conn.query(query);
                 // Execute
@@ -138,58 +138,62 @@ namespace NavigationDrawerPopUpMenu2.windows
         // Refund Button
         private void itemRefund_Click(object sender, RoutedEventArgs e)
         {
-            try
+            MessageBoxResult refundMsg= MessageBox.Show("Are you sure?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (refundMsg == MessageBoxResult.Yes)
             {
-                string qtyCheck = "SELECT prodQty FROM datainventory WHERE prodNo = '" + slcNo.Text + "'";
-                conn.query(qtyCheck);
-
-                conn.Open();
-                MySqlDataReader reader = conn.read();
-                if (reader.Read())
+                try
                 {
-                    string[] row = { reader.GetString(0) };
-                    curQty.Text = row[0];
-                    reader.Close();
+                    string qtyCheck = "SELECT prodQty FROM datainventory WHERE prodNo = '" + slcNo.Text + "'";
+                    conn.query(qtyCheck);
 
-                    if (curQty.Text.Length > 0)
+                    conn.Open();
+                    MySqlDataReader reader = conn.read();
+                    if (reader.Read())
                     {
-                        int current, refund, toStock;
-                        current = int.Parse(curQty.Text);
-                        refund = int.Parse(slcQty.Text);
+                        string[] row = { reader.GetString(0) };
+                        curQty.Text = row[0];
+                        reader.Close();
 
-                        toStock = current + refund;
-
-                        string restock = "UPDATE datainventory SET prodQty = @Qty WHERE prodNo = @no";
-                        conn.query(restock);
-                        try
+                        if (curQty.Text.Length > 0)
                         {
-                            conn.bind("@Qty", toStock);
-                            conn.bind("@no", slcNo.Text);
+                            int current, refund, toStock;
+                            current = int.Parse(curQty.Text);
+                            refund = int.Parse(slcQty.Text);
 
-                            var check = conn.execute();
-                            if (check == 1)
+                            toStock = current + refund;
+
+                            string restock = "UPDATE datainventory SET prodQty = @Qty WHERE prodNo = @no";
+                            conn.query(restock);
+                            try
                             {
-                                MessageBox.Show("Refund Success!");
-                                updateStock();
+                                conn.bind("@Qty", toStock);
+                                conn.bind("@no", slcNo.Text);
+
+                                var check = conn.execute();
+                                if (check == 1)
+                                {
+                                    MessageBox.Show("Refunded Successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    updateStock();
+                                }
+                            }
+                            catch (Exception x)
+                            {
+                                MessageBox.Show(x.Message);
+                                conn.Close();
                             }
                         }
-                        catch (Exception x)
-                        {
-                            MessageBox.Show(x.Message);
-                            conn.Close();
-                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not Found");
+                        conn.Close();
                     }
                 }
-                else
+                catch (Exception x)
                 {
-                    MessageBox.Show("Item not Found");
+                    MessageBox.Show(x.Message);
                     conn.Close();
                 }
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-                conn.Close();
             }
         }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2021 at 02:09 PM
+-- Generation Time: Jan 21, 2021 at 08:12 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -221,7 +221,7 @@ INSERT INTO `datainventory` (`prodId`, `prodNo`, `prodItem`, `prodBrand`, `prodQ
 (75, '4902430426464', 'Downy Expert AntiBac', 'Procter & Gamble Philippines INC.', 116, 75, 85, 0.08, 0, '2020-07-12', 'Cleaners '),
 (76, '4902430495141', 'Safeguard Floral Pink with Aloe 130g', 'Safeguard', 116, 45, 41, 0.4, 0, '2020-12-08', 'Personal Care'),
 (77, '4902430583169', 'Ariel Sunrise Fresh', 'Procter & Gamble Philippines INC.', 116, 60, 70, 0.07, 0, '2020-07-12', 'Cleaners '),
-(90, '501', 'Talong', 'Argentina', 42, 50, 60, 0.5, 20, '2020-12-28', 'Fruits and Vegetables'),
+(90, '501', 'Talong', 'Argentina', 62, 50, 60, 0.5, 20, '2020-12-28', 'Fruits and Vegetables'),
 (4, '54028367911', 'Yakult Probiotic Drink 5 x 80mL', 'Yakult Philippines INC.', 75, 47, 57, 0.5, 22, '2020-12-05', 'Beverages'),
 (88, '6969', 'Chicken Longganisa', 'Tender Juicy', 5, 18, 21, 2, 10, '2020-12-09', 'Frozen Foods'),
 (87, '700', 'Chicken Nuggets', 'Maggi', 379, 65, 60, 2, 5, '2020-12-20', 'Frozen Foods'),
@@ -240,7 +240,8 @@ INSERT INTO `datainventory` (`prodId`, `prodNo`, `prodItem`, `prodBrand`, `prodQ
 (82, '8992741942959', 'Yupi Strawberry Kiss', 'Yupi', 116, 100, 120, 1.2, 1, '2020-11-27', 'Sweets'),
 (83, '8992741942973', 'Yupi Sour Iced Cola', 'Yupi', 116, 100, 120, 1.2, 1, '2020-11-27', 'Sweets'),
 (84, '8993175537124', 'Richeese Cheese Wafer', 'Enerlife Philippines INC.', 116, 88, 98, 0.9, 0, '2020-07-23', 'Snacks'),
-(85, '8993175559890', 'Richoco Chocolate Wafer', 'Enerlife Philippines INC.', 116, 88, 98, 0.9, 0, '2020-07-26', 'Snacks');
+(85, '8993175559890', 'Richoco Chocolate Wafer', 'Enerlife Philippines INC.', 116, 88, 98, 0.9, 0, '2020-07-26', 'Snacks'),
+(91, 'FC6-6661-000', 'Test Item', 'Test Brand', 130, 50, 60, 1.5, 0, '2021-01-18', 'Test Category');
 
 -- --------------------------------------------------------
 
@@ -272,7 +273,7 @@ INSERT INTO `datasalesinventory` (`salesTransNo`, `refNo`, `salesNo`, `salesItem
 (617083413554, 1194, '700', 'Chicken Nuggets', 'Maggi', 65, 60, 6, 3, 180, '2020-12-28 09:03:24', 'Sold', 'Frozen Foods'),
 (617083413554, 1195, '6969', 'Chicken Longganisa', 'Tender Juicy', 18, 21, 2, 10, 210, '2020-12-28 09:03:24', 'Sold', 'Frozen Foods'),
 (436127156077, 1196, '700', 'Chicken Nuggets', 'Maggi', 65, 60, 4, 2, 120, '2020-12-28 09:03:52', 'Sold', 'Frozen Foods'),
-(227778143860, 1197, '501', 'Talong', 'Argentina', 50, 60, 0.5, 20, 1200, '2020-12-28 12:47:38', 'Sold', 'Fruits and Vegetables'),
+(227778143860, 1197, '501', 'Talong', 'Argentina', 50, 60, 0.5, 20, 1200, '2020-12-28 12:47:38', 'Refunded', 'Fruits and Vegetables'),
 (47848223837, 1199, '501', 'Talong', 'Argentina', 50, 60, 0.5, 1, 60, '2020-12-28 13:36:05', 'Pending', 'Fruits and Vegetables');
 
 -- --------------------------------------------------------
@@ -447,6 +448,13 @@ CREATE TABLE `stock_in` (
   `stockinBy` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `stock_in`
+--
+
+INSERT INTO `stock_in` (`stockinRefNo`, `stockinPcode`, `stockinItem`, `stockinQty`, `stockinPrice`, `stockinDate`, `stockinId`, `stockinStatus`, `stockinBy`) VALUES
+(631335161712, 'FC6-6661-000', 'Test Item', 30, 60, '2021-01-18 17:00:28', 45, 'Stock In', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -612,13 +620,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `datainventory`
 --
 ALTER TABLE `datainventory`
-  MODIFY `prodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `prodId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `datasalesinventory`
 --
 ALTER TABLE `datasalesinventory`
-  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1201;
+  MODIFY `refNo` bigint(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1208;
 
 --
 -- AUTO_INCREMENT for table `discount`
@@ -636,7 +644,7 @@ ALTER TABLE `sales_preview`
 -- AUTO_INCREMENT for table `stock_in`
 --
 ALTER TABLE `stock_in`
-  MODIFY `stockinId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `stockinId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `stock_out`
