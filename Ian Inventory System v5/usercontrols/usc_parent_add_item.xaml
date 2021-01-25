@@ -76,8 +76,8 @@
                                         <Label Content="Quantity (To Stock)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
                                         <TextBox x:Name="addQty" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" PreviewTextInput="TextBox_OnPreviewTextInput" />
 
-                                        <Label Content="Sugested Retail Price (SRP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
-                                        <TextBox x:Name="addSRP" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" PreviewTextInput="TextBoxSRP_OnPreviewTextInput" />
+                                        <Label Content="Sugested Retail Price (SRP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>
+                                        <TextBox x:Name="addSRP" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" PreviewTextInput="TextBoxSRP_OnPreviewTextInput" Visibility="Hidden"/>
 
                                         <Label Content="Expiration Date" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>
                                         <StackPanel Orientation="Horizontal">
@@ -92,7 +92,7 @@
                             <Grid>
                                 <Viewbox Stretch="Uniform">
                                     <StackPanel Orientation="Vertical">
-                                        <Label Content="Price" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
+                                        <Label Content="Pricelist" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 10 0 0"/>
                                         <TextBox x:Name="addRP" HorizontalAlignment="Stretch" FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" Width="360" PreviewTextInput="TextBoxPrice_OnPreviewTextInput" />
 
                                         <StackPanel Orientation="Vertical">

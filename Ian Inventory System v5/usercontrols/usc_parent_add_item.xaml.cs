@@ -83,7 +83,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Submit Button
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (checkBarcode.Text == "" || addItem.Text == "" || addBrand.Text == "" || addQty.Text == "" || addSRP.Text == "" || addRP.Text == "" || addVAT.Text == "" || addDOA.Text == "")
+            if (checkBarcode.Text == "" || addItem.Text == "" || addBrand.Text == "" || addQty.Text == "" ||  addRP.Text == "" || addVAT.Text == "" || addDOA.Text == "")
             {
                 MessageBox.Show("Please Complete the Form", "Add Item", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -92,6 +92,9 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                 try
                 {
                     double getVAT = (double.Parse(addVAT.Text) / 100);
+                    double vat = double.Parse(addVAT.Text);
+                    double getRP;
+                    double rp = double.Parse(addRP.Text);
 
                     if (getVAT > 100 || getVAT < 0)
                     {
@@ -99,6 +102,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     }
                     else
                     {
+                        getRP = ((rp / 100) * vat) + rp;
                         con.Open();
                         string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodDOA, prodCategory) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pv, @pdoa, @categ)";
                         con.query(itemInsert);
@@ -107,8 +111,8 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                         con.bind("@pb", addBrand.Text);
                         con.bind("@py", addQty.Text);
                         con.bind("@pp", addSRP.Text);
-                        con.bind("@pq", addRP.Text);
-                        con.bind("@pv", getVAT);
+                        con.bind("@pq", getRP);
+                        con.bind("@pv", vat);
                         con.bind("@pdoa", DateTime.Now);
                         con.bind("@categ", addCategory.Text);
 
