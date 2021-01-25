@@ -76,8 +76,8 @@
                                         <Label Content="Quantity (To Stock)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
                                         <TextBox x:Name="addQty" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" PreviewTextInput="TextBox_OnPreviewTextInput" />
 
-                                        <Label Content="Sugested Retail Price (SRP)" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>
-                                        <TextBox x:Name="addSRP" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" PreviewTextInput="TextBoxSRP_OnPreviewTextInput" Visibility="Hidden"/>
+                                        <Label Content="Purchase Price" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0"/>
+                                        <TextBox x:Name="addRetail" HorizontalAlignment="Stretch"  FontFamily="Microsoft Tai Le" FontSize="15" Height="30"  Margin="25 0 25 0" Background="White" PreviewTextInput="TextBoxSRP_OnPreviewTextInput" />
 
                                         <Label Content="Expiration Date" FontWeight="SemiBold" FontSize="15" Foreground="Black" Margin="20 15 0 0" Visibility="Hidden"/>
                                         <StackPanel Orientation="Horizontal">

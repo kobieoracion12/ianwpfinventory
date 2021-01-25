@@ -73,7 +73,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
             checkBarcode.Clear();
             addItem.Clear();
             addRP.Clear();
-            addSRP.Clear();
+            addRetail.Clear();
             addQty.Clear();
             addVAT.Clear();
             addCategory.Text = "";
@@ -83,7 +83,7 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
         // Submit Button
         private void submitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (checkBarcode.Text == "" || addItem.Text == "" || addBrand.Text == "" || addQty.Text == "" ||  addRP.Text == "" || addVAT.Text == "" || addDOA.Text == "")
+            if (checkBarcode.Text == "" || addItem.Text == "" || addBrand.Text == "" || addQty.Text == "" || addRetail.Text == "" ||  addRP.Text == "" || addVAT.Text == "" || addDOA.Text == "")
             {
                 MessageBox.Show("Please Complete the Form", "Add Item", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
@@ -104,15 +104,15 @@ namespace NavigationDrawerPopUpMenu2.usercontrols
                     {
                         getRP = ((rp / 100) * vat) + rp;
                         con.Open();
-                        string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodDOA, prodCategory) VALUES (@pn, @pi, @pb, @py, @pp, @pq, @pv, @pdoa, @categ)";
+                        string itemInsert = "INSERT INTO datainventory (prodNo, prodItem, prodBrand, prodQty, prodSRP, prodRP, prodVAT, prodDOA, prodCategory) VALUES (@no, @item, @brand, @qty, @retail, @rp, @vat, @pdoa, @categ)";
                         con.query(itemInsert);
-                        con.bind("@pn", checkBarcode.Text);
-                        con.bind("@pi", addItem.Text);
-                        con.bind("@pb", addBrand.Text);
-                        con.bind("@py", addQty.Text);
-                        con.bind("@pp", addSRP.Text);
-                        con.bind("@pq", getRP);
-                        con.bind("@pv", vat);
+                        con.bind("@no", checkBarcode.Text);
+                        con.bind("@item", addItem.Text);
+                        con.bind("@brand", addBrand.Text);
+                        con.bind("@qty", addQty.Text);
+                        con.bind("@retail", getRP);
+                        con.bind("@rp", addRetail.Text);
+                        con.bind("@vat", vat);
                         con.bind("@pdoa", DateTime.Now);
                         con.bind("@categ", addCategory.Text);
 
